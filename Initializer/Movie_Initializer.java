@@ -80,10 +80,10 @@ public class Movie_Initializer {
 		try {
 			Scanner read = new Scanner(new File(newDirectory + "Movie_Listing.txt"));
 			
-			read.useDelimiter(",|\n|\r\n");
+			read.useDelimiter("|");
 			while(read.hasNext()) {
 				
-				movid = read.nextLine();
+				movid = read.next();
 				movietitle = read.nextLine();
 				System.out.println(movid + ", " + movietitle);
 				
