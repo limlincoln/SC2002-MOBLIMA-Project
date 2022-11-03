@@ -1,16 +1,10 @@
 package entities;
 
 import java.util.ArrayList;
+import enums.MovieType;
+import enums.Status;
 
-enum Status {
-    ComingSoon,
-    Showing
-}
-enum MovieType{
-    IMAX,
-    _3D,
-    NORMAL
-}
+
 
 // should we inherit from a abstract class Show? To fulfill DIP, 
 // also so we can say out system allow future extension of different kinds of shows (live performance etc)

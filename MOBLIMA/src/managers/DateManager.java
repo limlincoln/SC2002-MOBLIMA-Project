@@ -2,21 +2,10 @@ package managers;
 import java.time.format.DateTimeFormatter;  
 import java.time.LocalDateTime; 
 import java.util.Calendar;
+import enums.DayOfWeek;
+import enums.TimeOfDay;
 
-enum DayOfWeek {
-    SUN,
-    MON,
-    TUE,
-    WED,
-    THU,
-    FRI,
-    SAT,
-}
 
-enum TimeOfDay {
-    MORNING,
-    EVENING
-}
 
 public class DateManager {
     public static int getCurrentDateTime(String format) {

@@ -1,7 +1,7 @@
 package managers;
-import java.sql.Date;
 import java.util.ArrayList;
 import entities.Movie;
+
 
 public class PricingManager {
     private static double basePrice = 5.30;
@@ -24,14 +24,14 @@ public class PricingManager {
         double totalPrice = 0.0;
         double perPersonPrice = basePrice;
         
-        switch(movie.MovieType) {
-            case MovieType.IMAX:
+        switch(movie.getMovieType()) {
+            case IMAX:
                 perPersonPrice += priceMatrix.get(1).get(0);
                 break;
-            case MovieType._3D:
+            case _3D:
                 perPersonPrice += priceMatrix.get(1).get(1);
                 break;
-            case MovieType.NORMAL:
+            case NORMAL:
                 perPersonPrice += priceMatrix.get(2).get(2);
         }
         
@@ -66,16 +66,16 @@ public class PricingManager {
         double perPersonPrice = basePrice;
 
         System.out.println("Base Price:\t\t $"+basePrice);
-        switch(movie.MovieType) {  
-            case MovieType.IMAX:
+        switch(movie.getMovieType()) {  
+            case IMAX:
                 perPersonPrice += priceMatrix.get(1).get(0);
                 System.out.println("IMAX Movie:\t\t $"+priceMatrix.get(1).get(0));
                 break;
-            case MovieType._3D:
+            case _3D:
                 perPersonPrice += priceMatrix.get(1).get(1);
                 System.out.println("3D Movie:\t\t $"+priceMatrix.get(1).get(1));
                 break;
-            case MovieType.NORMAL:
+            case NORMAL:
                 // this should have no change on the price
                 perPersonPrice += priceMatrix.get(2).get(2);
         }
