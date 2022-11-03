@@ -1,5 +1,4 @@
-package Try;
-
+package menus;
 
 import FileManager.LoginAuthenticator;
 import java.util.Scanner;

@@ -1,9 +1,4 @@
-package Try;
-
-
-
-//import Try.StaffApp;
-//import Try.CustomerApp;
+import menus.*;
 import java.util.Scanner;
 
 /**
@@ -32,7 +27,7 @@ public class MOBLIMA_APP {
 	        
 	        switch (choice) {
 		        case 1:
-		        	 CustomerApp.getInstance().displayCustomerMenu();
+		        	CustomerApp.getInstance().displayCustomerMenu();
 		        	break;
 		        case 2:
 		        	StaffApp.getInstance().displayLoginMenu();

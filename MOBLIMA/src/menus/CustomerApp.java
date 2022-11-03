@@ -1,6 +1,4 @@
-package Try;
-
-
+package menus;
 import java.util.Scanner;
 
 
