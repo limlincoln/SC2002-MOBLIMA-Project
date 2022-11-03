@@ -1,12 +1,13 @@
+package initializer;
 import java.io.IOException;  
 import java.nio.file.*;
 import java.io.File;
 import java.util.*;
 import java.io.*;
 
-public class Movie_Initializer {
+public class Movie_Initializer implements IGetCurrentDirectory {
 	
-	public static String getCurrentDirectory() {
+	public String getCurrentDirectory() {
 		String executionPath = System.getProperty("user.dir");
 		
 		return executionPath;
@@ -17,7 +18,8 @@ public class Movie_Initializer {
 		String newDirectory;
 		boolean checkfileexists = false;
 		
-		currentDirectory = getCurrentDirectory();
+		Movie_Initializer movie_init = new Movie_Initializer();
+		currentDirectory = movie_init.getCurrentDirectory();
 		
 		newDirectory = currentDirectory + "\\Database\\";
 		
@@ -42,7 +44,8 @@ public class Movie_Initializer {
 		String newDirectory;
 		String new_movie; 
 		
-		currentDirectory = getCurrentDirectory();
+		Movie_Initializer movie_init = new Movie_Initializer();
+		currentDirectory = movie_init.getCurrentDirectory();
 		
 		newDirectory = currentDirectory + "\\Database\\";
 		File movielisting_file = new File(newDirectory);
@@ -77,7 +80,8 @@ public class Movie_Initializer {
 		
 		int CountNoOfMovies = 0;
 		
-		currentDirectory = getCurrentDirectory();
+		Movie_Initializer movie_init = new Movie_Initializer();
+		currentDirectory = movie_init.getCurrentDirectory();
 		
 		newDirectory = currentDirectory + "\\Database\\";
 		
@@ -133,7 +137,8 @@ public class Movie_Initializer {
 		
 		int CountNoOfMovies = 0;
 		
-		currentDirectory = getCurrentDirectory();
+		Movie_Initializer movie_init = new Movie_Initializer();
+		currentDirectory = movie_init.getCurrentDirectory();
 		
 		newDirectory = currentDirectory + "\\Database\\";
 		
@@ -198,7 +203,7 @@ public class Movie_Initializer {
 		
 		int NoOfMovie = 0;
 		
-		System.out.println(getCurrentDirectory());
+		//System.out.println(getCurrentDirectory());
 		
 		CreateMovieListingFile();
 		//WriteMovieListingFile(1, "Buzz Light Year", "TYPE", "STATUS", "DIRECTOR", "SYPNOSIS", "CAST1", "CAST2", 986.3, 102, 4.98);
