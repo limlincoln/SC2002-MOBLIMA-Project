@@ -1,5 +1,7 @@
+package managers;
 import java.sql.Date;
 import java.util.ArrayList;
+import entities.Movie;
 
 public class PricingManager {
     private static double basePrice = 5.30;

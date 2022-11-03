@@ -1,3 +1,5 @@
+package entities;
+
 public class Booking {
     private int TID;
     private Movie movie;

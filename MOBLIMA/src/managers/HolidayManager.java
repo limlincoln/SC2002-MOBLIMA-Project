@@ -1,4 +1,7 @@
+package managers;
 import java.util.ArrayList;
+
+import entities.Holiday;
 
 public class HolidayManager {
     private static ArrayList<Holiday> holidays = new ArrayList<Holiday>();

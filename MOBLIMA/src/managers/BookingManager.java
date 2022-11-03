@@ -1,3 +1,8 @@
+package managers;
+
+import entities.Booking;
+import entities.Movie;
+import entities.Customer;
 import java.util.ArrayList;
 
 public class BookingManager {
@@ -17,6 +22,7 @@ public class BookingManager {
 
         Booking booking = new Booking(tid, movie, customer);
         bookingHistory.add(booking);
+        return true;
     }  
 
     public static ArrayList<Booking> getBookingHistory() {
