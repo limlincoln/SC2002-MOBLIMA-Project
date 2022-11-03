@@ -7,13 +7,20 @@ import java.util.ArrayList;
 /*
  * Consolidates all movies in a given cineplex
  */
-public class MovieConsolidator implements IConsolidator<Movie> {
-    private Cineplex cineplex;
-    public MovieConsolidator(Cineplex cineplex){
-        this.cineplex = cineplex;
+public class MovieConsolidator implements IConsolidator<Movie, Cineplex> {
+    private MovieConsolidator single_instance = null;
+
+    private MovieConsolidator(){}
+
+    public MovieConsolidator getInstance(){
+        if(single_instance == null){
+            single_instance = new MovieConsolidator();
+        }
+        return single_instance;
     }
-    public ArrayList<Movie> getAll(){
-        ArrayList<Cinema> cinemas = this.cineplex.getCinemas();
+    
+    public ArrayList<Movie> getAll(Cineplex cineplex){
+        ArrayList<Cinema> cinemas = cineplex.getCinemas();
         ArrayList<Movie> movies = new ArrayList<Movie>();
         for(int i=0; i<cinemas.size(); i++){
             movies.addAll(cinemas.get(i).getMovies());
