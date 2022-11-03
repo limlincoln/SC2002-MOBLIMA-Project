@@ -1,3 +1,6 @@
+package managers;
+
+import entities.Movie;
 import java.util.ArrayList;
 
 public class ReviewManager {

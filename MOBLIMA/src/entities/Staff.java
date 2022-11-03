@@ -1,9 +1,4 @@
-//import java.io.BufferedReader;
-//import java.io.FileNotFoundException;
-//import java.io.FileReader;
-//import java.io.IOException;
-//import java.io.File;
-//import java.util.Scanner;
+package entities;
 
 /**
  * This is the StaffManager. For now it is a simple manager that will handle the login issues of staff

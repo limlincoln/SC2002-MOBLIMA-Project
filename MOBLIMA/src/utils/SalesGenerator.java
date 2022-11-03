@@ -1,3 +1,7 @@
+package utils;
+
+import entities.Movie;
+
 public class SalesGenerator {
     public static void Generate(Movie[] movies){
         double total = 0;
