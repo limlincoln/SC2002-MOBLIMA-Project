@@ -1,6 +1,6 @@
 package menus;
 
-import FileManager.LoginAuthenticator;
+import managers.LoginManager;
 import java.util.Scanner;
 
 /**
@@ -62,7 +62,7 @@ public class StaffApp {
                 }
                 String password = sc.nextLine();
                 
-                boolean authenticate = LoginAuthenticator.getInstance().login(username, password);
+                boolean authenticate = LoginManager.getInstance().login(username, password);
                 
                 
                 if (authenticate) {
