@@ -6,7 +6,7 @@ import enums.AgeGroup;
 
 import managers.PricingManager;
 
-public class Ticket {
+public class Ticket implements IPrice {
     private DayOfWeek dayOfWeek;
     private TimeOfDay timeOfDay; 
     private AgeGroup ageGroup;

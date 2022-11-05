@@ -2,6 +2,8 @@ package caculators;
 
 import java.util.ArrayList;
 
+import entities.IPrice;
+
 public class PriceCalculator {
     public static double getGeneralPrice(ArrayList<IPrice> objs) {
         double totalPrice = 0.0;
