@@ -1,14 +1,20 @@
 package entities;
 
+import java.util.ArrayList;
+
 public class Booking {
     private int TID;
     private Movie movie;
     private Customer customer;
+    private ArrayList<Ticket> tickets;
+    private double totalCost;
 
-    public Booking(int tid, Movie movie, Customer customer) {
+    public Booking(int tid, Movie movie, Customer customer, ArrayList<Ticket> tickets, double totalCost) {
         this.TID = tid;
         this.movie = movie;
         this.customer = customer;
+        this.tickets = tickets;
+        this.totalCost = totalCost;
     }
 
     // GETTERS & SETTERS
@@ -34,5 +40,21 @@ public class Booking {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public ArrayList<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(ArrayList<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
+    public double getTotalCost() {
+        return totalCost;
+    }
+
+    public void setTotalCost(double totalCost) {
+        this.totalCost = totalCost;
     }
 }
