@@ -17,6 +17,18 @@ public class Booking {
         this.totalCost = totalCost;
     }
 
+    public void showBookingDetails() {
+        System.out.println(
+            "TID: "+ TID + "\n" +
+            "Movie: "+ movie.getMovieName() + "\n" +
+            "No. of Seats: "+tickets.size() + "\n" +
+            "Purchased By: "+ customer.getUserName() +
+            "\n" + customer.getPhoneNumber() +
+            "\n" + customer.getEmail() + "\n" +
+            "Total Cost: " + totalCost
+        );
+    }
+
     // GETTERS & SETTERS
     public int getTID() {
         return TID;
