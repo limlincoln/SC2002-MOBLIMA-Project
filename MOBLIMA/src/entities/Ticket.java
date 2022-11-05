@@ -4,6 +4,8 @@ import enums.DayOfWeek;
 import enums.TimeOfDay;
 import enums.AgeGroup;
 
+import managers.PricingManager;
+
 public class Ticket {
     private DayOfWeek dayOfWeek;
     private TimeOfDay timeOfDay; 
@@ -13,6 +15,13 @@ public class Ticket {
         this.dayOfWeek = dayOfWeek;
         this.timeOfDay = timeOfDay;
         this.ageGroup = ageGroup;
+    }
+
+    public double getPrice() {
+        return 
+        PricingManager.getPrice(dayOfWeek) + 
+        PricingManager.getPrice(timeOfDay) +
+        PricingManager.getPrice(ageGroup);
     }
 
     // GETTERS & SETTERS
