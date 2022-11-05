@@ -38,4 +38,16 @@ public class BookingManager {
 
         return userBookingHistory;
     }
+
+    public static ArrayList<Booking> getUnratedBookings() {
+        ArrayList<Booking> unratedBookings = new ArrayList<Booking>();
+
+        for(Booking booking: bookingHistory) {
+            if(booking.getMovie().getRatings().size() == 0) {
+                unratedBookings.add(booking);
+            }
+        }
+
+        return unratedBookings;
+    }
 }
