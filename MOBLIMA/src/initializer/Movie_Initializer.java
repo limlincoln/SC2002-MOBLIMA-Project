@@ -198,18 +198,4 @@ public class Movie_Initializer implements IGetCurrentDirectory {
 		}
 		
 	}
-	
-	public static void main(String[] args) throws Exception {
-		
-		int NoOfMovie = 0;
-		
-		//System.out.println(getCurrentDirectory());
-		
-		CreateMovieListingFile();
-		//WriteMovieListingFile(1, "Buzz Light Year", "TYPE", "STATUS", "DIRECTOR", "SYPNOSIS", "CAST1", "CAST2", 986.3, 102, 4.98);
-		//WriteMovieListingFile(2, "Whzz Light Year", "TYPE", "STATUS", "DIRECTOR", "SYPNOSIS", "CAST1", "CAST2", 986.3, 102, 4.98);
-		//WriteMovieListingFile(3, "Nazz Light Year", "TYPE", "STATUS", "DIRECTOR", "SYPNOSIS", "CAST1", "CAST2", 986.3, 102, 4.98);
-		GetNoOfMovieListing();
-		
-	}
 }
