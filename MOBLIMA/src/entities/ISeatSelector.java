@@ -1,4 +1,4 @@
 package entities;
 interface ISeatSelector {
-    public void StartSeatSelectionInstance(ISeat[][] seats);
+    public int StartSeatSelectionInstance(ISeats seats);
 }

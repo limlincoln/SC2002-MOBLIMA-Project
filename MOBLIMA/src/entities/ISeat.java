@@ -1,6 +1,6 @@
 package entities;
 
 
-interface ISeat {
+public interface ISeat {
     public String getState();
 }

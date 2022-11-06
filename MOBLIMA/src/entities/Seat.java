@@ -1,9 +1,10 @@
 package entities;
 
-public class Seat implements ISeat {
+public class Seat implements ISeat, ISelectableSeat {
     private boolean occupied;
     private boolean tempSelected;
 
+    public Seat(){};
     @Override
     public String getState() {
         if(this.isOccupied()){
@@ -15,7 +16,16 @@ public class Seat implements ISeat {
                 return "_";
             }
         }
-        
+    }
+
+    @Override
+    public void toggleOccupied(){
+        this.setOccupied(!this.getOccupied());
+    }
+
+    @Override
+    public void toggleTempSelected(){
+        this.setTempSelected(!this.getTempSelected());
     }
 
     public boolean isOccupied() {

@@ -2,11 +2,11 @@ package entities;
 
 public class SeatLayout extends ISeatLayout{
     // creating a new layout
-    private SeatLayout(){
+    public SeatLayout(){
         createLayout();
     }
 
-    private SeatLayout(ISeat[][] layout){
+    public SeatLayout(ISeat[][] layout){
         this.setLayout(layout);
     }
 
