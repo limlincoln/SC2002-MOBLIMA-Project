@@ -1,4 +1,6 @@
-package menus;
+package menu;
+import entities.Customer;
+import entities.Booking;
 import java.util.Scanner;
 
 
@@ -24,70 +26,36 @@ public class CustomerApp {
 		
 		do {
             System.out.println(	"============== MOBLIMA CUSTOMER APP ================\n" +
-			                    " 1. View movie listings					        \n" +
-			                    " 2. View top 5                                    \n" +
-			                    " 3. Check booking history                         \n" +
+			                    " 1. View Movie menu     					        \n" +
+			                    " 2. View Booking menu                              \n" +
+			                    " 3. View Ratings                                  \n" +
 			                    " 0. Back to MOBLIMA APP                           \n"+
 							    "====================================================");
 	    	
             System.out.println("Enter choice: ");
             
             while (!sc.hasNextInt()) {
-            	System.out.println("Invalid input type. Please enter an integer value.");
-        		sc.next(); // Remove newline character
+            	System.out.println("Please enter an integer value or correct value.");
+        		sc.next(); 
             }
             
             choice = sc.nextInt();
             
             switch(choice){
-                case 1://view movie listings
-                	//MovieManager.getInstance().viewMovies("Customer");
+                case 1:
+                	MovieMenu.getInstance().displayCustomerMovieMenu();
                     break;
-                case 2://view top 5
-                	//MovieManager.getInstance().viewTop5("Customer");
+                case 2:
+                	BookingMenu.getInstance().displayBookingMenu();
                     break;
-
                 case 3:
-                	int subchoice;
-                	
-                	do {
-                        System.out.println(	"=========== SEARCH BOOKING HISTORY =============\n" +
-			                    " 1. Check via email address					    		\n" +
-			                    " 2. Check via mobile number 					    		\n" +
-				                " 0. Back to CustomerApp......                             \n"+
-											"================================================");
-                		
-                        System.out.println("Enter choice: ");
-                        
-                        while (!sc.hasNextInt()) {
-                        	System.out.println("Invalid input type. Please enter an integer value.");
-                    		sc.next(); // Remove newline character
-                        }
-                        
-                        subchoice = sc.nextInt();
-                        
-	                	switch (subchoice) {
-	                	case 1:
-	                		//CustomerManager.getInstance().printPastBookingByEmail();
-	                		break;
-	                	case 2:
-	                		//CustomerManager.getInstance().printPastBookingByMobile();
-	                		break;
-	                	case 0:
-	                		System.out.println("Back to CustomerApp......");
-	                		break;
-                		default: 
-                			System.out.println("Invalid choice. Please choose between 0-2.");
-                			break;
-	                	}
-                	} while (subchoice!=0);
-                	
-                    break;
+                	RatingMenu.getInstance().displayRatingMenu();
+                	break;
                 case 0:
                 	System.out.println("Back to MOBLIMA APP......");
                 	break;
                 default: 
-                	System.out.println("Invalid choice. Please choose between 0-3.");
+                	System.out.println("Please enter an integer value or correct value.");
                 	break;
 	            }
 	        } while (choice != 0);

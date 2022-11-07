@@ -44,6 +44,7 @@ public class MovieMenu {
             
             switch(choice){
                 case 1:
+                	// should show only now showing movie list?
                 	ArrayList<Movie> movies = new ArrayList<Movie>();
                     int subChoice;
                     for (int i = 0; i < movies.size(); i++) {

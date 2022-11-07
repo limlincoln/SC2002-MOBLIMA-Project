@@ -1,4 +1,9 @@
-import menus.*;
+package menu;
+
+
+
+//import Try.StaffApp;
+//import Try.CustomerApp;
 import java.util.Scanner;
 
 /**
@@ -20,14 +25,14 @@ public class MOBLIMA_APP {
 	        
 	        while (!sc.hasNextInt()) {
             	System.out.println("Invalid input type. Please enter an integer value.");
-        		sc.next(); // Remove newline character
+        		sc.next(); 
             }
 	        
 	        choice = sc.nextInt();
 	        
 	        switch (choice) {
 		        case 1:
-		        	CustomerApp.getInstance().displayCustomerMenu();
+		        	 CustomerApp.getInstance().displayCustomerMenu();
 		        	break;
 		        case 2:
 		        	StaffApp.getInstance().displayLoginMenu();
