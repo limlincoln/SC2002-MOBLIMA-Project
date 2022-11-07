@@ -40,11 +40,12 @@ public class SystemSettings implements Serializable {
 		String temp = (String) this.getSystemInfoHash().get("holidayReference").get(key);
 		if (temp==null) {
 			return false;
-		} else {
+		} 
+		else {
 			return true;
 		}
 	}
-	
+	 
 	// CRUD methods
 	public void viewSetting(String infoType) {
 		System.out.println(this.getSystemInfoHash().get(infoType));
