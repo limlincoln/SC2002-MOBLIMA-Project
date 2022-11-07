@@ -19,9 +19,10 @@ public class Movie {
     private String sypnopsis;
     private ArrayList<Integer> ratings;
     private double totalSales;
+    private Float avgRating;
 
 
-    public Movie(int movieID, String movieName, MovieType genre, Status status, ArrayList<String> casts, String director, String sypnopsis, ArrayList<Integer> ratings, double totalSales) {
+    public Movie(int movieID, String movieName, MovieType genre, Status status, ArrayList<String> casts, String director, String sypnopsis, ArrayList<Integer> ratings, double totalSales, Float avgRating) {
         this.movieID = movieID;
         this.movieName = movieName;
         this.genre = genre;
@@ -31,6 +32,7 @@ public class Movie {
         this.sypnopsis = sypnopsis;
         this.ratings = ratings;
         this.totalSales = totalSales;
+        this.avgRating = avgRating;
     }
 
     public void showDetails(){
@@ -41,7 +43,7 @@ public class Movie {
             "casts: " + getCasts() + "\n" +
             "director: " + getDirector() + "\n" +
             "sypnopsis: " + getSypnopsis() + "\n" +
-            "ratings: " + getRatings() + "\n"
+            "Average Rating: " + getAvgRating() + "\n"
         ); 
     }
 
@@ -116,6 +118,14 @@ public class Movie {
 
     public void setTotalSales(double totalSales) {
         this.totalSales = totalSales;
+    }
+
+    public double getAvgRating() {
+        return this.avgRating;
+    }
+
+    public void setAvgRating(Float avgRating) {
+        this.avgRating = avgRating;
     }
     
 }
