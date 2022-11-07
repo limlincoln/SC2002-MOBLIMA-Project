@@ -1,9 +1,2 @@
-TIDXXXYYYYMMDDhhmm|01|3.28|testuser1|12345678|testuser@email
-TIDXXXYYYYMMDDhhmm|01|3.28|testuser1|12345678|testuser@email
-TIDXXXYYYYMMDDhhmm|01|3.28|testuser2|12345678|testuser@email
-TIDXXXYYYYMMDDhhmm|01|3.28|testuser2|12345678|testuser@email
-TIDXXXYYYYMMDDhhmm|01|3.28|testuser1|12345678|testuser@email
-TIDXXXYYYYMMDDhhmm|01|3.28|testuser3|12345678|testuser@email
-TIDXXXYYYYMMDDhhmm|04|0.32|testuser3|12345678|test@email
-TIDXXXYYYYMMDDhhmm|04|0.32|testuser3|12345678|test@email
+TIDXXXYYYYMMDDhhmm|05|0.32|testuser3|12345678|test@email
 TIDXXXYYYYMMDDhhmm|05|0.32|testuser3|12345678|test@email
