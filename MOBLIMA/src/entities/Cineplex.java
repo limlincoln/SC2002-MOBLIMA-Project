@@ -1,12 +1,13 @@
-//import java.util.ArrayList;
-import java.util.List;
+package entities;
+//import java.util.ArrayArrayList;
+import java.util.ArrayList;
 
 public class Cineplex {
     private int CineplexID;
     private String CineplexName;
     private Cinema[] CinemaType;
-    private List<Cinema> cinemas;
-	private List<String> cinemaIDs;
+    private ArrayList<Cinema> cinemas;
+	private ArrayList<String> cinemaIDs;
 
     public Cineplex(int cID, String cName, Cinema[] cType){
         this.CineplexID = cID;
@@ -24,10 +25,10 @@ public class Cineplex {
     public Cinema[] getCinemaType(){
         return this.CinemaType;
     }
-    public List<Cinema> getCinemas() {
+    public ArrayList<Cinema> getCinemas() {
         return this.cinemas;
     }
-	public List<String> getCinemaIDs() {
+	public ArrayList<String> getCinemaIDs() {
         return this.cinemaIDs;
     }
 

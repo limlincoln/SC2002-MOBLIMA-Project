@@ -1,3 +1,7 @@
+package entities;
+
+import java.util.ArrayList;
+
 public class Cinema{
     private int CinemaID;
     private int CinemaType;
@@ -7,6 +11,11 @@ public class Cinema{
         this.CinemaID = cID;
         this.CinemaType = cType;
         this.showTime = sTime;
+    }
+
+    // TODO: IMPLEMENT
+    public ArrayList<Movie> getMovies(){
+        return new ArrayList<Movie>();
     }
 
     //get methods
