@@ -8,6 +8,17 @@ import java.util.*;
 //import utils.ProjectRootPathFinder;
 
 
+// FUNCTIONALITY
+// SHOW SHOWTIME FOR A PARTICULAR MOVIE & DAY & CINEPLEX & CINEMA
+// RETURN ARRAY OF SHOWTIME
+
+// FINDSEATS:
+// FIND THE SEATS FROM CINEMA CLASS USING SHOWTIME SLOT INDEX
+
+
+
+
+
 public class ShowtimeManager {
     private Showtime showtimes;
     private Scanner sc = new Scanner(System.in);

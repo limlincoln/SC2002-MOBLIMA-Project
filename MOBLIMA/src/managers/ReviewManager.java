@@ -4,7 +4,7 @@ import entities.Movie;
 import java.util.ArrayList;
 
 public class ReviewManager {
-    // Add a rating
+    // Add a rating to movie class
     public void Review(Movie movie, int newRating){
         if(newRating > 5 || newRating < 0){
             System.out.println("Invalid input");
@@ -23,4 +23,9 @@ public class ReviewManager {
         }
         return totalRating/ratings.size();
     }
+
+    // TODO: REVMIEW A PARTICULAR BOOKING
+    // change the rating in the booking class
+    // add this rating to movie class
+    // update average rating.
 }

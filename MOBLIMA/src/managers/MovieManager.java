@@ -1,4 +1,5 @@
 package managers;
+
 import java.util.ArrayList;
 import entities.Movie;
 
@@ -8,13 +9,15 @@ public class MovieManager {
     private static MovieManager single_instance = null;
     private ArrayList<Movie> movies;
 
-    private MovieManager(){}
-
+    private MovieManager(ArrayList<Movie> movies){
+        this.movies = movies;
+    }
+    public static void instantiateMovies(ArrayList<Movie> movies){
+        single_instance = new MovieManager(movies);
+    }
 
     public static MovieManager getInstance()
     {
-        if (single_instance == null)
-            single_instance = new MovieManager();
         return single_instance;
     }
 
