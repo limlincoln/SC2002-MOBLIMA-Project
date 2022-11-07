@@ -10,7 +10,7 @@ import utils.SeatPrinter;
 
 public class seatSelectorTest {
   public static void main(String[] args) {
-    SeatPrinter sp = SeatPrinter.getInstance()
+    SeatPrinter sp = SeatPrinter.getInstance();
     ISeat[][] s = new ISeat[5][5];
     for(int i=0; i<5; i++){
       for(int j=0; j<5; j++){
@@ -25,6 +25,7 @@ public class seatSelectorTest {
     sp.print(seats); 
     SeatSelector seatSelector = new SeatSelector();
     int numOfSeats = seatSelector.StartSeatSelectionInstance(seats); 
+    sp.print(seats);
     System.out.println("Completed Test");
   }
 }

@@ -8,7 +8,7 @@ import utils.SeatPrinter;
 
 public class seatsTest {
   public static void main(String[] args) {
-      SeatPrinter sp = SeatPrinter.getInstance()
+      SeatPrinter sp = SeatPrinter.getInstance();
       ISeat[][] s = new ISeat[5][5];
       for(int i=0; i<5; i++){
         for(int j=0; j<5; j++){
