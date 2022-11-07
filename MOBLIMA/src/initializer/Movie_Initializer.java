@@ -1,19 +1,23 @@
 package initializer;
-import java.io.IOException;  
-import java.nio.file.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
-import java.util.*;
-import java.io.*;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-public class Movie_Initializer implements IGetCurrentDirectory {
+import enums.Status;
+import entities.Movie;
+import enums.MovieType;
+
+public class Movie_Initializer extends GetDatabaseDirectory {
 	
-	public String getCurrentDirectory() {
-		String executionPath = System.getProperty("user.dir");
-		
-		return executionPath;
-	}
+	public static final String DBfile = "Movie_Listing.txt";
 	
 	public static void CreateMovieListingFile() {
+		
 		String currentDirectory;
 		String newDirectory;
 		boolean checkfileexists = false;
@@ -21,7 +25,7 @@ public class Movie_Initializer implements IGetCurrentDirectory {
 		Movie_Initializer movie_init = new Movie_Initializer();
 		currentDirectory = movie_init.getCurrentDirectory();
 		
-		newDirectory = currentDirectory + "\\Database\\";
+		newDirectory = currentDirectory;
 		
 		File create_movielisting_file = new File(newDirectory);
 		
@@ -29,7 +33,7 @@ public class Movie_Initializer implements IGetCurrentDirectory {
 			if(!create_movielisting_file.exists()) {
 				create_movielisting_file.mkdirs();
 			}
-			create_movielisting_file = new File(newDirectory + "Movie_Listing.txt");
+			create_movielisting_file = new File(newDirectory + DBfile);
 			checkfileexists = create_movielisting_file.createNewFile();
 		} catch(Exception e) {
 			System.out.println(e);
@@ -38,29 +42,35 @@ public class Movie_Initializer implements IGetCurrentDirectory {
 		
 	}
 	
-	public static void WriteMovieListingFile(int id, String movietitle, String type, String status, String director, String sypnosis, String cast1, String cast2, double totalsales, int NoOfRating, double AvgRating) throws Exception {
+	public static void WriteMovieListingFile(ArrayList<Movie> movielist) throws Exception {
 		
 		String currentDirectory;
 		String newDirectory;
-		String new_movie; 
+		String new_movie;
 		
 		Movie_Initializer movie_init = new Movie_Initializer();
 		currentDirectory = movie_init.getCurrentDirectory();
 		
-		newDirectory = currentDirectory + "\\Database\\";
+		newDirectory = currentDirectory;
 		File movielisting_file = new File(newDirectory);
 		
-		FileWriter write_movielisting = new FileWriter((newDirectory + "Movie_Listing.txt"), true);
+		FileWriter write_movielisting = new FileWriter((newDirectory + DBfile), true);
 		
 		try {
 			if(movielisting_file.exists()) {
 				BufferedWriter buffer = new BufferedWriter(write_movielisting);
 				
-				new_movie = id + "|" + movietitle + "|" + type + "|" + status + "|" + director + "|" + sypnosis + "|" + cast1 + "|" + cast2 + "|" + totalsales + "|" + NoOfRating + "|" + AvgRating;
-				buffer.write(new_movie);
+				
+				for(Movie movies: movielist) {
+					new_movie = movies.getMovieID() + "|" + movies.getMovieName() + "|" + movies.getMovieType() + "|" + movies.getStatus() + "|" + movies.getDirector() + "|" + movies.getSypnopsis() + "|" + movies.getCasts() + "|" + movies.getTotalSales() + "|" + movies.getRatings();
+					buffer.write(new_movie);
+					buffer.newLine();
+				}
+				
+				
 				//buffer.append(System.lineSeparator());
 				
-				buffer.newLine();
+				
 				buffer.close();
 			}
 		}catch (Exception e){
@@ -69,7 +79,9 @@ public class Movie_Initializer implements IGetCurrentDirectory {
 		
 	}
 	
-	public static void GetNoOfMovieListing() {
+	public ArrayList<Movie> GetMovieListing() {
+		
+		ArrayList<Movie> movielist = new ArrayList<Movie>();
 		
 		String currentDirectory;
 		String newDirectory;
@@ -78,15 +90,18 @@ public class Movie_Initializer implements IGetCurrentDirectory {
 		String director, synposis, cast1, cast2;
 		String totalsales, NoOfRating, AvgRating;
 		
+		MovieType genre = null;
+		Status moviestatus = null;
+		
 		int CountNoOfMovies = 0;
 		
 		Movie_Initializer movie_init = new Movie_Initializer();
 		currentDirectory = movie_init.getCurrentDirectory();
 		
-		newDirectory = currentDirectory + "\\Database\\";
+		newDirectory = currentDirectory;
 		
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(newDirectory + "Movie_Listing.txt"));
+			BufferedReader br = new BufferedReader(new FileReader(newDirectory + DBfile));
 			
 			while(true) {
 				final String line = br.readLine();
@@ -98,104 +113,157 @@ public class Movie_Initializer implements IGetCurrentDirectory {
 				String []data = line.split("\\|");
 				
 				movid = data[0];
+				int movieid = Integer.parseInt(movid);
+				
 				movietitle = data[1];
+				
 				type = data[2];
+				switch(type) {
+				
+				case "IMAX":
+					genre = MovieType.IMAX;
+					break;
+					
+				case "_3D":
+					genre = MovieType._3D;
+					break;
+					
+				case "NORMAL":
+					genre = MovieType.NORMAL;
+					break;
+				}
+				
 				status = data[3];
+				switch(status) {
+				
+				case "Showing":
+					moviestatus = Status.Showing;
+					break;
+					
+				case "ComingSoon":
+					moviestatus = Status.ComingSoon;
+					break;
+				}
+				
 				director = data[4];
 				synposis = data[5];
+				
+				ArrayList<String> castlist = new ArrayList<String>();
 				cast1 = data[6];
-				cast2 = data[7];
-				totalsales = data[8];
-				NoOfRating = data[9];
-				AvgRating = data[10];
+				castlist.add(cast1);
 				
+				totalsales = data[7];
+				double newsales = Double.parseDouble(totalsales);
 				
-				System.out.println(data[0] + ": " + data[1]);
+				ArrayList<Integer> ratinglist = new ArrayList<Integer>();
+				NoOfRating = data[8];
+				String[] arr=NoOfRating.replaceAll("\\[|\\]| ", "").split(",");
+		        for(int i=0;i<arr.length;i++){
+
+		        	ratinglist.add(Integer.parseInt(arr[i]));
+		        }
+				
+				//ratinglist.add(Integer.parseInt(NoOfRating));
+								
+				movielist.add(new Movie(movieid, movietitle, genre, moviestatus, castlist, director, synposis, ratinglist, newsales));
 				
 				CountNoOfMovies++;
 			}
 			
-			InitializeMovies(CountNoOfMovies);
-			System.out.println("No of movies: " + CountNoOfMovies);
+		} catch (Exception e) {
+			System.out.print(e);
+		}
+		
+		return movielist;
+		
+	}
+
+	public static void InitializeMovies() {
+		
+		ArrayList<Movie> moviearray = new ArrayList<Movie>();
+		
+		ArrayList<String> castlist = new ArrayList<String>();
+		ArrayList<Integer> ratinglist = new ArrayList<Integer>();
+		
+		String currentDirectory;
+		String newDirectory;
+		
+		String movid, movietitle, type, status;
+		String director, synposis, cast1, cast2;
+		String totalsales, NoOfRating, AvgRating;
+		
+		MovieType genre = MovieType.NORMAL;
+		Status moviestatus = Status.Showing;
+		
+		int CountNoOfMovies = 0;
+		
+		Movie_Initializer movie_init = new Movie_Initializer();
+		currentDirectory = movie_init.getCurrentDirectory();
+		
+		newDirectory = currentDirectory;
+		
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(newDirectory + DBfile));
+			
+			while(true) {
+				final String line = br.readLine();
+				
+				if(line == null) {
+					break;
+				}
+				
+				String []data = line.split("\\|");
+				
+				movid = data[0];
+				int movieid = Integer.parseInt(movid);
+				
+				movietitle = data[1];
+				
+				type = data[2];
+				genre.valueOf(type);
+				
+				status = data[3];
+				moviestatus.valueOf(status);
+				
+				status = data[3];
+				director = data[4];
+				synposis = data[5];
+				
+				cast1 = data[6];				
+				castlist.add(cast1);
+								
+				totalsales = data[7];
+				double newsales = Double.parseDouble(totalsales);
+				
+				NoOfRating = data[8];
+				ratinglist.add(Integer.parseInt(NoOfRating));
+				
+				moviearray.add(new Movie(movieid, movietitle, genre, moviestatus, castlist, director, synposis, ratinglist, newsales));
+				
+				CountNoOfMovies++;
+			}
 			
 		} catch (Exception e) {
 			
 		}
 		
 	}
-
-	public static void InitializeMovies(int NoOfMovies) {
+	
+	public static void main(String[] args) throws Exception {
 		
-		Object[][] moviearray = new Object[NoOfMovies][11];
+		int NoOfMovie = 0;
 		
-		String currentDirectory;
-		String newDirectory;
+		//System.out.println(getCurrentDirectory());
 		
-		String movid, movietitle, type, status;
-		String director, synposis, cast1, cast2;
-		String totalsales, NoOfRating, AvgRating;
-		
-		int CountNoOfMovies = 0;
+		CreateMovieListingFile();
+		//WriteMovieListingFile(1, "Buzz Light Year", "NORMAL", "Showing", "DIRECTOR", "SYPNOSIS", "CAST1", "CAST2", 986.3, 102, 4.98);
+		//WriteMovieListingFile(2, "Whzz Light Year", "TYPE", "STATUS", "DIRECTOR", "SYPNOSIS", "CAST1", "CAST2", 986.3, 102, 4.98);
+		//WriteMovieListingFile(3, "Nazz Light Year", "TYPE", "STATUS", "DIRECTOR", "SYPNOSIS", "CAST1", "CAST2", 986.3, 102, 4.98);
 		
 		Movie_Initializer movie_init = new Movie_Initializer();
-		currentDirectory = movie_init.getCurrentDirectory();
+		ArrayList <Movie> capmovie = movie_init.GetMovieListing();
 		
-		newDirectory = currentDirectory + "\\Database\\";
-		
-		try {
-			BufferedReader br = new BufferedReader(new FileReader(newDirectory + "Movie_Listing.txt"));
-			
-			while(true) {
-				final String line = br.readLine();
-				
-				if(line == null) {
-					break;
-				}
-				
-				String []data = line.split("\\|");
-				
-				movid = data[0];
-				movietitle = data[1];
-				type = data[2];
-				status = data[3];
-				director = data[4];
-				synposis = data[5];
-				cast1 = data[6];
-				cast2 = data[7];
-				totalsales = data[8];
-				NoOfRating = data[9];
-				AvgRating = data[10];
-				
-				
-				//System.out.println(data[0] + ": " + data[1]);
-				
-				moviearray[CountNoOfMovies][0] = movid;
-				moviearray[CountNoOfMovies][1] = movietitle;
-				moviearray[CountNoOfMovies][2] = type;
-				moviearray[CountNoOfMovies][3] = status;
-				moviearray[CountNoOfMovies][4] = director;
-				moviearray[CountNoOfMovies][5] = synposis;
-				moviearray[CountNoOfMovies][6] = cast1;
-				moviearray[CountNoOfMovies][7] = cast2;
-				moviearray[CountNoOfMovies][8] = totalsales;
-				moviearray[CountNoOfMovies][9] = NoOfRating;
-				moviearray[CountNoOfMovies][10] = AvgRating;
-				
-				CountNoOfMovies++;
-			}
-			
-			//Initialize Movies with loop -->
-			for(int i = 0; i < NoOfMovies; i ++) {
-				System.out.println("");
-				System.out.println("--- Initialize Movie class ---");
-				System.out.println("Movie title: " + moviearray[i][1]);
-				System.out.println("--- --- --- --- --- --- --- ---");
-				System.out.println("");
-			}
-			
-		} catch (Exception e) {
-			
-		}
-		
+		movie_init.WriteMovieListingFile(capmovie);
+	
 	}
 }
