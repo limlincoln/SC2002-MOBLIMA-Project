@@ -12,13 +12,13 @@ import java.util.List;
 import java.util.Map;
 
 //settings class
-public class SystemSettings implements Serializable {
+public class Settings implements Serializable {
 	// Attributes
 	private Map<String, Map<Object, Object>> systemInfoHash;	
 	private List<String> systemInfoList;
 
 	// Constructor
-	public SystemSettings() {
+	public Settings() {
 		this.setsystemInfoList();
 		this.setSystemInfoHash();
 	}	
@@ -103,6 +103,7 @@ public class SystemSettings implements Serializable {
 			// Get filepath
 			//how to get filepath
 			String filePath = ProjectRootPathFinder.findProjectRootPath();
+			
 			
 			if (filePath == null) {
 				throw new IOException("Cannot find root");

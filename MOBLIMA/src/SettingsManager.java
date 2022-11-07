@@ -80,7 +80,7 @@ public class SettingsManager {
     private void viewSystemSetting() {
 		int choice;
 		do {
-	        System.out.println(	"=================== View SystemSettings ===================");
+	        System.out.println(	"=================== View Settings ===================");
             System.out.println(" 1. All Price References");
             System.out.println(" 2. Holiday References");
             System.out.println(" 3. Default Prices");
@@ -139,7 +139,7 @@ public class SettingsManager {
 	private void changeSystemSetting() {
 		int choice;
 		do {
-	        System.out.println(	"=================== Change SystemSettings ==================");
+	        System.out.println(	"=================== Edit Settings ==================");
             System.out.println(" 1. Holiday References");
             System.out.println(" 2. Movie Format Prices");
             System.out.println(" 3. Ticket Type Prices");
