@@ -8,11 +8,11 @@ import java.util.ArrayList;
  * Consolidates all movies in a given cineplex
  */
 public class MovieConsolidator implements IConsolidator<Movie, Cineplex> {
-    private MovieConsolidator single_instance = null;
+    private static MovieConsolidator single_instance = null;
 
     private MovieConsolidator(){}
 
-    public MovieConsolidator getInstance(){
+    public static MovieConsolidator getInstance(){
         if(single_instance == null){
             single_instance = new MovieConsolidator();
         }

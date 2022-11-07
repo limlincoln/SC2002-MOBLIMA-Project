@@ -6,9 +6,11 @@ import entities.SeatLayout;
 import entities.SeatSelector;
 import entities.Seats;
 import entities.Space;
+import utils.SeatPrinter;
 
 public class seatSelectorTest {
   public static void main(String[] args) {
+    SeatPrinter sp = SeatPrinter.getInstance()
     ISeat[][] s = new ISeat[5][5];
     for(int i=0; i<5; i++){
       for(int j=0; j<5; j++){
@@ -20,7 +22,7 @@ public class seatSelectorTest {
     s[1][1] = new Space();
     SeatLayout seatLayout = new SeatLayout(s);
     Seats seats = new Seats(seatLayout);
-    seats.showSeats(); 
+    sp.print(seats); 
     SeatSelector seatSelector = new SeatSelector();
     int numOfSeats = seatSelector.StartSeatSelectionInstance(seats); 
     System.out.println("Completed Test");

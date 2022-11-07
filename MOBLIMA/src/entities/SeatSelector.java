@@ -4,19 +4,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import utils.SeatPrinter;
+
 public class SeatSelector implements ISeatSelector{
     @Override
     public int StartSeatSelectionInstance(ISeats seats) {
         // TODO Auto-generated method stub
         Scanner sc = new Scanner(System.in);
-        int choice = 0;
+        SeatPrinter sp = SeatPrinter.getInstance();
+
         ArrayList<Integer[]> selected = new ArrayList<Integer[]>();
         while(true){
-            seats.showSeats();
+            sp.print(seats);
             System.out.println("\n 1. Select/Deselect Seat   \n " +
                                     "2. Confirm              \n " +
                                     "0. Cancel                  " );
-            choice = sc.nextInt(); // Remove newline character
+            int choice = sc.nextInt(); // Remove newline character
             switch(choice){
                 case 1:
                     System.out.println("Enter seat of Choice eg. A0");
@@ -56,7 +59,8 @@ public class SeatSelector implements ISeatSelector{
                         System.out.println("Number of seats chosen: " + selected.size());
                     }
                     return selected.size();
-                case 3:
+                case 0:
+                default:
                     for(int i=0; i<selected.size(); i++){
                         Integer[] s = selected.get(i);
                         Seat seat = (Seat) seats.getSeats()[s[0]][s[1]];

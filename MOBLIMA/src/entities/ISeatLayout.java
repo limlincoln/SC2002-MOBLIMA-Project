@@ -1,8 +1,10 @@
 package entities;
 
+import java.util.Optional;
+
 abstract class ISeatLayout {
     ISeat[][] layout;
-    public abstract void createLayout();
+    public abstract <T> Optional<T> createLayout();
     public ISeat[][] getLayout() {
         return this.layout;
     }
