@@ -1,7 +1,6 @@
 package managers;
 
 import entities.Booking;
-import entities.Movie;
 import entities.Customer;
 import entities.Ticket;
 
@@ -19,10 +18,10 @@ public class BookingManager {
         return Integer.parseInt(strTID);
     }
 
-    public static boolean createBooking(int cinemaID, Movie movie, Customer customer, ArrayList<Ticket> tickets, double totalCost) {
+    public static boolean createBooking(int cinemaID, int movieID, Customer customer, ArrayList<Ticket> tickets, double totalCost) {
         int tid = generateTID(cinemaID, DateManager.getCurrentDateTime("yyyyMMddHHmm"));
 
-        Booking booking = new Booking(tid, movie, customer, tickets, totalCost);
+        Booking booking = new Booking(tid, movieID, customer, tickets, totalCost);
         bookingHistory.add(booking);
         return true;
     }  
