@@ -42,7 +42,7 @@ public class BookingManager {
         ArrayList<Booking> unratedBookings = new ArrayList<Booking>();
 
         for(Booking booking: bookingHistory) {
-            if(booking.getMovie().getRatings().size() == 0) {
+            if(booking.getRating() == -1) {
                 unratedBookings.add(booking);
             }
         }
@@ -50,5 +50,15 @@ public class BookingManager {
         return unratedBookings;
     }
 
-    // TODO: GET RATED BOOKINGS
+    public static ArrayList<Booking> getRatedBookings() {
+        ArrayList<Booking> ratedBookings = new ArrayList<Booking>();
+
+        for(Booking booking: bookingHistory) {
+            if(booking.getRating() != -1) {
+                ratedBookings.add(booking);
+            }
+        }
+
+        return ratedBookings;
+    }
 }
