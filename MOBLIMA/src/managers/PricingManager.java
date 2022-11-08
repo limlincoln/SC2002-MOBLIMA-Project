@@ -8,7 +8,7 @@ public class PricingManager {
      * TypeOfDay.WEEKEND = -2.30
      * AgeGroup.STUDENT = -1.20 
     */
-    private static HashMap<Object, Double> priceMatrix;
+    private static HashMap<Object, Double> priceMatrix = new HashMap<Object, Double>();
 
     public static double getPrice(Object o) {
         return priceMatrix.get(o);
@@ -26,7 +26,13 @@ public class PricingManager {
         return priceMatrix;
     }
 
-    //TODO: SHOW PRICE MATRIX
+    public static void showPriceMatrix() {
+        System.out.println("========== Pricing ==========");
+        
+        for(Object o: priceMatrix.keySet()) {
+            System.out.println(o+":\t\t"+priceMatrix.get(o));
+        }
+    }
 
     public static void setPriceMatrix(HashMap<Object, Double> priceMatrix) {
         PricingManager.priceMatrix = priceMatrix;
