@@ -19,31 +19,21 @@ public class BookingMenu {
             single_instance = new BookingMenu();
         return single_instance;
     }
-    public void showSeats(Movie movie,Cinema cine, double calculated) {
-    	if(movie.getCinemaType() != cine.getCinemaType());
-    	{
-    		System.out.println("This movie does not support the cinema type");
-    	}
-    	
-    	
-    	System.out.println(	"============== Print Seats ================\n" );
-        int arr[][] =  { { 0, 0, 0 },
-			            { 0, 0, 0 },   
-			            { 0, 0, 0 }};
-        
-        for (int i = 0; i < arr.length; i++) 
-        {            
-            for (int j = 0; j < arr[i].length; j++)
-            {
-              System.out.print(arr[i][j] + " ");
-            }    
-         System.out.println();       
-        
-        }        
-    
-    }
+    // BOOKINGMENU
+        // SHOW AVALIABLE SHOW TIMES FOR THE WHOLE WEEK
+        // SELECT DAY -> CALL SHOWTIME MANAGER 
+        // SELECT SHOWTIME SLOT
+        // SHOWTIMEMANAGER.FINDSEATS
+        // CALL SEAT SELECTOR
+
+        // SEATSELECTOR.STARTINSTANCE(SEATS): ARRAY OF SELECTED SEAT INFO
+        // CALL TICKETMANAGER: ARRAY OF TICKETS
+        // CALL PRICE.GETTOTALPRICE()
+        // 
+        // CALL BOOKING MANAGER: BOOKING
+
   
-    public void displayBookingMenu() {
+    public void displayBookingMenu() { //TODO: CHANGE TO BOOKING HISTORY MENU
     	int choice;	
 		do {
             System.out.println(	"=========== MOBLIMA CUSTOMER BOOKING MENU =========\n" +

@@ -15,6 +15,8 @@ public class Ticket implements IPrice {
         this.dayOfWeek = dayOfWeek;
         this.timeOfDay = timeOfDay;
         this.ageGroup = ageGroup;
+        //TODO: TYPE OF DAY, EXACT DATE&TIME, SEAT STRING
+        
     }
 
     public double getPrice() {

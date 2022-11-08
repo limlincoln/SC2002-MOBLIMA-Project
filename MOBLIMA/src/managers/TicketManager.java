@@ -18,4 +18,9 @@ public class TicketManager {
     public static ArrayList<Ticket> getAllTickets() {
         return tickets;
     }
+
+    //TODO: CREATE TICKETS AND RETURN ARRAYLIST OF THEM 
+    // WILL GET A ARRAYLIST: {SEAT STRING, AGEGROUP}
+    // GET DATE TIME INFO FROM DATA MANAGER
+    // RETURN ARRAY OF TICKETS
 }

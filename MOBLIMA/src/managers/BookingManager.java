@@ -38,7 +38,7 @@ public class BookingManager {
         return userBookingHistory;
     }
 
-    public static ArrayList<Booking> getUnratedBookings() {
+    public static ArrayList<Booking> getUnratedBookings() { // TODO: Check within a booking instead.
         ArrayList<Booking> unratedBookings = new ArrayList<Booking>();
 
         for(Booking booking: bookingHistory) {
@@ -49,4 +49,6 @@ public class BookingManager {
 
         return unratedBookings;
     }
+
+    // TODO: GET RATED BOOKINGS
 }

@@ -14,15 +14,15 @@ public class PriceCalculator {
         return totalPrice;
     }
 
-    public static double getTotalPrice(ArrayList<IPrice> individual, ArrayList<IPrice> general) {
-        double totalPrice = 0.0;
-        double generalPrice = getGeneralPrice(general);
+    // public static double getTotalPrice(ArrayList<IPrice> individual, ArrayList<IPrice> general) {
+    //     double totalPrice = 0.0;
+    //     double generalPrice = getGeneralPrice(general);
 
-        for(IPrice o: individual) {
-            totalPrice += o.getPrice();
-            totalPrice += generalPrice;
-        }
+    //     for(IPrice o: individual) {
+    //         totalPrice += o.getPrice();
+    //         totalPrice += generalPrice;
+    //     }
 
-        return totalPrice;
-    }
+    //     return totalPrice;
+    // }
 }

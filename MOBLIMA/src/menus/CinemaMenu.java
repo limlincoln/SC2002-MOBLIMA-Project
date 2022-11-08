@@ -7,6 +7,7 @@ import entities.Movie;
 import entities.Cinema;
 import entities.Cineplex;
 
+// TODO: Change to cinplex menu
 public class CinemaMenu {
     private static CinemaMenu single_instance = null;
     
@@ -23,15 +24,11 @@ public class CinemaMenu {
     }
 
 
-	public void displayCinemaMenu(Movie movie, int child,int adult) {
+	public void displayCinemaMenu(Movie movie) { 
 		int choice;
-		System.out.println("Number of Adults:"+adult);//just to check
-		System.out.println("Number of child:" +child);//just to check
-		
-		
-    	
 
         do {
+			// CINEPLEX CLASS(MOVIE): returns list of cinplex that has that movie
         	
 			        System.out.println(	"============== SELECT A CINEPLEX =========\n" +
 		            " 1. IMAX			     					        \n" +
@@ -48,25 +45,16 @@ public class CinemaMenu {
             choice = sc.nextInt();
             
             }while(choice  < 0 || choice >= 3);
+
+
         	int  arrayOfFixDatetime[] = new int[]{1123,3122,3123,1324,5123};;
         	System.out.println("Selected Cineplex : " + choice);
         	Cinema cinetest = new Cinema(1,choice,arrayOfFixDatetime);
-        	
-        	
+			
+			// CALL CINEMA MENU(CINEPLEX, CINEMA);
+				// Check which cinema has that movie.
 
-            
-		//print all cinema types based on movie
-//		Cinema cin = null;
-//		cin.getMovies().get(movie.getMovieID());
-//		cin.getShowTime(); // calculate it based on showtime
-//		cin.getCinemaType(); // calculate based on cinematype
-		 
-		//Pass to ticket class for (weekday weekend/ timing / age)
-		
-		
-		
-		double calculated = child + adult;
-		BookingMenu.getInstance().showSeats(movie,cinetest,calculated);
+			BookingMenu.getInstance().showSeats(movie,cinetest,calculated); // (CINEPLEX, CINEMA, MOVIE)
 
 		}
 	public void movielisting() {
@@ -75,8 +63,8 @@ public class CinemaMenu {
 		do {
 	        System.out.println(	"======= MOBLIMA STAFF EDIT MOVIE LISTING ==========\n" +
 	                " 1. Edit Showtime                                    \n" +
-	                " 2. Edit Cineplex                                    \n" +
-	                " 3. Edit Cinema                                     \n" +
+	                " 2. Edit Cineplex                                    \n" + // REMOVE (EXTRA FEATURES)
+	                " 3. Edit Cinema                                     \n" +  // REMOVE (EXTRA FEATURES)
 	                " 0. Back to MOBLIMA APP                              \n"+
 				    "====================================================");
     		System.out.println("Enter choice: ");
@@ -90,13 +78,18 @@ public class CinemaMenu {
             
             switch(choice){
                 case 1:
-                	//edit showtime
+                	// edit showtime
+					// SHOWTIME EDITOR MENU
+						// CINEPLEX -> CINEMA -> MOVIE
+							// CALL SHOWTIME MANAGER TO:
+								// ADD
+								// REMOVE
                     break;
                 case 2:
-                	//edit cineplex
+                	
                     break;
                 case 3:
-                	//edit cinema
+                	
                 	break;
                 case 0:
                 	System.out.println("Back to MOBLIMA APP......");

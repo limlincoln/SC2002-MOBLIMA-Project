@@ -24,7 +24,7 @@ public class RatingMenu {
 		do {
             System.out.println(	"============== MOBLIMA CUSTOMER APP ================\n" +
 			                    " 1. Rate a movie     					        	\n" +
-			                    " 2. View past rating                               \n" +
+			                    " 2. View past rating                               \n" + //NOT IMPORTANT
 			                    " 0. Back to MOBLIMA APP                            \n"+
 							    "====================================================");
 	    	
@@ -40,6 +40,8 @@ public class RatingMenu {
             switch(choice){
                 case 1:
                 	//Rate movie based on booking history?
+                    // TODO: CALL BOOKINGMANAGER.GETUNRATEDBOOKINGS;
+                    // TODO: CALL REVIEWMANGER WITH SELECTED BOOKING
                     break;
                 case 2:
                 	//View past rating history?

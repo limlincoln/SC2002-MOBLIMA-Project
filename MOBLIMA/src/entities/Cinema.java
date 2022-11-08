@@ -5,12 +5,12 @@ import java.util.ArrayList;
 public class Cinema{
     private int CinemaID;
     private int CinemaType;
-    private int[] showTime;
+    private ArrayList<ShowTime> showtimes;
     
-    public Cinema(int cID, int cType, int[] sTime){
+    public Cinema(int cID, int cType, ArrayList<ShowTime> sTime){
         this.CinemaID = cID;
         this.CinemaType = cType;
-        this.showTime = sTime;
+        this.showtimes = sTime;
     }
 
     // TODO: IMPLEMENT
@@ -18,25 +18,29 @@ public class Cinema{
         return new ArrayList<Movie>();
     }
 
-    //get methods
-    public int getCinemaType(){
-        return this.CinemaType;
-    }
-    public int getCinemaID(){
+
+    public int getCinemaID() {
         return this.CinemaID;
     }
-    public int[] getShowTime(){
-        return this.showTime;
+
+    public void setCinemaID(int CinemaID) {
+        this.CinemaID = CinemaID;
     }
-    
-    //set methods
-    public void setCinemaType(int cType){
-        this.CinemaType = cType;
+
+    public int getCinemaType() {
+        return this.CinemaType;
     }
-    public void setCinemaID(int cID){
-        this.CinemaID = cID;
+
+    public void setCinemaType(int CinemaType) {
+        this.CinemaType = CinemaType;
     }
-    public void setShowTime(int[] sTime){
-        this.showTime = sTime;
+
+    public ArrayList<ShowTime> getShowtimes() {
+        return this.showtimes;
     }
+
+    public void setShowtimes(ArrayList<ShowTime> showtimes) {
+        this.showtimes = showtimes;
+    }
+   
 }

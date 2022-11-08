@@ -26,6 +26,8 @@ public class PricingManager {
         return priceMatrix;
     }
 
+    //TODO: SHOW PRICE MATRIX
+
     public static void setPriceMatrix(HashMap<Object, Double> priceMatrix) {
         PricingManager.priceMatrix = priceMatrix;
     }

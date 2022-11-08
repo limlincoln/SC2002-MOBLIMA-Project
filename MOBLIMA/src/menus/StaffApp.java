@@ -1,7 +1,7 @@
 package menu;
 
 import java.util.Scanner;
-import manager.LoginAuthenticator;
+import managers.LoginAuthenticator;
 
 
 public class StaffApp {
@@ -20,9 +20,6 @@ public class StaffApp {
             single_instance = new StaffApp();
         return single_instance;
     }
-
-    
-
 
     public void displayLoginMenu() {
     	boolean loggedIn = false;
@@ -80,9 +77,7 @@ public class StaffApp {
     
     
 
-
-
-    private void displayLoggedInMenu() {
+    private void displayLoggedInMenu() { //TDOO: CREATE NEW MENU FOR THIS
 		int choice;
 		
 		do {
@@ -110,10 +105,14 @@ public class StaffApp {
 				MovieMenu.getInstance().displayStaffMovieMenu();
 				break;
 			case 3:
-				//Global settings?
+				// TODO:REMOVE
 				break;
 			case 4:
 				//System settings?
+					// CALL SYSTEM MENU -> CALL SETTINGS MANAGER
+				break;
+			case 5:
+				// TOP 5 OPTIONS
 				break;
 			case 0:
 				System.out.println("Logging out from StaffApp......");

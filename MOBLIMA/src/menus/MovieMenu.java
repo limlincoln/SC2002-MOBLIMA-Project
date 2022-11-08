@@ -3,6 +3,8 @@ package menu;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import consolidators.MovieConsolidator;
 import entities.Customer;
 import entities.Staff;
 import entities.Movie;
@@ -45,11 +47,11 @@ public class MovieMenu {
             switch(choice){
                 case 1:
                 	// should show only now showing movie list?
+                    
                 	ArrayList<Movie> movies = new ArrayList<Movie>();
                     int subChoice;
-                    for (int i = 0; i < movies.size(); i++) {
-                    	System.out.print("Index"+ i+1 + " ");  movies.get(i).showDetails();
-                    	}
+
+                    movies = MovieConsolidator.getInstance().getAll();
                     do {
                     	System.out.println("Choose a movie or enter 0 to exit : ");
                             
@@ -59,17 +61,12 @@ public class MovieMenu {
                     	}
                         subChoice = sc.nextInt()-1;
                         
-                        }while(subChoice  < 0 || subChoice >= 10);//movies.size()
+                        }while(subChoice  < 0 || subChoice >= movies.size());
                     	
-                        Movie testmovie = null;
-                        System.out.println("Enter number of adults tickets : ");
-                        int noadult = sc.nextInt();
-                        System.out.println("Enter number of children tickets : ");
-                        int nochild = sc.nextInt();
+                        Movie testmovie = null; // movie selected 
                         
-                        CinemaMenu.getInstance().displayCinemaMenu(testmovie, nochild, noadult);
-                        //BookingMenu.getInstance().showSeats(testmovie,calculated);
-
+                        CinemaMenu.getInstance().displayCinemaMenu(testmovie); // display cineplex instead
+                        
                     break;
                     
                     
@@ -113,12 +110,24 @@ public class MovieMenu {
             switch(choice){
                 case 1:
                 	// EDIT MOVIE
+					// MOVIE EDITOR MENU
+						// ASK WHAT MOVIE (LIST ALL MOVIES)
+							// ASK WHICH ATTRIBUTE TO CHANGE
+							// ASK FOR VALUE
+							// CALL MOVIEMANAGER(MOVIE, ATTRIBUTE, VALUE), VALIDATE IN MOVIEMANAGER
+							// CHECK RESPONSE FROM MOVIEMANGER, REPEAT IF NEEDED
                     break;
                 case 2:
                 	// ADD MOVIE
+					// ASK FOR ALL NECESSARY ATTRIBUTE
+					// MOVIEMANAGER.ADDMOVIE(...) - RMB TO VALIDATE
+
                     break;
                 case 3:
                 	// DELETE MOVIE
+					// ASK WHAT MOVIE (LIST ALL MOVIES)
+					// CONFIMATION PAGE
+					
                     break;
                 case 0:
                 	System.out.println("Back to MOBLIMA APP......");
