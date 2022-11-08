@@ -38,10 +38,10 @@ public class BookingManager {
         return userBookingHistory;
     }
 
-    public static ArrayList<Booking> getUnratedBookings() { // TODO: Check within a booking instead.
+    public static ArrayList<Booking> getUnratedBookings(String username) {
         ArrayList<Booking> unratedBookings = new ArrayList<Booking>();
 
-        for(Booking booking: bookingHistory) {
+        for(Booking booking: getBookingHistory(username)) {
             if(booking.getRating() == -1) {
                 unratedBookings.add(booking);
             }
@@ -50,10 +50,10 @@ public class BookingManager {
         return unratedBookings;
     }
 
-    public static ArrayList<Booking> getRatedBookings() {
+    public static ArrayList<Booking> getRatedBookings(String usename) {
         ArrayList<Booking> ratedBookings = new ArrayList<Booking>();
 
-        for(Booking booking: bookingHistory) {
+        for(Booking booking: getBookingHistory(usename)) {
             if(booking.getRating() != -1) {
                 ratedBookings.add(booking);
             }
