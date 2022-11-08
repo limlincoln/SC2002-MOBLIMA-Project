@@ -41,7 +41,9 @@ public class BookingManager {
     public static ArrayList<Booking> getUnratedBookings(String username) {
         ArrayList<Booking> unratedBookings = new ArrayList<Booking>();
 
-        for(Booking booking: getBookingHistory(username)) {
+        ArrayList<Booking> userBookingHistory = getBookingHistory(username);
+
+        for(Booking booking: userBookingHistory) {
             if(booking.getRating() == -1) {
                 unratedBookings.add(booking);
             }
@@ -53,7 +55,9 @@ public class BookingManager {
     public static ArrayList<Booking> getRatedBookings(String usename) {
         ArrayList<Booking> ratedBookings = new ArrayList<Booking>();
 
-        for(Booking booking: getBookingHistory(usename)) {
+        ArrayList<Booking> userBookingHistory = getBookingHistory(usename);
+        
+        for(Booking booking: userBookingHistory) {
             if(booking.getRating() != -1) {
                 ratedBookings.add(booking);
             }
