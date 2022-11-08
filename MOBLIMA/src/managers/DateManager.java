@@ -1,39 +1,59 @@
 package managers;
-import java.time.format.DateTimeFormatter;  
+
+import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime; 
-import java.util.Calendar;
+import java.time.LocalTime;
+import java.time.LocalDate;
+
 import enums.DayOfWeek;
 import enums.TimeOfDay;
-
-
+import enums.TypeOfDay;
 
 public class DateManager {
-    public static int getCurrentDateTime(String format) {
+    // ADD A GET INSTANCE
+    private LocalDateTime exactDateTime = LocalDateTime.now();
+
+    public DateManager() {}
+
+    public DateManager(LocalDateTime exactDateTime) {
+        this.exactDateTime = exactDateTime;
+    }
+
+    public static int getCurrentDateTimeFormatted(String format) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern(format);
         LocalDateTime now = LocalDateTime.now();
 
         return Integer.parseInt(dtf.format(now));
     }
 
-    public static DayOfWeek getDayOfWeek() {
-        return DayOfWeek.values()[
-            Calendar.getInstance().get(Calendar.DAY_OF_WEEK) - 1
-        ];
+    public DayOfWeek getDayOfWeek() {
+        return DayOfWeek.values()[exactDateTime.getDayOfWeek().ordinal()];
     }
 
-    public static boolean isWeekend(DayOfWeek day) {
+    public boolean isWeekend(DayOfWeek day) {
         if(day == DayOfWeek.SAT || day == DayOfWeek.SUN)
             return true;
         return false;
     }
 
-    public static TimeOfDay getTimeOfDay() {
-        int time = getCurrentDateTime("HHmm");
+    public TimeOfDay getTimeOfDay() {
 
-        if(time < 1800) {
-            return TimeOfDay.MORNING;
+        LocalTime sixPM = LocalTime.of(18, 0);
+
+        if(exactDateTime.toLocalTime().isAfter(sixPM)) {
+            return TimeOfDay.BEFORE_6;
         }
 
-        return TimeOfDay.EVENING;
+        return TimeOfDay.AFTER_6;
+    }
+
+    public TypeOfDay getTypeOfDay() {
+        if(HolidayManager.isHoliday(exactDateTime.toLocalDate())) 
+            return TypeOfDay.PUBLIC_HOLIDAY;
+
+        if(isWeekend(getDayOfWeek()))
+            return TypeOfDay.WEEKEND;
+        
+        return TypeOfDay.WEEKDAY;
     }
 }

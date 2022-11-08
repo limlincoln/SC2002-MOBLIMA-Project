@@ -2,6 +2,9 @@ package entities;
 
 import enums.DayOfWeek;
 import enums.TimeOfDay;
+
+import java.time.LocalDateTime;
+
 import enums.AgeGroup;
 import enums.TypeOfDay;
 
@@ -12,14 +15,14 @@ public class Ticket implements IPrice {
     private TimeOfDay timeOfDay; 
     private AgeGroup ageGroup;
     private TypeOfDay typeOfDay;
-    private int exactDateTime;
+    private LocalDateTime exactDateTime;
     private String seat;
 
     public Ticket(
         DayOfWeek dayOfWeek, 
         TimeOfDay timeOfDay, 
         TypeOfDay typeOfDay, 
-        int exactDateTime, 
+        LocalDateTime exactDateTime, 
         AgeGroup ageGroup, 
         String seat
     ) {
@@ -71,11 +74,11 @@ public class Ticket implements IPrice {
         this.typeOfDay = typeOfDay;
     }
 
-    public int getExactDateTime() {
+    public LocalDateTime getExactDateTime() {
         return exactDateTime;
     }
 
-    public void setExactDateTime(int exactDateTime) {
+    public void setExactDateTime(LocalDateTime exactDateTime) {
         this.exactDateTime = exactDateTime;
     }
 

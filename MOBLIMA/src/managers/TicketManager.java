@@ -1,12 +1,13 @@
 package managers;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import entities.Ticket;
 import enums.AgeGroup;
 
 public class TicketManager {
-    public ArrayList<Ticket> generateTickets(int exactDateTime, ArrayList<String> seats, ArrayList<AgeGroup> ageGroups) {
+    public ArrayList<Ticket> generateTickets(LocalDateTime exactDateTime, ArrayList<String> seats, ArrayList<AgeGroup> ageGroups) {
         if(seats.size() != ageGroups.size()) return null;
 
         ArrayList<Ticket> tickets = new ArrayList<Ticket>();

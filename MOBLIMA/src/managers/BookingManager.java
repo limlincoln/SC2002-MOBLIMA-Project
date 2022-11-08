@@ -19,7 +19,7 @@ public class BookingManager {
     }
 
     public static boolean createBooking(int cinemaID, int movieID, Customer customer, ArrayList<Ticket> tickets, double totalCost) {
-        int tid = generateTID(cinemaID, DateManager.getCurrentDateTime("yyyyMMddHHmm"));
+        int tid = generateTID(cinemaID, DateManager.getCurrentDateTimeFormatted("yyyyMMddHHmm"));
 
         Booking booking = new Booking(tid, movieID, customer, tickets, totalCost);
         bookingHistory.add(booking);
