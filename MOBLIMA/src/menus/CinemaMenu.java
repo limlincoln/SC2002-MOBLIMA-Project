@@ -1,16 +1,13 @@
 package menu;
 import java.time.format.DateTimeFormatter; 
 import java.util.Scanner;
-
-import consolidators.MovieConsolidator;
-
 import java.util.ArrayList;
 import java.util.List;
 import entities.Movie;
 import entities.Cinema;
 import entities.Cineplex;
-import entities.ShowTime;
 
+// TODO: Change to cinplex menu
 public class CinemaMenu {
     private static CinemaMenu single_instance = null;
     
@@ -27,20 +24,19 @@ public class CinemaMenu {
     }
 
 
-	public void displayCinemaMenu(Movie movie, Cineplex cineplex) { 
-		// CALL CINEMA MENU(CINEPLEX, CINEMA);
-			
-		System.out.println(	"================ SELECT A CINEMA =================");
-	
-		// Check which cinema has that movie,cineplex and display.
-		
+	public void displayCinemaMenu(Movie movie) { 
 		int choice;
-		Cineplex test = new Cineplex(0, null, null);
-		ArrayList<ShowTime> showtimes = new ArrayList<ShowTime>();
-            
+
         do {
+			// CINEPLEX CLASS(MOVIE): returns list of cinplex that has that movie
         	
-		    System.out.println("Enter Cinema: ");
+			        System.out.println(	"============== SELECT A CINEPLEX =========\n" +
+		            " 1. IMAX			     					        \n" +
+		            " 2. 3D				                               \n" +
+		            " 3. Normal				                           \n"+
+				    "====================================================");
+			
+		    System.out.println("Enter choice: ");
                 
             while (!sc.hasNextInt()) {
         		System.out.printf("Invalid input type.");
@@ -51,13 +47,14 @@ public class CinemaMenu {
             }while(choice  < 0 || choice >= 3);
 
 
-        	
+        	int  arrayOfFixDatetime[] = new int[]{1123,3122,3123,1324,5123};;
         	System.out.println("Selected Cineplex : " + choice);
-        	Cinema cinema = new Cinema(1,choice,showtimes);
+        	Cinema cinetest = new Cinema(1,choice,arrayOfFixDatetime);
 			
+			// CALL CINEMA MENU(CINEPLEX, CINEMA);
+				// Check which cinema has that movie.
 
-
-			BookingMenu.getInstance().displayBookingMenu(movie,cineplex,cinema); // (CINEPLEX, CINEMA, MOVIE)
+			BookingMenu.getInstance().showSeats(movie,cinetest,calculated); // (CINEPLEX, CINEMA, MOVIE)
 
 		}
 	public void movielisting() {

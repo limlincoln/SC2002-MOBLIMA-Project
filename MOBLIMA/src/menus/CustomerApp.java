@@ -46,7 +46,7 @@ public class CustomerApp {
                 	MovieMenu.getInstance().displayCustomerMovieMenu();
                     break;
                 case 2:
-                	BookingHistoryMenu.getInstance().displayBookingHistoryMenu(); // TODO: BOOKING HISTORY
+                	BookingMenu.getInstance().displayBookingMenu(); // TODO: BOOKING HISTORY
                     break;
                 case 3:
                 	RatingMenu.getInstance().displayRatingMenu();

@@ -35,7 +35,7 @@ public class MOBLIMA_APP {
 		        	 CustomerApp.getInstance().displayCustomerMenu();
 		        	break;
 		        case 2:
-		        	LoginMenu.getInstance().displayLoginMenu();
+		        	StaffApp.getInstance().displayLoginMenu();
 		        	break;
 		        case 0:
 		        	System.out.println("Thank you for using our MOBLIMA APP");
