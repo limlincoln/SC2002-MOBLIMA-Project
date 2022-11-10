@@ -1,10 +1,7 @@
-package managers;
-import managers.HolidayManager;
-import java.util.ArrayList;
-import entities.Holiday;
-import entities.Settings;
-import java.util.Scanner;
+//TODO:
+	// ATTRIBUTES:
+	// WHICH TOP 5
 
-public class SettingsManager{
-	
-}
+	// FUNCTION:
+	// EDIT PRICES
+	// EDIT HOLIDAYS

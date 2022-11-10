@@ -1,7 +1,7 @@
 package menu;
 
 import java.util.Scanner;
-import manager.LoginAuthenticator;
+import managers.LoginAuthenticator;
 
 
 public class StaffApp {
@@ -21,76 +21,70 @@ public class StaffApp {
         return single_instance;
     }
 
-    
-
-
-    public void displayLoginMenu() {
-    	boolean loggedIn = false;
-    	boolean quit = false;
-		int choice;
-		
-		do {
-	        System.out.println(	"==================== MOBLIMA STAFF APP ====================\n"+
-				                " 1. Login                                                \n"+
-				                " 0. Back to MOBLIMA APP                                  \n"+
-				                "===========================================================");
-	        System.out.println("Enter choice: ");
-      
-	        while (!sc.hasNextInt()) {
-            	System.out.println("Invalid input type. Please enter an integer value.");
-        		sc.next(); 
-            }
-
-			choice = sc.nextInt();
-	        sc.nextLine();
-			
-			switch (choice) {
-			case 1: 
-                System.out.println("Username: ");
-                while (!sc.hasNext()) {
-                	System.out.println("Invalid input type. Please try again!");
-            		sc.next(); 
-                }
-                String username = sc.nextLine();
-                System.out.println("Password: ");
-                while (!sc.hasNext()) {
-                	System.out.println("Invalid input type. Please try again!");
-            		sc.next(); 
-                }
-                String password = sc.nextLine();
-                
-                boolean authenticate = LoginAuthenticator.getInstance().login(username, password);
-                
-                
-                if (authenticate) {
-                	loggedIn = true;
-                	this.displayLoggedInMenu();
-                	quit = true;
-                } else {
-                	System.out.println("Invalid Username or Password, please try again.");
-                }
-				break;
-			case 0:
-				System.out.println("Back to MOBLIMA APP......");
-				quit = true;
-				break;
-			}
-		} while (loggedIn == false && quit == false);
-    }
+//    public void displayLoginMenu() {
+//    	boolean loggedIn = false;
+//    	boolean quit = false;
+//		int choice;
+//		
+//		do {
+//	        System.out.println(	"==================== MOBLIMA STAFF APP ====================\n"+
+//				                " 1. Login                                                \n"+
+//				                " 0. Back to MOBLIMA APP                                  \n"+
+//				                "===========================================================");
+//	        System.out.println("Enter choice: ");
+//      
+//	        while (!sc.hasNextInt()) {
+//            	System.out.println("Invalid input type. Please enter an integer value.");
+//        		sc.next(); 
+//            }
+//
+//			choice = sc.nextInt();
+//	        sc.nextLine();
+//			
+//			switch (choice) {
+//			case 1: 
+//                System.out.println("Username: ");
+//                while (!sc.hasNext()) {
+//                	System.out.println("Invalid input type. Please try again!");
+//            		sc.next(); 
+//                }
+//                String username = sc.nextLine();
+//                System.out.println("Password: ");
+//                while (!sc.hasNext()) {
+//                	System.out.println("Invalid input type. Please try again!");
+//            		sc.next(); 
+//                }
+//                String password = sc.nextLine();
+//                
+//                boolean authenticate = LoginAuthenticator.getInstance().login(username, password);
+//                
+//                
+//                if (authenticate) {
+//                	loggedIn = true;
+//                	this.displayLoggedInMenu();
+//                	quit = true;
+//                } else {
+//                	System.out.println("Invalid Username or Password, please try again.");
+//                }
+//				break;
+//			case 0:
+//				System.out.println("Back to MOBLIMA APP......");
+//				quit = true;
+//				break;
+//			}
+//		} while (loggedIn == false && quit == false);
+//    }
     
     
 
-
-
-    private void displayLoggedInMenu() {
+    public void displayLoggedInMenu() { //TDOO: CREATE NEW MENU FOR THIS
 		int choice;
 		
 		do {
             System.out.println(	"============== MOBLIMA STAFF APP ================\n" +
 			                    " 1. Edit Movie Listing(Showtime,Cineplex,Cinema)   \n" +
 			                    " 2. Edit Movie                                    \n" +
-			                    " 3. Global Settings                               \n" +
-			                    " 4. System Settings                               \n" +
+			                    " 3. System Settings                               \n" +
 			                    " 0. Back to MOBLIMA APP                           \n"+
 							    "====================================================");
             System.out.println("Enter choice: ");
@@ -110,10 +104,9 @@ public class StaffApp {
 				MovieMenu.getInstance().displayStaffMovieMenu();
 				break;
 			case 3:
-				//Global settings?
-				break;
-			case 4:
 				//System settings?
+					// CALL SYSTEM MENU -> CALL SETTINGS MANAGER
+					SystemSettingsMenu.getInstance().displaySystemSettingsMenu();
 				break;
 			case 0:
 				System.out.println("Logging out from StaffApp......");

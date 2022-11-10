@@ -9,7 +9,6 @@ import utils.SeatPrinter;
 public class SeatSelector implements ISeatSelector{
     @Override
     public int StartSeatSelectionInstance(ISeats seats) {
-        // TODO Auto-generated method stub
         Scanner sc = new Scanner(System.in);
         SeatPrinter sp = SeatPrinter.getInstance();
 
@@ -44,6 +43,8 @@ public class SeatSelector implements ISeatSelector{
                         }
                         selected.add(choices);
                     }
+                    // TODO: ASK WHAT AGE GROUP & SAVE IT IN ARRAY
+                
                     break;
                 case 2:
                     if(selected.size() == 0){
@@ -57,6 +58,8 @@ public class SeatSelector implements ISeatSelector{
                             seat.toggleTempSelected();
                         }
                         System.out.println("Number of seats chosen: " + selected.size());
+
+                        // PASS OUT ARRAY OF SELECTED SEAT INFO
                     }
                     return selected.size();
                 case 0:

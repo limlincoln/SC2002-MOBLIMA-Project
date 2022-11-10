@@ -6,10 +6,18 @@ import entities.Showtime;
 
 //need to filter by movie or cinplex??
 
+
 public class ShowtimeManager{
     private static ShowtimeManager single_instance = null;
     //private ArrayList<Movie> movies;
     private ArrayList<Showtime> showtimes;
+    private Scanner sc = new Scanner(System.in);
+// FUNCTIONALITY
+// SHOW SHOWTIME FOR A PARTICULAR MOVIE & DAY & CINEPLEX & CINEMA
+// RETURN ARRAY OF SHOWTIME
+
+// FINDSEATS:
+// FIND THE SEATS FROM CINEMA CLASS USING SHOWTIME SLOT INDEX
 
     // Initialisers
     private ShowtimeManager(){}

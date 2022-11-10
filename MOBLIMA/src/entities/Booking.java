@@ -2,16 +2,19 @@ package entities;
 
 import java.util.ArrayList;
 
+import managers.MovieManager;
+
 public class Booking {
     private int TID;
-    private Movie movie;
+    private int movieID;
     private Customer customer;
     private ArrayList<Ticket> tickets;
+    private int rating = -1;
     private double totalCost;
 
-    public Booking(int tid, Movie movie, Customer customer, ArrayList<Ticket> tickets, double totalCost) {
+    public Booking(int tid, int movieID, Customer customer, ArrayList<Ticket> tickets, double totalCost) {
         this.TID = tid;
-        this.movie = movie;
+        this.movieID = movieID;
         this.customer = customer;
         this.tickets = tickets;
         this.totalCost = totalCost;
@@ -20,8 +23,9 @@ public class Booking {
     public void showBookingDetails() {
         System.out.println(
             "TID: "+ TID + "\n" +
-            "Movie: "+ movie.getMovieName() + "\n" +
+            "Movie: "+ MovieManager.getInstance().getMovieByID(movieID).getMovieName() + "\n" +
             "No. of Seats: "+tickets.size() + "\n" +
+            "User Rating: "+rating + "\n" +
             "Purchased By: "+ customer.getUserName() +
             "\n" + customer.getPhoneNumber() +
             "\n" + customer.getEmail() + "\n" +
@@ -38,12 +42,12 @@ public class Booking {
         this.TID = tid;
     }
 
-    public Movie getMovie() {
-        return movie;
+    public int getMovieID() {
+        return movieID;
     }
 
-    public void setMovie(Movie movie) {
-        this.movie = movie;
+    public void setMovie(int movieID) {
+        this.movieID = movieID;
     }
 
     public Customer getCustomer() {

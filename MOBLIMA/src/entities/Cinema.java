@@ -6,13 +6,12 @@ public class Cinema{
     private String CinemaName;
     private int CinemaID;
     private int CinemaType;
-    private int[] showTime;
-    //arraylist of showtimes
+    private ArrayList<ShowTime> showtimes;
     
-    public Cinema(int cID, int cType, int[] sTime){
+    public Cinema(int cID, int cType, ArrayList<ShowTime> sTime){
         this.CinemaID = cID;
         this.CinemaType = cType;
-        this.showTime = sTime;
+        this.showtimes = sTime;
     }
 
     // TODO: IMPLEMENT
@@ -20,31 +19,29 @@ public class Cinema{
         return new ArrayList<Movie>();
     }
 
-    //get methods
-    public String getCinemaName(){
-        return this.CinemaName;
-    }
-    public int getCinemaType(){
-        return this.CinemaType;
-    }
-    public int getCinemaID(){
+
+    public int getCinemaID() {
         return this.CinemaID;
     }
-    public int[] getShowTime(){
-        return this.showTime;
+
+    public void setCinemaID(int CinemaID) {
+        this.CinemaID = CinemaID;
     }
-    
-    //set methods
-    public void setCinemaName(String cName){
-        this.CinemaName = cName;
+
+    public int getCinemaType() {
+        return this.CinemaType;
     }
-    public void setCinemaType(int cType){
-        this.CinemaType = cType;
+
+    public void setCinemaType(int CinemaType) {
+        this.CinemaType = CinemaType;
     }
-    public void setCinemaID(int cID){
-        this.CinemaID = cID;
+
+    public ArrayList<ShowTime> getShowtimes() {
+        return this.showtimes;
     }
-    public void setShowTime(int[] sTime){
-        this.showTime = sTime;
+
+    public void setShowtimes(ArrayList<ShowTime> showtimes) {
+        this.showtimes = showtimes;
     }
+   
 }
