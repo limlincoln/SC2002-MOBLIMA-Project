@@ -1,5 +1,7 @@
 package managers;
 
+import enums.*;
+
 public class SettingsManager {
 	private static SettingsManager single_instance = null;
 	private int customerTop5;
@@ -18,8 +20,52 @@ public class SettingsManager {
 		single_instance = new SettingsManager(customerTop5Value);
 	}
 
-	public void editPrices(){
-		
+	
+	// TODO: Implement
+	/**
+	 * Function to edit price matrix
+	 * @param ageGroup
+	 * @param newPrice
+	 * @return
+	 */
+	public boolean editPrices(AgeGroup ageGroup, int newPrice){
+		return false;		
+	}
+ /**
+ * Overload editPrice for typeOfDay enum
+ * @param typeOfDay
+ * @param newPrice
+ * @return
+ */
+	public boolean editPrices(TypeOfDay typeOfDay, int newPrice){
+		return false;
+	}
+	/**
+	 * Overload editprice for timeOfDay Enum
+	 * @param timeOfDay
+	 * @param newPrice
+	 * @return
+	 */
+	public boolean editPrices(TimeOfDay timeOfDay, int newPrice){
+		return false;
+	}
+
+	/**
+	 * Overload editPrice for cinemaType
+	 * @param cinemaType
+	 * @param newPrice
+	 * @return
+	 */
+	public boolean editPrices(CinemaType cinemaType, int newPrice){
+		return false;
+	}
+	/**
+	 * Removes or edits dates of holidays stored in Holiday Manager 
+	 * @param dateString
+	 * @return
+	 */
+	public boolean editHoliday(String nameOfHoliday, String StartDateString, String EndDateString){
+		return false;
 	}
 
 
