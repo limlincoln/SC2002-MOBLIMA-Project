@@ -3,9 +3,11 @@ package entities;
 import java.util.ArrayList;
 
 public class Cinema{
+    private String CinemaName;
     private int CinemaID;
     private int CinemaType;
     private int[] showTime;
+    //arraylist of showtimes
     
     public Cinema(int cID, int cType, int[] sTime){
         this.CinemaID = cID;
@@ -19,6 +21,9 @@ public class Cinema{
     }
 
     //get methods
+    public String getCinemaName(){
+        return this.CinemaName;
+    }
     public int getCinemaType(){
         return this.CinemaType;
     }
@@ -30,6 +35,9 @@ public class Cinema{
     }
     
     //set methods
+    public void setCinemaName(String cName){
+        this.CinemaName = cName;
+    }
     public void setCinemaType(int cType){
         this.CinemaType = cType;
     }
