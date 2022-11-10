@@ -9,7 +9,6 @@ import utils.SeatPrinter;
 public class SeatSelector implements ISeatSelector{
     @Override
     public int StartSeatSelectionInstance(ISeats seats) {
-        // TODO Auto-generated method stub
         Scanner sc = new Scanner(System.in);
         SeatPrinter sp = SeatPrinter.getInstance();
 
