@@ -3,11 +3,11 @@ package entities;
 /**
  * Showtime class that holds the showtime slots and seats for that slot for a particular day.
  */
-public class Showtime {
+public class ShowTime {
     private int[] showtime;
     private Seats[] seats;
 
-    public Showtime(){
+    public ShowTime(){
         this.showtime = new int[8];
         this.seats = new Seats[8];
     }

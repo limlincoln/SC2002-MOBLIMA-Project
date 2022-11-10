@@ -1,56 +1,38 @@
 package entities;
 
-//import entities.Cinema;
-import java.time.LocalDateTime;
+/**
+ * Showtime class that holds the showtime slots and seats for that slot for a particular day.
+ */
+public class ShowTime {
+    private int[] showtime;
+    private Seats[] seats;
 
-
-public class Showtime{
-    private int showtimeID;
-    private LocalDateTime dateTime;
-    private String movieID;
-    private Cinema cinema;
-    private String cineplexName;
-
-    public Showtime (int sTID, LocalDateTime dT, String mID, Cinema c, String cpN){
-        this.showtimeID = sTID;
-        this.dateTime = dT;
-        this.movieID = mID;
-        this.cinema = c;
-        this.cineplexName =cpN;
+    public ShowTime(){
+        this.showtime = new int[8];
+        this.seats = new Seats[8];
     }
 
-    //Getters
-    public int getShowtimeID() {
-        return showtimeID;
+    public Seats getSeatsByShowtime(int index){
+        return this.seats[index];
     }
-    public LocalDateTime getDateTime() {
-        return dateTime;
-    }
-    public String getMovieID() {
-        return movieID;
-    }
-    public Cinema getCinema() {
-        return cinema;
-    }
-    public String getCineplexName() {
-        return cineplexName;
+    
+    /** 
+     * Getters & Setters
+     */
+    public int[] getShowtime() {
+        return this.showtime;
     }
 
-    //Setters
-    public void setShowtimeID(int showtimeID) {
-        this.showtimeID = showtimeID;
+    public void setShowtime(int[] showtime) {
+        this.showtime = showtime;
     }
-    public void setDateTime(LocalDateTime dateTime) { 
-        this.dateTime = dateTime; 
+
+    public Seats[] getSeats() {
+        return this.seats;
     }
-    public void setMovieID(String movieID) {
-        this.movieID = movieID;
-    }
-    public void setCinema(Cinema cinema) {
-        this.cinema = cinema;
-    }
-    public void setCineplexName(String cineplexName) {
-        this.cineplexName = cineplexName;
+
+    public void setSeats(Seats[] seats) {
+        this.seats = seats;
     }
 
 }
