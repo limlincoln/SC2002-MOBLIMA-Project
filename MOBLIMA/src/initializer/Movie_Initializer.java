@@ -10,7 +10,7 @@ import java.util.List;
 
 import enums.Status;
 import entities.Movie;
-import enums.MovieType;
+import enums.CinemaType;
 
 public class Movie_Initializer extends GetDatabaseDirectory {
 	
@@ -90,7 +90,7 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 		String director, synposis, cast1, cast2;
 		String totalsales, NoOfRating, AvgRating;
 		
-		MovieType genre = null;
+		CinemaType genre = null;
 		Status moviestatus = null;
 		
 		int CountNoOfMovies = 0;
@@ -121,15 +121,15 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 				switch(type) {
 				
 				case "IMAX":
-					genre = MovieType.IMAX;
+					genre = CinemaType.IMAX;
 					break;
 					
 				case "_3D":
-					genre = MovieType._3D;
+					genre = CinemaType._3D;
 					break;
 					
 				case "NORMAL":
-					genre = MovieType.NORMAL;
+					genre = CinemaType.NORMAL;
 					break;
 				}
 				
@@ -192,7 +192,7 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 		String director, synposis, cast1, cast2;
 		String totalsales, NoOfRating, AvgRating;
 		
-		MovieType genre = MovieType.NORMAL;
+		CinemaType genre = CinemaType.NORMAL;
 		Status moviestatus = Status.Showing;
 		
 		int CountNoOfMovies = 0;

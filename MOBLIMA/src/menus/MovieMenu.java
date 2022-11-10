@@ -6,7 +6,7 @@ import java.util.Scanner;
 import consolidators.MovieConsolidator;
 import enums.Status;
 import managers.MovieManager;
-import enums.MovieType;
+import enums.CinemaType;
 import entities.Movie;
 
 public class MovieMenu {
@@ -179,10 +179,10 @@ public class MovieMenu {
                                 }
                                 
                                 String askgenre = sc.nextLine();
-                                MovieType genre = null;
+                                CinemaType genre = null;
                                 try 
                                 {
-                                	genre = MovieType.valueOf(askgenre);
+                                	genre = CinemaType.valueOf(askgenre);
                                 }
                                 catch(IllegalArgumentException e)
                                 {
@@ -286,10 +286,10 @@ public class MovieMenu {
                     }
                     
                     String askgenre = sc.nextLine();
-                    MovieType genre = null;
+                    CinemaType genre = null;
                     try 
                     {
-                    	genre = MovieType.valueOf(askgenre);
+                    	genre = CinemaType.valueOf(askgenre);
                     }
                     catch(IllegalArgumentException e)
                     {
