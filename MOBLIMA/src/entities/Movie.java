@@ -4,25 +4,72 @@ import java.util.ArrayList;
 import enums.CinemaType;
 import enums.Status;
 
-
-
-// should we inherit from a abstract class Show? To fulfill DIP, 
-// also so we can say out system allow future extension of different kinds of shows (live performance etc)
-
 public class Movie {
+    /**
+     * The ID of this Movie
+     */
     private int movieID;
+
+    /**
+     * The name of this Movie
+     */
     private String movieName;
-    private CinemaType genre;
+
+    /**
+     * The genre for this Movie
+     */
+    private String genre;
+
+    /**
+     * The status of this Movie:
+     * NOW SHOWING, COMING SOON, END OF SHOWING
+     */
     private Status status;
+
+    /**
+     * The casts of this Movie
+     */
     private ArrayList<String> casts;
+
+    /**
+     * The director of this Movie
+     */
     private String director;
+
+    /**
+     * The synopsis of this Movie
+     */
     private String sypnopsis;
+
+    /**
+     * The list of ratings given to this Movie
+     */
     private ArrayList<Integer> ratings;
+
+    /**
+     * The total sales made by this Movie so far
+     */
     private double totalSales;
+
+    /**
+     * The average rating given to this Movie
+     */
     private Float avgRating;
 
-
-    public Movie(int movieID, String movieName, CinemaType genre, Status status, ArrayList<String> casts, String director, String sypnopsis, ArrayList<Integer> ratings, double totalSales, Float avgRating) {
+    /**
+     * The Constructor for the Movie Class
+     * @param movieID The ID of this Movie
+     * @param movieName The name of this Movie
+     * @param genre The genre for this Movie
+     * @param status The status of this Movie
+     * @param casts The casts of this Movie
+     * @param director The director of this Movie
+     * @param sypnopsis The synopsis of this Movie
+     * @param ratings The list of ratings given to this Movie 
+     * @param totalSales The total sales made by this Movie so far
+     * @param avgRating The average rating given to this Movie
+     */
+    public Movie(int movieID, String movieName, String genre, Status status, ArrayList<String> casts, String director, String sypnopsis, ArrayList<Integer> ratings, double totalSales, Float avgRating) {
         this.movieID = movieID;
         this.movieName = movieName;
         this.genre = genre;
@@ -35,6 +82,9 @@ public class Movie {
         this.avgRating = avgRating;
     }
 
+    /**
+     * Prints the details of this Movie on to the screen
+     */
     public void showDetails(){
         System.out.println(
             "MovieName: " + getMovieName() + "\n" +
@@ -64,11 +114,11 @@ public class Movie {
         this.movieName = movieName;
     }
 
-    public CinemaType getMovieType() {
+    public String getMovieType() {
         return this.genre;
     }
 
-    public void setMovieType(CinemaType genre) {
+    public void setMovieType(String genre) {
         this.genre = genre;
     }
 
