@@ -366,7 +366,7 @@ public class SettingsMenu {
 			}
 		} while (choice!=0);
 		
-		System.out.println("Back to Settings Menu......");
+		System.out.println("Back to Price Settings......");
 	}
 
     public void movieSettings() {
@@ -493,8 +493,6 @@ public class SettingsMenu {
                                 
                                 System.out.println("Movie status "+ status); 
                                 //targetedit.setStatus(status);
-                            	
-
                                 break;
                             case 4:
                                 ArrayList<String> cast = new ArrayList<String>();  
@@ -503,13 +501,8 @@ public class SettingsMenu {
                                 {  
                                     System.out.println("Please enter cast " +(i+1)+ ":");
                                 	cast.add(sc.next());  
-                                }   
-                                
-                                
-                                
+                                }  
                                 //targetedit.setCasts(cast);
-                            	
-
                                 break;
                             case 5:
                             	
@@ -543,10 +536,6 @@ public class SettingsMenu {
                                 System.out.println("Please enter a number from 0-10: ");
                         }
                     } while (subchoice != 0);
-
-                    
-                    
-                  
                     break;
                 case 2:
                 	// ADD MOVIE
@@ -575,8 +564,6 @@ public class SettingsMenu {
                     {
                     	System.out.println("Invalid input type!!. Please follow the status format");
                     }
-                    
-                    
                     
                     System.out.println("Status (ComingSoon/Showing): ");
                     while (!sc.hasNext()) {
@@ -636,7 +623,6 @@ public class SettingsMenu {
 
                     //delete = MovieConsolidator.getInstance().getAll();
                     do {
-                    	
                     	System.out.println("Choose a movie or enter 0 to exit : ");
                             
                         while (!sc.hasNextInt()) {
@@ -646,9 +632,6 @@ public class SettingsMenu {
                         deletechoice = sc.nextInt();
                         
                         }while(deletechoice  < 0 || deletechoice >= 10);//movies.size()
-                    
-       
-                   
                     sc.nextLine(); 
                     System.out.println("Enter Y to confirm delete : ");
                     String confirmation = sc.nextLine();
@@ -663,10 +646,6 @@ public class SettingsMenu {
                     	System.out.println("DELETE UNSUCCESSFULLY");
                     	break;
                     }
-                    
-                    
-                    
-					
                     break;
                 case 0:
                 	System.out.println("Back to MOBLIMA APP......");
@@ -684,7 +663,7 @@ public class SettingsMenu {
         int choice;
 		do {
 	        System.out.println(	"=================== Holiday Settings ===================");
-            System.out.println(" 1. View Holidays");
+            System.out.println(" 1. View all Holidays");
             System.out.println(" 2. Add New Holiday");
             System.out.println(" 3. Remove Exisiting Holiday")
             System.out.println(" 0. Back to Settings Menu");
@@ -721,39 +700,4 @@ public class SettingsMenu {
 			}
 		} while (choice!=0);
     }
-
-	// View Holiday Settings - dont need this
-	private void viewHolidaySettings() {
-		int choice;
-		do {
-	        System.out.println(	"=================== View Holiday Settings ===================");
-            System.out.println(" 1. List All Holiday");
-            System.out.println(" 2. Search for Holiday");
-            System.out.println(" 0. Back to Settings Menu");
-            System.out.println("===========================================================");
-
-			System.out.println("Enter choice:");
-			while(!sc.hasNextInt()) {
-				System.out.println("Please enter a number!");
-				sc.next();
-			}
-			choice = sc.nextInt();
-			sc.nextLine();
-				
-			switch (choice) {
-				case 1: 
-					SettingsManager.listHolidays();
-					break;
-				case 2:
-					SettingsManager.searchHolidays():
-					break;
-				case 0:
-					System.out.println("Back to Settings Menu......");
-					break;
-				default:
-					System.out.println("Invalid choice. Please choose between 0-8.");
-					break;
-			}
-		} while (choice!=0);
-	}
 }
