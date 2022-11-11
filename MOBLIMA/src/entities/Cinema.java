@@ -3,7 +3,9 @@ package entities;
 import java.util.ArrayList;
 
 import enums.CinemaType;
+import managers.MovieManager;
 import managers.PricingManager;
+import managers.ShowTimeManager;
 
 public class Cinema implements IPrice {
     private String CinemaName;
@@ -26,6 +28,9 @@ public class Cinema implements IPrice {
         return new ArrayList<Movie>();
     }
 
+    public boolean containsMovie(int movieID) {
+        return ShowTimeManager.getInstance().getShowTimeByMovie(this, MovieManager.getInstance().getMovieByID(movieID)).size() == 0;
+    }
 
     public int getCinemaID() {
         return this.CinemaID;

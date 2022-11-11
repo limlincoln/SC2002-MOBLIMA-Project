@@ -11,6 +11,17 @@ public class Cineplex {
         this.CineplexName = cName;
     }
 
+    public boolean containsMovie(int movieID) {
+        boolean contains = false;
+
+        for(Cinema cinema: cinemas) {
+            contains = contains || cinema.containsMovie(movieID);
+            if(contains) return true;
+        }
+
+        return false;
+    }
+
     //get
     public int getCineplexID(){
         return this.CineplexID;
