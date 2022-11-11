@@ -1,17 +1,14 @@
 package managers;
-import managers.HolidayManager;
 import entities.Holiday;
-import entities.Movie;
-import managers.MovieManager;
 import enums.DayOfWeek;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import enums.*;
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class SettingsManager {
+	Scanner sc = new Scanner(System.in);
 	private static SettingsManager single_instance = null;
 	private int customerTop5;
 	private SettingsManager(int customerTop5){
@@ -91,7 +88,7 @@ public class SettingsManager {
 		this.customerTop5 = customerTop5;
 	}
 
-}	
+	
 
 //TODO:
 	// ATTRIBUTES:
@@ -109,7 +106,6 @@ public class SettingsManager {
 	 * Edits the base price of movies
 	 */
 	public void editBasePrice(){
-		Scanner sc = new Scanner(System.in);
 		double newbase;
         System.out.println("Current Base Price: " + PricingManager.getPrice(PriceType.BASE_PRICE));
         System.out.println("Enter New Base Price: ");
@@ -121,7 +117,6 @@ public class SettingsManager {
 	 * Edits the Price of different age groups
 	 */
 	public void editAgeGroupPrice(){
-		Scanner sc = new Scanner(System.in);
 		int ageGroupChoice;
         double newageprice;
         do {
@@ -160,7 +155,6 @@ public class SettingsManager {
 	 * Edits the Price of different cinema types
 	 */
 	public void editCinemaTypePrice(){
-		Scanner sc = new Scanner(System.in);
 		int cinemaTypeChoice;
         double newcinematypeprice;
         do {
@@ -199,7 +193,6 @@ public class SettingsManager {
 	 * Edits the Price of different day of weeks
 	 */
 	public void editDayOfWeekPrice(){
-		Scanner sc = new Scanner(System.in);
 		int dowChoice;
         double newdowprice;
         do {
@@ -258,7 +251,6 @@ public class SettingsManager {
 	 * Edits the Price of different times of day
 	 */
 	public void editTimeOfDayPrice(){
-		Scanner sc = new Scanner(System.in);
 		int statusChoice;
         double newstatusprice;
     	do {
@@ -292,7 +284,6 @@ public class SettingsManager {
 	 * Edits the Price of different type of day
 	 */
 	public void editTypeOfDayPrice(){
-		Scanner sc = new Scanner(System.in);
 		int todChoice;
         double newtodprice;
         do {
@@ -306,7 +297,7 @@ public class SettingsManager {
             newtodprice = sc.nextDouble();
             switch(todChoice){
                 case 1:
-                    PricingManager.updatePrice(TypeOfDay.IMAX, WEEKEND);
+                    PricingManager.updatePrice(TypeOfDay.WEEKEND, newtodprice);
                     System.out.println("Price of WEEKEND updated to " + PricingManager.getPrice(TypeOfDay.WEEKEND));
                     break;
                 case 2:
@@ -333,7 +324,7 @@ public class SettingsManager {
 	 * List all available holidays
 	 */
 	public void listHolidays() {
-		private ArrayList<Holiday> holiday = new ArrayList<Holiday>();
+		ArrayList<Holiday> holiday = new ArrayList<Holiday>();
 		holiday = HolidayManager.getHolidays();
 		for (int x = 0; x < holiday.size(); x++){
 			System.out.println(x+1 + ". " + holiday.get(x).getName());
@@ -344,7 +335,6 @@ public class SettingsManager {
 	 * Add new holidays
 	 */
 	public void addNewHoliday(){
-		Scanner sc  = new Scanner(System.in);
 		String name;
 		LocalDate date;
     	int dayOfWeeks;
@@ -365,20 +355,18 @@ public class SettingsManager {
 	 * Remove existing holiday
 	 */
 	public void removeExistingHoliday(){
-		Scanner sc  = new Scanner(System.in);
 		int choice;
-		private static ArrayList<Holiday> hols = HolidayManager.getHolidays();
+		ArrayList<Holiday> holi = HolidayManager.getHolidays();
 		System.out.println("Enter number of holiday to remove");
 		//print list of holidays
-		for (int a = 0; a < hols.size(); a++){
-			System.out.println(x+1 + ".  " + hols.get(x).getName());
+		for (int a = 0; a < holi.size(); a++){
+			System.out.println(a+1 + ".  " + holi.get(a).getName());
 		}
 		choice = sc.nextInt();
 
 		//remove based on index
-		hols.remove(choice - 1);
-		
-		HolidayManager.removeHoliday(newhol);
+		holi.remove(choice - 1);
 	}
+}
 
 
