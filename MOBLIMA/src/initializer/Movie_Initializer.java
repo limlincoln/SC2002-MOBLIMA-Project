@@ -10,7 +10,7 @@ import java.util.List;
 
 import enums.Status;
 import entities.Movie;
-import enums.MovieType;
+import enums.CinemaType;
 
 public class Movie_Initializer extends GetDatabaseDirectory {
 	
@@ -90,7 +90,7 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 		String director, synposis, cast1, cast2;
 		String totalsales, NoOfRating, AvgRating;
 		
-		MovieType genre = null;
+		CinemaType genre = null;
 		Status moviestatus = null;
 		
 		int CountNoOfMovies = 0;
@@ -121,15 +121,15 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 				switch(type) {
 				
 				case "IMAX":
-					genre = MovieType.IMAX;
+					genre = CinemaType.IMAX;
 					break;
 					
 				case "_3D":
-					genre = MovieType._3D;
+					genre = CinemaType._3D;
 					break;
 					
 				case "NORMAL":
-					genre = MovieType.NORMAL;
+					genre = CinemaType.NORMAL;
 					break;
 				}
 				
@@ -153,7 +153,7 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 				castlist.add(cast1);
 				
 				totalsales = data[7];
-				double newsales = Double.parseDouble(totalsales);
+				double newsales = Float.parseFloat(totalsales);
 				
 				ArrayList<Integer> ratinglist = new ArrayList<Integer>();
 				NoOfRating = data[8];
@@ -162,10 +162,11 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 
 		        	ratinglist.add(Integer.parseInt(arr[i]));
 		        }
-				
-				//ratinglist.add(Integer.parseInt(NoOfRating));
+		        
+		        AvgRating = data[9];
+		        Float avgrating = Float.parseFloat(AvgRating);
 								
-				movielist.add(new Movie(movieid, movietitle, genre, moviestatus, castlist, director, synposis, ratinglist, newsales));
+				movielist.add(new Movie(movieid, movietitle, genre, moviestatus, castlist, director, synposis, ratinglist, newsales, avgrating));
 				
 				CountNoOfMovies++;
 			}
@@ -192,7 +193,7 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 		String director, synposis, cast1, cast2;
 		String totalsales, NoOfRating, AvgRating;
 		
-		MovieType genre = MovieType.NORMAL;
+		CinemaType genre = CinemaType.NORMAL;
 		Status moviestatus = Status.Showing;
 		
 		int CountNoOfMovies = 0;

@@ -1,26 +1,32 @@
 package managers;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import entities.Ticket;
+import enums.AgeGroup;
 
 public class TicketManager {
-    private static ArrayList<Ticket> tickets;
-    
-    public static void addTicket(Ticket ticket) {
-        tickets.add(ticket);
-    }
+    public ArrayList<Ticket> generateTickets(LocalDateTime exactDateTime, ArrayList<String> seats, ArrayList<AgeGroup> ageGroups) {
+        if(seats.size() != ageGroups.size()) return null;
 
-    public static void resetTicket(Ticket ticket) {
-        tickets.remove(ticket);
-    }
+        ArrayList<Ticket> tickets = new ArrayList<Ticket>();
 
-    public static ArrayList<Ticket> getAllTickets() {
+        DateManager dateManager = new DateManager(exactDateTime);
+
+        for(int i = 0; i < seats.size(); i++) {
+            Ticket newTicket = new Ticket(
+                dateManager.getDayOfWeek(),
+                dateManager.getTimeOfDay(),
+                dateManager.getTypeOfDay(),
+                exactDateTime,
+                ageGroups.get(i),
+                seats.get(i)
+            );
+
+            tickets.add(newTicket);
+        }
+
         return tickets;
     }
-
-    //TODO: CREATE TICKETS AND RETURN ARRAYLIST OF THEM 
-    // WILL GET A ARRAYLIST: {SEAT STRING, AGEGROUP}
-    // GET DATE TIME INFO FROM DATA MANAGER
-    // RETURN ARRAY OF TICKETS
 }

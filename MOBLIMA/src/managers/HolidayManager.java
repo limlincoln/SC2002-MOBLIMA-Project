@@ -1,4 +1,5 @@
 package managers;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import entities.Holiday;
@@ -14,9 +15,9 @@ public class HolidayManager {
         return holidays.remove(holiday);
     }
 
-    public static boolean isHoliday(int date) {
+    public static boolean isHoliday(LocalDate date) {
         for(int i = 0; i < holidays.size(); i++) {
-            if(holidays.get(i).getDate() == date) {
+            if(holidays.get(i).getDate().compareTo(date) == 0) {
                 return true;
             }
         }

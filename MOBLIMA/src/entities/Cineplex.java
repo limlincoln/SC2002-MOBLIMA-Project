@@ -1,5 +1,4 @@
 package entities;
-//import java.util.ArrayArrayList;
 import java.util.ArrayList;
 
 public class Cineplex {
