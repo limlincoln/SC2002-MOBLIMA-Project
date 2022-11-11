@@ -1,10 +1,15 @@
 package entities;
+
+import java.time.LocalDate;
+
+import enums.DayOfWeek;
+
 public class Holiday {
     private String name;
-    private int date;
-    private int dayOfWeek;
+    private LocalDate date;
+    private DayOfWeek dayOfWeek;
 
-    public Holiday(String name, int date, int dayOfWeek) {
+    public Holiday(String name, LocalDate date, DayOfWeek dayOfWeek) {
         this.name = name;
         this.date = date;
         this.dayOfWeek = dayOfWeek;
@@ -18,19 +23,19 @@ public class Holiday {
         this.name = name;
     }
 
-    public int getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(int date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    public int getDayOfWeek() {
+    public DayOfWeek getDayOfWeek() {
         return dayOfWeek;
     }
 
-    public void setDayOfWeek(int dayOfWeek) {
+    public void setDayOfWeek(DayOfWeek dayOfWeek) {
         this.dayOfWeek = dayOfWeek;
     }
 }

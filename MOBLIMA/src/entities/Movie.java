@@ -1,7 +1,7 @@
 package entities;
 
 import java.util.ArrayList;
-import enums.MovieType;
+import enums.CinemaType;
 import enums.Status;
 
 
@@ -12,7 +12,7 @@ import enums.Status;
 public class Movie {
     private int movieID;
     private String movieName;
-    private MovieType genre;
+    private CinemaType genre;
     private Status status;
     private ArrayList<String> casts;
     private String director;
@@ -22,7 +22,7 @@ public class Movie {
     private Float avgRating;
 
 
-    public Movie(int movieID, String movieName, MovieType genre, Status status, ArrayList<String> casts, String director, String sypnopsis, ArrayList<Integer> ratings, double totalSales, Float avgRating) {
+    public Movie(int movieID, String movieName, CinemaType genre, Status status, ArrayList<String> casts, String director, String sypnopsis, ArrayList<Integer> ratings, double totalSales, Float avgRating) {
         this.movieID = movieID;
         this.movieName = movieName;
         this.genre = genre;
@@ -64,11 +64,11 @@ public class Movie {
         this.movieName = movieName;
     }
 
-    public MovieType getMovieType() {
+    public CinemaType getMovieType() {
         return this.genre;
     }
 
-    public void setMovieType(MovieType genre) {
+    public void setMovieType(CinemaType genre) {
         this.genre = genre;
     }
 

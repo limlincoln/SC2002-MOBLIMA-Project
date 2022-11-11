@@ -1,6 +1,6 @@
 package enums;
 
 public enum TimeOfDay {
-  MORNING,
-  EVENING
+  BEFORE_6,
+  AFTER_6
 }

@@ -1,4 +1,4 @@
 package entities;
-interface ISeatSelector {
-    public int StartSeatSelectionInstance(ISeats seats);
+interface ISeatSelector{
+    public <T> T StartSeatSelectionInstance(ISeats seats);
 }

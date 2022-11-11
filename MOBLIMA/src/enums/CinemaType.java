@@ -1,6 +1,6 @@
 package enums;
 
-public enum MovieType{
+public enum CinemaType{
   IMAX,
   _3D,
   NORMAL

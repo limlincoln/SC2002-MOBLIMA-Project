@@ -19,7 +19,7 @@ public class BookingManager {
     }
 
     public static boolean createBooking(int cinemaID, int movieID, Customer customer, ArrayList<Ticket> tickets, double totalCost) {
-        int tid = generateTID(cinemaID, DateManager.getCurrentDateTime("yyyyMMddHHmm"));
+        int tid = generateTID(cinemaID, DateManager.getCurrentDateTimeFormatted("yyyyMMddHHmm"));
 
         Booking booking = new Booking(tid, movieID, customer, tickets, totalCost);
         bookingHistory.add(booking);
@@ -38,11 +38,13 @@ public class BookingManager {
         return userBookingHistory;
     }
 
-    public static ArrayList<Booking> getUnratedBookings() { // TODO: Check within a booking instead.
+    public static ArrayList<Booking> getUnratedBookings(String username) {
         ArrayList<Booking> unratedBookings = new ArrayList<Booking>();
 
-        for(Booking booking: bookingHistory) {
-            if(booking.getMovie().getRatings().size() == 0) {
+        ArrayList<Booking> userBookingHistory = getBookingHistory(username);
+
+        for(Booking booking: userBookingHistory) {
+            if(booking.getRating() == -1) {
                 unratedBookings.add(booking);
             }
         }
@@ -50,5 +52,17 @@ public class BookingManager {
         return unratedBookings;
     }
 
-    // TODO: GET RATED BOOKINGS
+    public static ArrayList<Booking> getRatedBookings(String usename) {
+        ArrayList<Booking> ratedBookings = new ArrayList<Booking>();
+
+        ArrayList<Booking> userBookingHistory = getBookingHistory(usename);
+        
+        for(Booking booking: userBookingHistory) {
+            if(booking.getRating() != -1) {
+                ratedBookings.add(booking);
+            }
+        }
+
+        return ratedBookings;
+    }
 }
