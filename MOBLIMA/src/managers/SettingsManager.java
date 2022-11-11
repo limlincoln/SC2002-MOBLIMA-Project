@@ -90,7 +90,7 @@ public class SettingsManager {
 
 	
 
-	//TODO:
+	// To do
 	// ATTRIBUTES:
 	// WHICH TOP 5
 
