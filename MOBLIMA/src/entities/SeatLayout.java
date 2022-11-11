@@ -2,9 +2,13 @@ package entities;
 
 import java.util.Optional;
 import java.util.Scanner;
+
+import utils.IDGenerator;
 import utils.SeatPrinter;
 
 public class SeatLayout extends ISeatLayout{
+    private Integer ID;
+
     /**
      * Constructor for the SeatLayout Class
      */
@@ -12,6 +16,7 @@ public class SeatLayout extends ISeatLayout{
         Optional<ISeat[][]> l = createLayout();
         if(l.isPresent()){
             this.setLayout(l.get());   
+            this.ID = IDGenerator.get();
         }else{
             System.out.println("SeatLayout creation interrupted");
         }
@@ -21,8 +26,9 @@ public class SeatLayout extends ISeatLayout{
      * Constructor for the SeatLayout Class
      * @param layout layout of the seat
      */
-    public SeatLayout(ISeat[][] layout){
+    public SeatLayout(Integer id, ISeat[][] layout){
         this.setLayout(layout);
+        this.ID = id;
     }
 
     /**
@@ -95,5 +101,13 @@ public class SeatLayout extends ISeatLayout{
             }
     }while(choice == 1);
     return Optional.empty();
-}
+    }
+    public Integer getID() {
+        return this.ID;
+    }
+
+    public void setID(Integer ID) {
+        this.ID = ID;
+    }
+    
 }
