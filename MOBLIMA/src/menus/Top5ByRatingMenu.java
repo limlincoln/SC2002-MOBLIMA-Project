@@ -18,7 +18,7 @@ public class Top5ByRatingMenu implements ITop5Menu {
 
     /**
      * Creates or gets a single instance of Top5ByRatingMenu class
-     * @return Top5ByRatingMenuClass
+     * @return Top5ByRatingMenu Class
      */
 
     public static Top5ByRatingMenu getInstance() {
@@ -27,6 +27,10 @@ public class Top5ByRatingMenu implements ITop5Menu {
         }
         return single_instance;
     }
+
+    /**
+     * Display List of top 5 movies by rating
+     */
     @Override
     public void displayMenu() {
         ArrayList<Movie> topmovies = MovieConsolidator.getInstance().getTop5ByRating();

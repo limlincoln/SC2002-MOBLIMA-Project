@@ -6,10 +6,17 @@ import java.util.Scanner;
  * Menu to display menu 
  */
 public class Top5OptionsMenu implements ITop5Menu {
+    /**
+     * Single instance of Top5OptionsMenu
+     */
     public static Top5OptionsMenu single_instance = null;
 
     private Top5OptionsMenu() {}
 
+     /**
+     * Creates or gets a single instance of Top5OptionsMenu class
+     * @return Top5OptionsMenu Class
+     */
     public static Top5OptionsMenu getInstance() {
         if(single_instance == null) {
             single_instance = new Top5OptionsMenu();
@@ -17,6 +24,9 @@ public class Top5OptionsMenu implements ITop5Menu {
         return single_instance;
     }
 
+    /**
+     * Display a menu for customers choose to list top 5 movies by sales or rating
+     */
     @Override
     public void displayMenu() {
         Scanner sc = new Scanner(System.in);
@@ -36,8 +46,9 @@ public class Top5OptionsMenu implements ITop5Menu {
             case 2:
                 Top5ByRatingMenu.getInstance().displayMenu();
             default:
-                return;
+                break;
         }
+        sc.close();
     }
     
 }
