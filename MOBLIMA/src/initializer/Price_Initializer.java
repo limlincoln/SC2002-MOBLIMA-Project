@@ -71,9 +71,9 @@ public class Price_Initializer extends GetDatabaseDirectory {
 			FileOutputStream fos = new FileOutputStream(pricematrix_file);
 			PrintWriter printwriter = new PrintWriter(fos);
 			
-			for(Map.Entry<Object, Double> hm:map.entrySet()) {
-				printwriter.println(hm.getKey() + "=" + hm.getValue());
-			}
+			//for(Map.Entry<Object, Double> hm:map.entrySet()) {
+				//printwriter.println(hm.getKey() + "=" + hm.getValue());
+			//}
 			
 			printwriter.flush();
 			printwriter.close();
@@ -117,7 +117,9 @@ public class Price_Initializer extends GetDatabaseDirectory {
 			}
 			fis.close();
 			
-			PricingManager pm = new PricingManager(mapInFile);
+			//PricingManager pm = new PricingManager(mapInFile);
+		} catch (Exception e) {
+			
 		}
 		
 		
@@ -126,7 +128,6 @@ public class Price_Initializer extends GetDatabaseDirectory {
 	public static void main(String[] args) {
 		
 		Price_Initializer price_init = new Price_Initializer();
-		
 		price_init.CreatePriceMatrixFile();
 	}
 

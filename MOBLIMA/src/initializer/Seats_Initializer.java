@@ -9,20 +9,29 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Cineplex_Initializer extends GetDatabaseDirectory{
+public class Seats_Initializer extends GetDatabaseDirectory{
+	
+	public static String setSeatingsFileName(int seatid) {
+		
+		String seatingsfolder = "\\Seatings\\";
+		
+		String DBfile = "Seatings.txt";
+		
+		return(seatingsfolder+seatid+DBfile);
+	}
 
-	public static final String DBfile = "Cineplex_Seatings.txt";
-
-	public static void CreateCineplexFile() {
+	public static void CreateCineplexFile(int seatid) {
 
 		String currentDirectory;
 		String newDirectory;
 		boolean checkfileexists = false;
 
-		Cineplex_Initializer cineplexseats_init = new Cineplex_Initializer();
+		Seats_Initializer cineplexseats_init = new Seats_Initializer();
 		currentDirectory = cineplexseats_init.getCurrentDirectory();
 
 		newDirectory = currentDirectory;
+		
+		String SeatingsFile = setSeatingsFileName(seatid);
 
 		File create_cineplexseats_file = new File(newDirectory);
 
@@ -30,7 +39,7 @@ public class Cineplex_Initializer extends GetDatabaseDirectory{
 			if(!create_cineplexseats_file.exists()) {
 				create_cineplexseats_file.mkdirs();
 			}
-			create_cineplexseats_file = new File(newDirectory + DBfile);
+			create_cineplexseats_file = new File(newDirectory + SeatingsFile);
 			checkfileexists = create_cineplexseats_file.createNewFile();
 		} catch(Exception e) {
 			System.out.println(e);
@@ -39,13 +48,13 @@ public class Cineplex_Initializer extends GetDatabaseDirectory{
 
 	}
 	
-	public static void SaveSeats(int[][] cineplex_seats) {
+	public static void SaveSeats(int seatsID, int[][] cineplex_seats) {
 		
 		String currentDirectory;
 		String newDirectory;
 		boolean checkfileexists = false;
 		
-		Cineplex_Initializer cineplexseats_init = new Cineplex_Initializer();
+		Seats_Initializer cineplexseats_init = new Seats_Initializer();
 		currentDirectory = cineplexseats_init.getCurrentDirectory();
 
 		newDirectory = currentDirectory;
@@ -54,6 +63,7 @@ public class Cineplex_Initializer extends GetDatabaseDirectory{
 		try {
 
 			StringBuilder builder = new StringBuilder();
+			//builder.append(seatsID + "|");
 			for(int i = 0; i < cineplex_seats.length; i++)//for each row
 			{
 			   for(int j = 0; j < cineplex_seats.length; j++)//for each column
@@ -65,7 +75,9 @@ public class Cineplex_Initializer extends GetDatabaseDirectory{
 			   builder.append("\n");//append new line at the end of the row
 			}
 			
-			FileWriter write_movielisting = new FileWriter((newDirectory + DBfile), true);
+			String SeatingsFile = setSeatingsFileName(seatsID);
+			
+			FileWriter write_movielisting = new FileWriter((newDirectory + SeatingsFile));
 			BufferedWriter buffer = new BufferedWriter(write_movielisting);
 			
 			buffer.write(builder.toString());//save the string representation of the board
@@ -78,23 +90,28 @@ public class Cineplex_Initializer extends GetDatabaseDirectory{
 		
 	}
 
-	public static int[][] returnSeats(){
+	public static int[][] returnSeats(int seatsID){
 		String currentDirectory;
 		String newDirectory;
 		
-		int[][] cineplex_seats = new int[5][5];
+		int[][] cineplex_seats = new int[8][8];
 		
-		Cineplex_Initializer cineplexseats_init = new Cineplex_Initializer();
+		String seatid;
+		int SeatID = 0;
+		
+		Seats_Initializer cineplexseats_init = new Seats_Initializer();
 		currentDirectory = cineplexseats_init.getCurrentDirectory();
 		
 		newDirectory = currentDirectory;
 		
+		String SeatingsFile = setSeatingsFileName(seatsID);
+		
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(newDirectory + DBfile));
+			BufferedReader br = new BufferedReader(new FileReader(newDirectory + SeatingsFile));
 			String line = "";
 			int row = 0;
 			while((line = br.readLine()) != null)
-			{
+			{	
 			   String[] cols = line.split(","); //note that if you have used space as separator you have to split on " "
 			   int col = 0;
 			   for(String  c : cols)
@@ -109,23 +126,25 @@ public class Cineplex_Initializer extends GetDatabaseDirectory{
 		} catch (Exception e) {
 			
 		}
-		
+		//initialize seats here -->
 		return cineplex_seats;
 	}
 	
 	public static void main(String[] args) {
-		int[][] cineplex_seats = {{0,0,0,0,0},
+		int seatsID = 1;
+		int[][] cineplex_seats = {{0,8,0,0,0},
 				  				  {0,0,0,0,0},
-				  				  {0,0,0,0,0},
-				  				  {0,0,0,0,0},
+				  				  {0,0,2,0,0},
+				  				  {0,0,0,9,0},
 				  				  {0,0,0,0,0}};
 		
 		int[][] test_seats = null;
 		
-		Cineplex_Initializer cineplexseats_init = new Cineplex_Initializer();
-		cineplexseats_init.CreateCineplexFile();
+		Seats_Initializer cineplexseats_init = new Seats_Initializer();
+		cineplexseats_init.CreateCineplexFile(2);
+		cineplexseats_init.SaveSeats(2, cineplex_seats);
 		
-		test_seats = cineplexseats_init.returnSeats();
-		cineplexseats_init.SaveSeats(test_seats);
+		test_seats = cineplexseats_init.returnSeats(2);
+		cineplexseats_init.SaveSeats(9, test_seats);
 	}
 }
