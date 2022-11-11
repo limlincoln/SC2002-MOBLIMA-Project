@@ -2,6 +2,7 @@ package menus;
 import managers.PricingManager;
 import managers.SettingsManager;
 import managers.MovieManager;
+import entities.Movie;
 
 public class SettingsMenu {
     Scanner sc = new Scanner(System.in);
@@ -188,7 +189,9 @@ public class SettingsMenu {
 		do {
 	        System.out.println(	"=================== Movie Settings ===================");
             System.out.println(" 1. View Movie Settings");
-            System.out.println(" 2. Edit Movie Settings");
+            System.out.println(" 2. Add New Movie");
+            System.out.println(" 3. Remove Movie");
+            System.out.println(" 4. Edit Movie Settings");
             System.out.println(" 0. Back to Settings Menu");
             System.out.println("===========================================================");
 
@@ -206,7 +209,13 @@ public class SettingsMenu {
                     // search fucntion for movie??
 					viewMovieSettings();
 					break;
-				case 2:
+                case 2:
+                    addNewMovie();
+                    break;
+                case 3:
+                    removeExistingMovie();
+                    break;
+				case 4:
                     // edit movie name, directors and cast
 					editMovieSettings();
 					break;
@@ -227,8 +236,6 @@ public class SettingsMenu {
 	        System.out.println(	"=================== View Movie Settings ===================");
             System.out.println(" 1. List All Movies");
             System.out.println(" 2. Search for Movie");
-            System.out.println(" 3. ");
-            
             System.out.println(" 0. Back to Settings Menu");
             System.out.println("===========================================================");
 
@@ -242,10 +249,10 @@ public class SettingsMenu {
 				
 			switch (choice) {
 				case 1: 
-					MovieManager.getMovies();
+					SettingsManager.displayMovies();
 					break;
 				case 2:
-					
+					SettingsManager.searchMovies();
 					break;
 				case 3:
 					
@@ -263,14 +270,18 @@ public class SettingsMenu {
 	// Edit Movie Settings
 	private void editMovieSettings() {
 		int choice;
+        String moviename;
+        Movie movie;
         // enter movie name / id first
-
+        System.out.println("Enter the movie to edit: ")
+        moviename = sc.next();
+        movie = getMovieByName(moviename);
 		do {
-	        System.out.println(	"=================== Edit Movie Settings ==================");
+	        System.out.println(	"=================== Edit " + moviename + " Settings ==================");
             System.out.println(" 1. Edit Name");
-            System.out.println(" 2. Edit Case");
+            System.out.println(" 2. Edit Cast");
             System.out.println(" 3. Edit Director");
-            System.out.println(" 4. Movie Format Prices");
+            System.out.println(" 4. Edit Duration");
             System.out.println(" 5. Ticket Type Prices");
             System.out.println(" 6. Cinema Type Prices");
             System.out.println(" 0. Back to Settings Menu");
@@ -285,7 +296,10 @@ public class SettingsMenu {
 				
 			switch (choice) {
 				case 1:
-                    
+                    String newname; 
+                    System.out.println("Enter new Name: ");
+                    newname = sc.next();
+                    movie.setMovieName(newname);
                     break;
 				case 2:
 					
@@ -320,9 +334,9 @@ public class SettingsMenu {
         int choice;
 		do {
 	        System.out.println(	"=================== Holiday Settings ===================");
-            System.out.println(" 1. View Holiday Settings");
-            System.out.println(" 2. Edit Holiday Settings");
-            System.out.println(" 3. Add New Holiday")
+            System.out.println(" 1. View Holidays");
+            System.out.println(" 2. Add New Holiday");
+            System.out.println(" 3. Remove Exisiting Holiday")
             System.out.println(" 0. Back to Settings Menu");
             System.out.println("===========================================================");
 
@@ -338,15 +352,15 @@ public class SettingsMenu {
 				case 1: 
                     // display list of all movies with directors
                     // search fucntion for movie??
-					viewHolidaySettings();
+					SettingsManager.listHolidays();
 					break;
 				case 2:
-                    // edit movie name, directors and cast
-					editHolidaySettings();
+                    // Add new movie
+					SettingsManager.addNewHoliday();
 					break;
                 case 3:
-                    // edit movie name, directors and cast
-					addHolidaySettings();
+                    // Remove Holiday
+					SettingsManager.removeExistingHoliday();
 					break;
 				case 0:
 					System.out.println("Back to Settings Menu......");
@@ -358,7 +372,7 @@ public class SettingsMenu {
 		} while (choice!=0);
     }
 
-	// View Holiday Settings
+	// View Holiday Settings - dont need this
 	private void viewHolidaySettings() {
 		int choice;
 		do {
@@ -378,10 +392,10 @@ public class SettingsMenu {
 				
 			switch (choice) {
 				case 1: 
-					
+					SettingsManager.listHolidays();
 					break;
 				case 2:
-					
+					SettingsManager.searchHolidays():
 					break;
 				case 0:
 					System.out.println("Back to Settings Menu......");
@@ -392,61 +406,4 @@ public class SettingsMenu {
 			}
 		} while (choice!=0);
 	}
-
-	// Edit Holiday Settings
-	private void editHolidaySettings() {
-		int choice;
-        // enter movie name / id first
-
-		do {
-	        System.out.println(	"=================== Edit Holiday Settings ==================");
-            System.out.println(" 1. Edit Name");
-            System.out.println(" 2. Edit Case");
-            System.out.println(" 3. Edit Director");
-            System.out.println(" 4. Movie Format Prices");
-            System.out.println(" 5. Ticket Type Prices");
-            System.out.println(" 6. Cinema Type Prices");
-            System.out.println(" 0. Back to Settings Menu");
-            System.out.println("===========================================================");
-			System.out.println("Enter choice: ");
-			while(!sc.hasNextInt()) {
-				System.out.println("Please enter a number!");
-				sc.next();
-			}
-			choice = sc.nextInt();
-			sc.nextLine();
-				
-			switch (choice) {
-				case 1:
-                    
-                    break;
-				case 2:
-					
-					break;
-				case 3: 
-					
-					break;
-				case 4:
-					
-					break;
-				case 5:
-					
-					break;			
-				case 6:
-                    
-					break;				
-				case 0: 
-					break;
-				default:
-					System.out.println("Invalid choice. Please choose between 0-7.");
-					break;
-			}
-		} while (choice!=0);
-		
-		System.out.println("Back to Settings Menu......");
-	}
-
-    private void addHolidaySettings(){
-
-    }
 }
