@@ -505,7 +505,7 @@ public class SettingsManager {
 					
 					break;
 				case 0:
-					System.out.println("=============Exiting Edit=============");
+					System.out.println("============= Exiting Edit =============");
 					break;
 				default:
 					System.out.println("Please enter a number from 0-10: ");
