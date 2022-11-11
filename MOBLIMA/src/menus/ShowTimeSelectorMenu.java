@@ -4,8 +4,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import entities.ShowTime;
-
 public class ShowTimeSelectorMenu implements ISelectorMenu<LocalDateTime> {
 
     public static ShowTimeSelectorMenu single_instance = null;
