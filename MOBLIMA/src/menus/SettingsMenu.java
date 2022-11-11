@@ -104,196 +104,22 @@ public class SettingsMenu {
 				
 			switch (choice) {
 				case 1: 
-                    double newbase;
-                    System.out.println("Current Base Price: " + PricingManager.getPrice(BASE_PRICE));
-                    System.out.println("Enter New Base Price: ");
-                    newbase = sc.nextDouble();
-					PricingManager.updatePrice(BASE_PRICE,newbase);
+                    SettingsManager.editBasePrice();
 					break;
 				case 2:
-					int ageGroupChoice;
-                    double newageprice;
-                    do {
-                        System.out.println(" 1. Adult Prices");
-                        System.out.println(" 2. Senior Prices");
-                        System.out.println(" 3. Student Prices");
-                        System.out.println(" 0. Back to Pricing");
-                        System.out.println("Enter choice:");
-                        ageGroupChoice = sc.nextInt();
-                        System.out.println("Enter new Price: ");
-                        newageprice = sc.nextDouble();
-                        switch(ageGroupChoice){
-                            case 1:
-                                PricingManager.updatePrice(AgeGroup.ADULT, newageprice);
-                                System.out.println("Price of ADULT updated to " + PricingManager.getPrice(AgeGroup.ADULT));
-                                break;
-                            case 2:
-                                PricingManager.updatePrice(AgeGroup.SENIOR, newageprice);
-                                System.out.println("Price of SENIOR updated to " + PricingManager.getPrice(AgeGroup.SENIOR));
-                                break;
-                            case 3:
-                                PricingManager.updatePrice(AgeGroup.STUDENT, newageprice);
-                                System.out.println("Price of STUDENT updated to " + PricingManager.getPrice(AgeGroup.STUDENT));
-                                break;
-                            case 0:
-                                System.out.println("Back to Price Settings......");
-                                break;
-                            default:
-                                System.out.println("Invalid choice. Please choose between 0-3.");
-                                break;
-                        }
-                    } while (ageGroupChoice != 0);
+                    SettingsManager.editAgeGroupPrice();
 					break;
 				case 3:
-                    int cinemaTypeChoice;
-                    double newcinematypeprice;
-                    do {
-                        System.out.println(" 1. IMAX Prices");
-                        System.out.println(" 2. 3D Prices");
-                        System.out.println(" 3. NORMAL Prices");
-                        System.out.println(" 0. Back to Pricing");
-                        System.out.println("Enter choice:");
-                        cinemaTypeChoice = sc.nextInt();
-                        System.out.println("Enter new Price: ");
-                        newcinematypeprice = sc.nextDouble();
-                        switch(cinemaTypeChoice){
-                            case 1:
-                                PricingManager.updatePrice(CinemaType.IMAX, newcinematypeprice);
-                                System.out.println("Price of IMAX updated to " + PricingManager.getPrice(CinemaType.IMAX));
-                                break;
-                            case 2:
-                                PricingManager.updatePrice(CinemaType._3D, newcinematypeprice);
-                                System.out.println("Price of SENIOR updated to " + PricingManager.getPrice(CinemaType._3D));
-                                break;
-                            case 3:
-                                PricingManager.updatePrice(CinemaType.NORMAL, newcinematypeprice);
-                                System.out.println("Price of STUDENT updated to " + PricingManager.getPrice(CinemaType.NORMAL));
-                                break;
-                            case 0:
-                                System.out.println("Back to Price Settings......");
-                                break;
-                            default:
-                                System.out.println("Invalid choice. Please choose between 0-3.");
-                                break;
-                        }
-                    } while (cinemaTypeChoice != 0);
+                    SettingsManager.editCinemaTypePrice();
                     break;
 				case 4:
-                    int dowChoice;
-                    double newdowprice;
-                    do {
-                        System.out.println(" 1. MONDAY Prices");
-                        System.out.println(" 2. TUESDAY Prices");
-                        System.out.println(" 3. WEDNESDAY Prices");
-                        System.out.println(" 4. THURSDAY Prices");
-                        System.out.println(" 5. FRIDAY Prices");
-                        System.out.println(" 6. SATURDAY Prices");
-                        System.out.println(" 7. SUNDAY Prices");
-                        System.out.println(" 0. Back to Pricing");
-                        System.out.println("Enter choice:");
-                        dowChoice = sc.nextInt();
-                        System.out.println("Enter new Price: ");
-                        newdowprice = sc.nextDouble();
-                        switch(dowChoice){
-                            case 1:
-                                PricingManager.updatePrice(DayOfWeek.MON, newdowprice);
-                                System.out.println("Price of MON updated to " + PricingManager.getPrice(DayOfWeek.MON));
-                                break;
-                            case 2:
-                                PricingManager.updatePrice(DayOfWeek.TUE, newdowprice);
-                                System.out.println("Price of TUE updated to " + PricingManager.getPrice(DayOfWeek.TUE));
-                                break;
-                            case 3:
-                                PricingManager.updatePrice(DayOfWeek.WED, newdowprice);
-                                System.out.println("Price of WED updated to " + PricingManager.getPrice(DayOfWeek.WED));
-                                break;
-                            case 4:
-                                PricingManager.updatePrice(DayOfWeek.THU, newdowprice);
-                                System.out.println("Price of THU updated to " + PricingManager.getPrice(DayOfWeek.THU));
-                                break;
-                            case 5:
-                                PricingManager.updatePrice(DayOfWeek.FRI, newdowprice);
-                                System.out.println("Price of FRI updated to " + PricingManager.getPrice(DayOfWeek.FRI));
-                                break;
-                            case 6:
-                                PricingManager.updatePrice(DayOfWeek.SAT, newdowprice);
-                                System.out.println("Price of SAT updated to " + PricingManager.getPrice(DayOfWeek.SAT));
-                                break;
-                            case 7:
-                                PricingManager.updatePrice(DayOfWeek.SUN, newdowprice);
-                                System.out.println("Price of SUN updated to " + PricingManager.getPrice(DayOfWeek.SUN));
-                                break;
-                            case 0:
-                                System.out.println("Back to Price Settings......");
-                                break;
-                            default:
-                                System.out.println("Invalid choice. Please choose between 0-7.");
-                                break;
-                        }
-                    } while (dowChoice != 0);
+                    SettingsManager.editDayOfWeekPrice();
 					break;
 				case 5:
-                    int statusChoice;
-                    double newstatusprice;
-                    do {
-                        System.out.println(" 1. Before 6PM Prices");
-                        System.out.println(" 2. After 6PM Prices");
-                        System.out.println(" 0. Back to Pricing");
-                        System.out.println("Enter choice:");
-                        statusChoice = sc.nextInt();
-                        System.out.println("Enter new Price: ");
-                        newstatusprice = sc.nextDouble();
-                        switch(statusChoice){
-                            case 1:
-                                PricingManager.updatePrice(TimeOfDay.BEFORE_6, newstatusprice);
-                                System.out.println("Price Before 6PM updated to " + PricingManager.getPrice(TimeOfDay.BEFORE_6));
-                                break;
-                            case 2:
-                                PricingManager.updatePrice(TimeOfDay.AFTER_6, newstatusprice);
-                                System.out.println("Price After 6PM updated to " + PricingManager.getPrice(TimeOfDay.AFTER_6));
-                                break;
-                            case 0:
-                                System.out.println("Back to Price Settings......");
-                                break;
-                            default:
-                                System.out.println("Invalid choice. Please choose between 0-2.");
-                                break;
-                        }
-                    } while (statusChoice != 0);
+                    SettingsManager.editTimeOfDayPrice();
                     break;
 				case 6:
-                    int todChoice;
-                    double newtodprice;
-                    do {
-                        System.out.println(" 1. WEEKEND Prices");
-                        System.out.println(" 2. WEEKDAY Prices");
-                        System.out.println(" 3. PUBLIC HOLIDAY Prices");
-                        System.out.println(" 0. Back to Pricing");
-                        System.out.println("Enter choice:");
-                        todChoice = sc.nextInt();
-                        System.out.println("Enter new Price: ");
-                        newtodprice = sc.nextDouble();
-                        switch(todChoice){
-                            case 1:
-                                PricingManager.updatePrice(TypeOfDay.IMAX, WEEKEND);
-                                System.out.println("Price of WEEKEND updated to " + PricingManager.getPrice(TypeOfDay.WEEKEND));
-                                break;
-                            case 2:
-                                PricingManager.updatePrice(TypeOfDay.WEEKDAY, newtodprice);
-                                System.out.println("Price of WEEKDAY updated to " + PricingManager.getPrice(TypeOfDay.WEEKDAY));
-                                break;
-                            case 3:
-                                PricingManager.updatePrice(TypeOfDay.PUBLIC_HOLIDAY, newtodprice);
-                                System.out.println("Price of PUBLIC HOLIDAY updated to " + PricingManager.getPrice(TypeOfDay.PUBLIC_HOLIDAY));
-                                break;
-                            case 0:
-                                System.out.println("Back to Price Settings......");
-                                break;
-                            default:
-                                System.out.println("Invalid choice. Please choose between 0-3.");
-                                break;
-                        }
-                    } while (todChoice != 0);
+                    SettingsManager.editTypeOfDayPrice():
 					break;
 				case 0:
 					System.out.println("Back to Settings Menu......");
