@@ -6,6 +6,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import entities.ISeat;
+import entities.Seat;
+import entities.Seats;
+import entities.Space;
+
 public class SeatsInitializer extends GetDatabaseDirectory{
 	
 	public static String setSeatingsFileName(int seatid) {
@@ -45,7 +50,7 @@ public class SeatsInitializer extends GetDatabaseDirectory{
 
 	// }
 	
-	public static void writeSeatsToFile(int seatsID, int[][] seats) {
+	public static void writeSeatsToFile(Seats seats) {
 		
 		String currentDirectory;
 		String newDirectory;
@@ -54,21 +59,23 @@ public class SeatsInitializer extends GetDatabaseDirectory{
 		currentDirectory = cineplexseats_init.getCurrentDirectory();
 
 		newDirectory = currentDirectory;
+
+		ISeat[][] seatsArray = seats.getSeats();
 		
 		try {
 			StringBuilder builder = new StringBuilder();
-			for(int i = 0; i < seats.length; i++)
+			for(int i = 0; i < seatsArray.length; i++)
 			{
-			   for(int j = 0; j < seats[0].length; j++)
+			   for(int j = 0; j < seatsArray[0].length; j++)
 			   {
-			      builder.append(seats[i][j]+"");
-			      if(j < seats[0].length - 1)
+			      builder.append(seatsArray[i][j].getState());
+			      if(j < seatsArray[0].length - 1)
 			         builder.append(",");
 			   }
 			   builder.append("\n");
 			}
 			
-			String SeatingsFile = setSeatingsFileName(seatsID);
+			String SeatingsFile = setSeatingsFileName(seats.getSeatsID());
 			
 			FileWriter write_movielisting = new FileWriter((newDirectory + SeatingsFile));
 			BufferedWriter buffer = new BufferedWriter(write_movielisting);
@@ -83,11 +90,11 @@ public class SeatsInitializer extends GetDatabaseDirectory{
 		
 	}
 
-	public static int[][] readSeatsFromFile(int seatsID){
+	public static Seats readSeatsFromFile(int seatsID){
 		String currentDirectory;
 		String newDirectory;
 		
-		ArrayList<ArrayList<Integer>> seats = new ArrayList<ArrayList<Integer>>();
+		ArrayList<ArrayList<ISeat>> seats = new ArrayList<ArrayList<ISeat>>();
 		
 		SeatsInitializer cineplexseats_init = new SeatsInitializer();
 		currentDirectory = cineplexseats_init.getCurrentDirectory();
@@ -103,10 +110,25 @@ public class SeatsInitializer extends GetDatabaseDirectory{
 			while((line = br.readLine()) != null)
 			{	
 			   String[] cols = line.split(",");
-			   seats.add(new ArrayList<Integer>());
+			   seats.add(new ArrayList<ISeat>());
 			   for(String  c : cols)
 			   {
-				  seats.get(row).add(Integer.parseInt(c));
+				  Space space = null;
+				  Seat seat = null;
+				  switch (c) {
+					case " ":
+						space = new Space();
+						seats.get(row).add(space);
+						break;
+					case "X":
+						seat = new Seat();
+						seat.toggleOccupied();
+						seats.get(row).add(seat);
+					case "_":
+						seat = new Seat();
+						seats.get(row).add(seat);
+						break;
+				  }
 			   }
 			   row++;
 			}
@@ -117,10 +139,17 @@ public class SeatsInitializer extends GetDatabaseDirectory{
 		}
 
 		// convert arraylist to array of seats
-		int[][] seatsArray = seats.stream()
-		.map(l -> l.stream().mapToInt(Integer::intValue).toArray())
-		.toArray(int[][]::new);
+		ISeat[][] seatsArray = new ISeat[seats.size()][seats.get(0).size()];
 
-		return seatsArray;
+		for(int i = 0; i < seatsArray.length; i++) {
+			for(int j = 0; j < seatsArray.length; j++) {
+				seatsArray[i][j] = seats.get(i).get(j);
+			}
+		}
+
+		// ISSUE: I NEED ISEATLAYOUT TO CREATE A SEAT CLASS
+		Seats seat = new Seats(seatsID, seatsArray);
+
+		return seat;
 	}
 }

@@ -4,13 +4,13 @@ public class Seat implements ISeat, ISelectableSeat {
     /**
      * Whether the seat has been occupied or not
      */
-    private boolean occupied;
+    private boolean occupied = false;
 
     /**
      * Whether the seat has been selected temporarily 
      * during the seat selection process
      */
-    private boolean tempSelected;
+    private boolean tempSelected = false;
 
     /**
      * Constructor for the Seat Class

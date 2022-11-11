@@ -7,59 +7,59 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 
-import entities.Movie;
 import entities.Seats;
 import entities.ShowTime;
 
-public class ShowTime_Initializer extends GetDatabaseDirectory {
+public class ShowTimeInitializer extends GetDatabaseDirectory {
 
 	public static String setShowTimeFileName(int seatid) {
 
-		String seatingsfolder = "\\ShowTime\\";
+		String seatingsfolder = "/ShowTime/";
 
 		final String DBfile = "ShowTime.txt";
 
 		return(seatingsfolder+seatid+DBfile);
 	}
 
-	public static void CreateShowTimeListingFile(int showtimeid) {
+	// public static void readShowTimeFromFile(int showTimeID) {
 
-		String currentDirectory;
-		String newDirectory;
-		boolean checkfileexists = false;
+	// 	String currentDirectory;
+	// 	String newDirectory;
+	// 	boolean checkfileexists = false;
 
-		ShowTime_Initializer showtime_init = new ShowTime_Initializer();
-		currentDirectory = showtime_init.getCurrentDirectory();
+	// 	ShowTimeInitializer showtime_init = new ShowTimeInitializer();
+	// 	currentDirectory = showtime_init.getCurrentDirectory();
 
-		newDirectory = currentDirectory;
-		String SeatingsFile = setShowTimeFileName(showtimeid);
+	// 	newDirectory = currentDirectory;
+	// 	String SeatingsFile = setShowTimeFileName(showTimeID);
 
-		File create_showtime_file = new File(newDirectory);
+	// 	File create_showtime_file = new File(newDirectory);
 
-		try {
-			if(!create_showtime_file.exists()) {
-				create_showtime_file.mkdirs();
-			}
-			create_showtime_file = new File(newDirectory + SeatingsFile);
-			checkfileexists = create_showtime_file.createNewFile();
-		} catch(Exception e) {
-			System.out.println(e);
-		}
-		System.out.println(create_showtime_file.getPath());
-	}
+	// 	try {
+	// 		if(!create_showtime_file.exists()) {
+	// 			create_showtime_file.mkdirs();
+	// 		}
+	// 		create_showtime_file = new File(newDirectory + SeatingsFile);
+	// 		checkfileexists = create_showtime_file.createNewFile();
+	// 	} catch(Exception e) {
+	// 		System.out.println(e);
+	// 	}
+	// 	System.out.println(create_showtime_file.getPath());
+	// }
 	
-	public static void WriteShowTimeFile(int showtimeid, int[] showtime, int seatsID) {
+	public static void writeShowTimeToFile(ShowTime showTime) {
 		String currentDirectory;
 		String newDirectory;
 		String new_movie;
 		
-		ShowTime_Initializer showtime_init = new ShowTime_Initializer();
+		ShowTimeInitializer showtime_init = new ShowTimeInitializer();
 		currentDirectory = showtime_init.getCurrentDirectory();
 		
 		newDirectory = currentDirectory;
 		File movielisting_file = new File(newDirectory);
 		
-		String ShowTimeFile = setShowTimeFileName(showtimeid);
+		String ShowTimeFile = setShowTimeFileName(showTime.getShowTimeID());
+
 		
 		try {
 			FileWriter write_showtime = new FileWriter((newDirectory + ShowTimeFile), true);
@@ -70,18 +70,20 @@ public class ShowTime_Initializer extends GetDatabaseDirectory {
 				BufferedWriter buffer = new BufferedWriter(write_showtime);
 				
 				
-				for(int i = 0; i < showtime.length; i++) {
-					intlist.add(showtime[i]);
+				for(int i = 0; i < showTime.getShowTime().length; i++) {
+					intlist.add(showTime.getShowTime()[i]);
 				}
 				
-				String newshowtime = showtimeid + "|" + intlist + "|" + seatsID;
+				String seatIDs = "";
+				for(Seats seats: showTime.getSeats()) {
+					SeatsInitializer.writeSeatsToFile(seats);
+					seatIDs += seats.getSeatsID() + ",";
+				}
+
+				String newshowtime = showTime.getShowTimeID() + "|" + intlist + "|" + seatIDs;
 				
 				buffer.write(newshowtime);
-				
-				
-				//buffer.append(System.lineSeparator());
-				
-				
+			
 				buffer.close();
 			}
 		}catch (Exception e){
@@ -89,20 +91,20 @@ public class ShowTime_Initializer extends GetDatabaseDirectory {
 		}
 	}
 	
-	public static void ReadShowTimeFile(int showtimeid) {
+	public static ShowTime readShowTimeFromFile(int showTimeID) {
 		String currentDirectory;
 		String newDirectory;
 		String new_movie;
 		
 		String showid, showtime, seatid;
 		
-		ShowTime_Initializer showtime_init = new ShowTime_Initializer();
+		ShowTimeInitializer showtime_init = new ShowTimeInitializer();
 		currentDirectory = showtime_init.getCurrentDirectory();
 		
 		newDirectory = currentDirectory;
 		File movielisting_file = new File(newDirectory);
 		
-		String ShowTimeFile = setShowTimeFileName(showtimeid);
+		String ShowTimeFile = setShowTimeFileName(showTimeID);
 		
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(newDirectory + ShowTimeFile));
@@ -144,16 +146,4 @@ public class ShowTime_Initializer extends GetDatabaseDirectory {
 			
 		}
 	}
-		
-
-	public static void main(String[] args) {
-		ShowTime_Initializer showtime_init = new ShowTime_Initializer();
-		showtime_init.CreateShowTimeListingFile(9);
-		
-		int[] test = {2,4,6};
-		int[] seats = {9};
-		
-		showtime_init.WriteShowTimeFile(0, test, 9);
-	}
-
 }

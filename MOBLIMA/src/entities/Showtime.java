@@ -8,6 +8,7 @@ public class ShowTime {
      * ID for this showtime
      */
     private int showTimeID;
+
     /**
      * array containing movie IDs
      * index indicated a showtime slot in the day
