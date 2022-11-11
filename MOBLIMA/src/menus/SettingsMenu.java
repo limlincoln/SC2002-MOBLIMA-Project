@@ -9,6 +9,9 @@ public class SettingsMenu {
     Scanner sc = new Scanner(System.in);
     
     // Settings Display Menuy
+    /**
+     * Displays the main settings menu
+     */
 	public void displayMenu() {
         int choice;
 		do {
@@ -45,6 +48,9 @@ public class SettingsMenu {
 		} while (choice!=0);
 	}
 
+    /**
+     * Price Settings Menu
+     */
     private void priceSettings(){
         int choice;
 		do {
@@ -80,6 +86,9 @@ public class SettingsMenu {
     }
 
 	// View Price Settings
+    /**
+     * Edit the respective Price Settings
+     */
 	private void editPriceSettings() {
 		int choice;
 		do {
@@ -131,6 +140,9 @@ public class SettingsMenu {
 	}
 
 	// View Price Settings
+    /**
+     * View the respective price settings
+     */
 	private void viewPriceSettings() {
 		int choice;
 		do {
@@ -194,6 +206,9 @@ public class SettingsMenu {
 		System.out.println("Back to Price Settings......");
 	}
 
+    /**
+     * View all movie settings
+     */
     public void movieSettings() {
 		int choice;
 		do {
@@ -252,7 +267,7 @@ public class SettingsMenu {
                     sc.nextLine(); 
                     System.out.println("Enter Y to confirm delete : ");
                     String confirmation = sc.nextLine();
-
+                    
                     if(confirmation.equals("Y"))
                     {
                     	System.out.println("SUCCESSFULLY DELETED");
@@ -276,6 +291,10 @@ public class SettingsMenu {
 
 
     // Holiday Settings
+
+    /**
+     * View all Holiday Settings
+     */
     private void holidaySettings(){
         int choice;
 		do {
