@@ -1,4 +1,4 @@
-package menu;
+package menus;
 import entities.Movie;
 import entities.Booking;
 import entities.Cinema;

@@ -1,4 +1,4 @@
-package entities;
+package managers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,6 +7,9 @@ import java.util.Scanner;
 import utils.SeatPrinter;
 import enums.AgeGroup;
 import menus.AgeGroupMenu;
+import entities.ISeat;
+import entities.ISeats;
+import entities.Seat;
 
 public class SeatSelector implements ISeatSelector{
     @Override

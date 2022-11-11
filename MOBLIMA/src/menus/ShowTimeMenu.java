@@ -1,12 +1,15 @@
 package menus;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import entities.Cinema;
 import entities.Cineplex;
 import entities.Movie;
+import entities.Seats;
 import entities.ShowTime;
+import managers.ShowTimeManager;
 
 public class ShowTimeMenu {
 	
@@ -33,7 +36,30 @@ public class ShowTimeMenu {
 		// CALL DATEMANAGER with 2 INDEX to get EXACTDATTIME (LOCALDATETIME)
 		// GET SEATS FROM SHOWTIME MANAGER
 		// PASS LOCALDATETIME + SEATS to BOOKING MENU
+		System.out.println("MOVIE: "+movie.getMovieName());
 		System.out.println(	"================ SELECT A ShowTime =================");
+		ArrayList<LocalDateTime> showtimes = ShowTimeManager.getInstance().getShowTimeByMovie(cinema, movie);
+
+		for(int i = 0; i < showtimes.size(); i++) {
+			LocalDateTime currentShowTime = showtimes.get(i);
+			System.out.println(
+				"("+(i+1)+")"+
+				currentShowTime.getDayOfWeek()+"\n"+
+				currentShowTime.getDayOfMonth()+", "+
+				currentShowTime.getMonth()+"\n"+
+				currentShowTime.getHour()+":"+currentShowTime.getMinute()
+			);
+			System.out.println("----------------------------------");
+		}
+
+		int selectedShowTime;
+		do {	
+			selectedShowTime = sc.nextInt();
+		} while(selectedShowTime < 1 || selectedShowTime > showtimes.size());
+
+		Seats selectedSeats = ShowTimeManager.getInstance().getSeatsByLocalDateTime(cinema, showtimes.get(selectedShowTime));
+
+		BookingMenu.getInstance().displayBookingMenu(movie, cinema, selectedSeats, showtimes.get(selectedShowTime));
 
 		//DISPLAY showtime and select -> bookingmenu??????????????
 			
