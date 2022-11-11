@@ -27,7 +27,7 @@ public class SettingsManager {
 	}
 
 	
-	// TODO: Implement
+	// TODO Implement
 	/**
 	 * Function to edit price matrix
 	 * @param ageGroup
@@ -368,10 +368,10 @@ public class SettingsManager {
 	// EDIT MOVIE
 		// MOVIE EDITOR MENU
 		// ASK WHAT MOVIE (LIST ALL MOVIES)
-			// ASK WHICH ATTRIBUTE TO CHANGE
-			// ASK FOR VALUE
-			// CALL MOVIEMANAGER(MOVIE, ATTRIBUTE, VALUE), VALIDATE IN MOVIEMANAGER
-			// CHECK RESPONSE FROM MOVIEMANGER, REPEAT IF NEEDED
+		// ASK WHICH ATTRIBUTE TO CHANGE
+		// ASK FOR VALUE
+		// CALL MOVIEMANAGER(MOVIE, ATTRIBUTE, VALUE), VALIDATE IN MOVIEMANAGER
+		// CHECK RESPONSE FROM MOVIEMANGER, REPEAT IF NEEDED
                 	
 		System.out.println(	"================ SELECT A MOVIE =================");
 		//ArrayList<Movie> editmovie = new ArrayList<Movie>();
@@ -515,8 +515,8 @@ public class SettingsManager {
 
 	public void addMovieSettings(){
 		// ADD MOVIE
-					// ASK FOR ALL NECESSARY ATTRIBUTE
-					// MOVIEMANAGER.ADDMOVIE(...) - RMB TO VALIDATE
+		// ASK FOR ALL NECESSARY ATTRIBUTE
+		// MOVIEMANAGER.ADDMOVIE(...) - RMB TO VALIDATE
                     
 		System.out.println("Movie title: ");
 		while (!sc.hasNext()) {
