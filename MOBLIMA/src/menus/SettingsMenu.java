@@ -7,16 +7,15 @@ import enums.*;
 
 public class SettingsMenu {
     Scanner sc = new Scanner(System.in);
-
-	// Settings Display Menuy
+    
+    // Settings Display Menuy
 	public void displayMenu() {
-		int choice;
+        int choice;
 		do {
             System.out.println("=================== Settings ===================");
             System.out.println("1. Price Settings");
             System.out.println("2. Movie Settings");
             System.out.println("3. Holiday Settings");
-            System.out.println("0. Back to Staff App");
             System.out.println("==========================================================");
             System.out.println("Select Option: ");
             while(!sc.hasNextInt()) {
@@ -223,221 +222,13 @@ public class SettingsMenu {
 							// ASK FOR VALUE
 							// CALL MOVIEMANAGER(MOVIE, ATTRIBUTE, VALUE), VALIDATE IN MOVIEMANAGER
 							// CHECK RESPONSE FROM MOVIEMANGER, REPEAT IF NEEDED
-                	
-                	System.out.println(	"================ SELECT A MOVIE =================");
-                	ArrayList<Movie> editmovie = new ArrayList<Movie>();
-                    int editchoice = -1;
-
-                    //editmovie = MovieConsolidator.getInstance().getAll();
-                    do {
-                    	
-                    	System.out.println("Choose a movie or enter 0 to exit : ");
-                            
-                        while (!sc.hasNextInt()) {
-                    		System.out.printf("Invalid input type.");
-                    		sc.next(); 
-                    	}
-                        editchoice = sc.nextInt();
-                        
-                        }while(editchoice  < 0 || editchoice >= 10);//movies.size()
-                    	sc.nextLine();
-                    
-                      
-                   // Movie targetedit = editmovie.get(editchoice);
-                    int subchoice;
-                    do {
-                        System.out.println("=================== Choose what to eidt ==================\n" +
-                                            " 1. Edit Movie Title      	                                \n" +
-                                            " 2. Edit Movie Genres                      	        	\n" +
-                                            " 3. Edit Movie Status	                                    \n" +
-                                            " 4. Edit Movie Cast                                        \n" +
-                                            " 5. Edit Movie Director                                     \n" +
-                                            " 6. Edit Movie Synopsis                                     \n" +
-                                            " 0. Finish Editing Movie                                \n"+
-                                            "=========================================================");
-                        System.out.println("Enter choice: ");
-                        
-                        while (!sc.hasNextInt()) {
-                        	System.out.println("Invalid input type. Please enter an integer value between 0-10.");
-                    		sc.next(); // Remove newline character
-                        }
-                        
-                        subchoice = sc.nextInt();
-                        sc.nextLine();
-                        switch (subchoice) {
-                            case 1:
-                                System.out.println("Movie title: ");
-                                while (!sc.hasNext()) {
-                                	System.out.println("Invalid input type. Please try again!");
-                            		sc.next(); 
-                                }
-                                String title = sc.nextLine();
-                               
-                                System.out.println("Movie title "+ title); 
-                                //targetedit.setMovieName(title);
- 
-                                break;
-                            case 2:
-                                System.out.println("Movie Genre (IMAX/_3D/NORMAL): ");
-                                while (!sc.hasNext()) {
-                                	System.out.println("Invalid input type. Please try again!");
-                            		sc.next(); 
-                                }
-                                
-                                String askgenre = sc.nextLine();
-                                CinemaType genre = null;
-                                try 
-                                {
-                                	genre = CinemaType.valueOf(askgenre);
-                                }
-                                catch(IllegalArgumentException e)
-                                {
-                                	System.out.println("Invalid input type!!. Please follow the status format");
-                                }
-                                
-                                System.out.println("Movie genre "+ genre); 
-                                //targetedit.setMovieType(genre);
-
-                                break;
-                            case 3:
-                                System.out.println("Status (ComingSoon/Showing): ");
-                                while (!sc.hasNext()) {
-                                	System.out.println("Invalid input type. Please try again!");
-                            		sc.next(); 
-                                }
-                                
-                                String askstatus = sc.nextLine();
-                                Status status = null;
-                                try 
-                                {
-                                	status = Status.valueOf(askstatus);
-                                }
-                                catch(IllegalArgumentException e)
-                                {
-                                	System.out.println("Invalid input type!!. Please follow the status format");
-                                }
-                                
-                                System.out.println("Movie status "+ status); 
-                                //targetedit.setStatus(status);
-                                break;
-                            case 4:
-                                ArrayList<String> cast = new ArrayList<String>();  
-                                System.out.println("Enter 2 cast: ");  
-                                for(int i=0; i<2; i++)  
-                                {  
-                                    System.out.println("Please enter cast " +(i+1)+ ":");
-                                	cast.add(sc.next());  
-                                }  
-                                //targetedit.setCasts(cast);
-                                break;
-                            case 5:
-                            	
-                                System.out.println("Movie Director: ");
-                                while (!sc.hasNext()) {
-                                	System.out.println("Invalid input type. Please try again!");
-                            		sc.next(); 
-                                }
-                                String director = sc.nextLine();
-                                
-                                System.out.println("Movie director "+ director); 
-                                //targetedit.setDirector(director);
-                                
-                                break;
-                            case 6:
-                                System.out.println("Movie Sypnopsis: ");
-                                while (!sc.hasNext()) {
-                                	System.out.println("Invalid input type. Please try again!");
-                            		sc.next(); 
-                                }
-                                String sypnopsis = sc.nextLine();
-                                
-                                System.out.println("Movie sypnopsis "+ sypnopsis); 
-                               // targetedit.setSypnopsis(sypnopsis);
-                                
-                                break;
-                            case 0:
-                                System.out.println("=============Exiting Edit=============");
-                                break;
-                            default:
-                                System.out.println("Please enter a number from 0-10: ");
-                        }
-                    } while (subchoice != 0);
+                	SettingsManager.editMovieSettings():
                     break;
                 case 2:
                 	// ADD MOVIE
 					// ASK FOR ALL NECESSARY ATTRIBUTE
 					// MOVIEMANAGER.ADDMOVIE(...) - RMB TO VALIDATE
-                    System.out.println("Movie title: ");
-                    while (!sc.hasNext()) {
-                    	System.out.println("Invalid input type. Please try again!");
-                		sc.next(); 
-                    }
-                    String title = sc.nextLine();
-                    
-                    System.out.println("Movie Genre (IMAX/_3D/NORMAL): ");
-                    while (!sc.hasNext()) {
-                    	System.out.println("Invalid input type. Please try again!");
-                		sc.next(); 
-                    }
-                    
-                    String askgenre = sc.nextLine();
-                    CinemaType genre = null;
-                    try 
-                    {
-                    	genre = CinemaType.valueOf(askgenre);
-                    }
-                    catch(IllegalArgumentException e)
-                    {
-                    	System.out.println("Invalid input type!!. Please follow the status format");
-                    }
-                    
-                    System.out.println("Status (ComingSoon/Showing): ");
-                    while (!sc.hasNext()) {
-                    	System.out.println("Invalid input type. Please try again!");
-                		sc.next(); 
-                    }
-                    
-                    String askstatus = sc.nextLine();
-                    Status status = null;
-                    try 
-                    {
-                    	status = Status.valueOf(askstatus);
-                    }
-                    catch(IllegalArgumentException e)
-                    {
-                    	System.out.println("Invalid input type!!. Please follow the status format");
-                    }
-                    
-             
-                    ArrayList<String> cast = new ArrayList<String>();  
-                    System.out.println("Enter 2 cast: ");  
-                    for(int i=0; i<2; i++)  
-                    {  
-                        System.out.println("Please enter cast " +(i+1)+ ":");
-                    	cast.add(sc.next());  
-                    }    
-  
-                    
-                    System.out.println("Movie Director: ");
-                    while (!sc.hasNext()) {
-                    	System.out.println("Invalid input type. Please try again!");
-                		sc.next(); 
-                    }
-                    String director = sc.nextLine();
-                    
-                    System.out.println("Movie Sypnopsis: ");
-                    while (!sc.hasNext()) {
-                    	System.out.println("Invalid input type. Please try again!");
-                		sc.next(); 
-                    }
-                    String sypnopsis = sc.nextLine();
-                    
-                    ArrayList<Integer> ratings = new ArrayList<>();
-                    float avg = 0.000f;
-                    Movie newmovie = new Movie(0,title,genre,status,cast,director,sypnopsis,ratings,0.0,avg); //movieID should be size()+1?
-                    
-                    MovieManager.getInstance().addMovie(newmovie);                    
-
+                    SettingsManager.addMovieSettings();
                     break;
                 case 3:
                 	// DELETE MOVIE
