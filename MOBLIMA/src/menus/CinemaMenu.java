@@ -56,6 +56,7 @@ public class CinemaMenu {
         	Cinema cinema = new Cinema(1,choice,showtimes);
 			
 
+			// TODO: Go to SHOWTIME
 
 			BookingMenu.getInstance().displayBookingMenu(movie,cineplex,cinema); // (CINEPLEX, CINEMA, MOVIE)
 

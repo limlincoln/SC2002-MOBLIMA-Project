@@ -1,4 +1,4 @@
-package menu;
+package menus;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -50,7 +50,10 @@ public class MovieMenu {
                 	ArrayList<Movie> movies = new ArrayList<Movie>();
                     int subChoice;
 
-                   // movies = MovieConsolidator.getInstance().getAll();
+                    movies = MovieConsolidator.getInstance().getShowing();
+
+                    // TODO: Display all movies by looping through array list
+
                     do {
                     	
                     	System.out.println("Choose a movie or enter 0 to exit : ");
@@ -61,11 +64,11 @@ public class MovieMenu {
                     	}
                         subChoice = sc.nextInt()-1;
                         
-                        }while(subChoice  < 0 || subChoice >= 10);//movies.size()
+                        }while(subChoice  < 0 || subChoice >= movies.size());
                     	
-                        Movie testmovie = null; // movie selected 
+                        Movie selectedMovie = movies.get(subChoice); 
                         
-                        CineplexMenu.getInstance().displayCineplexMenu(testmovie); // display cineplex instead
+                        CineplexMenu.getInstance().displayCineplexMenu(selectedMovie); // display cineplex instead
                         
                     break;
                     
@@ -343,9 +346,7 @@ public class MovieMenu {
                     float avg = 0.000f;
                     Movie newmovie = new Movie(0,title,genre,status,cast,director,sypnopsis,ratings,0.0,avg); //movieID should be size()+1?
                     
-                    //MovieManager.addMovie(newmovie);
-                    //System.out.println(title+genre+status+director+sypnopsis);
-                    
+                    MovieManager.getInstance().addMovie(newmovie);                    
 
                     break;
                 case 3:

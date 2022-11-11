@@ -38,15 +38,15 @@ public class Booking {
         return TID;
     }
 
-    public void setTID(int tid) {
-        this.TID = tid;
+    public void setTID(int tID) {
+        TID = tID;
     }
 
     public int getMovieID() {
         return movieID;
     }
 
-    public void setMovie(int movieID) {
+    public void setMovieID(int movieID) {
         this.movieID = movieID;
     }
 
@@ -66,6 +66,14 @@ public class Booking {
         this.tickets = tickets;
     }
 
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
     public double getTotalCost() {
         return totalCost;
     }
@@ -73,4 +81,15 @@ public class Booking {
     public void setTotalCost(double totalCost) {
         this.totalCost = totalCost;
     }
+
+	public Object getMovie() {
+		// TODO Auto-generated method stub
+		
+		return null;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+	
 }
