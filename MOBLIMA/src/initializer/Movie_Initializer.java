@@ -153,7 +153,7 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 				castlist.add(cast1);
 				
 				totalsales = data[7];
-				double newsales = Double.parseDouble(totalsales);
+				double newsales = Float.parseFloat(totalsales);
 				
 				ArrayList<Integer> ratinglist = new ArrayList<Integer>();
 				NoOfRating = data[8];
@@ -162,10 +162,11 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 
 		        	ratinglist.add(Integer.parseInt(arr[i]));
 		        }
-				
-				//ratinglist.add(Integer.parseInt(NoOfRating));
+		        
+		        AvgRating = data[9];
+		        Float avgrating = Float.parseFloat(AvgRating);
 								
-				movielist.add(new Movie(movieid, movietitle, genre, moviestatus, castlist, director, synposis, ratinglist, newsales));
+				movielist.add(new Movie(movieid, movietitle, genre, moviestatus, castlist, director, synposis, ratinglist, newsales, avgrating));
 				
 				CountNoOfMovies++;
 			}
@@ -175,77 +176,6 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 		}
 		
 		return movielist;
-		
-	}
-
-	public static void InitializeMovies() {
-		
-		ArrayList<Movie> moviearray = new ArrayList<Movie>();
-		
-		ArrayList<String> castlist = new ArrayList<String>();
-		ArrayList<Integer> ratinglist = new ArrayList<Integer>();
-		
-		String currentDirectory;
-		String newDirectory;
-		
-		String movid, movietitle, type, status;
-		String director, synposis, cast1, cast2;
-		String totalsales, NoOfRating, AvgRating;
-		
-		MovieType genre = MovieType.NORMAL;
-		Status moviestatus = Status.Showing;
-		
-		int CountNoOfMovies = 0;
-		
-		Movie_Initializer movie_init = new Movie_Initializer();
-		currentDirectory = movie_init.getCurrentDirectory();
-		
-		newDirectory = currentDirectory;
-		
-		try {
-			BufferedReader br = new BufferedReader(new FileReader(newDirectory + DBfile));
-			
-			while(true) {
-				final String line = br.readLine();
-				
-				if(line == null) {
-					break;
-				}
-				
-				String []data = line.split("\\|");
-				
-				movid = data[0];
-				int movieid = Integer.parseInt(movid);
-				
-				movietitle = data[1];
-				
-				type = data[2];
-				genre.valueOf(type);
-				
-				status = data[3];
-				moviestatus.valueOf(status);
-				
-				status = data[3];
-				director = data[4];
-				synposis = data[5];
-				
-				cast1 = data[6];				
-				castlist.add(cast1);
-								
-				totalsales = data[7];
-				double newsales = Double.parseDouble(totalsales);
-				
-				NoOfRating = data[8];
-				ratinglist.add(Integer.parseInt(NoOfRating));
-				
-				moviearray.add(new Movie(movieid, movietitle, genre, moviestatus, castlist, director, synposis, ratinglist, newsales));
-				
-				CountNoOfMovies++;
-			}
-			
-		} catch (Exception e) {
-			
-		}
 		
 	}
 	
