@@ -12,11 +12,19 @@ import enums.TypeOfDay;
 public class DateManager {
     // ADD A GET INSTANCE
     private LocalDateTime exactDateTime = LocalDateTime.now();
+    private static DateManager single_instance = null;
 
     public DateManager() {}
 
     public DateManager(LocalDateTime exactDateTime) {
         this.exactDateTime = exactDateTime;
+    }
+
+    public static DateManager getInstance()
+    {
+        if (single_instance == null)
+            single_instance = new DateManager();
+        return single_instance;
     }
 
     public static int getCurrentDateTimeFormatted(String format) {
