@@ -2,11 +2,16 @@ package menus;
 import managers.PricingManager;
 import managers.SettingsManager;
 import managers.MovieManager;
+import java.util.Scanner;
+
 import entities.Movie;
 import enums.*;
 
 public class SettingsMenu {
-    Scanner sc = new Scanner(System.in);
+    private static SettingsMenu single_instance = null;
+	Scanner sc = new Scanner(System.in);
+
+	private SettingsMenu(){};
     
     public static SettingsMenu getInstance()
     {
