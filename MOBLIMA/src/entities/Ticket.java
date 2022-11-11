@@ -45,6 +45,14 @@ public class Ticket implements IPrice {
     }
 
     // GETTERS & SETTERS
+    public int getTicketID() {
+        return ticketID;
+    }
+
+    public void setTicketID() {
+        this.ticketID = ticketID;
+    }
+
     public DayOfWeek getDayOfWeek() {
         return dayOfWeek;
     }

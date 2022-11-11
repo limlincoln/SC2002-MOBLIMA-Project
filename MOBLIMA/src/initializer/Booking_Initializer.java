@@ -4,19 +4,11 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import entities.Booking;
-import entities.Movie;
 import entities.Customer;
 import entities.Ticket;
-import enums.DayOfWeek;
-import enums.Status;
-import enums.TimeOfDay;
-import enums.TypeOfDay;
-import enums.AgeGroup;
 
 public class Booking_Initializer extends GetDatabaseDirectory {
 	
@@ -55,17 +47,10 @@ public class Booking_Initializer extends GetDatabaseDirectory {
 		String newDirectory;
 
 		String tid;
-		String movid, rating, customerid;
-		String read_username, read_phonenumber, email;
+		String movid, ratingStr, customerid;
+		String customerIDStr, userNameStr, phoneNumberStr, emailStr;
 		String ticketdetails;
 		String cost;
-		
-		DayOfWeek dayofweek = null;
-		TimeOfDay timeofday = null;
-		AgeGroup agegroup = null;
-		TypeOfDay typeOfDay = null;
-		LocalDateTime exactDateTime = null;
-		String seat = null;
 
 		int CountNoOfBooking = 0;
 
@@ -85,49 +70,46 @@ public class Booking_Initializer extends GetDatabaseDirectory {
 				}
 
 				String []data = line.split("\\|");
+				tid = data[0];
+				int TID = Integer.parseInt(tid);
 				
+				movid = data[1];
+				int movieid = Integer.parseInt(movid);
+				
+				customerIDStr = data[2];
+				int customerID = Integer.parseInt(customerIDStr);
 
+				userNameStr = data[3];
 				
-					tid = data[0];
-					int TID = Integer.parseInt(tid);
-					
-					movid = data[1];
-					int movieid = Integer.parseInt(movid);
-					
-					customerid = data[2];
-					int customerID = Integer.parseInt(customerid);
-					
-					read_username = data[3];
-					email = data[4];
-					
-					read_phonenumber = data[5];
-					int phonenumber = Integer.parseInt(read_phonenumber);
-					
-					ticketdetails = data[6];
-					String[] arr=ticketdetails.replaceAll("\\[|\\]| ", "").split(",");
-					
-					ArrayList<Ticket> userTickets = new ArrayList<Ticket>();
-			        for(int i=0;i<arr.length;i++){
-						TicketInitializer
-			        }
-			        
-			        cost = data[7];
-			        double totalcost = Double.parseDouble(cost);
+				phoneNumberStr = data[4];
 
-					
-					Customer customer_booking = new Customer(customerID, read_username, email, Integer.toString(phonenumber));
-					
-					Ticket ticket = new Ticket(dayofweek, timeofday, agegroup);
-					
-					ArrayList<Ticket> ticketlist = new ArrayList<Ticket>();
-					ticketlist.add(ticket);
-					
-					bookinglist.add(new Booking(TID, movieid, customer_booking, ticketlist, totalcost));
-					CountNoOfBooking++;
+				emailStr = data[5];
 				
+				ticketdetails = data[6];
+				String[] arr=ticketdetails.replaceAll("\\[|\\]| ", "").split(",");
+
+				ArrayList<Ticket> userTickets = new ArrayList<Ticket>();
+				for(Ticket ticket: tickets) {
+					for(int i = 0; i < arr.length; i++) {
+						if(ticket.getTicketID() == Integer.parseInt(arr[i])) {
+							userTickets.add(ticket);
+						}
+					}
+				}
+				cost = data[7];
+				double totalcost = Double.parseDouble(cost);
+ 
+				ratingStr = data[8];
+				int rating = Integer.parseInt(ratingStr);
 				
-				System.out.println(data[0] + ": " + data[5]);
-			}
+				Customer customer_booking = new Customer(customerID, userNameStr, emailStr, phoneNumberStr);
+				
+				bookinglist.add(new Booking(TID, movieid, customer_booking, userTickets, totalcost, rating));
+				CountNoOfBooking++;
+			
+			
+			System.out.println(data[0] + ": " + data[5]);
+		}
 
 			
 			System.out.println("No of movies: " + CountNoOfBooking);
@@ -158,7 +140,11 @@ public static void WriteBookingHistoryFile(ArrayList<Booking> bookinglist) throw
 				BufferedWriter buffer = new BufferedWriter(write_bookinglisting);
 				
 				for(Booking booking: bookinglist) {
-					new_booking = booking.getTID() + "|" + booking.getMovie() + "|" + booking.getCustomer() + "|" + booking.getTickets() + "|" + booking.getTotalCost();
+					String ticketIDs = "";
+					for(Ticket ticket: booking.getTickets()) {
+						ticketIDs += Integer.toString(ticket.getTicketID()) + ",";
+					}
+					new_booking = booking.getTID() + "|" + booking.getMovieID() + "|" + booking.getCustomer().getCustomerID() + "|" + booking.getCustomer().getUserName() + "|" + booking.getCustomer().getPhoneNumber() + "|" + booking.getCustomer().getEmail() + "|" + "[" + ticketIDs + "]" + "|" + booking.getTotalCost();
 					buffer.write(new_booking);
 					buffer.newLine();
 				}
@@ -167,14 +153,5 @@ public static void WriteBookingHistoryFile(ArrayList<Booking> bookinglist) throw
 			
 		}
 		
-	}
-
-	public static void main(String[] args) throws Exception {
-
-		CreateBookingHistoryFile();
-		//GetNoOfBooking("testuser1", "12345678");
-		//GetNoOfBooking("testuser2", "12345678");
-		GetBooking();
-		//WriteBookingHistoryFile("TIDXXXYYYYMMDDhhmm", "05", "0.32", "testuser3", "12345678", "test@email");
 	}
 }

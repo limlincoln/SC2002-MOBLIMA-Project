@@ -43,13 +43,15 @@ public class Booking {
      * @param customer The Customer who booked this Booking
      * @param tickets The List of Tickets booked for this Booking
      * @param totalCost The total cost for this Booking
+     * @param rating The rating given to this movie
      */
-    public Booking(int tid, int movieID, Customer customer, ArrayList<Ticket> tickets, double totalCost) {
+    public Booking(int tid, int movieID, Customer customer, ArrayList<Ticket> tickets, double totalCost, int rating) {
         this.TID = tid;
         this.movieID = movieID;
         this.customer = customer;
         this.tickets = tickets;
         this.totalCost = totalCost;
+        this.rating = rating;
     }
 
     /**
@@ -64,7 +66,8 @@ public class Booking {
             "Purchased By: "+ customer.getUserName() +
             "\n" + customer.getPhoneNumber() +
             "\n" + customer.getEmail() + "\n" +
-            "Total Cost: " + totalCost
+            "Total Cost: " + totalCost + "\n" +
+            "Rating: " + rating
         );
     }
 
