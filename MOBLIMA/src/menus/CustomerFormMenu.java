@@ -7,6 +7,11 @@ import entities.Customer;
 import managers.DateManager;
 
 public class CustomerFormMenu {
+
+    /**
+     * Customer details form
+     * @return
+     */
     public static Customer startFullForm() {
         String userName;
         String phoneNumber;
@@ -29,6 +34,10 @@ public class CustomerFormMenu {
         return newCustomer;
     }
 
+    /**
+     * Customer username form
+     * @return
+     */
     public static String startUserNameForm() {
         String userName;
 

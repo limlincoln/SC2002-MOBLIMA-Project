@@ -17,6 +17,9 @@ public class ShowTimeSelectorMenu implements ISelectorMenu<LocalDateTime> {
         return single_instance;
     }
 
+    /**
+     * Select showtime
+     */
     public LocalDateTime startSelector(ArrayList<LocalDateTime> showtimes, String heading) {
         Scanner sc = new Scanner(System.in);
         System.out.println(	"================ " +heading+ " =================");

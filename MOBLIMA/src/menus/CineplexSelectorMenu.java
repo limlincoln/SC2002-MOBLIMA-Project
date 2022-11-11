@@ -18,6 +18,9 @@ public class CineplexSelectorMenu implements ISelectorMenu<Cineplex> {
         return single_instance;
     }
 
+    /**
+     * Select cineplex
+     */
     public Cineplex startSelector(ArrayList<Cineplex> cineplex, String heading) {
         Scanner sc = new Scanner(System.in);
         System.out.println(	"================ " +heading+ " =================");
