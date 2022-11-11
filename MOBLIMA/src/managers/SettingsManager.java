@@ -153,13 +153,13 @@ public class SettingsManager {
 					String name;
 					System.out.println("Please enter the Name: ");
 					name = sc.next();
-					moviesss.removeMovieByName(name);
+					MovieManager.getInstance().removeMovieByName(name);
 					break;
 				case 2:
 					int id;
 					System.out.println("Please enter the ID: ");
 					id = sc.nextInt();
-					moviesss.removeMovieByID(id);
+					MovieManager.getInstance().removeMovieByID(id);
 					break;
 				case 0:
 					System.out.println("Back to Settings Menu......");
@@ -200,7 +200,7 @@ public class SettingsManager {
 
 		Holiday newhol = new Holiday(name,date,dayOfWeeks);
 		
-		HolidayManager.addHoliday(newhol);
+		HolidayManager.getInstance().addHoliday(newhol);
 	}
 
 	public void removeExistingHoliday(){
@@ -213,5 +213,5 @@ public class SettingsManager {
 		//find date and dayofweek based on name
 
 		Holiday newhol = new Holiday(name,date,dayOfWeeks);
-		HolidayManager.removeHoliday(newhol);
+		HolidayManager.getInstance().removeHoliday(newhol);
 	}
