@@ -8,6 +8,13 @@ import enums.*;
 public class SettingsMenu {
     Scanner sc = new Scanner(System.in);
     
+    public static SettingsMenu getInstance()
+    {
+        if (single_instance == null)
+            single_instance = new SettingsMenu();
+        return single_instance;
+    }
+
     /**
      * Displays the main settings menu
     */
@@ -229,11 +236,11 @@ public class SettingsMenu {
                 case 1:
                 	// EDIT MOVIE
 					// MOVIE EDITOR MENU
-						// ASK WHAT MOVIE (LIST ALL MOVIES)
-							// ASK WHICH ATTRIBUTE TO CHANGE
-							// ASK FOR VALUE
-							// CALL MOVIEMANAGER(MOVIE, ATTRIBUTE, VALUE), VALIDATE IN MOVIEMANAGER
-							// CHECK RESPONSE FROM MOVIEMANGER, REPEAT IF NEEDED
+					// ASK WHAT MOVIE (LIST ALL MOVIES)
+                    // ASK WHICH ATTRIBUTE TO CHANGE
+                    // ASK FOR VALUE
+                    // CALL MOVIEMANAGER(MOVIE, ATTRIBUTE, VALUE), VALIDATE IN MOVIEMANAGER
+                    // CHECK RESPONSE FROM MOVIEMANGER, REPEAT IF NEEDED
                 	SettingsManager.editMovieSettings():
                     break;
                 case 2:
