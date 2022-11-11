@@ -10,6 +10,12 @@ import enums.AgeGroup;
 
 public class TicketManager {
     // CHANGE TO HASHMAP
+    /**
+     * Generate list of tickets available
+     * @param exactDateTime
+     * @param seats
+     * @return
+     */
     public static ArrayList<Ticket> generateTickets(LocalDateTime exactDateTime, HashMap<String, AgeGroup> seats) {
         ArrayList<Ticket> tickets = new ArrayList<Ticket>();
 

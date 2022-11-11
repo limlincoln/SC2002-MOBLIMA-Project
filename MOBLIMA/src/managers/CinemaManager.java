@@ -37,6 +37,10 @@ public class CinemaManager {
     }
 
     // Methods 
+    /**
+     * Add new cinema to existing cinema
+     * @param cine
+     */
     public void addCinema(Cinema cine){
         for(int x = 0; x < cinemas.size(); x++){
             Cinema current = cinemas.get(x);
@@ -49,6 +53,10 @@ public class CinemaManager {
         System.out.println("Cinema successfully added!");
     }
 
+    /**
+     * Search for cinema and remove from existing
+     * @param cineID
+     */
     public void removeCinemaByID(int cineID){
         for(int x = 0; x < cinemas.size(); x++){
             if(cinemas.get(x).getCinemaID() == cineID){
@@ -59,14 +67,4 @@ public class CinemaManager {
         }
         System.out.println("Movie with ID: "+ cineID + " does not exist!");
     } 
-    
-    public void removeCinemaByName(String cineName){
-        for(int x = 0; x < cinemas.size(); x++){
-            if(cinemas.get(x).getCinemaName() == cineName){
-                cinemas.remove(x);
-                System.out.println("Successfully removed: "+ cineName);
-            }
-        }
-        System.out.println(cineName+ " does not exist!");
-    }  
 }

@@ -8,7 +8,6 @@ import managers.PricingManager;
 import managers.ShowTimeManager;
 
 public class Cinema implements IPrice {
-    private String CinemaName;
     private int CinemaID;
     private CinemaType CinemaType;
     private ArrayList<ShowTime> showtimes;

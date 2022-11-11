@@ -30,12 +30,20 @@ public class DateManager {
         return single_instance;
     }
 
+    /**
+     * Initialises each show time slot
+     */
     private static void initializeShowTimeSlots() {
         for(int i = 0; i < showTimeSlots.length; i++) {
             showTimeSlots[i] = LocalTime.of(i*3, 0);
         } 
     }
     
+    /**
+     * Format date and time
+     * @param format
+     * @return
+     */
     public static int getCurrentDateTimeFormatted(String format) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern(format);
         LocalDateTime now = LocalDateTime.now();
@@ -43,16 +51,29 @@ public class DateManager {
         return Integer.parseInt(dtf.format(now));
     }
 
+    /**
+     * Get current day of the week
+     * @return
+     */
     public DayOfWeek getDayOfWeek() {
         return DayOfWeek.values()[exactDateTime.getDayOfWeek().ordinal()];
     }
 
+    /**
+     * Check if input day is a weekend
+     * @param day
+     * @return
+     */
     public boolean isWeekend(DayOfWeek day) {
         if(day == DayOfWeek.SAT || day == DayOfWeek.SUN)
             return true;
         return false;
     }
 
+    /**
+     * Get current time of the day
+     * @return
+     */
     public TimeOfDay getTimeOfDay() {
 
         LocalTime sixPM = LocalTime.of(18, 0);
@@ -64,6 +85,10 @@ public class DateManager {
         return TimeOfDay.AFTER_6;
     }
 
+    /**
+     * Get current type of day
+     * @return
+     */
     public TypeOfDay getTypeOfDay() {
         if(HolidayManager.isHoliday(exactDateTime.toLocalDate())) 
         return TypeOfDay.PUBLIC_HOLIDAY;
@@ -74,6 +99,12 @@ public class DateManager {
         return TypeOfDay.WEEKDAY;
     }
 
+    /**
+     * Get exact showtime slot of the day and timeslot
+     * @param day
+     * @param timeSlotIndex
+     * @return
+     */
     public LocalDateTime getExactShowTime(DayOfWeek day, int timeSlotIndex) {
         exactDateTime = LocalDateTime.now().with(showTimeSlots[timeSlotIndex]);
 
@@ -92,6 +123,11 @@ public class DateManager {
         }
     }
 
+    /**
+     * Get show time slot index based on the time
+     * @param time
+     * @return
+     */
     public int getTimeSlotIndex(LocalTime time) {
         for(int i = 0; i < showTimeSlots.length; i++) {
             if(time.compareTo(showTimeSlots[i]) == 0) {
