@@ -8,7 +8,6 @@ import enums.*;
 public class SettingsMenu {
     Scanner sc = new Scanner(System.in);
     
-    // Settings Display Menuy
     /**
      * Displays the main settings menu
      */
@@ -85,7 +84,6 @@ public class SettingsMenu {
 		} while (choice!=0);
     }
 
-	// View Price Settings
     /**
      * Edit the respective Price Settings
      */
@@ -139,7 +137,6 @@ public class SettingsMenu {
 		} while (choice!=0);
 	}
 
-	// View Price Settings
     /**
      * View the respective price settings
      */
@@ -289,8 +286,6 @@ public class SettingsMenu {
 	        } while (choice != 0);
 		}
 
-
-    // Holiday Settings
 
     /**
      * View all Holiday Settings
