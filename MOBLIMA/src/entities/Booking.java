@@ -38,15 +38,15 @@ public class Booking {
         return TID;
     }
 
-    public void setTID(int tid) {
-        this.TID = tid;
+    public void setTID(int tID) {
+        TID = tID;
     }
 
     public int getMovieID() {
         return movieID;
     }
 
-    public void setMovie(int movieID) {
+    public void setMovieID(int movieID) {
         this.movieID = movieID;
     }
 
@@ -64,6 +64,14 @@ public class Booking {
 
     public void setTickets(ArrayList<Ticket> tickets) {
         this.tickets = tickets;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     public double getTotalCost() {

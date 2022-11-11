@@ -153,7 +153,7 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 				castlist.add(cast1);
 				
 				totalsales = data[7];
-				double newsales = Double.parseDouble(totalsales);
+				double newsales = Float.parseFloat(totalsales);
 				
 				ArrayList<Integer> ratinglist = new ArrayList<Integer>();
 				NoOfRating = data[8];
@@ -162,10 +162,11 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 
 		        	ratinglist.add(Integer.parseInt(arr[i]));
 		        }
-				
-				//ratinglist.add(Integer.parseInt(NoOfRating));
+		        
+		        AvgRating = data[9];
+		        Float avgrating = Float.parseFloat(AvgRating);
 								
-				movielist.add(new Movie(movieid, movietitle, genre, moviestatus, castlist, director, synposis, ratinglist, newsales));
+				movielist.add(new Movie(movieid, movietitle, genre, moviestatus, castlist, director, synposis, ratinglist, newsales, avgrating));
 				
 				CountNoOfMovies++;
 			}
