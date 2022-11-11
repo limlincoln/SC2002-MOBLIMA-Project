@@ -5,6 +5,10 @@ package entities;
  */
 public class ShowTime {
     /**
+     * ID for this showtime
+     */
+    private int showTimeID;
+    /**
      * array containing movie IDs
      * index indicated a showtime slot in the day
      */
@@ -35,6 +39,14 @@ public class ShowTime {
     /** 
      * Getters & Setters
      */
+    public int getShowTimeID() {
+        return showTimeID;
+    }
+
+    public void setShowTimeID(int showTimeID) {
+        this.showTimeID = showTimeID;
+    }
+
     public int[] getShowTime() {
         return this.showtime;
     }
