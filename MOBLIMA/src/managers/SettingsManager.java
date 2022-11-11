@@ -103,6 +103,8 @@ public class SettingsManager {
 	// 
 
 
+	
+	/* 
 	// MOVIE FUNCTIONS
 	// display movie  - DONE
 	// search movie - 
@@ -169,7 +171,7 @@ public class SettingsManager {
 					break;
 			}
 		} while (choice != 0);
-	}
+	}*/
 
 
 
