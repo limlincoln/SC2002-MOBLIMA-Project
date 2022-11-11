@@ -1,7 +1,6 @@
 package entities;
 
 import java.util.ArrayList;
-import enums.CinemaType;
 import enums.Status;
 
 public class Movie {
