@@ -18,6 +18,9 @@ public class BookingSelectorMenu implements ISelectorMenu<Booking> {
         return single_instance;
     }
 
+    /**
+     * Select Booking to rate
+     */
     public Booking startSelector(ArrayList<Booking> bookings, String heading) {
         Scanner sc = new Scanner(System.in);
         System.out.println(	"================ " +heading+ " =================");

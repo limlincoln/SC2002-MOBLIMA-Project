@@ -17,7 +17,9 @@ public class RatingMenu {
         return single_instance;
     }
 
-
+    /**
+     * Customer app rating function
+     */
 	public void displayRatingMenu() {
 		int choice;		
 		

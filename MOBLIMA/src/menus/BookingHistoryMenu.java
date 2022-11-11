@@ -21,7 +21,9 @@ public class BookingHistoryMenu {
         return single_instance;
     }
 
-
+    /**
+     * Display Booking History Menu
+     */
     public void displayBookingHistoryMenu() { 
         Booking selectedBooking = null;
         do {

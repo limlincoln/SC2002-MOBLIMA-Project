@@ -9,6 +9,12 @@ import java.util.ArrayList;
 public class BookingManager {
     private static ArrayList<Booking> bookingHistory = new ArrayList<Booking>();
 
+    /**
+     * Generates the ID
+     * @param cinemaID
+     * @param dateTime
+     * @return
+     */
     private static int generateTID(int cinemaID, int dateTime) {
         String strCinemaID = Integer.toString(cinemaID);
         String strDateTime = Integer.toString(dateTime);
@@ -18,6 +24,15 @@ public class BookingManager {
         return Integer.parseInt(strTID);
     }
 
+    /**
+     * Creates Booking for booking movie
+     * @param cinemaID
+     * @param movieID
+     * @param customer
+     * @param tickets
+     * @param totalCost
+     * @return
+     */
     public static boolean createBooking(int cinemaID, int movieID, Customer customer, ArrayList<Ticket> tickets, double totalCost) {
         int tid = generateTID(cinemaID, DateManager.getCurrentDateTimeFormatted("yyyyMMddHHmm"));
 
@@ -26,6 +41,11 @@ public class BookingManager {
         return true;
     }  
 
+    /**
+     * Get the booking history by username
+     * @param username
+     * @return
+     */
     public static ArrayList<Booking> getBookingHistoryByUsername(String username) {
         ArrayList<Booking> userBookingHistory = new ArrayList<Booking>();
 
@@ -38,6 +58,11 @@ public class BookingManager {
         return userBookingHistory;
     }
 
+    /**
+     * Get unrated bookings by usernames
+     * @param username
+     * @return
+     */
     public static ArrayList<Booking> getUnratedBookingsByUsername(String username) {
         ArrayList<Booking> unratedBookings = new ArrayList<Booking>();
 
@@ -52,6 +77,11 @@ public class BookingManager {
         return unratedBookings;
     }
 
+    /**
+     * Get Rate Bookings by Username
+     * @param usename
+     * @return
+     */
     public static ArrayList<Booking> getRatedBookingsByUsername(String usename) {
         ArrayList<Booking> ratedBookings = new ArrayList<Booking>();
 

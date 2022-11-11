@@ -35,7 +35,13 @@ public class BookingMenu {
         return single_instance;
     }
 
-  
+    /**
+     * Display Booking menu
+     * @param movie
+     * @param cinema
+     * @param seats
+     * @param showTime
+     */
     public void displayBookingMenu(Movie movie, Cinema cinema, Seats seats, LocalDateTime showTime) { 
         
         // CALL SEAT SELECTOR (MIGHT RETURN NULL)

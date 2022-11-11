@@ -19,6 +19,9 @@ public class LoginMenu {
         return single_instance;
     }
     
+	/**
+	 * Main Staff App interface
+	 */
     public void displayLoginMenu() {
     	boolean loggedIn = false;
     	boolean quit = false;

@@ -17,6 +17,9 @@ public class MovieSelectorMenu implements ISelectorMenu<Movie> {
         return single_instance;
     }
 
+    /**
+     * Select movie
+     */
     public Movie startSelector(ArrayList<Movie> movies, String heading) {
         Scanner sc = new Scanner(System.in);
         System.out.println(	"================ " +heading+ " =================");

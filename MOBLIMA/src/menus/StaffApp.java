@@ -75,8 +75,9 @@ public class StaffApp {
 //		} while (loggedIn == false && quit == false);
 //    }
     
-    
-
+    /**
+	 * Logged in meny for staff app
+	 */
     public void displayLoggedInMenu() { //TDOO: CREATE NEW MENU FOR THIS
 		int choice;
 		

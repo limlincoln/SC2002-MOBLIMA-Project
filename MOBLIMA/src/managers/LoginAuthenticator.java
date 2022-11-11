@@ -26,7 +26,12 @@ public class LoginAuthenticator {
     }
 	
     
-    // Login Method
+    /**
+	 * Login authenticator to test for correct login credentials
+	 * @param username
+	 * @param password
+	 * @return
+	 */
     public boolean login(String username, String password) {
         try {
 			String rootFolderName = "SC2002Assignment";	

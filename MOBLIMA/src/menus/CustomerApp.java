@@ -18,7 +18,9 @@ public class CustomerApp {
         return single_instance;
     }
 
-
+    /**
+     * Main Customer App
+     */
 	public void displayCustomerMenu() {
 		int choice;		
 		
