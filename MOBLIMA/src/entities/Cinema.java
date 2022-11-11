@@ -2,16 +2,23 @@ package entities;
 
 import java.util.ArrayList;
 
-public class Cinema{
+import enums.CinemaType;
+import managers.PricingManager;
+
+public class Cinema implements IPrice {
     private String CinemaName;
     private int CinemaID;
-    private int CinemaType;
+    private CinemaType CinemaType;
     private ArrayList<ShowTime> showtimes;
     
-    public Cinema(int cID, int cType, ArrayList<ShowTime> sTime){
+    public Cinema(int cID, CinemaType cType, ArrayList<ShowTime> sTime){
         this.CinemaID = cID;
         this.CinemaType = cType;
         this.showtimes = sTime;
+    }
+
+    public double getPrice() {
+        return PricingManager.getPrice(CinemaType);
     }
 
     // TODO: IMPLEMENT
@@ -28,11 +35,11 @@ public class Cinema{
         this.CinemaID = CinemaID;
     }
 
-    public int getCinemaType() {
+    public CinemaType getCinemaType() {
         return this.CinemaType;
     }
 
-    public void setCinemaType(int CinemaType) {
+    public void setCinemaType(CinemaType CinemaType) {
         this.CinemaType = CinemaType;
     }
 

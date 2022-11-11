@@ -2,27 +2,27 @@ package managers;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 import entities.Ticket;
 import enums.AgeGroup;
 
 public class TicketManager {
     // CHANGE TO HASHMAP
-    public ArrayList<Ticket> generateTickets(LocalDateTime exactDateTime, ArrayList<String> seats, ArrayList<AgeGroup> ageGroups) {
-        if(seats.size() != ageGroups.size()) return null;
-
+    public static ArrayList<Ticket> generateTickets(LocalDateTime exactDateTime, HashMap<String, AgeGroup> seats) {
         ArrayList<Ticket> tickets = new ArrayList<Ticket>();
 
         DateManager dateManager = new DateManager(exactDateTime);
 
-        for(int i = 0; i < seats.size(); i++) {
+        for(Entry<String, AgeGroup> entry: seats.entrySet()) {
             Ticket newTicket = new Ticket(
                 dateManager.getDayOfWeek(),
                 dateManager.getTimeOfDay(),
                 dateManager.getTypeOfDay(),
                 exactDateTime,
-                ageGroups.get(i),
-                seats.get(i)
+                entry.getValue(),
+                entry.getKey()
             );
 
             tickets.add(newTicket);

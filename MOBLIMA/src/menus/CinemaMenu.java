@@ -1,4 +1,4 @@
-package menu;
+package menus;
 import java.time.format.DateTimeFormatter; 
 import java.util.Scanner;
 
