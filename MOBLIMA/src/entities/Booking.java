@@ -81,15 +81,4 @@ public class Booking {
     public void setTotalCost(double totalCost) {
         this.totalCost = totalCost;
     }
-
-	public Object getMovie() {
-		// TODO Auto-generated method stub
-		
-		return null;
-	}
-
-	public void setRating(int rating) {
-		this.rating = rating;
-	}
-	
 }

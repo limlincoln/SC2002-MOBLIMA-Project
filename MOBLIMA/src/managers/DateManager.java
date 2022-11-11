@@ -10,23 +10,32 @@ import enums.TimeOfDay;
 import enums.TypeOfDay;
 
 public class DateManager {
-    // ADD A GET INSTANCE
-    private LocalDateTime exactDateTime = LocalDateTime.now();
     private static DateManager single_instance = null;
+    private static LocalTime showTimeSlots[] = new LocalTime[8];
+    private LocalDateTime exactDateTime = LocalDateTime.now();
 
-    public DateManager() {}
+    public DateManager() {
+        initializeShowTimeSlots();
+    }
 
     public DateManager(LocalDateTime exactDateTime) {
         this.exactDateTime = exactDateTime;
+        initializeShowTimeSlots();
     }
-
+    
     public static DateManager getInstance()
     {
         if (single_instance == null)
-            single_instance = new DateManager();
+        single_instance = new DateManager();
         return single_instance;
     }
 
+    private static void initializeShowTimeSlots() {
+        for(int i = 0; i < showTimeSlots.length; i++) {
+            showTimeSlots[i] = LocalTime.of(i*3, 0);
+        } 
+    }
+    
     public static int getCurrentDateTimeFormatted(String format) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern(format);
         LocalDateTime now = LocalDateTime.now();
@@ -57,11 +66,38 @@ public class DateManager {
 
     public TypeOfDay getTypeOfDay() {
         if(HolidayManager.isHoliday(exactDateTime.toLocalDate())) 
-            return TypeOfDay.PUBLIC_HOLIDAY;
-
+        return TypeOfDay.PUBLIC_HOLIDAY;
+        
         if(isWeekend(getDayOfWeek()))
-            return TypeOfDay.WEEKEND;
+        return TypeOfDay.WEEKEND;
         
         return TypeOfDay.WEEKDAY;
+    }
+
+    public LocalDateTime getExactShowTime(DayOfWeek day, int timeSlotIndex) {
+        exactDateTime = LocalDateTime.now().with(showTimeSlots[timeSlotIndex]);
+
+        DayOfWeek today = getDayOfWeek();
+
+        int difference = day.compareTo(today);
+
+        if(difference > 0) {
+            return exactDateTime.plusDays(difference);
+        } 
+        else if (difference < 0) {
+            return exactDateTime.plusDays(7 + difference);
+        } 
+        else {
+            return exactDateTime;
+        }
+    }
+
+    public int getTimeSlotIndex(LocalTime time) {
+        for(int i = 0; i < showTimeSlots.length; i++) {
+            if(time.compareTo(showTimeSlots[i]) == 0) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
