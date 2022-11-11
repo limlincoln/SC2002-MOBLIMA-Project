@@ -17,6 +17,7 @@ public class TicketManager {
 
         for(Entry<String, AgeGroup> entry: seats.entrySet()) {
             Ticket newTicket = new Ticket(
+                generateTicketID(),
                 dateManager.getDayOfWeek(),
                 dateManager.getTimeOfDay(),
                 dateManager.getTypeOfDay(),
@@ -29,5 +30,9 @@ public class TicketManager {
         }
 
         return tickets;
+    }
+
+    private static int generateTicketID() {
+        return DateManager.getCurrentDateTimeFormatted("yyyyMMddhhmm");
     }
 }

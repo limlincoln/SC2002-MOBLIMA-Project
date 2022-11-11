@@ -11,6 +11,7 @@ import enums.TypeOfDay;
 import managers.PricingManager;
 
 public class Ticket implements IPrice {
+    private int ticketID;
     private DayOfWeek dayOfWeek;
     private TimeOfDay timeOfDay; 
     private AgeGroup ageGroup;
@@ -19,6 +20,7 @@ public class Ticket implements IPrice {
     private String seat;
 
     public Ticket(
+        int ticketID,
         DayOfWeek dayOfWeek, 
         TimeOfDay timeOfDay, 
         TypeOfDay typeOfDay, 
@@ -26,6 +28,7 @@ public class Ticket implements IPrice {
         AgeGroup ageGroup, 
         String seat
     ) {
+        this.ticketID = ticketID;
         this.dayOfWeek = dayOfWeek;
         this.timeOfDay = timeOfDay;
         this.ageGroup = ageGroup;

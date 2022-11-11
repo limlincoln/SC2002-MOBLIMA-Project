@@ -47,7 +47,7 @@ public class Booking_Initializer extends GetDatabaseDirectory {
 
 	}
 
-	public static ArrayList<Booking> GetBooking() {
+	public static ArrayList<Booking> GetBooking(ArrayList<Ticket> tickets) {
 
 		ArrayList<Booking> bookinglist = new ArrayList<Booking>();
 		
@@ -105,8 +105,10 @@ public class Booking_Initializer extends GetDatabaseDirectory {
 					
 					ticketdetails = data[6];
 					String[] arr=ticketdetails.replaceAll("\\[|\\]| ", "").split(",");
+					
+					ArrayList<Ticket> userTickets = new ArrayList<Ticket>();
 			        for(int i=0;i<arr.length;i++){
-
+						TicketInitializer
 			        }
 			        
 			        cost = data[7];
