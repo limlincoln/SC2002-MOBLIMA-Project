@@ -5,10 +5,27 @@ import java.time.LocalDate;
 import enums.DayOfWeek;
 
 public class Holiday {
+    /**
+     * the name given for this Holiday
+     */
     private String name;
+
+    /**
+     * the date when this Holiday occurs
+     */
     private LocalDate date;
+
+    /**
+     * the day of the Week this holiday is in
+     */
     private DayOfWeek dayOfWeek;
 
+    /**
+     * The Constructor for the Holiday Class
+     * @param name the name given for this Holiday 
+     * @param date the date when this Holiday occurs
+     * @param dayOfWeek the day of the Week this holiday is in
+     */
     public Holiday(String name, LocalDate date, DayOfWeek dayOfWeek) {
         this.name = name;
         this.date = date;
