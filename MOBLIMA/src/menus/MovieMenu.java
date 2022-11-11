@@ -50,7 +50,7 @@ public class MovieMenu {
                     movies = MovieConsolidator.getInstance().getShowing();
                     
                     heading = "MOVIES";
-                    selectedMovie = MovieSelectorMenu.startMovieSelector(movies, heading);
+                    selectedMovie = MovieSelectorMenu.getInstance().startSelector(movies, heading);
 
                     if(selectedMovie != null) {
                         CineplexMenu.getInstance().displayCineplexMenu(selectedMovie);
@@ -67,7 +67,7 @@ public class MovieMenu {
                             heading = "TOP 5 MOVIES BY SALES";
                             topmovies = MovieConsolidator.getInstance().getTop5BySales();
 
-                            selectedMovie = MovieSelectorMenu.startMovieSelector(topmovies, heading);
+                            selectedMovie = MovieSelectorMenu.getInstance().startSelector(topmovies, heading);
                             
                             if (selectedMovie != null) {
                                 CineplexMenu.getInstance().displayCineplexMenu(selectedMovie); 
@@ -78,7 +78,7 @@ public class MovieMenu {
                             heading = "TOP 5 MOVIES BY RATING";
                             topmovies = MovieConsolidator.getInstance().getTop5ByRating();
 
-                            selectedMovie = MovieSelectorMenu.startMovieSelector(topmovies, heading);
+                            selectedMovie = MovieSelectorMenu.getInstance().startSelector(topmovies, heading);
                             
                             if (selectedMovie != null) {
                                 CineplexMenu.getInstance().displayCineplexMenu(selectedMovie); 

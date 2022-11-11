@@ -35,26 +35,6 @@ public class BookingMenu {
         return single_instance;
     }
 
-    public Customer showCustomerDetailsForm() {
-        String userName;
-        String phoneNumber;
-        String email;
-
-        System.out.println("Enter Username: ");
-        userName = sc.nextLine();
-
-        System.out.println("Enter Phone Number: ");
-        phoneNumber = sc.nextLine();
-
-        System.out.println("Email Address: ");
-        email = sc.nextLine();
-
-        Random rand = new Random();
-        Customer newCustomer = new Customer(DateManager.getCurrentDateTimeFormatted("hhmmss")+rand.nextInt(1000), userName, email, phoneNumber);
-
-        return newCustomer;
-    }
-
   
     public void displayBookingMenu(Movie movie, Cinema cinema, Seats seats, LocalDateTime showTime) { 
         
@@ -75,11 +55,11 @@ public class BookingMenu {
         System.out.println("Total Price: "+totalPrice);
 
 
-        Customer newCustomer = showCustomerDetailsForm();
+        Customer newCustomer = CustomerFormMenu.startFullForm();
     
         BookingManager.createBooking(cinema.getCinemaID(), movie.getMovieID(), newCustomer, tickets, totalPrice);
 
-        System.out.println("BOOKEDJFHJDKJJHKJKSAKJAS!!!");
+        System.out.println("Booking Complete!");
 
         // SEATSELECTOR.STARTINSTANCE(SEATS): ARRAY OF SELECTED SEAT INFO
         // CALL TICKETMANAGER: ARRAY OF TICKETS + LOCALDATETIME

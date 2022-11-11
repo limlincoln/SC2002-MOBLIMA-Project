@@ -78,5 +78,5 @@ public class CinemaManager {
             }
         }
         System.out.println(cineName+ " does not exist!");
-    }   
+    }  
 }

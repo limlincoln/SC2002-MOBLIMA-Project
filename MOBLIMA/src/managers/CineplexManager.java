@@ -84,6 +84,17 @@ public class CineplexManager {
 
     // consolidate which cineplex have particular, take in movie ID and see which cineplex have that ID
     // search cineplexs for movieID
+    public ArrayList<Cineplex> getCineplexByMovie(int movieID) {
+        ArrayList<Cineplex> containsMovies = new ArrayList<Cineplex>();
+
+        for(Cineplex cine: cineplex) {
+            if(cine.containsMovie(movieID)) {
+                containsMovies.add(cine);
+            }
+        }
+
+        return containsMovies;
+    }
 
     // consolidate which cinema in that cineplex have movieID
 }

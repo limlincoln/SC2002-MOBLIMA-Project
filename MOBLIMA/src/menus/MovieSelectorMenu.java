@@ -5,11 +5,20 @@ import java.util.Scanner;
 
 import entities.Movie;
 
-public class MovieSelectorMenu {
-    public static Scanner sc = new Scanner(System.in);
+public class MovieSelectorMenu implements ISelectorMenu<Movie> {
+    public static MovieSelectorMenu single_instance = null;
 
-    public static Movie startMovieSelector(ArrayList<Movie> movies, String heading) {
+    private MovieSelectorMenu() {}
 
+    public static MovieSelectorMenu getInstance() {
+        if(single_instance == null) {
+            single_instance = new MovieSelectorMenu();
+        }
+        return single_instance;
+    }
+
+    public Movie startSelector(ArrayList<Movie> movies, String heading) {
+        Scanner sc = new Scanner(System.in);
         System.out.println(	"================ " +heading+ " =================");
                     for(int i = 0;  i < movies.size(); i++) {
                         System.out.println("("+i+1+")"+movies.get(i).getMovieName());
@@ -37,8 +46,7 @@ public class MovieSelectorMenu {
 
             if(wantBook) {
                 return selectedMovie;
-            }
-
+            }  
             return null;
     } 
 }
