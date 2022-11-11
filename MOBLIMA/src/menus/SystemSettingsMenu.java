@@ -1,4 +1,4 @@
-package menu;
+package menus;
 
 import java.util.ArrayList;
 import java.util.Scanner;

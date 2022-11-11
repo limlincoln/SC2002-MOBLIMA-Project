@@ -12,18 +12,18 @@ public class ShowTime {
         this.seats = new Seats[8];
     }
 
-    public Seats getSeatsByShowtime(int index){
+    public Seats getSeatsByShowTime(int index){
         return this.seats[index];
     }
     
     /** 
      * Getters & Setters
      */
-    public int[] getShowtime() {
+    public int[] getShowTime() {
         return this.showtime;
     }
 
-    public void setShowtime(int[] showtime) {
+    public void setShowTime(int[] showtime) {
         this.showtime = showtime;
     }
 

@@ -1,6 +1,4 @@
-package menu;
-import entities.Customer;
-import entities.Booking;
+package menus;
 import java.util.Scanner;
 
 

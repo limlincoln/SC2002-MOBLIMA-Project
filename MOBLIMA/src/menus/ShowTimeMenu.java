@@ -1,12 +1,14 @@
 package menus;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import entities.Cinema;
 import entities.Cineplex;
 import entities.Movie;
-import entities.ShowTime;
+import entities.Seats;
+import managers.ShowTimeManager;
 
 public class ShowTimeMenu {
 	
@@ -24,32 +26,14 @@ public class ShowTimeMenu {
         return single_instance;
     }
 
-	public void ShowTimeMenu(Movie movie, Cineplex cineplex,Cinema cinema) { 
-		// CALL DATEMANAGER TO GET MEXT 7 DATES STARTING TODAY
-		// CALL DATEMANAGER TO GET TIMES OF THE TIMESLOTS
-		// PRINT SHOWTIMES 
-		// USER FIRST SEELCTS DAY (STORE INDEX GIVEN by CINEMA CLASS)
-		// USER SELECTS SPECIFIC SHOWTIME (STORE INDEX GIVEN BY SHOWTIME CLASS)
-		// CALL DATEMANAGER with 2 INDEX to get EXACTDATTIME (LOCALDATETIME)
-		// GET SEATS FROM SHOWTIME MANAGER
-		// PASS LOCALDATETIME + SEATS to BOOKING MENU
-		System.out.println(	"================ SELECT A ShowTime =================");
+	public void displayShowTimeMenu(Movie movie, Cineplex cineplex,Cinema cinema) { 
+		System.out.println("MOVIE: "+movie.getMovieName());
+		ArrayList<LocalDateTime> showtimes = ShowTimeManager.getInstance().getShowTimeByMovie(cinema, movie);
 
-		//DISPLAY showtime and select -> bookingmenu??????????????
-			
+		LocalDateTime selectedShowTime = ShowTimeSelectorMenu.getInstance().startSelector(showtimes, "SELECT SHOWTIME");	
 
+		Seats selectedSeats = ShowTimeManager.getInstance().getSeatsByLocalDateTime(cinema, selectedShowTime);
 
-			//BookingMenu.getInstance().displayBookingMenu(movie,cineplex,cinema); 
-
-		}
-	public void editShowTime() {
-    	// edit showtime
-		// SHOWTIME EDITOR MENU
-			// CINEPLEX -> CINEMA -> MOVIE
-				// CALL SHOWTIME MANAGER TO:
-					// ADD
-					// REMOVE
-
-        		
-		}
+		BookingMenu.getInstance().displayBookingMenu(movie, cinema, selectedSeats, selectedShowTime);
+	}
 }

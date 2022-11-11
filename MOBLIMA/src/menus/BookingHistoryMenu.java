@@ -1,8 +1,9 @@
-package menu;
-import entities.Movie;
+package menus;
+import managers.BookingManager;
+import managers.ReviewManager;
 import entities.Booking;
-import entities.Cinema;
-import entities.Customer;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BookingHistoryMenu {
@@ -22,33 +23,20 @@ public class BookingHistoryMenu {
 
 
     public void displayBookingHistoryMenu() { 
-    	int choice;	
-		do {
-            System.out.println(	"=========== MOBLIMA CUSTOMER BOOKING MENU =========\n" +
-			                    " 1. Show booking history     					   \n" +
-			                    " 0. Back to MOBLIMA APP                           \n"+
-							    "====================================================");
-	    	
-            System.out.println("Enter choice: ");
-            
-            while (!sc.hasNextInt()) {
-            	System.out.println("Invalid input type. Please enter an integer value.");
-        		sc.next(); 
+        Booking selectedBooking = null;
+        do {
+            String username = CustomerFormMenu.startUserNameForm();
+            ArrayList<Booking> bookingHistory = BookingManager.getBookingHistoryByUsername(username);
+            selectedBooking = BookingSelectorMenu.getInstance().startSelector(bookingHistory, "BOOKING HISTORY");
+            if(selectedBooking != null) {
+                int rating = -1;
+                do {
+                    System.out.println("Enter Rating (0-5):"); 
+                    rating = sc.nextInt();
+                } while(rating < 0 || rating > 5); 
+                ReviewManager.reviewBooking(selectedBooking, rating);   
             }
-            
-            choice = sc.nextInt();
-            
-            switch(choice){
-                case 1:
-                	//showbookinghistory();
-                    break;
-                case 0:
-                	System.out.println("Back to MOBLIMA APP......");
-                	break;
-                default: 
-                	System.out.printf("Invalid input type.");
-                	break;
-	            }
-	        } while (choice != 0);
+        } while(selectedBooking != null);
+
     }
 }

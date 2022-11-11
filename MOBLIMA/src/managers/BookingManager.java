@@ -26,7 +26,7 @@ public class BookingManager {
         return true;
     }  
 
-    public static ArrayList<Booking> getBookingHistory(String username) {
+    public static ArrayList<Booking> getBookingHistoryByUsername(String username) {
         ArrayList<Booking> userBookingHistory = new ArrayList<Booking>();
 
         for(Booking booking: bookingHistory) {
@@ -38,10 +38,10 @@ public class BookingManager {
         return userBookingHistory;
     }
 
-    public static ArrayList<Booking> getUnratedBookings(String username) {
+    public static ArrayList<Booking> getUnratedBookingsByUsername(String username) {
         ArrayList<Booking> unratedBookings = new ArrayList<Booking>();
 
-        ArrayList<Booking> userBookingHistory = getBookingHistory(username);
+        ArrayList<Booking> userBookingHistory = getBookingHistoryByUsername(username);
 
         for(Booking booking: userBookingHistory) {
             if(booking.getRating() == -1) {
@@ -52,10 +52,10 @@ public class BookingManager {
         return unratedBookings;
     }
 
-    public static ArrayList<Booking> getRatedBookings(String usename) {
+    public static ArrayList<Booking> getRatedBookingsByUsername(String usename) {
         ArrayList<Booking> ratedBookings = new ArrayList<Booking>();
 
-        ArrayList<Booking> userBookingHistory = getBookingHistory(usename);
+        ArrayList<Booking> userBookingHistory = getBookingHistoryByUsername(usename);
         
         for(Booking booking: userBookingHistory) {
             if(booking.getRating() != -1) {

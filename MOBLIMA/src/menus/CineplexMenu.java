@@ -1,10 +1,11 @@
-package menu;
+package menus;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import entities.Cineplex;
 import entities.Movie;
+import managers.CineplexManager;
 
 public class CineplexMenu {
     private static CineplexMenu single_instance = null;
@@ -23,29 +24,11 @@ public class CineplexMenu {
 
 
 	public void displayCineplexMenu(Movie movie) { 
-		//CINEPLEX CLASS(MOVIE): returns list of cinplex that has that movie
-    	Cineplex cineplex = new Cineplex(0, null, null);
-    	System.out.println(	"================ SELECT A CINEPLEX =================");
-    	//show a list of of existing cineplex that correspond to the movie
-        int choice;
-        			
-        do {                
-        	
-        	System.out.println("Choose a Cineplex or enter 0 to exit : ");
-                
-            while (!sc.hasNextInt()) {
-        		System.out.printf("Invalid input type.");
-        		sc.next(); 
-        	}
-            choice = sc.nextInt();
-            
-            }while(choice  < 0 || choice >= 10);//movies.size()
+        ArrayList<Cineplex> cineplexes = CineplexManager.getInstance().getCineplexByMovie(movie.getMovieID());
+        Cineplex selectedCinplex = CineplexSelectorMenu.getInstance().startSelector(cineplexes, "SELECT A CINEPLEX");
 
-          	//cineplex.get(subChoice)
+        if (selectedCinplex == null) return;
         	
-        	
-            CinemaMenu.getInstance().displayCinemaMenu(movie,cineplex); 
-            
-
-		}
+        CinemaMenu.getInstance().displayCinemaMenu(movie, selectedCinplex); 
+    }
 }

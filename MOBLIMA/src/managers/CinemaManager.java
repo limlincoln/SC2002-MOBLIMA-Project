@@ -31,15 +31,6 @@ public class CinemaManager {
         return null;
     }
 
-    public Cinema getCinemaByName(String cineName){
-        for(int x = 0; x < cinemas.size(); x++){
-            if(cinemas.get(x).getCinemaName() == cineName){
-                return cinemas.get(x);
-            }
-        }
-        return null;
-    }
-
     // Setters
     public void setCinema(ArrayList<Cinema> cine) {
         this.cinemas = cine;
@@ -49,8 +40,7 @@ public class CinemaManager {
     public void addCinema(Cinema cine){
         for(int x = 0; x < cinemas.size(); x++){
             Cinema current = cinemas.get(x);
-            if(current.getCinemaName() == cine.getCinemaName() 
-               || current.getCinemaID() == cine.getCinemaID()){
+            if(current.getCinemaID() == cine.getCinemaID()){
                 System.out.println("Cinema already exist!");
                 return;
             }
@@ -68,7 +58,7 @@ public class CinemaManager {
             }
         }
         System.out.println("Movie with ID: "+ cineID + " does not exist!");
-    }
+    } 
     
     public void removeCinemaByName(String cineName){
         for(int x = 0; x < cinemas.size(); x++){
@@ -78,5 +68,5 @@ public class CinemaManager {
             }
         }
         System.out.println(cineName+ " does not exist!");
-    }   
+    }  
 }
