@@ -1,4 +1,4 @@
-package menu;
+package menus;
 
 import java.util.Scanner;
 import entities.Cinema;
@@ -24,24 +24,24 @@ public class BookingMenu {
     public void displayBookingMenu(Movie movie, Cineplex cineplex, Cinema cinema) { 
     
         System.out.println(	"================ BOOKING MENU =================\n" +
-                " Available showtimes     					        \n" +
+                // " Available showtimes     					        \n" +
                 " Seat Selector                              		\n" +
                 " BOOKING!                                  		\n" +
                 " THANK YOU                            				\n"+
 			    "====================================================");
-    	int choice;	
-        // BOOKINGMENU
-        // SHOW AVALIABLE SHOW TIMES FOR THE WHOLE WEEK
-        // SELECT DAY -> CALL SHOWTIME MANAGER 
-        // SELECT SHOWTIME SLOT
-        // SHOWTIMEMANAGER.FINDSEATS
-        // CALL SEAT SELECTOR
+    	int choice;
+        
+        // CALL SEAT SELECTOR (MIGHT RETURN NULL)
 
         // SEATSELECTOR.STARTINSTANCE(SEATS): ARRAY OF SELECTED SEAT INFO
-        // CALL TICKETMANAGER: ARRAY OF TICKETS
-        // CALL PRICE.GETTOTALPRICE()
-        // 
-        // CALL BOOKING MANAGER: BOOKING
+        // CALL TICKETMANAGER: ARRAY OF TICKETS + LOCALDATETIME
+        // CREATE AN ARRAYLIST OF IPRICE INCLUDING TICKETS + CINEMA 
+        // CALL PRICE.GETTOTALPRICE(): ARRALIST<IPRICE>, TICKETSARRAY.SIZE()
+        // ASK CUSTOMER DETAILS (username, phone, email)
+        // CREATE CUSTOMER CLASS
+        // CALL BOOKING MANAGER: 
+        // CREATEBOOKING: cinemaID, movieID, CUSTOMER CLASS, TICKETS ARRAYLIST, TOTALCOST
 
+        // THANK YOU :)
     }
 }

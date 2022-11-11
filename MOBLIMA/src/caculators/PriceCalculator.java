@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import entities.IPrice;
 
 public class PriceCalculator {
-    public static double getTotalPrice(ArrayList<IPrice> objs) {
+    // GET BASE PRICE FROM PRICING MANAGER
+    public static double getTotalPrice(ArrayList<IPrice> objs, int noOfTickets) {
         double totalPrice = 0.0;
 
         for(IPrice o: objs) {

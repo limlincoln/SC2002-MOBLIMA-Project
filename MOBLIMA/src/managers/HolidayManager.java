@@ -7,11 +7,11 @@ import entities.Holiday;
 public class HolidayManager {
     private static ArrayList<Holiday> holidays = new ArrayList<Holiday>();
 
-    public void addHoliday(Holiday holiday) {
+    public static void addHoliday(Holiday holiday) {
         holidays.add(holiday);
     }
 
-    public boolean removeHoliday(Holiday holiday) {
+    public static boolean removeHoliday(Holiday holiday) {
         return holidays.remove(holiday);
     }
 
@@ -24,11 +24,11 @@ public class HolidayManager {
         return false;
     }
 
-    public ArrayList<Holiday> getHolidays() {
+    public static ArrayList<Holiday> getHolidays() {
         return holidays;
     }
 
-    public void setHolidays(ArrayList<Holiday> holidays) {
+    public static void setHolidays(ArrayList<Holiday> holidays) {
         HolidayManager.holidays = holidays;
     }
     

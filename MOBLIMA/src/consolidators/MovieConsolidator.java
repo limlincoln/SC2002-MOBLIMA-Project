@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /*
  * Consolidates all movies in a given cineplex
  */
-public class MovieConsolidator implements IConsolidator<Movie, Cineplex> {
+public class MovieConsolidator implements IConsolidator<Movie> {
     private static MovieConsolidator single_instance = null;
 
     private MovieConsolidator(){}
@@ -35,6 +35,7 @@ public class MovieConsolidator implements IConsolidator<Movie, Cineplex> {
         }
         return result;
     }
+
     public ArrayList<Movie> getTop5ByRating(){
         ArrayList<Movie> result = this.getAll();
         result.sort((m1, m2) -> {

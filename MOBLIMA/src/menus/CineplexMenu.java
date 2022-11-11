@@ -40,7 +40,7 @@ public class CineplexMenu {
             choice = sc.nextInt();
             
             }while(choice  < 0 || choice >= 10);//movies.size()
-        	
+
           	//cineplex.get(subChoice)
         	
         	

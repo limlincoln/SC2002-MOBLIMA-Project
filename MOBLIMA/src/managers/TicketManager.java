@@ -7,6 +7,7 @@ import entities.Ticket;
 import enums.AgeGroup;
 
 public class TicketManager {
+    // CHANGE TO HASHMAP
     public ArrayList<Ticket> generateTickets(LocalDateTime exactDateTime, ArrayList<String> seats, ArrayList<AgeGroup> ageGroups) {
         if(seats.size() != ageGroups.size()) return null;
 
