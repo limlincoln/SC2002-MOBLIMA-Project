@@ -3,7 +3,7 @@ package entities;
 import java.util.ArrayList;
 
 public class Cinema{
-    private String CinemaName;
+    //private String CinemaName;
     private int CinemaID;
     private int CinemaType;
     private ArrayList<ShowTime> showtimes;
