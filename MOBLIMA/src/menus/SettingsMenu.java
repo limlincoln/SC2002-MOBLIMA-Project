@@ -10,7 +10,7 @@ public class SettingsMenu {
     
     /**
      * Displays the main settings menu
-     */
+    */
 	public void displayMenu() {
         int choice;
 		do {
@@ -246,35 +246,7 @@ public class SettingsMenu {
                 	// DELETE MOVIE
 					// ASK WHAT MOVIE (LIST ALL MOVIES)
 					// CONFIMATION PAGE
-                	System.out.println(	"================ SELECT A MOVIE =================");
-                	ArrayList<Movie> delete = new ArrayList<Movie>();
-                    int deletechoice = -1;
-
-                    //delete = MovieConsolidator.getInstance().getAll();
-                    do {
-                    	System.out.println("Choose a movie or enter 0 to exit : ");
-                            
-                        while (!sc.hasNextInt()) {
-                    		System.out.printf("Invalid input type.");
-                    		sc.next(); 
-                    	}
-                        deletechoice = sc.nextInt();
-                        
-                        }while(deletechoice  < 0 || deletechoice >= 10);//movies.size()
-                    sc.nextLine(); 
-                    System.out.println("Enter Y to confirm delete : ");
-                    String confirmation = sc.nextLine();
-                    
-                    if(confirmation.equals("Y"))
-                    {
-                    	System.out.println("SUCCESSFULLY DELETED");
-                    	//MovieManager.removeMovieByID(deletechoice);
-                    }
-                    else
-                    {
-                    	System.out.println("DELETE UNSUCCESSFULLY");
-                    	break;
-                    }
+                	SettingsManager.deleteMovieSetting();
                     break;
                 case 0:
                 	System.out.println("Back to MOBLIMA APP......");
