@@ -395,7 +395,7 @@ public class SettingsManager {
 		// Movie targetedit = editmovie.get(editchoice);
 		int subchoice;
 		do {
-			System.out.println("=================== Choose what to eidt ==================\n" +
+			System.out.println("=================== Choose what to edit ==================\n" +
 								" 1. Edit Movie Title      	                                \n" +
 								" 2. Edit Movie Genres                      	        	\n" +
 								" 3. Edit Movie Status	                                    \n" +
