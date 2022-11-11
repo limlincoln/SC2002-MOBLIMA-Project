@@ -61,41 +61,42 @@ public class MovieMenu {
                 case 2:
                 	// List top 5 movies
                 	ArrayList<Movie> topmovies = new ArrayList<Movie>();
-                	int options = SettingsManager.getInstance().getCustomerTop5();
-                    switch(options) {
-                        case 0:
-                            heading = "TOP 5 MOVIES BY SALES";
-                            topmovies = MovieConsolidator.getInstance().getTop5BySales();
+                	ITop5Menu top5Menu = SettingsManager.getInstance().getTop5Menu();
+                    top5Menu.displayMenu();
+                    // switch(options) {
+                    //     case 0:
+                    //         heading = "TOP 5 MOVIES BY SALES";
+                    //         topmovies = MovieConsolidator.getInstance().getTop5BySales();
 
-                            selectedMovie = MovieSelectorMenu.getInstance().startSelector(topmovies, heading);
+                    //         selectedMovie = MovieSelectorMenu.getInstance().startSelector(topmovies, heading);
                             
-                            if (selectedMovie != null) {
-                                CineplexMenu.getInstance().displayCineplexMenu(selectedMovie); 
-                            }
-                            break;
+                    //         if (selectedMovie != null) {
+                    //             CineplexMenu.getInstance().displayCineplexMenu(selectedMovie); 
+                    //         }
+                    //         break;
 
-                        case 1:
-                            heading = "TOP 5 MOVIES BY RATING";
-                            topmovies = MovieConsolidator.getInstance().getTop5ByRating();
+                    //     case 1:
+                    //         heading = "TOP 5 MOVIES BY RATING";
+                    //         topmovies = MovieConsolidator.getInstance().getTop5ByRating();
 
-                            selectedMovie = MovieSelectorMenu.getInstance().startSelector(topmovies, heading);
+                    //         selectedMovie = MovieSelectorMenu.getInstance().startSelector(topmovies, heading);
                             
-                            if (selectedMovie != null) {
-                                CineplexMenu.getInstance().displayCineplexMenu(selectedMovie); 
-                            }
-                            break; 
+                    //         if (selectedMovie != null) {
+                    //             CineplexMenu.getInstance().displayCineplexMenu(selectedMovie); 
+                    //         }
+                    //         break; 
 
-                        case 2:
-                            System.out.println("(1) By Sales");
-                            System.out.println("(2) By Rating");
+                    //     case 2:
+                    //         System.out.println("(1) By Sales");
+                    //         System.out.println("(2) By Rating");
 
-                            int ratingChoice;
-                            do {
-                                ratingChoice = sc.nextInt();
-                            } while(ratingChoice < 1 || ratingChoice > 2);
+                    //         int ratingChoice;
+                    //         do {
+                    //             ratingChoice = sc.nextInt();
+                    //         } while(ratingChoice < 1 || ratingChoice > 2);
                             
-                            // DO THIS LATER
-                    }
+                    //         // DO THIS LATER
+                    // }
                     break;
                 case 0:
                 	System.out.println("Back to MOBLIMA APP");

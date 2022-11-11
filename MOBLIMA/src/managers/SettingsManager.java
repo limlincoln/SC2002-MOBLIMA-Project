@@ -6,13 +6,14 @@ import enums.*;
 import java.util.Scanner;
 import java.util.ArrayList;
 import entities.Movie;
+import menus.ITop5Menu;
 
 public class SettingsManager {
 	Scanner sc = new Scanner(System.in);
 	private static SettingsManager single_instance = null;
-	private int customerTop5;
-	private SettingsManager(int customerTop5){
-		this.customerTop5 = customerTop5;
+	private ITop5Menu customerTop5MenuClass;
+	private SettingsManager(ITop5Menu customerTop5MenuClass){
+		this.customerTop5MenuClass = customerTop5MenuClass;
 	}
 	public static SettingsManager getInstance(){
 		return single_instance;
@@ -22,7 +23,7 @@ public class SettingsManager {
 	 * Initialises a single instance of settings manager
 	 * @param customerTop5Value
 	 */
-	public static void initialiser(int customerTop5Value){
+	public static void initialiser(ITop5Menu customerTop5Value){
 		single_instance = new SettingsManager(customerTop5Value);
 	}
 
