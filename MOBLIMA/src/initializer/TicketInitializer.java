@@ -209,14 +209,5 @@ public class TicketInitializer extends GetDatabaseDirectory {
 			}
 			
 		}
-
-		public static void main (String[] args) {
-			
-
-
-		}
-
-
-
-
-	}
+    }
+}

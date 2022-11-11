@@ -7,13 +7,8 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 
 import entities.Booking;
-import entities.Movie;
 import entities.Customer;
 import entities.Ticket;
-import enums.DayOfWeek;
-import enums.Status;
-import enums.TimeOfDay;
-import enums.AgeGroup;
 
 public class Booking_Initializer extends GetDatabaseDirectory {
 	
@@ -44,7 +39,7 @@ public class Booking_Initializer extends GetDatabaseDirectory {
 
 	}
 
-	public static ArrayList<Booking> GetBooking() {
+	public static ArrayList<Booking> GetBooking(ArrayList<Ticket> tickets) {
 
 		ArrayList<Booking> bookinglist = new ArrayList<Booking>();
 		
@@ -52,14 +47,10 @@ public class Booking_Initializer extends GetDatabaseDirectory {
 		String newDirectory;
 
 		String tid;
-		String movid, rating, customerid;
-		String read_username, read_phonenumber, email;
+		String movid, ratingStr, customerid;
+		String customerIDStr, userNameStr, phoneNumberStr, emailStr;
 		String ticketdetails;
 		String cost;
-		
-		DayOfWeek dayofweek = null;
-		TimeOfDay timeofday = null;
-		AgeGroup agegroup = null;
 
 		int CountNoOfBooking = 0;
 
@@ -79,99 +70,46 @@ public class Booking_Initializer extends GetDatabaseDirectory {
 				}
 
 				String []data = line.split("\\|");
+				tid = data[0];
+				int TID = Integer.parseInt(tid);
 				
-
+				movid = data[1];
+				int movieid = Integer.parseInt(movid);
 				
-					tid = data[0];
-					int TID = Integer.parseInt(tid);
-					
-					movid = data[1];
-					int movieid = Integer.parseInt(movid);
-					
-					customerid = data[2];
-					int customerID = Integer.parseInt(customerid);
-					
-					read_username = data[3];
-					email = data[4];
-					
-					read_phonenumber = data[5];
-					int phonenumber = Integer.parseInt(read_phonenumber);
-					
-					ticketdetails = data[6];
-					String[] arr=ticketdetails.replaceAll("\\[|\\]| ", "").split(",");
-			        for(int i=0;i<arr.length;i++){
+				customerIDStr = data[2];
+				int customerID = Integer.parseInt(customerIDStr);
 
-			        	switch(arr[0]) {
-						case "SUN":
-							dayofweek = DayOfWeek.SUN;
-							break;
-							
-						case "MON":
-							dayofweek = DayOfWeek.MON;
-							break;
-							
-						case "TUE":
-							dayofweek = DayOfWeek.TUE;
-							break;
-							
-						case "WED":
-							dayofweek = DayOfWeek.WED;
-							break;
-							
-						case "THU":
-							dayofweek = DayOfWeek.THU;
-							break;
-							
-						case "FRI":
-							dayofweek = DayOfWeek.FRI;
-							break;
-							
-						case "SAT":
-							dayofweek = DayOfWeek.SAT;
-							break;	
+				userNameStr = data[3];
+				
+				phoneNumberStr = data[4];
+
+				emailStr = data[5];
+				
+				ticketdetails = data[6];
+				String[] arr=ticketdetails.replaceAll("\\[|\\]| ", "").split(",");
+
+				ArrayList<Ticket> userTickets = new ArrayList<Ticket>();
+				for(Ticket ticket: tickets) {
+					for(int i = 0; i < arr.length; i++) {
+						if(ticket.getTicketID() == Integer.parseInt(arr[i])) {
+							userTickets.add(ticket);
 						}
-			        	
-			        	switch(arr[1]) {
-			        	case "MORNING":
-							timeofday = TimeOfDay.MORNING;
-							break;
-							
-						case "EVENING":
-							timeofday = TimeOfDay.EVENING;
-							break;	
-			        	}
-			        	
-			        	switch(arr[2]) {
-			        	case "ADULT":
-							agegroup = AgeGroup.ADULT;
-							break;
-							
-						case "SENIOR":
-							agegroup = AgeGroup.SENIOR;
-							break;
-						
-						case "STUDENT":
-							agegroup = AgeGroup.STUDENT;
-							break;
-			        	}
-			        }
-			        
-			        cost = data[7];
-			        double totalcost = Double.parseDouble(cost);
-					
-					Customer customer_booking = new Customer(customerID, read_username, email, phonenumber);
-					
-					Ticket ticket = new Ticket(dayofweek, timeofday, agegroup);
-					
-					ArrayList<Ticket> ticketlist = new ArrayList<Ticket>();
-					ticketlist.add(ticket);
-					
-					bookinglist.add(new Booking(TID, movieid, customer_booking, ticketlist, totalcost));
-					CountNoOfBooking++;
+					}
+				}
+				cost = data[7];
+				double totalcost = Double.parseDouble(cost);
+ 
+				ratingStr = data[8];
+				int rating = Integer.parseInt(ratingStr);
 				
+				Customer customer_booking = new Customer(customerID, userNameStr, emailStr, phoneNumberStr);
 				
-				System.out.println(data[0] + ": " + data[5]);
-			}
+				bookinglist.add(new Booking(TID, movieid, customer_booking, userTickets, totalcost, rating));
+				CountNoOfBooking++;
+			
+			
+			System.out.println(data[0] + ": " + data[5]);
+		}
 
 			
 			System.out.println("No of movies: " + CountNoOfBooking);
@@ -202,7 +140,11 @@ public static void WriteBookingHistoryFile(ArrayList<Booking> bookinglist) throw
 				BufferedWriter buffer = new BufferedWriter(write_bookinglisting);
 				
 				for(Booking booking: bookinglist) {
-					new_booking = booking.getTID() + "|" + booking.getMovie() + "|" + booking.getCustomer() + "|" + booking.getTickets() + "|" + booking.getTotalCost();
+					String ticketIDs = "";
+					for(Ticket ticket: booking.getTickets()) {
+						ticketIDs += Integer.toString(ticket.getTicketID()) + ",";
+					}
+					new_booking = booking.getTID() + "|" + booking.getMovieID() + "|" + booking.getCustomer().getCustomerID() + "|" + booking.getCustomer().getUserName() + "|" + booking.getCustomer().getPhoneNumber() + "|" + booking.getCustomer().getEmail() + "|" + "[" + ticketIDs + "]" + "|" + booking.getTotalCost();
 					buffer.write(new_booking);
 					buffer.newLine();
 				}
@@ -211,14 +153,5 @@ public static void WriteBookingHistoryFile(ArrayList<Booking> bookinglist) throw
 			
 		}
 		
-	}
-
-	public static void main(String[] args) throws Exception {
-
-		CreateBookingHistoryFile();
-		//GetNoOfBooking("testuser1", "12345678");
-		//GetNoOfBooking("testuser2", "12345678");
-		GetBooking();
-		//WriteBookingHistoryFile("TIDXXXYYYYMMDDhhmm", "05", "0.32", "testuser3", "12345678", "test@email");
 	}
 }

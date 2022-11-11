@@ -9,7 +9,6 @@ import entities.Movie;
 import menus.ITop5Menu;
 
 public class SettingsManager {
-	Scanner sc = new Scanner(System.in);
 	private static SettingsManager single_instance = null;
 	private ITop5Menu customerTop5MenuClass;
 	private SettingsManager(ITop5Menu customerTop5MenuClass){
@@ -81,13 +80,15 @@ public class SettingsManager {
 	/**
 	 * Getter and Setters
 	 */
-	public int getCustomerTop5() {
-		return this.customerTop5;
+
+	public ITop5Menu getCustomerTop5MenuClass() {
+		return this.customerTop5MenuClass;
 	}
 
-	public void setCustomerTop5(int customerTop5) {
-		this.customerTop5 = customerTop5;
+	public void setCustomerTop5MenuClass(ITop5Menu customerTop5MenuClass) {
+		this.customerTop5MenuClass = customerTop5MenuClass;
 	}
+	
 
 	
 
@@ -101,6 +102,7 @@ public class SettingsManager {
 	 * Edits the base price of movies
 	 */
 	public void editBasePrice(){
+		Scanner sc = new Scanner(System.in);
 		double newbase;
         System.out.println("Current Base Price: " + PricingManager.getPrice(PriceType.BASE_PRICE));
         System.out.println("Enter New Base Price: ");
@@ -318,6 +320,10 @@ public class SettingsManager {
 	/**
 	 * List all available holidays
 	 */
+
+	    // TODO: Holiday ID
+
+
 	public void listHolidays() {
 		ArrayList<Holiday> holiday = new ArrayList<Holiday>();
 		holiday = HolidayManager.getHolidays();

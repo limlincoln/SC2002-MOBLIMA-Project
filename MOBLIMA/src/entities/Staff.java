@@ -5,7 +5,9 @@ package entities;
  *
  */
 public class Staff {
-	
+	/**
+	 * 
+	 */
 	private Integer StaffId;
 	private String StaffName;
 	private Integer CineplexID;
