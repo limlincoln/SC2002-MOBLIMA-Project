@@ -5,7 +5,9 @@ import java.util.Scanner;
 import utils.SeatPrinter;
 
 public class SeatLayout extends ISeatLayout{
-    // creating a new layout
+    /**
+     * Constructor for the SeatLayout Class
+     */
     public SeatLayout(){
         Optional<ISeat[][]> l = createLayout();
         if(l.isPresent()){
@@ -15,10 +17,17 @@ public class SeatLayout extends ISeatLayout{
         }
     }
 
+    /**
+     * Constructor for the SeatLayout Class
+     * @param layout layout of the seat
+     */
     public SeatLayout(ISeat[][] layout){
         this.setLayout(layout);
     }
 
+    /**
+     * creates the Seat layout
+     */
     @Override
     public Optional<ISeat[][]> createLayout() {
         Scanner sc = new Scanner(System.in);
