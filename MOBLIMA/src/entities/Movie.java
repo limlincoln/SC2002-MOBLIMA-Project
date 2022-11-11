@@ -1,6 +1,8 @@
 package entities;
 
 import java.util.ArrayList;
+
+import enums.CinemaType;
 import enums.Status;
 
 public class Movie {
@@ -17,7 +19,7 @@ public class Movie {
     /**
      * The genre for this Movie
      */
-    private String genre;
+    private CinemaType genre;
 
     /**
      * The status of this Movie:
@@ -68,7 +70,7 @@ public class Movie {
      * @param totalSales The total sales made by this Movie so far
      * @param avgRating The average rating given to this Movie
      */
-    public Movie(int movieID, String movieName, String genre, Status status, ArrayList<String> casts, String director, String sypnopsis, ArrayList<Integer> ratings, double totalSales, Float avgRating) {
+    public Movie(int movieID, String movieName, CinemaType genre, Status status, ArrayList<String> casts, String director, String sypnopsis, ArrayList<Integer> ratings, double totalSales, Float avgRating) {
         this.movieID = movieID;
         this.movieName = movieName;
         this.genre = genre;
@@ -113,11 +115,11 @@ public class Movie {
         this.movieName = movieName;
     }
 
-    public String getMovieType() {
+    public CinemaType getMovieType() {
         return this.genre;
     }
 
-    public void setMovieType(String genre) {
+    public void setMovieType(CinemaType genre) {
         this.genre = genre;
     }
 

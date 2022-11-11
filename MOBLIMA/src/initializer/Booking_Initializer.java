@@ -4,6 +4,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import entities.Booking;
@@ -13,6 +15,7 @@ import entities.Ticket;
 import enums.DayOfWeek;
 import enums.Status;
 import enums.TimeOfDay;
+import enums.TypeOfDay;
 import enums.AgeGroup;
 
 public class Booking_Initializer extends GetDatabaseDirectory {
@@ -60,6 +63,9 @@ public class Booking_Initializer extends GetDatabaseDirectory {
 		DayOfWeek dayofweek = null;
 		TimeOfDay timeofday = null;
 		AgeGroup agegroup = null;
+		TypeOfDay typeOfDay = null;
+		LocalDateTime exactDateTime = null;
+		String seat = null;
 
 		int CountNoOfBooking = 0;
 
@@ -101,65 +107,13 @@ public class Booking_Initializer extends GetDatabaseDirectory {
 					String[] arr=ticketdetails.replaceAll("\\[|\\]| ", "").split(",");
 			        for(int i=0;i<arr.length;i++){
 
-			        	switch(arr[0]) {
-						case "SUN":
-							dayofweek = DayOfWeek.SUN;
-							break;
-							
-						case "MON":
-							dayofweek = DayOfWeek.MON;
-							break;
-							
-						case "TUE":
-							dayofweek = DayOfWeek.TUE;
-							break;
-							
-						case "WED":
-							dayofweek = DayOfWeek.WED;
-							break;
-							
-						case "THU":
-							dayofweek = DayOfWeek.THU;
-							break;
-							
-						case "FRI":
-							dayofweek = DayOfWeek.FRI;
-							break;
-							
-						case "SAT":
-							dayofweek = DayOfWeek.SAT;
-							break;	
-						}
-			        	
-			        	switch(arr[1]) {
-			        	case "MORNING":
-							timeofday = TimeOfDay.MORNING;
-							break;
-							
-						case "EVENING":
-							timeofday = TimeOfDay.EVENING;
-							break;	
-			        	}
-			        	
-			        	switch(arr[2]) {
-			        	case "ADULT":
-							agegroup = AgeGroup.ADULT;
-							break;
-							
-						case "SENIOR":
-							agegroup = AgeGroup.SENIOR;
-							break;
-						
-						case "STUDENT":
-							agegroup = AgeGroup.STUDENT;
-							break;
-			        	}
 			        }
 			        
 			        cost = data[7];
 			        double totalcost = Double.parseDouble(cost);
+
 					
-					Customer customer_booking = new Customer(customerID, read_username, email, phonenumber);
+					Customer customer_booking = new Customer(customerID, read_username, email, Integer.toString(phonenumber));
 					
 					Ticket ticket = new Ticket(dayofweek, timeofday, agegroup);
 					

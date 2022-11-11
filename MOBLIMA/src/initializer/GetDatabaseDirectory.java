@@ -1,14 +1,17 @@
 package initializer;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class GetDatabaseDirectory implements IGetCurrentDirectory{
 
-	public static final String DBfolder = "\\Database\\";
+	public static final String DBfolder = "/Database/";
 	
 	@Override
 	public String getCurrentDirectory() {
-		String executionPath = System.getProperty("user.dir");
+		Path executionPath = Paths.get(System.getProperty("user.dir"));
 
-		return (executionPath + DBfolder);
+		return executionPath.getParent().getParent().toString() + DBfolder;
 	}
 
 }
