@@ -14,6 +14,9 @@ public class SeatPrinter implements IPrinter<ISeat[][]>{
         return single_instance;
     }
     
+    /**
+     * Seat layout printer
+     */
     public void print(ISeat[][] seatlayout){
         int row = seatlayout.length;
         int col = seatlayout[0].length;
