@@ -91,8 +91,6 @@ public class MovieMenu {
 	
 	public void displayStaffMovieMenu() {
 		int choice;
-
-		
 		do {
             System.out.println(	"============== MOBLIMA STAFF APP ================\n" +
 			                    " 1. Edit Movie          					        \n" +
