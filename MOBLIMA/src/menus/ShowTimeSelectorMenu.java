@@ -1,6 +1,7 @@
 package menus;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -28,16 +29,27 @@ public class ShowTimeSelectorMenu implements ISelectorMenu<LocalDateTime> {
 			System.out.println(
 				"("+(i+1)+")"+
 				currentShowTime.getDayOfWeek()+"\n"+
-				currentShowTime.getDayOfMonth()+", "+
+				currentShowTime.getDayOfMonth()+" "+
 				currentShowTime.getMonth()+"\n"+
-				currentShowTime.getHour()+":"+currentShowTime.getMinute()
+				"Showtime: " + DateTimeFormatter.ofPattern("HH:mm").format(currentShowTime)
 			);
 			System.out.println("----------------------------------");
 		}
 
+        
 		int selectedShowTime;
 		do {	
-			selectedShowTime = sc.nextInt()-1;
+            System.out.println("Select a Timeslot");
+            
+            while (!sc.hasNextInt()) {
+                System.out.printf("Invalid input type.");
+                sc.next(); 
+            }
+            selectedShowTime = sc.nextInt()-1;
+            if(selectedShowTime < 0 || selectedShowTime >= showtimes.size()){
+                System.out.println("Please input a valid integer.");
+            }
+
 		} while(selectedShowTime < 0 || selectedShowTime >= showtimes.size());
 
         return showtimes.get(selectedShowTime);

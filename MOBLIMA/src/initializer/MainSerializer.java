@@ -19,7 +19,7 @@ public class MainSerializer {
             Holiday_Initializer.NewHolidayListing(HolidayManager.getHolidays());
         }
         catch(Exception e) {
-
+            System.out.println("Error in main serializer: "+e.getMessage());
         }
     }
     

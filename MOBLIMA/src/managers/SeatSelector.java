@@ -25,6 +25,10 @@ public class SeatSelector implements ISeatSelector{
             System.out.println("\n 1. Select/Deselect Seat   \n " +
                                     "2. Confirm              \n " +
                                     "0. Cancel                  " );
+            while (!sc.hasNextInt()) {
+                System.out.printf("Invalid input type.");
+                sc.next(); 
+            }                       
             int choice = sc.nextInt(); // Remove newline character
             ISeat[][] curSeats = seats.getSeats();
             switch(choice){
@@ -32,10 +36,14 @@ public class SeatSelector implements ISeatSelector{
                     System.out.println("Enter seat of Choice eg. A0");
                     sc.nextLine();
                     String input = sc.nextLine().toUpperCase();
+                    // Chcck input
+                    if(!Character.isAlphabetic(input.charAt(0)) || !Character.isDigit(input.charAt(1))){
+                        System.out.println("Invalid Input");
+                        break;
+                    }
                     Integer colSelected = ((int)input.charAt(0)) - 65;
                     Integer rowSelected = Integer.parseInt(input.substring(1));
-                    // TODO: CHECK IF SEAT SELECTION IS VALID
-                    if(rowSelected >= curSeats.length || colSelected >= curSeats.length || curSeats[rowSelected][colSelected] instanceof Space){
+                    if(rowSelected >= curSeats.length || colSelected >= curSeats.length || curSeats[rowSelected][colSelected] instanceof Space || (curSeats[rowSelected][colSelected] instanceof Space && ((Seat)curSeats[rowSelected][colSelected]).isOccupied())){
                         System.out.println("Invalid Seat Selected");
                         continue;
                     }else{
@@ -63,13 +71,12 @@ public class SeatSelector implements ISeatSelector{
                         seatChoice.toggleTempSelected();
                         
                     }
-                    // TODO: ASK WHAT AGE GROUP & SAVE IT IN ARRAY
                 
                     break;
                 case 2:
                     if(selected.size() == 0){
                         System.err.println("No Seats Selected");
-                        break;
+                        return null;
                     }else{
                         for(int i=0; i<selected.size(); i++){
                             Integer[] s = selected.get(i);
@@ -82,13 +89,15 @@ public class SeatSelector implements ISeatSelector{
                         // PASS OUT ARRAY OF SELECTED SEAT INFO
                     }
                 case 0:
-                default:
                     for(int i=0; i<selected.size(); i++){
                         Integer[] s = selected.get(i);
                         Seat seat = (Seat) curSeats[s[0]][s[1]];
                         seat.toggleTempSelected();
                     }
-                    return null;                    
+                    return null;       
+                default:
+                    System.out.println("Please enter a valid integer.");
+                    break;             
             }
         }        
     }   

@@ -10,8 +10,6 @@ import managers.CineplexManager;
 public class CineplexMenu {
     private static CineplexMenu single_instance = null;
     
-    private Scanner sc = new Scanner(System.in);
-
     private CineplexMenu(){}
 
 
@@ -27,7 +25,7 @@ public class CineplexMenu {
      * @param movie
      */
 	public void displayCineplexMenu(Movie movie) { 
-        ArrayList<Cineplex> cineplexes = CineplexManager.getInstance().getCineplexs();
+        ArrayList<Cineplex> cineplexes = CineplexManager.getInstance().getCineplexByMovie(movie.getMovieID());
         Cineplex selectedCinplex = CineplexSelectorMenu.getInstance().startSelector(cineplexes, "SELECT A CINEPLEX");
 
         if (selectedCinplex == null) return;

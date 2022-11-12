@@ -38,7 +38,7 @@ public class CinemaSelectorMenu implements ISelectorMenu<Cinema> {
             }
             selectedInd = sc.nextInt()-1;
             
-            }while(selectedInd  < 0 || selectedInd >= cinema.size());
+            }while(selectedInd  < -1 || selectedInd >= cinema.size());
 
             if(selectedInd == -1) return null;
             

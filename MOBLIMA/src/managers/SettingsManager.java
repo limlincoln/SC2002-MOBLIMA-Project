@@ -757,7 +757,6 @@ public class SettingsManager {
 		}
 		int deletechoice = -1;
 
-		//delete = MovieConsolidator.getInstance().getAll();
 		do {
 			System.out.println("Choose a movie or enter 0 to exit : ");
 				
