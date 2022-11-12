@@ -1,13 +1,10 @@
 package initializer;
 import java.io.File;
-
-
-import enums.AgeGroup;
-import enums.CinemaType;
-import enums.PriceType;
-import enums.TimeOfDay;
-import enums.TypeOfDay;
 import managers.SettingsManager;
+import menus.ITop5Menu;
+import menus.Top5ByRatingMenu;
+import menus.Top5BySalesMenu;
+import menus.Top5OptionsMenu;
 
 import java.util.*;
 import java.io.*;
@@ -21,10 +18,8 @@ public class Settings_Initializer extends GetDatabaseDirectory {
 	
 	public Settings_Initializer(){}
 	
-	public void write(SettingsManager settings) {	
-		Settings_Initializer settings_init = new Settings_Initializer();
-		String currentDirectory = settings_init.getCurrentDirectory();
-		
+	public static void write(SettingsManager settings) {	
+		String currentDirectory = Settings_Initializer.getCurrentDirectory();
 		String fileDir = currentDirectory + DBfile;
 
 		try {
@@ -33,9 +28,22 @@ public class Settings_Initializer extends GetDatabaseDirectory {
 			FileWriter write_settings = new FileWriter((fileDir), false);
 			BufferedWriter buffer = new BufferedWriter(write_settings);
 			
-      System.out.println(settings.getCustomerTop5MenuClass().getClass().getSimpleName().toString().toLowerCase());
+      String classname = settings.getCustomerTop5MenuClass().getClass().getSimpleName().toString().toLowerCase();
 			// buffer.write(settings.getCustomerTop5MenuClass());
-			
+			String result = "";
+			switch(classname){
+				case "top5bysalesmenu":
+					result = "0";
+					break;
+				case "top5byratingmenu":
+					result = "1";
+					break;
+				case "top5optionsmenu":
+				default:	
+					result = "2";
+					break;
+			}
+			buffer.write(result);
 			System.out.println("Settings Write Successful!");
 			buffer.close();
 		}catch (IOException e){
@@ -44,64 +52,35 @@ public class Settings_Initializer extends GetDatabaseDirectory {
 		
 	}
 	
-	public void read() {		
-		Price_Initializer price_init = new Price_Initializer();
-		String currentDirectory = price_init.getCurrentDirectory() ;
+	public static void read() {		
+		String currentDirectory = Settings_Initializer.getCurrentDirectory();
 		String fileDir = currentDirectory + DBfile;
-		HashMap<Object,Double> priceMatrix = new HashMap<Object,Double>();
 
 		try {
-			File pricematrix_file = new File(fileDir);
-			
-			FileInputStream fis = new FileInputStream (pricematrix_file);
-			
+			File settings_file = new File(fileDir);
+			FileInputStream fis = new FileInputStream (settings_file);
 			Scanner sc = new Scanner(fis);
-			
-			HashMap<Object,Double> mapInFile = new HashMap<Object,Double>();
-			
 			BufferedReader br = new BufferedReader(new FileReader(fileDir));
 
+			Integer menuOption = Integer.parseInt(br.readLine());
 
-			for(int whichEnum=0; whichEnum<5; whichEnum++) {
-				final String line = br.readLine();
+			ITop5Menu menu = null;
+			switch(menuOption){
+				case 0:
+					menu = Top5BySalesMenu.getInstance();
+					break;
+				case 1:
+					menu = Top5ByRatingMenu.getInstance();
+					break;
+				case 2:
+				default:	
+					menu = Top5OptionsMenu.getInstance();
+					break;
+			}
 
-				if(line.isBlank()) {
-					continue;
-				}
-				System.out.println("Which enum: " + whichEnum);
-				System.out.println("Line: " + line);
-
-				String[] dataFirstSplit = line.split("\\|");
-				ArrayList<String[]> data = new ArrayList<String[]>();
-				for(int i =0;i<dataFirstSplit.length; i++){
-					data.add(dataFirstSplit[i].replaceAll("\\[|\\]| ", "").split(","));
-				}
-
-				// Read into correct price matrix format
-				
-				for(int i=0; i<data.size(); i++){
-						Object temp = null;
-						String val = data.get(i)[0];
-						switch(whichEnum){
-							case 0:
-								temp = AgeGroup.valueOf(val);
-								break;
-							case 1:
-								temp = CinemaType.valueOf(val);
-								break;
-							case 2:
-								temp = PriceType.valueOf(val);
-								break;
-							case 3:
-								temp = TimeOfDay.valueOf(val);
-								break;
-							case 4:
-								temp = TypeOfDay.valueOf(val);
-								break;
-						}
-						priceMatrix.put(temp, Double.parseDouble(data.get(i)[1]));
-				}	
-			} 
+			SettingsManager.initialize(menu);
+			System.out.println("Settings Manager Initialized successfully");
+ 
 			sc.close();
 			br.close();
 		}catch (Exception e) {
@@ -109,8 +88,4 @@ public class Settings_Initializer extends GetDatabaseDirectory {
 		}
 		return;
 	}
-
-  public static void main(String[] args) {
-    SettingsManager test 
-  }
 }
