@@ -3,8 +3,6 @@ package menus;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
-import java.util.Scanner;
 
 import caculators.PriceCalculator;
 import entities.Cinema;
@@ -12,7 +10,6 @@ import entities.Customer;
 import entities.IPrice;
 import entities.Movie;
 import managers.BookingManager;
-import managers.DateManager;
 import managers.PricingManager;
 import managers.SeatSelector;
 import managers.TicketManager;
@@ -23,8 +20,6 @@ import enums.AgeGroup;
 public class BookingMenu {
     private static BookingMenu single_instance = null;
     
-    private Scanner sc = new Scanner(System.in);
-
     private BookingMenu(){}
 
 

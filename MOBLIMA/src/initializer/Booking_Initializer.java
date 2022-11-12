@@ -4,16 +4,11 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import entities.Booking;
 import entities.Customer;
 import entities.Ticket;
-import enums.AgeGroup;
-import enums.DayOfWeek;
-import enums.TimeOfDay;
-import enums.TypeOfDay;
 
 public class Booking_Initializer extends GetDatabaseDirectory {
 	

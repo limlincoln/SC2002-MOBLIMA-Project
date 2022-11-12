@@ -6,7 +6,6 @@ import menus.Top5ByRatingMenu;
 import menus.Top5BySalesMenu;
 import menus.Top5OptionsMenu;
 
-import java.util.*;
 import java.io.*;
 
 
@@ -56,9 +55,6 @@ public class Settings_Initializer extends GetDatabaseDirectory {
 		String fileDir = currentDirectory + DBfile;
 
 		try {
-			File settings_file = new File(fileDir);
-			FileInputStream fis = new FileInputStream (settings_file);
-			Scanner sc = new Scanner(fis);
 			BufferedReader br = new BufferedReader(new FileReader(fileDir));
 
 			Integer menuOption = Integer.parseInt(br.readLine());

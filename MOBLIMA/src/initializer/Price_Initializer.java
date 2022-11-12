@@ -22,8 +22,7 @@ public class Price_Initializer extends GetDatabaseDirectory {
 	public Price_Initializer(){}
 	
 	public static void  write(HashMap<Object, Double> priceMatrix) {	
-		Price_Initializer price_init = new Price_Initializer();
-		String currentDirectory = price_init.getCurrentDirectory();
+		String currentDirectory = Price_Initializer.getCurrentDirectory();
 		
 		String fileDir = currentDirectory + DBfile;
 
@@ -84,14 +83,6 @@ public class Price_Initializer extends GetDatabaseDirectory {
 		HashMap<Object,Double> priceMatrix = new HashMap<Object,Double>();
 
 		try {
-			File pricematrix_file = new File(fileDir);
-			
-			FileInputStream fis = new FileInputStream (pricematrix_file);
-			
-			Scanner sc = new Scanner(fis);
-			
-			HashMap<Object,Double> mapInFile = new HashMap<Object,Double>();
-			
 			BufferedReader br = new BufferedReader(new FileReader(fileDir));
 
 

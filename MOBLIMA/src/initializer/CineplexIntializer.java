@@ -20,8 +20,7 @@ public class CineplexIntializer extends GetDatabaseDirectory {
 		String newDirectory;
 		String new_cineplex;
 
-		CineplexIntializer cineplex_init = new CineplexIntializer();
-		currentDirectory = cineplex_init.getCurrentDirectory();
+		currentDirectory = CineplexIntializer.getCurrentDirectory();
 
 		newDirectory = currentDirectory;
 		File cineplexlisting_file = new File(newDirectory);
@@ -60,8 +59,7 @@ public class CineplexIntializer extends GetDatabaseDirectory {
 
 		String cineplexid, cineplexname;
 
-		CineplexIntializer cineplex_init = new CineplexIntializer();
-		currentDirectory = cineplex_init.getCurrentDirectory();
+		currentDirectory = CineplexIntializer.getCurrentDirectory();
 
 		newDirectory = currentDirectory;
 

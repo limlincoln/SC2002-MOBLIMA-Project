@@ -4,7 +4,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 import entities.Customer;
-import managers.DateManager;
 import utils.IDGenerator;
 
 public class CustomerFormMenu {
