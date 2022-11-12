@@ -27,8 +27,8 @@ public class TicketInitializer extends GetDatabaseDirectory {
 	/**
 	 * Sets the ticket name.
 	 *
-	 * @param ticketid the ticketid
-	 * @return the string
+	 * @param ticketid - unique id for each ticket file
+	 * @return the unique ticket file name
 	 */
 	public static String setTicketName(int ticketid) {
 
@@ -42,7 +42,9 @@ public class TicketInitializer extends GetDatabaseDirectory {
 	/**
 	 * Creates the ticket file.
 	 *
-	 * @param ticketid the ticketid
+	 * @param ticketid - unique id for each ticket file
+	 * Checks whether the file exists
+	 * Creates the file if it does not exist
 	 */
 	public static void CreateTicketFile(int ticketid) {
 
@@ -73,8 +75,10 @@ public class TicketInitializer extends GetDatabaseDirectory {
 	/**
 	 * Read tickets.
 	 *
-	 * @param ticketid the ticketid
-	 * @return the array list
+	 * @param ticketid - unique id for each ticket file
+	 * ticketid is used to read the respective ticket file
+	 * ticket objects are then created from the ticket file
+	 * @return an ArrayList of ticket object
 	 */
 	public static ArrayList<Ticket> ReadTickets(int ticketid) {
 
@@ -201,12 +205,14 @@ public class TicketInitializer extends GetDatabaseDirectory {
 		/**
 		 * Creates the ticket.
 		 *
-		 * @param ticketid      the ticketid
-		 * @param dayofweek     the dayofweek
-		 * @param timeofday     the timeofday
-		 * @param exactdatetime the exactdatetime
-		 * @param agegroup      the agegroup
-		 * @param seat          the seat
+		 * @param ticketid      - unique id for ticket
+		 * @param dayofweek     - the day of the week
+		 * @param timeofday     - whether the time is before or after 6pm (1800h)
+		 * @param exactdatetime - current time
+		 * @param agegroup      - this ticket belongs to which age group
+		 * @param seat          - the seat id 
+		 * 
+		 * With the above parameters, a new ticket is then saved into storage
 		 */
 		public static void CreateTicket(int ticketid, DayOfWeek dayofweek, TimeOfDay timeofday, LocalDateTime exactdatetime, AgeGroup agegroup, String seat) {
 			

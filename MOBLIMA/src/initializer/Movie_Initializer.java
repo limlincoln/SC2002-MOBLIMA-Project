@@ -18,11 +18,13 @@ import enums.CinemaType;
  */
 public class Movie_Initializer extends GetDatabaseDirectory {
 	
-	/** The Constant DBfile. */
+	/** The Constant DBfile - name of the text file to be read from. */
 	public static final String DBfile = "Movie_Listing.txt";
 	
 	/**
-	 * Creates the movie listing file.
+	 * Creates the Movie Listing file.
+	 * Checks whether the file exists
+	 * Creates the file if it does not exist
 	 */
 	public static void CreateMovieListingFile() {
 		
@@ -53,7 +55,8 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 	/**
 	 * Write movie listing file.
 	 *
-	 * @param movielist the movielist
+	 * @param Receives an ArrayList of Movie
+	 * Saves this ArrayList into a read-able format
 	 * @throws Exception the exception
 	 */
 	public static void WriteMovieListingFile(ArrayList<Movie> movielist) throws Exception {
@@ -96,8 +99,9 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 	/**
 	 * Gets the movie listing.
 	 *
-	 * @return the array list
+	 * @return an ArrayList of Movies class to the caller method
 	 */
+
 	public static ArrayList<Movie> GetMovieListing() {
 		
 		ArrayList<Movie> movielist = new ArrayList<Movie>();
@@ -200,7 +204,7 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 	
 	/**
 	 * The main method.
-	 *
+	 * Created to test the individual functions
 	 * @param args the arguments
 	 * @throws Exception the exception
 	 */

@@ -16,11 +16,13 @@ import entities.Movie;
  */
 public class Holiday_Initializer extends GetDatabaseDirectory {
 
-	/** The Constant DBfile. */
+	/** The Constant DBfile - name of the text file to be read from. */
 	public static final String DBfile = "Holidays.txt";
 
 	/**
 	 * Creates the holiday file.
+	 * Checks whether the file exists
+	 * Creates the file if it does not exist
 	 */
 	public static void CreateHolidayFile() {
 
@@ -48,9 +50,9 @@ public class Holiday_Initializer extends GetDatabaseDirectory {
 	}
 
 	/**
-	 * Gets the holiday listing.
+	 * Gets the Holiday.
 	 *
-	 * @return the array list
+	 * @return an ArrayList of Holiday class to the caller method
 	 */
 	public ArrayList<Holiday> GetHolidayListing() {
 
@@ -129,9 +131,11 @@ public class Holiday_Initializer extends GetDatabaseDirectory {
 
 
 	/**
-	 * New holiday listing.
+	 * Saves the holidays file.
 	 *
-	 * @param holidaylist the holidaylist
+	 * @param Receives an ArrayList of Holidays
+	 * Saves this ArrayList into a read-able format
+	 * This is for adding new holidays
 	 */
 	public void NewHolidayListing(ArrayList<Holiday> holidaylist) {
 
@@ -176,7 +180,7 @@ public class Holiday_Initializer extends GetDatabaseDirectory {
 
 	/**
 	 * The main method.
-	 *
+	 * Test out the individual functions 
 	 * @param args the arguments
 	 */
 	public static void main(String[] args) {

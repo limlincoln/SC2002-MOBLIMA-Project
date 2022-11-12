@@ -20,22 +20,23 @@ public class ShowTime_Initializer extends GetDatabaseDirectory {
 	/**
 	 * Sets the show time file name.
 	 *
-	 * @param seatid the seatid
-	 * @return the string
+	 * @param showtimeid - unique id for each showtime
+	 * @return the unique file for each showtime
 	 */
-	public static String setShowTimeFileName(int seatid) {
+	public static String setShowTimeFileName(int showtimeid) {
 
 		String seatingsfolder = "\\ShowTime\\";
 
 		final String DBfile = "ShowTime.txt";
 
-		return(seatingsfolder+seatid+DBfile);
+		return(seatingsfolder+showtimeid+DBfile);
 	}
 
 	/**
-	 * Creates the show time listing file.
-	 *
-	 * @param showtimeid the showtimeid
+	 * @param showtimeid - unique id for each showtime
+	 * Creates the individual showtime file.
+	 * Checks whether the file exists
+	 * Creates the file if it does not exist
 	 */
 	public static void CreateShowTimeListingFile(int showtimeid) {
 
@@ -66,9 +67,10 @@ public class ShowTime_Initializer extends GetDatabaseDirectory {
 	/**
 	 * Write show time file.
 	 *
-	 * @param showtimeid the showtimeid
-	 * @param showtime   the showtime
-	 * @param seatsID    the seats ID
+	 * @param showtimeid - unique id for each showtime
+	 * @param showtime - array of showtime
+	 * @param seatsID - seats ID
+	 * Saves this into a unique showtimes file for individual showtimes
 	 */
 	public static void WriteShowTimeFile(int showtimeid, int[] showtime, int seatsID) {
 		String currentDirectory;
@@ -114,7 +116,10 @@ public class ShowTime_Initializer extends GetDatabaseDirectory {
 	/**
 	 * Read show time file.
 	 *
-	 * @param showtimeid the showtimeid
+	 * @param showtimeid - unique id for each showtime
+	 * Read from the correct showtime file
+	 * Add into respectively ArrayList
+	 * ShowTime object is created with the ArrayList
 	 */
 	public static void ReadShowTimeFile(int showtimeid) {
 		String currentDirectory;
@@ -175,7 +180,7 @@ public class ShowTime_Initializer extends GetDatabaseDirectory {
 
 	/**
 	 * The main method.
-	 *
+	 * Created to test the individual functions
 	 * @param args the arguments
 	 */
 	public static void main(String[] args) {

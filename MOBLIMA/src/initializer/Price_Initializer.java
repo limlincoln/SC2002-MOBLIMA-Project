@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import managers.PricingManager;
+import enums.AgeGroup;
 
 import java.util.*;
 import java.io.*;
@@ -34,9 +35,10 @@ public class Price_Initializer extends GetDatabaseDirectory {
 		
 		hm = new HashMap<Object, Double>();
 		
-		hm.put("1", 9.8);
-		hm.put("2", 7.4);
-		hm.put("3", 5.9);
+		hm.put(AgeGroup.SENIOR, 9.8);
+		hm.put(AgeGroup.STUDENT, 7.4);
+		hm.put(AgeGroup.ADULT, 5.9);
+		WriteToPriceMatrix(hm);
 	}
 	
 	/**
@@ -73,29 +75,32 @@ public class Price_Initializer extends GetDatabaseDirectory {
 	 *
 	 * @param map the map
 	 */
-	public void WriteToPriceMatrix(HashMap<String, Double> map) {
+	public void WriteToPriceMatrix(HashMap<Object, Double> map) {
 		
 		String currentDirectory;
 		String newDirectory;
-		boolean checkfileexists = false;
+		//boolean checkfileexists = false;
 		
-		Price_Initializer price_init = new Price_Initializer();
-		currentDirectory = price_init.getCurrentDirectory();
+		Cinema_Initializer cinema_init = new Cinema_Initializer();
+		currentDirectory = cinema_init.getCurrentDirectory();
 		
 		newDirectory = currentDirectory;
 		
 		try {
-			File pricematrix_file = new File(newDirectory);
-			FileOutputStream fos = new FileOutputStream(pricematrix_file);
-			PrintWriter printwriter = new PrintWriter(fos);
 			
-			//for(Map.Entry<Object, Double> hm:map.entrySet()) {
-				//printwriter.println(hm.getKey() + "=" + hm.getValue());
-			//}
+			FileWriter pricematrix_file = new FileWriter((newDirectory + DBfile));
+			System.out.println((newDirectory + DBfile));
+			BufferedWriter buffer = new BufferedWriter(pricematrix_file);
 			
-			printwriter.flush();
-			printwriter.close();
-			fos.close();
+			for(Map.Entry<Object, Double> hm:map.entrySet()) {
+				buffer.write(hm.getKey() + "=" + hm.getValue());
+				buffer.newLine();
+				System.out.println(hm.getKey() + "=" + hm.getValue());
+			}
+			
+			buffer.close();
+			//printwriter.flush();
+			//fos.close();
 		}
 		catch (Exception e) {
 			
@@ -117,7 +122,7 @@ public class Price_Initializer extends GetDatabaseDirectory {
 		newDirectory = currentDirectory;
 		
 		try {
-			File pricematrix_file = new File(newDirectory);
+			File pricematrix_file = new File(newDirectory + DBfile);
 			
 			FileInputStream fis = new FileInputStream (pricematrix_file);
 			
@@ -138,6 +143,12 @@ public class Price_Initializer extends GetDatabaseDirectory {
 			}
 			fis.close();
 			
+			for (String name: mapInFile.keySet()) {
+			    String key = name.toString();
+			    String value = mapInFile.get(name).toString();
+			    System.out.println(key + " " + value);
+			}
+			
 			//PricingManager pm = new PricingManager(mapInFile);
 		} catch (Exception e) {
 			
@@ -154,7 +165,7 @@ public class Price_Initializer extends GetDatabaseDirectory {
 	public static void main(String[] args) {
 		
 		Price_Initializer price_init = new Price_Initializer();
-		price_init.CreatePriceMatrixFile();
+		price_init.ReadfromPriceMatrix();
 	}
 
 }

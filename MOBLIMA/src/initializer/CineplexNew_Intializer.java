@@ -24,11 +24,14 @@ import enums.TimeOfDay;
  */
 public class CineplexNew_Intializer extends GetDatabaseDirectory {
 	
-	/** The Constant DBfile. */
+	/** The Constant DBfile - name of the text file to be read from. */
 	public static final String DBfile = "Cineplex.txt";
 
 	/**
 	 * Creates the cineplex file.
+	 * 
+	 * Check if the file exists
+	 * Creates the file if it does not exist
 	 */
 	public static void CreateCineplexFile() {
 		String currentDirectory;
@@ -58,7 +61,8 @@ public class CineplexNew_Intializer extends GetDatabaseDirectory {
  	/**
 	 * Write cineplex listing file.
 	 *
-	 * @param cineplexlist the cineplexlist
+	 * @param ArrayList of Cineplex
+	 * Saves the ArrayList into read-able format
 	 * @throws Exception the exception
 	 */
  	public static void WriteCineplexListingFile(ArrayList<Cineplex> cineplexlist) throws Exception { 
@@ -99,8 +103,9 @@ public class CineplexNew_Intializer extends GetDatabaseDirectory {
 		 } 
 		  
 		 /**
-		 * Gets the cineplex listing.
-		 *
+		 * Reads back from the Cineplex file
+		 * Create individual Cineplex object from each line
+		 * Adds the object back into the ArrayList
 		 * @return the array list
 		 */
  		public ArrayList<Cineplex> GetCineplexListing() { 

@@ -22,8 +22,9 @@ public class Cinema_Initializer extends GetDatabaseDirectory {
 	/**
 	 * Sets the cinema file name.
 	 *
-	 * @param cinemaid the cinemaid
-	 * @return the string
+	 * @param Receives the cinemaid as an argument
+	 * Appending the cinemaid to the front of the text file
+	 * @returns the name of the new file
 	 */
 	public static String setCinemaFileName(int cinemaid) {
 
@@ -35,9 +36,11 @@ public class Cinema_Initializer extends GetDatabaseDirectory {
 	}
 	
 	/**
-	 * Creates the cinema file.
+	 * Creates the cinemas file.
 	 *
-	 * @param cinemaid the cinemaid
+	 * @param Receives the cinemaid as an argument
+	 * Check if a separate directory to contain the cinema files are created
+	 * Creates the directory to contain all the cinema files if it does not exist
 	 */
 	public static void CreateCinemaFile(int cinemaid) {
 
@@ -66,9 +69,11 @@ public class Cinema_Initializer extends GetDatabaseDirectory {
 	}
 	
 	/**
-	 * Read cinema file.
+	 * Read cinema file from //Database/Cinema.
 	 *
-	 * @param cid the cid
+	 * @param Receives the cinemaid as an argument
+	 * cinemaid is used to recognize which file is to be read
+	 * Initialize cinema classes with the information from text
 	 */
 	public static void ReadCinemaFile(int cid) {
 		ArrayList<Cinema> cinemalist = new ArrayList<Cinema>();
@@ -140,11 +145,13 @@ public class Cinema_Initializer extends GetDatabaseDirectory {
 	}
 		
 	/**
-	 * Write cinema file.
+	 * Saves the cinema classes to text file.
 	 *
-	 * @param cid   the cid
-	 * @param cType the c type
-	 * @param sTime the s time
+	 * @param cid - cinema id
+	 * @param cType - the type of cinema
+	 * @param sTime - ArrayList of ShowTime
+	 * 
+	 * With the above arguments, saves them to a text file
 	 */
 	public static void WriteCinemaFile(int cid, CinemaType cType, ArrayList<ShowTime> sTime) {
 		String currentDirectory;
@@ -197,6 +204,8 @@ public class Cinema_Initializer extends GetDatabaseDirectory {
 	 * The main method.
 	 *
 	 * @param args the arguments
+	 * 
+	 * Created to test the individual functions
 	 */
 	public static void main(String[] args) {
 		

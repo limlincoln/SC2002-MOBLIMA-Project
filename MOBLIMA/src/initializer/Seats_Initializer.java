@@ -16,10 +16,10 @@ import java.util.List;
 public class Seats_Initializer extends GetDatabaseDirectory{
 	
 	/**
-	 * Sets the seatings file name.
+	 * Sets the individual seatings file name.
 	 *
-	 * @param seatid the seatid
-	 * @return the string
+	 * @param seatid - unique id for each seats
+	 * @return the unique file for each seats
 	 */
 	public static String setSeatingsFileName(int seatid) {
 		
@@ -31,11 +31,12 @@ public class Seats_Initializer extends GetDatabaseDirectory{
 	}
 
 	/**
-	 * Creates the cineplex file.
-	 *
-	 * @param seatid the seatid
+	 * @param seatid - unique id for each seats
+	 * Creates the individual seats file.
+	 * Checks whether the file exists
+	 * Creates the file if it does not exist
 	 */
-	public static void CreateCineplexFile(int seatid) {
+	public static void CreateSeatsFile(int seatid) {
 
 		String currentDirectory;
 		String newDirectory;
@@ -68,6 +69,8 @@ public class Seats_Initializer extends GetDatabaseDirectory{
 	 *
 	 * @param seatsID        the seats ID
 	 * @param cineplex_seats the cineplex seats
+	 * 
+	 * Saving the cineplex seats for with a unique id appended to the file name
 	 */
 	public static void SaveSeats(int seatsID, int[][] cineplex_seats) {
 		
@@ -115,6 +118,8 @@ public class Seats_Initializer extends GetDatabaseDirectory{
 	 * Return seats.
 	 *
 	 * @param seatsID the seats ID
+	 * 
+	 * using the seatsID, identify the seats file to read from
 	 * @return the int[][]
 	 */
 	public static int[][] returnSeats(int seatsID){
@@ -159,7 +164,7 @@ public class Seats_Initializer extends GetDatabaseDirectory{
 	
 	/**
 	 * The main method.
-	 *
+	 * Created to test the individual functions
 	 * @param args the arguments
 	 */
 	public static void main(String[] args) {

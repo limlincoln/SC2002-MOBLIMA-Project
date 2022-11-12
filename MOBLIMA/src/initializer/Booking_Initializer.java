@@ -16,13 +16,16 @@ import entities.Ticket;
  */
 public class Booking_Initializer extends GetDatabaseDirectory {
 	
-	/** The Constant DBfile. */
+	/** The Constant DBfile - name of the text file to be read from. */
 	public static final String DBfile = "Booking_History.txt";
 
 	/**
 	 * Creates the booking history file.
+	 * Checks whether the file exists
+	 * Creates the file if it does not exist
 	 */
 	public static void CreateBookingHistoryFile() {
+		
 		String currentDirectory;
 		String newDirectory;
 		boolean checkfileexists = false;
@@ -50,8 +53,8 @@ public class Booking_Initializer extends GetDatabaseDirectory {
 	/**
 	 * Gets the booking.
 	 *
-	 * @param tickets the tickets
-	 * @return the array list
+	 * @param Obtains an array of Ticket to create Booking class
+	 * @return an ArrayList of Booking class to the caller method
 	 */
 	public static ArrayList<Booking> GetBooking(ArrayList<Ticket> tickets) {
 
@@ -136,9 +139,10 @@ public class Booking_Initializer extends GetDatabaseDirectory {
 	}
 	
 /**
- * Write booking history file.
+ * Saves the booking history file.
  *
- * @param bookinglist the bookinglist
+ * @param Receives an ArrayList of Booking
+ * Saves this ArrayList into a read-able format
  * @throws Exception the exception
  */
 public static void WriteBookingHistoryFile(ArrayList<Booking> bookinglist) throws Exception {
