@@ -646,8 +646,6 @@ public class SettingsManager {
 		} while (subchoice != 0);
 	}
 
-	}
-
 	public void addMovieSettings(){
 		// ADD MOVIE
 		// ASK FOR ALL NECESSARY ATTRIBUTE
