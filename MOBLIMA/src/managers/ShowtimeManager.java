@@ -110,7 +110,7 @@ public class ShowTimeManager {
 	    	}
 	    	int choice; 
 			do {
-		        System.out.println("Enter the index to change or zero to exit: ");
+		        System.out.println("Enter the index to change or 0 to exit: ");
 		    	
 	      
 		        while (!sc.hasNextInt()) {
@@ -123,35 +123,38 @@ public class ShowTimeManager {
 				
 			} while (choice  < -1 || choice >= listofshowtime.length);
 			
-			System.out.println("Enter the Movie ID:");
-			int newmovieid = sc.nextInt();
-			//System.out.println("This is new one" + newmovieid);
-			sc.nextLine();
+			System.out.println("Enter the Movie Title:");
 			
-			System.out.println("Is this the timing you want to change? (Y to confirm):" +timings[choice]);
-			String confirmation = sc.nextLine();
+			String movietitle = sc.nextLine();
 			
-			
-			
-			if(confirmation.equals("Y"))
+			Movie newmovie = MovieManager.getInstance().getMovieByName(movietitle);
+
+			if(newmovie != null)
 			{
-				listofshowtime[choice] = newmovieid;
-				cinema.getShowtimes().get(dayofweek).setShowTime(listofshowtime);
-				System.out.println("SUCCESSFULLY CHANGED");
+				System.out.println("Add "+movietitle+" to " +timings[choice]+"? (Y to confirm):");
+				String confirmation = sc.nextLine();
+				if(confirmation.toUpperCase().equals("Y"))
+				{
+					listofshowtime[choice] = newmovie.getMovieID();
+					cinema.getShowtimes().get(dayofweek).setShowTime(listofshowtime);
+					System.out.println("SUCCESSFULLY CHANGED");
+				}
+				else
+				{
+					System.out.println("UNSUCCESSFULLY CHANGED");
+				}
 			}
 			else
 			{
-				System.out.println("UNSUCCESSFULLY CHANGED");
+				System.out.println("The movie doesn't exist!");
 			}
+			
 			
 		}
 		else
 		{
 			System.out.print("Cineplex does not have selected cinema!!!!");
 		}
-		
-
-        // TODO: Write back
     
     }
     

@@ -50,12 +50,13 @@ public class MovieManager {
      */
     public Movie getMovieByName(String movieName){
         for(int i=0; i<movies.size(); i++){
-            if(movies.get(i).getMovieName() == movieName){
+            if(movies.get(i).getMovieName().equals(movieName)){
                 return movies.get(i);
             }
         }
         return null;
     }
+
 
     /**
      * Add new movie to existing list
