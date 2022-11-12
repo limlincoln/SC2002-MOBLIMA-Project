@@ -6,12 +6,18 @@ import java.util.Scanner;
 import utils.IDGenerator;
 import utils.SeatPrinter;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SeatLayout.
+ */
 public class SeatLayout extends ISeatLayout{
+    
+    /** The id. */
     private Integer ID;
 
     /**
-     * Constructor for the SeatLayout Class
-     */
+	 * Constructor for the SeatLayout Class.
+	 */
     public SeatLayout(){
         Optional<ISeat[][]> l = createLayout();
         if(l.isPresent()){
@@ -23,17 +29,21 @@ public class SeatLayout extends ISeatLayout{
     }
 
     /**
-     * Constructor for the SeatLayout Class
-     * @param layout layout of the seat
-     */
+	 * Constructor for the SeatLayout Class.
+	 *
+	 * @param id     the id
+	 * @param layout layout of the seat
+	 */
     public SeatLayout(Integer id, ISeat[][] layout){
         this.setLayout(layout);
         this.ID = id;
     }
 
     /**
-     * creates the Seat layout
-     */
+	 * creates the Seat layout.
+	 *
+	 * @return the optional
+	 */
     @Override
     public Optional<ISeat[][]> createLayout() {
         Scanner sc = new Scanner(System.in);
@@ -102,10 +112,21 @@ public class SeatLayout extends ISeatLayout{
     }while(choice == 1);
     return Optional.empty();
     }
+    
+    /**
+	 * Gets the id.
+	 *
+	 * @return the id
+	 */
     public Integer getID() {
         return this.ID;
     }
 
+    /**
+	 * Sets the id.
+	 *
+	 * @param ID the new id
+	 */
     public void setID(Integer ID) {
         this.ID = ID;
     }

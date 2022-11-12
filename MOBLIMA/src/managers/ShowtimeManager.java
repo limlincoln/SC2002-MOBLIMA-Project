@@ -13,12 +13,19 @@ import entities.Seats;
 import entities.ShowTime;
 import enums.DayOfWeek;
 
+// TODO: Auto-generated Javadoc
 //need to filter by movie or cinplex??
 
 
+/**
+ * The Class ShowTimeManager.
+ */
 public class ShowTimeManager{
+    
+    /** The single instance. */
     private static ShowTimeManager single_instance = null;
 
+    /** The sc. */
     private Scanner sc = new Scanner(System.in);
     // FUNCTIONALITY
     // SHOW ShowTime FOR A PARTICULAR MOVIE & DAY & CINEPLEX & CINEMA
@@ -27,8 +34,17 @@ public class ShowTimeManager{
     // FINDSEATS:
     // FIND THE SEATS FROM CINEMA CLASS USING ShowTime SLOT INDEX
 
+    /**
+	 * Instantiates a new show time manager.
+	 */
     // Initialisers
     private ShowTimeManager(){}
+    
+    /**
+	 * Gets the single instance of ShowTimeManager.
+	 *
+	 * @return single instance of ShowTimeManager
+	 */
     public static ShowTimeManager getInstance()
     {
         if (single_instance == null)
@@ -37,11 +53,12 @@ public class ShowTimeManager{
     }
 
     /**
-     * Get all date and time where a particular movie in a cinema is showing
-     * @param cinema
-     * @param movie
-     * @return An arraylist of localdate time where the movie is showing
-     */
+	 * Get all date and time where a particular movie in a cinema is showing.
+	 *
+	 * @param cinema the cinema
+	 * @param movie  the movie
+	 * @return An arraylist of localdate time where the movie is showing
+	 */
 
     public ArrayList<LocalDateTime> getShowTimeByMovie(Cinema cinema, Movie movie){
         ArrayList<LocalDateTime> showDateTimes = new ArrayList<LocalDateTime>();
@@ -61,11 +78,12 @@ public class ShowTimeManager{
     }
     
     /**
-     * Get the seats based on the selected date and time
-     * @param cinema
-     * @param localDateTime
-     * @return
-     */
+	 * Get the seats based on the selected date and time.
+	 *
+	 * @param cinema        the cinema
+	 * @param localDateTime the local date time
+	 * @return the seats by local date time
+	 */
     public Seats getSeatsByLocalDateTime(Cinema cinema, LocalDateTime localDateTime){
         int dayOfWeekInInt = localDateTime.getDayOfWeek().getValue();
         int selectedTimeSlot = DateManager.getInstance().getTimeSlotIndex(localDateTime.toLocalTime().of(23, 0));
@@ -73,6 +91,13 @@ public class ShowTimeManager{
 
     }
     
+    /**
+	 * Edits the show time.
+	 *
+	 * @param cineplex the cineplex
+	 * @param cinema   the cinema
+	 * @param day      the day
+	 */
     public void editShowTime(Cineplex cineplex, Cinema cinema,DayOfWeek day)
     {//cineplex cinema[7 showtimes for each day], which day, showtimeslot(8),
     	

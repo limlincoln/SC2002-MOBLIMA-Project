@@ -15,11 +15,21 @@ import java.io.*;
 
 import java.io.File;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Price_Initializer.
+ */
 public class Price_Initializer extends GetDatabaseDirectory {
 	
+	/** The Constant DBfile. */
 	public static final String DBfile = "Price_Matrix.txt";
+	
+	/** The hm. */
 	HashMap<Object, Double> hm;
 	
+	/**
+	 * Instantiates a new price initializer.
+	 */
 	public Price_Initializer(){
 		
 		hm = new HashMap<Object, Double>();
@@ -29,6 +39,9 @@ public class Price_Initializer extends GetDatabaseDirectory {
 		hm.put("3", 5.9);
 	}
 	
+	/**
+	 * Creates the price matrix file.
+	 */
 	public static void CreatePriceMatrixFile() {
 		
 		String currentDirectory;
@@ -55,6 +68,11 @@ public class Price_Initializer extends GetDatabaseDirectory {
 		
 	}
 	
+	/**
+	 * Write to price matrix.
+	 *
+	 * @param map the map
+	 */
 	public void WriteToPriceMatrix(HashMap<String, Double> map) {
 		
 		String currentDirectory;
@@ -85,6 +103,9 @@ public class Price_Initializer extends GetDatabaseDirectory {
 		
 	}
 	
+	/**
+	 * Readfrom price matrix.
+	 */
 	public void ReadfromPriceMatrix() {
 		String currentDirectory;
 		String newDirectory;
@@ -125,6 +146,11 @@ public class Price_Initializer extends GetDatabaseDirectory {
 		
 	}
 	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		
 		Price_Initializer price_init = new Price_Initializer();

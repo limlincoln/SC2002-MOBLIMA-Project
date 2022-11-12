@@ -8,19 +8,40 @@ import java.util.ArrayList;
 import entities.Movie;
 import menus.ITop5Menu;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SettingsManager.
+ */
 public class SettingsManager {
+	
+	/** The single instance. */
 	private static SettingsManager single_instance = null;
+	
+	/** The customer top 5 menu class. */
 	private ITop5Menu customerTop5MenuClass;
+	
+	/**
+	 * Instantiates a new settings manager.
+	 *
+	 * @param customerTop5MenuClass the customer top 5 menu class
+	 */
 	private SettingsManager(ITop5Menu customerTop5MenuClass){
 		this.customerTop5MenuClass = customerTop5MenuClass;
 	}
+	
+	/**
+	 * Gets the single instance of SettingsManager.
+	 *
+	 * @return single instance of SettingsManager
+	 */
 	public static SettingsManager getInstance(){
 		return single_instance;
 	}
 
 	/**
-	 * Initialises a single instance of settings manager
-	 * @param customerTop5Value
+	 * Initialises a single instance of settings manager.
+	 *
+	 * @param customerTop5Value the customer top 5 value
 	 */
 	public static void initialiser(ITop5Menu customerTop5Value){
 		single_instance = new SettingsManager(customerTop5Value);
@@ -29,47 +50,55 @@ public class SettingsManager {
 	
 	// TODO Implement
 	/**
-	 * Function to edit price matrix
-	 * @param ageGroup
-	 * @param newPrice
-	 * @return
+	 * Function to edit price matrix.
+	 *
+	 * @param ageGroup the age group
+	 * @param newPrice the new price
+	 * @return true, if successful
 	 */
 	public boolean editPrices(AgeGroup ageGroup, int newPrice){
 		return false;		
 	}
+	
 	/**
-	 * Overload editPrice for typeOfDay enum
-	 * @param typeOfDay
-	 * @param newPrice
-	 * @return
+	 * Overload editPrice for typeOfDay enum.
+	 *
+	 * @param typeOfDay the type of day
+	 * @param newPrice  the new price
+	 * @return true, if successful
 	 */
 	public boolean editPrices(TypeOfDay typeOfDay, int newPrice){
 		return false;
 	}
+	
 	/**
-	 * Overload editprice for timeOfDay Enum
-	 * @param timeOfDay
-	 * @param newPrice
-	 * @return
+	 * Overload editprice for timeOfDay Enum.
+	 *
+	 * @param timeOfDay the time of day
+	 * @param newPrice  the new price
+	 * @return true, if successful
 	 */
 	public boolean editPrices(TimeOfDay timeOfDay, int newPrice){
 		return false;
 	}
 
 	/**
-	 * Overload editPrice for cinemaType
-	 * @param cinemaType
-	 * @param newPrice
-	 * @return
+	 * Overload editPrice for cinemaType.
+	 *
+	 * @param cinemaType the cinema type
+	 * @param newPrice   the new price
+	 * @return true, if successful
 	 */
 	public boolean editPrices(CinemaType cinemaType, int newPrice){
 		return false;
 	}
+	
 	/**
-	 * Removes or edits dates of holidays stored in Holiday Manager 
-	 * @param nameOfHoliday
-	 * @param StartDateString
-	 * @param EndDateString
+	 * Removes or edits dates of holidays stored in Holiday Manager .
+	 *
+	 * @param nameOfHoliday   the name of holiday
+	 * @param StartDateString the start date string
+	 * @param EndDateString   the end date string
 	 * @return success or not
 	 */
 	public boolean editHoliday(String nameOfHoliday, String StartDateString, String EndDateString){
@@ -78,13 +107,20 @@ public class SettingsManager {
 
 
 	/**
-	 * Getter and Setters
+	 * Getter and Setters.
+	 *
+	 * @return the customer top 5 menu class
 	 */
 
 	public ITop5Menu getCustomerTop5MenuClass() {
 		return this.customerTop5MenuClass;
 	}
 
+	/**
+	 * Sets the customer top 5 menu class.
+	 *
+	 * @param customerTop5MenuClass the new customer top 5 menu class
+	 */
 	public void setCustomerTop5MenuClass(ITop5Menu customerTop5MenuClass) {
 		this.customerTop5MenuClass = customerTop5MenuClass;
 	}
@@ -99,7 +135,7 @@ public class SettingsManager {
 
 	// PRICE FUNCTIONS
 	/**
-	 * Edits the base price of movies
+	 * Edits the base price of movies.
 	 */
 	public void editBasePrice(){
 		Scanner sc = new Scanner(System.in);
@@ -111,7 +147,7 @@ public class SettingsManager {
 	}
 
 	/**
-	 * Edits the Price of different age groups
+	 * Edits the Price of different age groups.
 	 */
 	public void editAgeGroupPrice(){
 		int ageGroupChoice;
@@ -149,7 +185,7 @@ public class SettingsManager {
 	}
 
 	/**
-	 * Edits the Price of different cinema types
+	 * Edits the Price of different cinema types.
 	 */
 	public void editCinemaTypePrice(){
 		int cinemaTypeChoice;
@@ -187,7 +223,7 @@ public class SettingsManager {
 	}
 
 	/**
-	 * Edits the Price of different day of weeks
+	 * Edits the Price of different day of weeks.
 	 */
 	public void editDayOfWeekPrice(){
 		int dowChoice;
@@ -245,7 +281,7 @@ public class SettingsManager {
 	}
 
 	/**
-	 * Edits the Price of different times of day
+	 * Edits the Price of different times of day.
 	 */
 	public void editTimeOfDayPrice(){
 		int statusChoice;
@@ -278,7 +314,7 @@ public class SettingsManager {
 	}
 
 	/**
-	 * Edits the Price of different type of day
+	 * Edits the Price of different type of day.
 	 */
 	public void editTypeOfDayPrice(){
 		int todChoice;
@@ -318,7 +354,7 @@ public class SettingsManager {
 	// HOLIDAY FUNCTIONS
 
 	/**
-	 * List all available holidays
+	 * List all available holidays.
 	 */
 
 	    // TODO: Holiday ID
@@ -333,7 +369,7 @@ public class SettingsManager {
 	}
 
 	/**
-	 * Add new holidays
+	 * Add new holidays.
 	 */
 	public void addNewHoliday(){
 		String name;
@@ -353,7 +389,7 @@ public class SettingsManager {
 	}
 
 	/**
-	 * Remove existing holiday
+	 * Remove existing holiday.
 	 */
 	public void removeExistingHoliday(){
 		int choice;
@@ -371,6 +407,9 @@ public class SettingsManager {
 
 	// MOVIE FUNCTIONS
 
+	/**
+	 * Edits the movie settings.
+	 */
 	public void editMovieSettings(){
 	// EDIT MOVIE
 		// MOVIE EDITOR MENU
@@ -520,6 +559,9 @@ public class SettingsManager {
 		} while (subchoice != 0);
 	}
 
+	/**
+	 * Adds the movie settings.
+	 */
 	public void addMovieSettings(){
 		// ADD MOVIE
 		// ASK FOR ALL NECESSARY ATTRIBUTE
@@ -598,6 +640,9 @@ public class SettingsManager {
 
 	}
 
+	/**
+	 * Delete movie setting.
+	 */
 	public void deleteMovieSetting(){
 		System.out.println(	"================ SELECT A MOVIE =================");
 		//ArrayList<Movie> delete = new ArrayList<Movie>();

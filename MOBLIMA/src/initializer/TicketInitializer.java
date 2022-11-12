@@ -18,8 +18,18 @@ import enums.TimeOfDay;
 import enums.TypeOfDay;
 import enums.AgeGroup;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TicketInitializer.
+ */
 public class TicketInitializer extends GetDatabaseDirectory {
 
+	/**
+	 * Sets the ticket name.
+	 *
+	 * @param ticketid the ticketid
+	 * @return the string
+	 */
 	public static String setTicketName(int ticketid) {
 
 		String seatingsfolder = "\\Tickets\\";
@@ -29,6 +39,11 @@ public class TicketInitializer extends GetDatabaseDirectory {
 		return(seatingsfolder+ticketid+DBfile);
 	}
 
+	/**
+	 * Creates the ticket file.
+	 *
+	 * @param ticketid the ticketid
+	 */
 	public static void CreateTicketFile(int ticketid) {
 
 		String currentDirectory;
@@ -55,6 +70,12 @@ public class TicketInitializer extends GetDatabaseDirectory {
 		System.out.println(create_ticket_file.getPath());
 	}
 
+	/**
+	 * Read tickets.
+	 *
+	 * @param ticketid the ticketid
+	 * @return the array list
+	 */
 	public static ArrayList<Ticket> ReadTickets(int ticketid) {
 
 		ArrayList<Ticket> ticketlist = new ArrayList<Ticket>();
@@ -177,6 +198,16 @@ public class TicketInitializer extends GetDatabaseDirectory {
 		return ticketlist;
 		}
 	
+		/**
+		 * Creates the ticket.
+		 *
+		 * @param ticketid      the ticketid
+		 * @param dayofweek     the dayofweek
+		 * @param timeofday     the timeofday
+		 * @param exactdatetime the exactdatetime
+		 * @param agegroup      the agegroup
+		 * @param seat          the seat
+		 */
 		public static void CreateTicket(int ticketid, DayOfWeek dayofweek, TimeOfDay timeofday, LocalDateTime exactdatetime, AgeGroup agegroup, String seat) {
 			
 			String currentDirectory;
@@ -210,4 +241,4 @@ public class TicketInitializer extends GetDatabaseDirectory {
 			
 		}
     }
-}
+

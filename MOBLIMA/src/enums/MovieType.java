@@ -2,9 +2,9 @@ package enums;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Enum CinemaType.
+ * The Enum MovieType.
  */
-public enum CinemaType{
+public enum MovieType{
   
   /** The imax. */
   IMAX,

@@ -4,12 +4,18 @@ import entities.Movie;
 import entities.Booking;
 import java.util.ArrayList;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ReviewManager.
+ */
 public class ReviewManager {
+    
     /**
-     * User give review to movie
-     * @param movie
-     * @param newRating
-     */
+	 * User give review to movie.
+	 *
+	 * @param movie     the movie
+	 * @param newRating the new rating
+	 */
     public static void review(Movie movie, int newRating){
         if(newRating > 5 || newRating < 0){
             System.out.println("Invalid input");
@@ -22,10 +28,11 @@ public class ReviewManager {
     }
 
     /**
-     * Return average rating of the selected movie
-     * @param movie
-     * @return
-     */
+	 * Return average rating of the selected movie.
+	 *
+	 * @param movie the movie
+	 * @return the avg rating
+	 */
     public static float getAvgRating(Movie movie){
         ArrayList<Integer> ratings = movie.getRatings();
         int totalRating = 0;
@@ -36,10 +43,11 @@ public class ReviewManager {
     }
 
     /**
-     * Make a review on the booking
-     * @param book
-     * @param rating
-     */
+	 * Make a review on the booking.
+	 *
+	 * @param book   the book
+	 * @param rating the rating
+	 */
     public static void reviewBooking(Booking book, int rating) {
     	book.setRating(rating);
     	

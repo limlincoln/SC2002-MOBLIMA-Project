@@ -10,10 +10,18 @@ import enums.DayOfWeek;
 import entities.Holiday;
 import entities.Movie;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Holiday_Initializer.
+ */
 public class Holiday_Initializer extends GetDatabaseDirectory {
 
+	/** The Constant DBfile. */
 	public static final String DBfile = "Holidays.txt";
 
+	/**
+	 * Creates the holiday file.
+	 */
 	public static void CreateHolidayFile() {
 
 		String currentDirectory;
@@ -39,6 +47,11 @@ public class Holiday_Initializer extends GetDatabaseDirectory {
 		System.out.println(create_holiday_file.getPath());
 	}
 
+	/**
+	 * Gets the holiday listing.
+	 *
+	 * @return the array list
+	 */
 	public ArrayList<Holiday> GetHolidayListing() {
 
 		ArrayList<Holiday> holidaylist = new ArrayList<Holiday>();
@@ -115,6 +128,11 @@ public class Holiday_Initializer extends GetDatabaseDirectory {
 	}
 
 
+	/**
+	 * New holiday listing.
+	 *
+	 * @param holidaylist the holidaylist
+	 */
 	public void NewHolidayListing(ArrayList<Holiday> holidaylist) {
 
 		String currentDirectory;
@@ -156,6 +174,11 @@ public class Holiday_Initializer extends GetDatabaseDirectory {
 		}
 	}
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 
 		Holiday_Initializer holiday_init = new Holiday_Initializer();

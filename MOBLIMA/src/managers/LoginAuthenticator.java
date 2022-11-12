@@ -7,11 +7,21 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class LoginAuthenticator.
+ */
 public class LoginAuthenticator {
 
+    /** The single instance. */
     private static LoginAuthenticator single_instance = null;
 
 
+    /**
+	 * Gets the single instance of LoginAuthenticator.
+	 *
+	 * @return single instance of LoginAuthenticator
+	 */
     public static LoginAuthenticator getInstance()
     {
         if (single_instance == null)
@@ -21,16 +31,20 @@ public class LoginAuthenticator {
 	
     
 
+    /**
+	 * Instantiates a new login authenticator.
+	 */
     private LoginAuthenticator() {
     	
     }
 	
     
     /**
-	 * Login authenticator to test for correct login credentials
-	 * @param username
-	 * @param password
-	 * @return
+	 * Login authenticator to test for correct login credentials.
+	 *
+	 * @param username the username
+	 * @param password the password
+	 * @return true, if successful
 	 */
     public boolean login(String username, String password) {
         try {
@@ -75,6 +89,11 @@ public class LoginAuthenticator {
         return false;
     }
     
+    /**
+	 * Logout.
+	 *
+	 * @return true, if successful
+	 */
     //Logout
     public boolean logout(){
         return false;

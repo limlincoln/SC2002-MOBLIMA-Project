@@ -11,8 +11,18 @@ import entities.Seat;
 import entities.Seats;
 import entities.Space;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SeatsInitializer.
+ */
 public class SeatsInitializer extends GetDatabaseDirectory{
 	
+	/**
+	 * Sets the seatings file name.
+	 *
+	 * @param seatid the seatid
+	 * @return the string
+	 */
 	public static String setSeatingsFileName(int seatid) {
 		
 		String seatingsfolder = "/Seatings/";
@@ -50,6 +60,11 @@ public class SeatsInitializer extends GetDatabaseDirectory{
 
 	// }
 	
+	/**
+	 * Write seats to file.
+	 *
+	 * @param seats the seats
+	 */
 	public static void writeSeatsToFile(Seats seats) {
 		
 		String currentDirectory;
@@ -90,6 +105,12 @@ public class SeatsInitializer extends GetDatabaseDirectory{
 		
 	}
 
+	/**
+	 * Read seats from file.
+	 *
+	 * @param seatsID the seats ID
+	 * @return the seats
+	 */
 	public static Seats readSeatsFromFile(int seatsID){
 		String currentDirectory;
 		String newDirectory;

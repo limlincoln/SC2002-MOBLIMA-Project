@@ -13,8 +13,18 @@ import entities.ShowTime;
 import enums.CinemaType;
 import enums.MovieType;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Cinema_Initializer.
+ */
 public class Cinema_Initializer extends GetDatabaseDirectory {
 	
+	/**
+	 * Sets the cinema file name.
+	 *
+	 * @param cinemaid the cinemaid
+	 * @return the string
+	 */
 	public static String setCinemaFileName(int cinemaid) {
 
 		String seatingsfolder = "\\Cinema\\";
@@ -24,6 +34,11 @@ public class Cinema_Initializer extends GetDatabaseDirectory {
 		return(seatingsfolder+cinemaid+DBfile);
 	}
 	
+	/**
+	 * Creates the cinema file.
+	 *
+	 * @param cinemaid the cinemaid
+	 */
 	public static void CreateCinemaFile(int cinemaid) {
 
 		String currentDirectory;
@@ -50,6 +65,11 @@ public class Cinema_Initializer extends GetDatabaseDirectory {
 		System.out.println(create_cinema_file.getPath());
 	}
 	
+	/**
+	 * Read cinema file.
+	 *
+	 * @param cid the cid
+	 */
 	public static void ReadCinemaFile(int cid) {
 		ArrayList<Cinema> cinemalist = new ArrayList<Cinema>();
 		
@@ -106,10 +126,11 @@ public class Cinema_Initializer extends GetDatabaseDirectory {
 				String[] arr=stime.replaceAll("\\[|\\]| ", "").split(",");
 		        for(int i=0;i<arr.length;i++){
 
-		        	showtimelist.add(Integer.parseInt(arr[i]));
+		        	//showtimelist.add(Integer.parseInt(arr[i]));
 		        }
 		        
-		        cinemalist.add(new Cinema(CinemaID, cType, showtimelist));				
+		        //Initialize here
+		        //cinemalist.add(new Cinema(CinemaID, cType, showtimelist));				
 				
 			}
 			
@@ -118,14 +139,21 @@ public class Cinema_Initializer extends GetDatabaseDirectory {
 		}
 	}
 		
+	/**
+	 * Write cinema file.
+	 *
+	 * @param cid   the cid
+	 * @param cType the c type
+	 * @param sTime the s time
+	 */
 	public static void WriteCinemaFile(int cid, CinemaType cType, ArrayList<ShowTime> sTime) {
 		String currentDirectory;
 		String newDirectory;
 		
 		String showid, showtime, seatid;
 		
-		Cinema_Initializer showtime_init = new Cinema_Initializer();
-		currentDirectory = showtime_init.getCurrentDirectory();
+		Cinema_Initializer cinema_init = new Cinema_Initializer();
+		currentDirectory = cinema_init.getCurrentDirectory();
 		
 		newDirectory = currentDirectory;
 		File cinemalisting_file = new File(newDirectory);
@@ -165,6 +193,11 @@ public class Cinema_Initializer extends GetDatabaseDirectory {
 		}
 	}
 	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		
 		Cinema_Initializer cinema_init = new Cinema_Initializer();

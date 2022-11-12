@@ -18,10 +18,18 @@ import enums.DayOfWeek;
 import enums.Status;
 import enums.TimeOfDay;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CineplexNew_Intializer.
+ */
 public class CineplexNew_Intializer extends GetDatabaseDirectory {
 	
+	/** The Constant DBfile. */
 	public static final String DBfile = "Cineplex.txt";
 
+	/**
+	 * Creates the cineplex file.
+	 */
 	public static void CreateCineplexFile() {
 		String currentDirectory;
 		String newDirectory;
@@ -46,7 +54,14 @@ public class CineplexNew_Intializer extends GetDatabaseDirectory {
 		System.out.println(create_cineplex_file.getPath());
 
 	}
-	 public static void WriteCineplexListingFile(ArrayList<Cineplex> cineplexlist) throws Exception { 
+	 
+ 	/**
+	 * Write cineplex listing file.
+	 *
+	 * @param cineplexlist the cineplexlist
+	 * @throws Exception the exception
+	 */
+ 	public static void WriteCineplexListingFile(ArrayList<Cineplex> cineplexlist) throws Exception { 
 		   
 		  String currentDirectory; 
 		  String newDirectory; 
@@ -83,7 +98,12 @@ public class CineplexNew_Intializer extends GetDatabaseDirectory {
 		   
 		 } 
 		  
-		 public ArrayList<Cineplex> GetCineplexListing() { 
+		 /**
+		 * Gets the cineplex listing.
+		 *
+		 * @return the array list
+		 */
+ 		public ArrayList<Cineplex> GetCineplexListing() { 
 		   
 		  ArrayList<Cineplex> cineplexlist = new ArrayList<Cineplex>(); 
 		   
@@ -155,7 +175,13 @@ public class CineplexNew_Intializer extends GetDatabaseDirectory {
 		   
 		 } 
 		  
-		 public static void main(String[] args) throws Exception { 
+		 /**
+		 * The main method.
+		 *
+		 * @param args the arguments
+		 * @throws Exception the exception
+		 */
+ 		public static void main(String[] args) throws Exception { 
 		   
 		  int NoOfMovie = 0; 
 		   

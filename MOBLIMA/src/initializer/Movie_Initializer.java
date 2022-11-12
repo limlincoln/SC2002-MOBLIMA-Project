@@ -12,10 +12,18 @@ import enums.Status;
 import entities.Movie;
 import enums.CinemaType;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Movie_Initializer.
+ */
 public class Movie_Initializer extends GetDatabaseDirectory {
 	
+	/** The Constant DBfile. */
 	public static final String DBfile = "Movie_Listing.txt";
 	
+	/**
+	 * Creates the movie listing file.
+	 */
 	public static void CreateMovieListingFile() {
 		
 		String currentDirectory;
@@ -42,6 +50,12 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 		
 	}
 	
+	/**
+	 * Write movie listing file.
+	 *
+	 * @param movielist the movielist
+	 * @throws Exception the exception
+	 */
 	public static void WriteMovieListingFile(ArrayList<Movie> movielist) throws Exception {
 		
 		String currentDirectory;
@@ -79,6 +93,11 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 		
 	}
 	
+	/**
+	 * Gets the movie listing.
+	 *
+	 * @return the array list
+	 */
 	public static ArrayList<Movie> GetMovieListing() {
 		
 		ArrayList<Movie> movielist = new ArrayList<Movie>();
@@ -179,6 +198,12 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 		
 	}
 	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 * @throws Exception the exception
+	 */
 	public static void main(String[] args) throws Exception {
 		
 		int NoOfMovie = 0;

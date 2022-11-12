@@ -10,10 +10,18 @@ import entities.Booking;
 import entities.Customer;
 import entities.Ticket;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Booking_Initializer.
+ */
 public class Booking_Initializer extends GetDatabaseDirectory {
 	
+	/** The Constant DBfile. */
 	public static final String DBfile = "Booking_History.txt";
 
+	/**
+	 * Creates the booking history file.
+	 */
 	public static void CreateBookingHistoryFile() {
 		String currentDirectory;
 		String newDirectory;
@@ -39,6 +47,12 @@ public class Booking_Initializer extends GetDatabaseDirectory {
 
 	}
 
+	/**
+	 * Gets the booking.
+	 *
+	 * @param tickets the tickets
+	 * @return the array list
+	 */
 	public static ArrayList<Booking> GetBooking(ArrayList<Ticket> tickets) {
 
 		ArrayList<Booking> bookinglist = new ArrayList<Booking>();
@@ -121,6 +135,12 @@ public class Booking_Initializer extends GetDatabaseDirectory {
 		return bookinglist;
 	}
 	
+/**
+ * Write booking history file.
+ *
+ * @param bookinglist the bookinglist
+ * @throws Exception the exception
+ */
 public static void WriteBookingHistoryFile(ArrayList<Booking> bookinglist) throws Exception {
 		
 		String currentDirectory;
