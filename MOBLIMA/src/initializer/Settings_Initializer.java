@@ -80,7 +80,6 @@ public class Settings_Initializer extends GetDatabaseDirectory {
 			SettingsManager.initialize(menu);
 			System.out.println("Settings Manager Initialized successfully");
  
-			sc.close();
 			br.close();
 		}catch (Exception e) {
 			System.out.println("Error reading PriceMatrixFile: "+e.getMessage());

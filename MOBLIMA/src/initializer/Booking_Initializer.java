@@ -50,7 +50,6 @@ public class Booking_Initializer extends GetDatabaseDirectory {
 				
 				// TID
 				tid = data[0];
-				int TID = Integer.parseInt(tid);
 				
 				// MOVIE ID
 				movid = data[1];
@@ -88,7 +87,7 @@ public class Booking_Initializer extends GetDatabaseDirectory {
 				
 				Customer customer_booking = new Customer(customerID, userNameStr, emailStr, phoneNumberStr);
 				
-				bookinglist.add(new Booking(TID, movieid, customer_booking, userTickets, totalcost, rating));
+				bookinglist.add(new Booking(tid, movieid, customer_booking, userTickets, totalcost, rating));
 				
 		}
 		} catch (Exception e) {
@@ -112,6 +111,7 @@ public static void write(ArrayList<Booking> bookinglist) {
 			
 			for(Booking booking: bookinglist) {
 				String ticketIDs = "";
+				TicketInitializer.write(booking.getTickets());
 				for(Ticket ticket: booking.getTickets()) {
 					ticketIDs += Integer.toString(ticket.getTicketID()) + ",";
 				}

@@ -48,7 +48,6 @@ public class Top5OptionsMenu implements ITop5Menu {
             default:
                 break;
         }
-        sc.close();
     }
     
 }

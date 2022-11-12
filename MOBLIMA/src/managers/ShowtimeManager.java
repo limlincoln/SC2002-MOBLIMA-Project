@@ -68,7 +68,7 @@ public class ShowTimeManager {
      */
     public Seats getSeatsByLocalDateTime(Cinema cinema, LocalDateTime localDateTime){
         int dayOfWeekInInt = localDateTime.getDayOfWeek().getValue();
-        int selectedTimeSlot = DateManager.getInstance().getTimeSlotIndex(localDateTime.toLocalTime().of(23, 0));
+        int selectedTimeSlot = DateManager.getInstance().getTimeSlotIndex(localDateTime.toLocalTime());
         return cinema.getShowtimes().get(dayOfWeekInInt).getSeats()[selectedTimeSlot];
 
     }

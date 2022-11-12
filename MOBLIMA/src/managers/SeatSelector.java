@@ -10,6 +10,7 @@ import menus.AgeGroupMenu;
 import entities.ISeat;
 import entities.ISeats;
 import entities.Seat;
+import entities.Space;
 
 public class SeatSelector implements ISeatSelector{
     @Override
@@ -33,6 +34,7 @@ public class SeatSelector implements ISeatSelector{
                     String input = sc.nextLine().toUpperCase();
                     Integer colSelected = ((int)input.charAt(0)) - 65;
                     Integer rowSelected = Integer.parseInt(input.substring(1));
+                    // TODO: CHECK IF SEAT SELECTION IS VALID
                     if(rowSelected >= curSeats.length || colSelected >= curSeats.length || curSeats[rowSelected][colSelected] instanceof Space){
                         System.out.println("Invalid Seat Selected");
                         continue;
@@ -67,7 +69,7 @@ public class SeatSelector implements ISeatSelector{
                 case 2:
                     if(selected.size() == 0){
                         System.err.println("No Seats Selected");
-                        return null;
+                        break;
                     }else{
                         for(int i=0; i<selected.size(); i++){
                             Integer[] s = selected.get(i);

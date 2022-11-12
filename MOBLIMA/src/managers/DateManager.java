@@ -44,11 +44,11 @@ public class DateManager {
      * @param format
      * @return
      */
-    public static int getCurrentDateTimeFormatted(String format) {
+    public static String getCurrentDateTimeFormatted(String format) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern(format);
         LocalDateTime now = LocalDateTime.now();
 
-        return Integer.parseInt(dtf.format(now));
+        return dtf.format(now);
     }
 
     /**

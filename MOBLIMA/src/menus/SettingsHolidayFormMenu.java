@@ -22,7 +22,6 @@ public class SettingsHolidayFormMenu {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter Holiday Name: ");
         holname = sc.nextLine();
-        sc.close();
         return holname;
     }
 
@@ -33,7 +32,6 @@ public class SettingsHolidayFormMenu {
         System.out.println("Enter Date in the format(yyyyMMdd): ");
         dates = sc.nextLine();
         date = LocalDate.parse(dates);
-        sc.close();
         return date;
     }
 
@@ -44,7 +42,6 @@ public class SettingsHolidayFormMenu {
         System.out.println("Enter Day of week(etc. MON, TUES... SUN): ");
         dows = sc.nextLine();
         dow = Enum.valueOf(DayOfWeek.class, dows);
-        sc.close();
         return dow;
     }
 }

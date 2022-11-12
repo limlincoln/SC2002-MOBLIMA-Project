@@ -40,7 +40,6 @@ public class HolidaySelectorMenu implements ISelectorMenu<Holiday>{
             }while(selectedInd  < 0 || selectedInd >= Holiday.size());
 
             if(selectedInd == 0){
-                sc.close();
                 return null;
             } 
             
@@ -52,10 +51,8 @@ public class HolidaySelectorMenu implements ISelectorMenu<Holiday>{
             boolean want = sc.nextLine().toLowerCase().charAt(0) == 'y';
 
             if(want) {
-                sc.close();
                 return selected;
             } 
-        sc.close(); 
         return null;
     }
 }

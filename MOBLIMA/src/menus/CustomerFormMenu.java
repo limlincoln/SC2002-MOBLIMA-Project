@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import entities.Customer;
 import managers.DateManager;
+import utils.IDGenerator;
 
 public class CustomerFormMenu {
 
@@ -29,7 +30,7 @@ public class CustomerFormMenu {
         email = sc.nextLine();
 
         Random rand = new Random();
-        Customer newCustomer = new Customer(DateManager.getCurrentDateTimeFormatted("hhmmss")+rand.nextInt(1000), userName, email, phoneNumber);
+        Customer newCustomer = new Customer(IDGenerator.get(), userName, email, phoneNumber);
 
         return newCustomer;
     }

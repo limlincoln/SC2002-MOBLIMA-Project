@@ -7,7 +7,6 @@ public class SettingsPriceFormMenu {
         double newPrice;
         System.out.println("Enter the new price: ");
         newPrice = sc.nextDouble();
-        sc.close();
         return newPrice;
     }
 }

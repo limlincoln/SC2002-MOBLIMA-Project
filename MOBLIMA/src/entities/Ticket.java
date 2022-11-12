@@ -39,7 +39,7 @@ public class Ticket implements IPrice {
 
     public double getPrice() {
         return 
-        PricingManager.getPrice(dayOfWeek) + 
+        PricingManager.getPrice(typeOfDay) + 
         PricingManager.getPrice(timeOfDay) +
         PricingManager.getPrice(ageGroup);
     }

@@ -63,7 +63,7 @@ public class BookingMenu {
 
         Customer newCustomer = CustomerFormMenu.startFullForm();
     
-        BookingManager.createBooking(cinema.getCinemaID(), movie.getMovieID(), newCustomer, tickets, totalPrice);
+        BookingManager.createBooking(cinema.getCinemaID(), movie.getMovieID(), newCustomer, tickets, totalPrice, -1);
 
         System.out.println("Booking Complete!");
 

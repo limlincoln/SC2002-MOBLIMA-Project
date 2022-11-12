@@ -42,14 +42,15 @@ public class BookingSelectorMenu implements ISelectorMenu<Booking> {
             
             }while(selectedInd  < 0 || selectedInd >= bookings.size());
 
-            if(selectedInd == 0) return null;
+            if(selectedInd == -1) return null;
             
             Booking selected = bookings.get(selectedInd); 
             MovieManager.getInstance().getMovieByID(selected.getMovieID()).showDetails();
 
             System.out.println("Do you want to rate? (y/n)");
+            sc.nextLine();
             boolean want = sc.nextLine().toLowerCase().charAt(0) == 'y';
-
+        
             if(want) {
                 return selected;
             }  

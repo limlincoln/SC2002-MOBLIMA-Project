@@ -40,13 +40,10 @@ public class AgeGroupMenu {
     
     switch(choice){
         case 1:
-          sc.close();
           return AgeGroup.ADULT;
         case 2:
-          sc.close();
           return AgeGroup.SENIOR;   
         case 3:
-          sc.close();
           return AgeGroup.STUDENT;
         default: 
           System.out.printf("Invalid input type.");

@@ -25,7 +25,6 @@ public class SettingsMovieFormMenu {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter movie ID: ");
         movieID = sc.nextInt();
-        sc.close();
         return movieID;
     }
 
@@ -34,7 +33,6 @@ public class SettingsMovieFormMenu {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter movie Name: ");
         movieName = sc.nextLine();
-        sc.close();
         return movieName;
     }
 
@@ -45,7 +43,6 @@ public class SettingsMovieFormMenu {
         System.out.println("Enter cinema type: ");
         ctypes = sc.nextLine();
         cType = Enum.valueOf(CinemaType.class,ctypes);
-        sc.close();
         return cType;
     }
 
@@ -56,7 +53,6 @@ public class SettingsMovieFormMenu {
         System.out.println("Enter cinema type: ");
         statuss = sc.nextLine();
         status = Enum.valueOf(Status.class,statuss);
-        sc.close();
         return status;
     }
 
@@ -69,7 +65,6 @@ public class SettingsMovieFormMenu {
             choice = sc.nextLine();
             cast.add(choice);
         }while (choice != "0");
-        sc.close();
         return cast;
     }
 
@@ -78,7 +73,6 @@ public class SettingsMovieFormMenu {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter Director Name: ");
         director = sc.nextLine();
-        sc.close();
         return director;
     }
 
@@ -87,7 +81,6 @@ public class SettingsMovieFormMenu {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter Synopsis: ");
         synopsis = sc.nextLine();
-        sc.close();
         return synopsis;
     }
 }

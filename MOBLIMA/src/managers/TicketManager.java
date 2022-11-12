@@ -7,6 +7,7 @@ import java.util.Map.Entry;
 
 import entities.Ticket;
 import enums.AgeGroup;
+import utils.IDGenerator;
 
 public class TicketManager {
     // CHANGE TO HASHMAP
@@ -26,9 +27,9 @@ public class TicketManager {
                 generateTicketID(),
                 dateManager.getDayOfWeek(),
                 dateManager.getTimeOfDay(),
+                entry.getValue(),
                 dateManager.getTypeOfDay(),
                 exactDateTime,
-                entry.getValue(),
                 entry.getKey()
             );
 
@@ -39,6 +40,6 @@ public class TicketManager {
     }
 
     private static int generateTicketID() {
-        return DateManager.getCurrentDateTimeFormatted("yyyyMMddhhmm");
+        return IDGenerator.get();
     }
 }

@@ -27,8 +27,7 @@ public class SeatsInitializer extends GetDatabaseDirectory {
 		String currentDirectory;
 		String newDirectory;
 
-		SeatsInitializer cineplexseats_init = new SeatsInitializer();
-		currentDirectory = cineplexseats_init.getCurrentDirectory();
+		currentDirectory = SeatsInitializer.getCurrentDirectory();
 
 		newDirectory = currentDirectory;
 

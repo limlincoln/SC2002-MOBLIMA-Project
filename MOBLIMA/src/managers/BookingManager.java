@@ -18,13 +18,12 @@ public class BookingManager {
      * @param dateTime
      * @return
      */
-    private static int generateTID(int cinemaID, int dateTime) {
+    private static String generateTID(int cinemaID, String dateTime) {
         String strCinemaID = Integer.toString(cinemaID);
-        String strDateTime = Integer.toString(dateTime);
 
-        String strTID = strCinemaID + strDateTime;
+        String strTID = strCinemaID + dateTime;
 
-        return Integer.parseInt(strTID);
+        return strTID;
     }
 
     /**
@@ -38,12 +37,20 @@ public class BookingManager {
      * @return
      */
     public static boolean createBooking(int cinemaID, int movieID, Customer customer, ArrayList<Ticket> tickets, double totalCost, int rating ) {
-        int tid = generateTID(cinemaID, DateManager.getCurrentDateTimeFormatted("yyyyMMddHHmm"));
+        String tid = generateTID(cinemaID, DateManager.getCurrentDateTimeFormatted("yyyyMMddHHmm"));
 
         Booking booking = new Booking(tid, movieID, customer, tickets, totalCost, rating);
         bookingHistory.add(booking);
         return true;
     }  
+
+    /**
+     * Get all of the booking history
+     * @return array list of Booking class
+     */
+    public static ArrayList<Booking> getAllBookingHistory() {
+        return bookingHistory;
+    }
 
     /**
      * Get the booking history by username

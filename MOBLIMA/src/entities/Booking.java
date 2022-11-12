@@ -9,7 +9,7 @@ public class Booking {
      * The transaction ID in the format XXXYYYYMMDDhh
      * (XXX = cinema code)
      */
-    private int TID;
+    private String TID;
 
     /**
      * ID of movie for which the Booking was made
@@ -45,7 +45,7 @@ public class Booking {
      * @param totalCost The total cost for this Booking
      * @param rating The rating given to this movie
      */
-    public Booking(int tid, int movieID, Customer customer, ArrayList<Ticket> tickets, double totalCost, int rating) {
+    public Booking(String tid, int movieID, Customer customer, ArrayList<Ticket> tickets, double totalCost, int rating) {
         this.TID = tid;
         this.movieID = movieID;
         this.customer = customer;
@@ -72,11 +72,11 @@ public class Booking {
     }
 
     // GETTERS & SETTERS
-    public int getTID() {
+    public String getTID() {
         return TID;
     }
 
-    public void setTID(int tID) {
+    public void setTID(String tID) {
         TID = tID;
     }
 

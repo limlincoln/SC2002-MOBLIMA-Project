@@ -135,7 +135,6 @@ public class Price_Initializer extends GetDatabaseDirectory {
 						priceMatrix.put(temp, Double.parseDouble(data.get(i)[1]));
 				}	
 			} 
-			sc.close();
 			br.close();
 		}catch (Exception e) {
 			System.out.println("Error reading PriceMatrixFile: "+e.getMessage());

@@ -58,7 +58,7 @@ public class ShowTimeInitializer extends GetDatabaseDirectory {
 		String ShowTimeFile = setShowTimeFileName(showTime.getShowTimeID());
 		
 		try {
-			FileWriter write_showtime = new FileWriter((newDirectory + ShowTimeFile), true);
+			FileWriter write_showtime = new FileWriter((newDirectory + ShowTimeFile));
 			
 			ArrayList<Integer> intlist = new ArrayList<Integer>();
 

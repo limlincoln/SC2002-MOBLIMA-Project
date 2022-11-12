@@ -7,7 +7,9 @@ package menus;
 import java.util.Scanner;
 
 import initializer.MainInitializer;
+import initializer.MainSerializer;
 import managers.DateManager;
+import managers.PricingManager;
 
 /**
  * Main app to run to choose Customer or Staff app
@@ -15,6 +17,7 @@ import managers.DateManager;
 public class MOBLIMA_APP {
 	public static void main(String[] args) {
 		MainInitializer.startInitializers();
+		PricingManager.showPriceMatrix();
 		int choice;
 		Scanner sc = new Scanner(System.in); 
 		
@@ -50,6 +53,7 @@ public class MOBLIMA_APP {
 	        }
 		} while (choice != 0);
 		
+		MainSerializer.startSerializer();
 		sc.close();
 	}
 }
