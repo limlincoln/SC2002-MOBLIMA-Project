@@ -1,0 +1,5 @@
+[SENIOR,7.4]|[ADULT,9.8]|
+[IMAX,2.3]|
+
+
+[PUBLIC_HOLIDAY,5.9]|

@@ -7,78 +7,44 @@ import enums.CinemaType;
 import enums.PriceType;
 import enums.TimeOfDay;
 import enums.TypeOfDay;
-
+import managers.SettingsManager;
 
 import java.util.*;
 import java.io.*;
 
 
 
-public class Price_Initializer extends GetDatabaseDirectory {
+public class Settings_Initializer extends GetDatabaseDirectory {
 	
-	public static final String DBfile = "Price_Matrix.txt";
+	public static final String DBfile = "settings.txt";
 	
 	
-	public Price_Initializer(){}
+	public Settings_Initializer(){}
 	
-	public void write(HashMap<Object, Double> priceMatrix) {	
-		Price_Initializer price_init = new Price_Initializer();
-		String currentDirectory = price_init.getCurrentDirectory();
+	public void write(SettingsManager settings) {	
+		Settings_Initializer settings_init = new Settings_Initializer();
+		String currentDirectory = settings_init.getCurrentDirectory();
 		
 		String fileDir = currentDirectory + DBfile;
 
 		try {
-			File pricelisting_file = new File(fileDir);
-			pricelisting_file.createNewFile();
-			FileWriter write_bookinglisting = new FileWriter((fileDir), false);
-			BufferedWriter buffer = new BufferedWriter(write_bookinglisting);
-			String ageGroupString = "";
-			String cineTypeString = "";
-			String priceString = "";
-			String timeString ="";
-			String typeString ="";
-
-			for(Map.Entry<Object, Double> set:priceMatrix.entrySet()) {
-				switch(set.getKey().getClass().getSimpleName().toString().toLowerCase()){
-					case "agegroup":
-						ageGroupString += "[" + set.getKey() + "," + set.getValue() + "]|";
-						break;
-					case "cinematype":
-						cineTypeString += "[" + set.getKey() + "," + set.getValue() + "]|";
-						break;
-					case "pricetype":
-						priceString += "[" + set.getKey() + "," + set.getValue() + "]|";
-						break;
-					case "timeofday":
-						timeString += "[" + set.getKey() + "," + set.getValue() + "]|";
-						break;
-					case "typeofday":
-						typeString += "[" + set.getKey() + "," + set.getValue() + "]|";
-						break;
-					default:
-						break;
-				}
-			}
-			buffer.write(ageGroupString);
-			buffer.newLine();
-			buffer.write(cineTypeString);
-			buffer.newLine();
-			buffer.write(priceString);
-			buffer.newLine();
-			buffer.write(timeString);
-			buffer.newLine();
-			buffer.write(typeString);
-			buffer.newLine();
-
-			System.out.println("Price Matrix Write Successful!");
+			File settings_file = new File(fileDir);
+			settings_file.createNewFile();
+			FileWriter write_settings = new FileWriter((fileDir), false);
+			BufferedWriter buffer = new BufferedWriter(write_settings);
+			
+      System.out.println(settings.getCustomerTop5MenuClass().getClass().getSimpleName().toString().toLowerCase());
+			// buffer.write(settings.getCustomerTop5MenuClass());
+			
+			System.out.println("Settings Write Successful!");
 			buffer.close();
 		}catch (IOException e){
-			System.out.println("Error writing price matrix!");;
+			System.out.println("Error writing settings! : " + e.getMessage());;
 		}
 		
 	}
 	
-	public HashMap<Object,Double> read() {		
+	public void read() {		
 		Price_Initializer price_init = new Price_Initializer();
 		String currentDirectory = price_init.getCurrentDirectory() ;
 		String fileDir = currentDirectory + DBfile;
@@ -141,6 +107,10 @@ public class Price_Initializer extends GetDatabaseDirectory {
 		}catch (Exception e) {
 			System.out.println("Error reading PriceMatrixFile: "+e.getMessage());
 		}
-		return priceMatrix;
+		return;
 	}
+
+  public static void main(String[] args) {
+    SettingsManager test 
+  }
 }
