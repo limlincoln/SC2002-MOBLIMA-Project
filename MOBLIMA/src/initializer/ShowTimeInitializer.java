@@ -2,7 +2,6 @@ package initializer;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -51,8 +50,7 @@ public class ShowTimeInitializer extends GetDatabaseDirectory {
 		String currentDirectory;
 		String newDirectory;
 		
-		ShowTimeInitializer showtime_init = new ShowTimeInitializer();
-		currentDirectory = showtime_init.getCurrentDirectory();
+		currentDirectory = ShowTimeInitializer.getCurrentDirectory();
 		
 		newDirectory = currentDirectory;
 		String ShowTimeFile = setShowTimeFileName(showTime.getShowTimeID());
@@ -88,13 +86,11 @@ public class ShowTimeInitializer extends GetDatabaseDirectory {
 		String currentDirectory;
 		String newDirectory;
 		
-		String showTimeIDStr, showTimeStr, seatIDStr;
+		String showTimeStr, seatIDStr;
 		
-		ShowTimeInitializer showtime_init = new ShowTimeInitializer();
-		currentDirectory = showtime_init.getCurrentDirectory();
+		currentDirectory = ShowTimeInitializer.getCurrentDirectory();
 		
 		newDirectory = currentDirectory;
-		File showtimFile = new File(newDirectory);
 		
 		String ShowTimeFile = setShowTimeFileName(showTimeID);
 
@@ -114,8 +110,6 @@ public class ShowTimeInitializer extends GetDatabaseDirectory {
 
 				String []data = line.split("\\|");
 				
-				showTimeIDStr = data[0];
-				Integer ShowTimeID = Integer.parseInt(showTimeIDStr);
 				
 				showTimeStr = data[1];
 				String[] arr=showTimeStr.replaceAll("\\[|\\]| ", "").split(",");

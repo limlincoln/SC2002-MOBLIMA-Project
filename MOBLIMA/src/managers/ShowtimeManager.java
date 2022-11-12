@@ -1,7 +1,6 @@
 package managers;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 
 import entities.Cinema;
@@ -81,7 +80,6 @@ public class ShowTimeManager {
     	//cinema.getCinemaType()
     	
     	
-    	int dayofweek = day.ordinal();
         // TODO: ITERATE THORUGH CINEMAS AND COMPARE
     	ShowTime target = cineplex.getCinemas().get(0).getShowtimes().get(0);
     	//ShowTime target = cinema.getShowtimes().get(dayofweek);

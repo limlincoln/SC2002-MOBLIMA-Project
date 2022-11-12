@@ -5,8 +5,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import enums.Status;
 import entities.Movie;
@@ -21,8 +19,7 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 		String currentDirectory;
 		String newDirectory;
 		
-		Movie_Initializer movie_init = new Movie_Initializer();
-		currentDirectory = movie_init.getCurrentDirectory();
+		currentDirectory = Movie_Initializer.getCurrentDirectory();
 		
 		newDirectory = currentDirectory;
 		
@@ -44,8 +41,7 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 		String newDirectory;
 		String new_movie;
 		
-		Movie_Initializer movie_init = new Movie_Initializer();
-		currentDirectory = movie_init.getCurrentDirectory();
+		currentDirectory = Movie_Initializer.getCurrentDirectory();
 		
 		newDirectory = currentDirectory;
 		File movielisting_file = new File(newDirectory);
@@ -83,16 +79,13 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 		String newDirectory;
 		
 		String movid, movietitle, type, status;
-		String director, synposis, cast1, cast2;
+		String director, synposis, cast1;
 		String totalsales, NoOfRating, AvgRating;
 		
 		CinemaType genre = null;
 		Status moviestatus = null;
 		
-		int CountNoOfMovies = 0;
-		
-		Movie_Initializer movie_init = new Movie_Initializer();
-		currentDirectory = movie_init.getCurrentDirectory();
+		currentDirectory = Movie_Initializer.getCurrentDirectory();
 		
 		newDirectory = currentDirectory;
 		
@@ -163,8 +156,6 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 		        Float avgrating = Float.parseFloat(AvgRating);
 								
 				movielist.add(new Movie(movieid, movietitle, genre, moviestatus, castlist, director, synposis, ratinglist, newsales, avgrating));
-				
-				CountNoOfMovies++;
 			}	
 			
 		} catch (Exception e) {

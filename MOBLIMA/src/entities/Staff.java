@@ -18,4 +18,29 @@ public class Staff {
 		this.CineplexID = CineplexID;
 	}
 	
+
+	public Integer getStaffId() {
+		return this.StaffId;
+	}
+
+	public void setStaffId(Integer StaffId) {
+		this.StaffId = StaffId;
+	}
+
+	public String getStaffName() {
+		return this.StaffName;
+	}
+
+	public void setStaffName(String StaffName) {
+		this.StaffName = StaffName;
+	}
+
+	public Integer getCineplexID() {
+		return this.CineplexID;
+	}
+
+	public void setCineplexID(Integer CineplexID) {
+		this.CineplexID = CineplexID;
+	}
+
 }

@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import enums.DayOfWeek;
 import entities.Holiday;
-import entities.Movie;
 
 public class Holiday_Initializer extends GetDatabaseDirectory {
 
@@ -18,10 +17,8 @@ public class Holiday_Initializer extends GetDatabaseDirectory {
 
 		String currentDirectory;
 		String newDirectory;
-		boolean checkfileexists = false;
 
-		Holiday_Initializer holiday_init = new Holiday_Initializer();
-		currentDirectory = holiday_init.getCurrentDirectory();
+		currentDirectory = Holiday_Initializer.getCurrentDirectory();
 
 		newDirectory = currentDirectory;
 
@@ -32,7 +29,6 @@ public class Holiday_Initializer extends GetDatabaseDirectory {
 				create_holiday_file.mkdirs();
 			}
 			create_holiday_file = new File(newDirectory + DBfile);
-			checkfileexists = create_holiday_file.createNewFile();
 		} catch(Exception e) {
 			System.out.println(e);
 		}
@@ -46,9 +42,7 @@ public class Holiday_Initializer extends GetDatabaseDirectory {
 		String currentDirectory;
 		String newDirectory;
 
-		String event;
 		String date;
-		DayOfWeek dayofweek = null;
 
 		int CountNoOfHolidays = 0;
 
