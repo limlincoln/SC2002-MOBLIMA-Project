@@ -4,9 +4,13 @@ import enums.DayOfWeek;
 import java.time.LocalDate;
 import enums.*;
 import java.util.Scanner;
+
+import consolidators.MovieConsolidator;
+
 import java.util.ArrayList;
 import entities.Movie;
 import menus.ITop5Menu;
+import utils.IDGenerator;
 
 public class SettingsManager {
 	Scanner sc = new Scanner(System.in);
@@ -495,10 +499,13 @@ public class SettingsManager {
 		// CHECK RESPONSE FROM MOVIEMANGER, REPEAT IF NEEDED
                 	
 		System.out.println(	"================ SELECT A MOVIE =================");
-		//ArrayList<Movie> editmovie = new ArrayList<Movie>();
 		int editchoice = -1;
+		ArrayList<Movie> movies = MovieConsolidator.getInstance().getAll();
+
+		for(int i = 0;  i < movies.size(); i++) {
+			System.out.println("("+(i+1)+") "+movies.get(i).getMovieName());
+		}
 		
-		//editmovie = MovieConsolidator.getInstance().getAll();
 		do {
 			
 			System.out.println("Choose a movie or enter 0 to exit : ");
@@ -509,22 +516,24 @@ public class SettingsManager {
 			}
 			editchoice = sc.nextInt();
 			
-			}while(editchoice  < 0 || editchoice >= 10);//movies.size()
-			sc.nextLine();
+		} while(editchoice  < 0 || editchoice > movies.size());
+		sc.nextLine();
 		
+		if(editchoice == 0) return;
 			
-		// Movie targetedit = editmovie.get(editchoice);
+		Movie movieToEdit = movies.get(editchoice-1);
+
 		int subchoice;
+		System.out.println("=================== Choose what to edit ==================\n" +
+							" 1. Edit Movie Title      	                                \n" +
+							" 2. Edit Movie Genres                      	        	\n" +
+							" 3. Edit Movie Status	                                    \n" +
+							" 4. Edit Movie Cast                                        \n" +
+							" 5. Edit Movie Director                                     \n" +
+							" 6. Edit Movie Synopsis                                     \n" +
+							" 0. Finish Editing Movie                                \n"+
+							"=========================================================");
 		do {
-			System.out.println("=================== Choose what to edit ==================\n" +
-								" 1. Edit Movie Title      	                                \n" +
-								" 2. Edit Movie Genres                      	        	\n" +
-								" 3. Edit Movie Status	                                    \n" +
-								" 4. Edit Movie Cast                                        \n" +
-								" 5. Edit Movie Director                                     \n" +
-								" 6. Edit Movie Synopsis                                     \n" +
-								" 0. Finish Editing Movie                                \n"+
-								"=========================================================");
 			System.out.println("Enter choice: ");
 			
 			while (!sc.hasNextInt()) {
@@ -536,19 +545,20 @@ public class SettingsManager {
 			sc.nextLine();
 			switch (subchoice) {
 				case 1:
-					System.out.println("Movie title: ");
+					System.out.println("The current title is: "+movieToEdit.getMovieName());
+					System.out.println("Enter the new Movie title: ");
 					while (!sc.hasNext()) {
 						System.out.println("Invalid input type. Please try again!");
 						sc.next(); 
 					}
 					String title = sc.nextLine();
 					
-					System.out.println("Movie title "+ title); 
-					//targetedit.setMovieName(title);
-
+					movieToEdit.setMovieName(title);
+					System.out.println("Movie title edited to "+ movieToEdit.getMovieName()); 
 					break;
 				case 2:
-					System.out.println("Movie Genre (IMAX/_3D/NORMAL): ");
+					System.out.println("The current genre is: "+movieToEdit.getMovieType());
+					System.out.println("Enter the Movie Genre (IMAX/_3D/NORMAL): ");
 					while (!sc.hasNext()) {
 						System.out.println("Invalid input type. Please try again!");
 						sc.next(); 
@@ -565,12 +575,13 @@ public class SettingsManager {
 						System.out.println("Invalid input type!!. Please follow the status format");
 					}
 					
-					System.out.println("Movie genre "+ genre); 
-					//targetedit.setMovieType(genre);
 
+					movieToEdit.setMovieType(genre);
+					System.out.println("Movie genre edited to "+ genre); 
 					break;
 				case 3:
-					System.out.println("Status (ComingSoon/Showing): ");
+					System.out.println("The current Status is: "+movieToEdit.getStatus());
+					System.out.println("Enter the new Status (ComingSoon/Showing/EndOfShowing): ");
 					while (!sc.hasNext()) {
 						System.out.println("Invalid input type. Please try again!");
 						sc.next(); 
@@ -587,42 +598,44 @@ public class SettingsManager {
 						System.out.println("Invalid input type!!. Please follow the status format");
 					}
 					
-					System.out.println("Movie status "+ status); 
-					//targetedit.setStatus(status);
+					movieToEdit.setStatus(status);
+					System.out.println("The new Movie status is"+ movieToEdit.getStatus()); 
 					break;
 				case 4:
-					ArrayList<String> cast = new ArrayList<String>();  
+					System.out.println("The current casts are: "+movieToEdit.getCasts());
+					ArrayList<String> casts = new ArrayList<String>();  
 					System.out.println("Enter 2 cast: ");  
 					for(int i=0; i<2; i++)  
 					{  
 						System.out.println("Please enter cast " +(i+1)+ ":");
-						cast.add(sc.next());  
+						casts.add(sc.next());  
 					}  
-					//targetedit.setCasts(cast);
+					movieToEdit.setCasts(casts);
 					break;
 				case 5:
-					
-					System.out.println("Movie Director: ");
+					System.out.println("The current Movie Director is: "+movieToEdit.getDirector());
+					System.out.println("Enter new Movie Director: ");
 					while (!sc.hasNext()) {
 						System.out.println("Invalid input type. Please try again!");
 						sc.next(); 
 					}
 					String director = sc.nextLine();
 					
-					System.out.println("Movie director "+ director); 
-					//targetedit.setDirector(director);
+					movieToEdit.setDirector(director);
+					System.out.println("The new Movie director is "+ movieToEdit.getDirector());
 					
 					break;
 				case 6:
-					System.out.println("Movie Sypnopsis: ");
+					System.out.println("The current Movie Sypnopsis is: "+movieToEdit.getSypnopsis());
+					System.out.println("Enter new Movie Sypnopsis: ");
 					while (!sc.hasNext()) {
 						System.out.println("Invalid input type. Please try again!");
 						sc.next(); 
 					}
 					String sypnopsis = sc.nextLine();
 					
-					System.out.println("Movie sypnopsis "+ sypnopsis); 
-					// targetedit.setSypnopsis(sypnopsis);
+					movieToEdit.setSypnopsis(sypnopsis);
+					System.out.println("The new Movie sypnopsis is "+ movieToEdit.getSypnopsis()); 
 					
 					break;
 				case 0:
@@ -663,7 +676,7 @@ public class SettingsManager {
 			System.out.println("Invalid input type!!. Please follow the status format");
 		}
 		
-		System.out.println("Status (ComingSoon/Showing): ");
+		System.out.println("Status (ComingSoon/Showing/EndOfShowing): ");
 		while (!sc.hasNext()) {
 			System.out.println("Invalid input type. Please try again!");
 			sc.next(); 
@@ -706,15 +719,19 @@ public class SettingsManager {
 		
 		ArrayList<Integer> ratings = new ArrayList<>();
 		float avg = 0.000f;
-		Movie newmovie = new Movie(0,title,genre,status,cast,director,sypnopsis,ratings,0.0,avg); //movieID should be size()+1?
+		Movie newmovie = new Movie(IDGenerator.get(),title,genre,status,cast,director,sypnopsis,ratings,0.0,avg); //movieID should be size()+1?
 		
 		MovieManager.getInstance().addMovie(newmovie);                    
-
 	}
 
 	public void deleteMovieSetting(){
 		System.out.println(	"================ SELECT A MOVIE =================");
 		//ArrayList<Movie> delete = new ArrayList<Movie>();
+		ArrayList<Movie> movies = MovieConsolidator.getInstance().getAll();
+
+		for(int i = 0;  i < movies.size(); i++) {
+			System.out.println("("+(i+1)+") "+movies.get(i).getMovieName());
+		}
 		int deletechoice = -1;
 
 		//delete = MovieConsolidator.getInstance().getAll();
@@ -727,19 +744,22 @@ public class SettingsManager {
 			}
 			deletechoice = sc.nextInt();
 			
-			}while(deletechoice  < 0 || deletechoice >= 10);//movies.size()
+			}while(deletechoice  < 0 || deletechoice >= movies.size());
 		sc.nextLine(); 
+
+		if(deletechoice == 0) return;
+
 		System.out.println("Enter Y to confirm delete : ");
 		String confirmation = sc.nextLine();
 		
 		if(confirmation.equals("Y"))
 		{
+			MovieManager.getInstance().removeMovieByID(movies.get(deletechoice-1).getMovieID());
 			System.out.println("SUCCESSFULLY DELETED");
-			//MovieManager.removeMovieByID(deletechoice);
 		}
 		else
 		{
-			System.out.println("DELETE UNSUCCESSFULLY");
+			System.out.println("NOT DELETED");
 		}
 	}
 }

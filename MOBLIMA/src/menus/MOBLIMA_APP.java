@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 import initializer.MainInitializer;
 import initializer.MainSerializer;
-import managers.DateManager;
 import managers.PricingManager;
 
 /**
