@@ -1,2 +1,0 @@
-123123412|05|03|testuser3|test@email|12345678|[MON, MORNING, STUDENT]|98.7
-
