@@ -79,8 +79,7 @@ public class Price_Initializer extends GetDatabaseDirectory {
 	}
 	
 	public HashMap<Object,Double> read() {		
-		Price_Initializer price_init = new Price_Initializer();
-		String currentDirectory = price_init.getCurrentDirectory() ;
+		String currentDirectory = Price_Initializer.getCurrentDirectory() ;
 		String fileDir = currentDirectory + DBfile;
 		HashMap<Object,Double> priceMatrix = new HashMap<Object,Double>();
 
