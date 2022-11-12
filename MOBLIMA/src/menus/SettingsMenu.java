@@ -104,7 +104,7 @@ public class SettingsMenu {
             System.out.println(" 1. Base Prices");
             System.out.println(" 2. Age Group Prices");
             System.out.println(" 3. Cinema Type Prices");
-            System.out.println(" 4. Day of Week Prices");
+            System.out.println(" 4. Time of Day Prices");
             System.out.println(" 5. Type of Day Prices");
             System.out.println(" 0. Back to Settings Menu");
             System.out.println("===========================================================");
@@ -121,12 +121,9 @@ public class SettingsMenu {
 			int thischoice;
 			switch (choice) {
 				case 1: 
-					do {
-						System.out.println("Enter the new base price:");
-						System.out.println("0. Back to Settings Menu");
-						SettingsManager.getInstance().editPrices(PriceType.BASE_PRICE,newPrice);
-						newPrice = sc.nextDouble();
-					} while (newPrice != 0);
+					System.out.println("Enter the new base price:");
+					newPrice = sc.nextDouble();
+					SettingsManager.getInstance().editPrices(PriceType.BASE_PRICE, newPrice);
 					break;
 				case 2:
 					do {
@@ -337,16 +334,12 @@ public class SettingsMenu {
 				
 			switch (choice) {
 				case 1: 
-                    // display list of all movies with directors
-                    // search fucntion for movie??
 					SettingsManager.getInstance().listHolidays();
 					break;
 				case 2:
-                    // Add new movie
 					SettingsManager.getInstance().addNewHoliday();
 					break;
                 case 3:
-                    // Remove Holiday
 					SettingsManager.getInstance().removeExistingHoliday();
 					break;
 				case 0:

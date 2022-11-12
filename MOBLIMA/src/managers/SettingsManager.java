@@ -2,6 +2,10 @@ package managers;
 import entities.Holiday;
 import enums.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
+
 import enums.*;
 import java.util.Scanner;
 
@@ -453,17 +457,26 @@ public class SettingsManager {
 	 */
 	public void addNewHoliday(){
 		String name;
-		LocalDate date;
-    	int dayOfWeeks;
+		LocalDate date = null;
 		System.out.println("What is the holiday name: ");
 		name = sc.next();
-		System.out.println("What is the holiday date: ");
-		date = LocalDate.parse("test");
-		System.out.println("What is the holiday day of week: ");
-		dayOfWeeks = sc.nextInt();
-		DayOfWeek day = DayOfWeek.values()[dayOfWeeks-1];
+		boolean reAsk;
+		do {
+			reAsk = false;
+			System.out.println("What is the holiday date? (yyyy-MM-dd): ");
+			try{
+				date = LocalDate.parse(sc.next());
+			} catch (DateTimeParseException e) {
+				System.out.println("Please make sure date is correct!");
+				reAsk = true;
+			}
+		} while(reAsk);
 
-		Holiday newhol = new Holiday(dayOfWeeks, name, date, day);
+		DateManager dateManager = new DateManager(LocalDateTime.of(date, LocalTime.now()));
+		
+		DayOfWeek day = dateManager.getDayOfWeek();
+
+		Holiday newhol = new Holiday(IDGenerator.get(), name, date, day);
 		
 		HolidayManager.addHoliday(newhol);
 	}
@@ -572,6 +585,7 @@ public class SettingsManager {
 					catch(IllegalArgumentException e)
 					{
 						System.out.println("Invalid input type!!. Please follow the status format");
+						break;
 					}
 					
 
@@ -595,6 +609,7 @@ public class SettingsManager {
 					catch(IllegalArgumentException e)
 					{
 						System.out.println("Invalid input type!!. Please follow the status format");
+						break;
 					}
 					
 					movieToEdit.setStatus(status);
@@ -647,10 +662,6 @@ public class SettingsManager {
 	}
 
 	public void addMovieSettings(){
-		// ADD MOVIE
-		// ASK FOR ALL NECESSARY ATTRIBUTE
-		// MOVIEMANAGER.ADDMOVIE(...) - RMB TO VALIDATE
-                    
 		System.out.println("Movie title: ");
 		while (!sc.hasNext()) {
 			System.out.println("Invalid input type. Please try again!");

@@ -139,7 +139,7 @@ public class Holiday_Initializer extends GetDatabaseDirectory {
 
 		try {
 			if(holiday_file.exists()) {
-				FileWriter write_holiday= new FileWriter((newDirectory + DBfile), true);
+				FileWriter write_holiday= new FileWriter((newDirectory + DBfile));
 				BufferedWriter buffer = new BufferedWriter(write_holiday);
 
 
@@ -147,7 +147,7 @@ public class Holiday_Initializer extends GetDatabaseDirectory {
 					DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyyMMdd");
 					String holidaydate = holidays.getDate().format(dateFormat);
 					
-					new_holiday = holidays.getName() + "|" + holidaydate + "|" + holidays.getDayOfWeek();
+					new_holiday = holidays.getID() + "|" + holidays.getName() + "|" + holidaydate + "|" + holidays.getDayOfWeek();
 					buffer.write(new_holiday);
 					buffer.newLine();
 				}

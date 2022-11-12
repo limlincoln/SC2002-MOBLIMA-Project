@@ -35,8 +35,7 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 		}		
 	}
 	
-	public static void WriteMovieListingFile(ArrayList<Movie> movielist) throws Exception {
-		
+	public static void WriteMovieListingFile(ArrayList<Movie> movielist) throws Exception {		
 		String currentDirectory;
 		String newDirectory;
 		String new_movie;
@@ -46,25 +45,17 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 		newDirectory = currentDirectory;
 		File movielisting_file = new File(newDirectory);
 		
-		FileWriter write_movielisting = new FileWriter((newDirectory + DBfile), true);
+		FileWriter write_movielisting = new FileWriter((newDirectory + DBfile));
 		
 		try {
-			if(movielisting_file.exists()) {
-				BufferedWriter buffer = new BufferedWriter(write_movielisting);
-				
-				
-				for(Movie movies: movielist) {
-					new_movie = movies.getMovieID() + "|" + movies.getMovieName() + "|" + movies.getMovieType() + "|" + movies.getStatus() + "|" + movies.getDirector() + "|" + movies.getSypnopsis() + "|" + movies.getCasts() + "|" + movies.getTotalSales() + "|" + movies.getRatings();
-					buffer.write(new_movie);
-					buffer.newLine();
-				}
-				
-				
-				//buffer.append(System.lineSeparator());
-				
-				
-				buffer.close();
+			BufferedWriter buffer = new BufferedWriter(write_movielisting);
+			
+			for(Movie movies: movielist) {
+				new_movie = movies.getMovieID() + "|" + movies.getMovieName() + "|" + movies.getMovieType() + "|" + movies.getStatus() + "|" + movies.getDirector() + "|" + movies.getSypnopsis() + "|" + movies.getCasts() + "|" + movies.getTotalSales() + "|" + movies.getRatings() + "|" + movies.getAvgRating();
+				buffer.write(new_movie);
+				buffer.newLine();
 			}
+			buffer.close();
 		}catch (Exception e){
 			
 		}
@@ -131,6 +122,9 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 					
 				case "ComingSoon":
 					moviestatus = Status.ComingSoon;
+					break;
+				case "EndOfShowing":
+					moviestatus = Status.EndOfShowing;
 					break;
 				}
 				

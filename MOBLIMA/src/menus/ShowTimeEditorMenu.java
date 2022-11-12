@@ -61,20 +61,28 @@ public class ShowTimeEditorMenu {
         		System.out.printf("Invalid input type.");
         		sc.next(); 
         	}
-            subChoice = sc.nextInt()-1;
+            subChoice = sc.nextInt();
             
-            }while(subChoice  < 0 || subChoice >= listofshowtime.length);
+            }while(subChoice  < 0 || subChoice > listofshowtime.length);
         
         
-        System.out.print("Replace with (Enter a new movie ID):");
-        sc.next();
-        while (!sc.hasNextInt()) {
-        	System.out.println("Invalid input type. Please try again!");
-    		sc.next(); 
-        }
-        int newmovieid = sc.nextInt();
+        int newmovieid;
+        boolean reAsk = false;
+        do {
+            System.out.print("Replace with (Enter a new movie ID or -1 to remove):");
+            while (!sc.hasNextInt()) {
+                System.out.println("Invalid input type. Please try again!");
+                sc.next(); 
+            }
+            newmovieid = sc.nextInt();
+
+            reAsk = newmovieid != -1 && MovieManager.getInstance().getMovieByID(newmovieid) == null ;
+            if(reAsk) {
+                System.out.println("Please enter a valid movie ID");
+            }
+        } while(reAsk);
         
-        listofshowtime[subChoice] = newmovieid;
+        listofshowtime[subChoice-1] = newmovieid;
         showtimes.get(choice-1).setShowTime(listofshowtime);     
     }
     
