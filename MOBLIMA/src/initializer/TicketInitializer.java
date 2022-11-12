@@ -8,93 +8,48 @@ import java.util.ArrayList;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import entities.Booking;
-import entities.Movie;
-import entities.Customer;
 import entities.Ticket;
 import enums.DayOfWeek;
-import enums.Status;
 import enums.TimeOfDay;
 import enums.TypeOfDay;
 import enums.AgeGroup;
 
 public class TicketInitializer extends GetDatabaseDirectory {
+	public static final String DBFolder = "Tickets";
+	public static final String DBfile = "Tickets.txt";
 
-	public static String setTicketName(int ticketid) {
-
-		String seatingsfolder = "\\Tickets\\";
-
-		final String DBfile = "Tickets.txt";
-
-		return(seatingsfolder+ticketid+DBfile);
-	}
-
-	public static void CreateTicketFile(int ticketid) {
-
+	public static Ticket read(String ticketid) {
 		String currentDirectory;
-		String newDirectory;
-		boolean checkfileexists = false;
-
-		TicketInitializer ticket_init = new TicketInitializer();
-		currentDirectory = ticket_init.getCurrentDirectory();
-
-		newDirectory = currentDirectory;
-		String SeatingsFile = setShowTicketName(ticketid);
-
-		File create_ticket_file = new File(newDirectory);
-
-		try {
-			if(!create_ticket_file.exists()) {
-				create_ticket_file.mkdirs();
-			}
-			create_ticket_file = new File(newDirectory + SeatingsFile);
-			checkfileexists = create_ticket_file.createNewFile();
-		} catch(Exception e) {
-			System.out.println(e);
-		}
-		System.out.println(create_ticket_file.getPath());
-	}
-
-	public static ArrayList<Ticket> ReadTickets(int ticketid) {
-
-		ArrayList<Ticket> ticketlist = new ArrayList<Ticket>();
-
-		String currentDirectory;
-		String newDirectory;
-
+		String fileDir;
 		String tid;
-		Integer seats;
-
 		DayOfWeek dayofweek = null;
 		TimeOfDay timeofday = null;
 		TypeOfDay typeofday = null;
 		AgeGroup agegroup = null;
+		Ticket result = null;
 
-		int CountNoOfBooking = 0;
+		currentDirectory = TicketInitializer.getCurrentDirectory();
 
-		TicketInitializer ticket_init = new TicketInitializer();
-		currentDirectory = ticket_init.getCurrentDirectory();
+		fileDir = currentDirectory+DBFolder+separator+ticketid+DBfile;
 
-		newDirectory = currentDirectory;
-
-		File ticket_file = new File(newDirectory);
-
-		String ShowTicketFile = setTicketName(ticketid);
-
+		File ticket_file = new File(fileDir);
+		BufferedReader br = null;
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(newDirectory + ShowTicketFile));
+			br = new BufferedReader(new FileReader(ticket_file));
 
-			while(true) {
 				final String line = br.readLine();
 
 				if(line == null) {
-					break;
+					br.close();
+					return result;
 				}
 				String []data = line.split("\\|");
 
+				// ID
 				tid = data[0];
 				Integer TicketID = Integer.parseInt(tid);
-
+				
+				// day of week
 				switch(data[1]) {
 				case "SUN":
 					dayofweek = DayOfWeek.SUN;
@@ -125,6 +80,7 @@ public class TicketInitializer extends GetDatabaseDirectory {
 					break;	
 				}
 
+				// time of day
 				switch(data[2]) {
 				case "BEFORE_6":
 					timeofday = TimeOfDay.BEFORE_6;
@@ -135,6 +91,7 @@ public class TicketInitializer extends GetDatabaseDirectory {
 					break;	
 				}
 
+				// agegroup
 				switch(data[3]) {
 				case "ADULT":
 					agegroup = AgeGroup.ADULT;
@@ -148,6 +105,8 @@ public class TicketInitializer extends GetDatabaseDirectory {
 					agegroup = AgeGroup.STUDENT;
 					break;
 				}
+				
+				// type of day
 				switch(data[4]) {
 				case "WEEKEND":
 					typeofday = TypeOfDay.WEEKEND;
@@ -161,53 +120,70 @@ public class TicketInitializer extends GetDatabaseDirectory {
 					break;
 				}
 
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddhhmm");
+				// excat date time
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
 				LocalDateTime exactDateTime = LocalDateTime.parse(data[5], formatter);
 
+				// seat string
 				String seat = data[6];
-				seats = Integer.parseInt(seat);
 				
-				ticketlist.add(new Ticket(TicketID, dayofweek, agegroup, typeofday, exactDateTime, seat));
-			}
-
+				result = new Ticket(TicketID, dayofweek,timeofday, agegroup, typeofday, exactDateTime, seat);
 		}catch (Exception e) {
-
-			}
-		
-		return ticketlist;
+			System.out.println("Error in ticket initializer: " + e.getMessage());
 		}
+		return result;
+	}
+			
 	
-		public static void CreateTicket(int ticketid, DayOfWeek dayofweek, TimeOfDay timeofday, LocalDateTime exactdatetime, AgeGroup agegroup, String seat) {
+		public static void write(ArrayList<Ticket> tickets) {
+			String currentDirectory = TicketInitializer.getCurrentDirectory();
 			
-			String currentDirectory;
-			String newDirectory;
-			
-			Cinema_Initializer showtime_init = new Cinema_Initializer();
-			currentDirectory = showtime_init.getCurrentDirectory();
-			
-			newDirectory = currentDirectory;
-			File ticket_file = new File(newDirectory);
-			
-			String ShowTicketFile = setTicketName(ticketid);
-			
-			File create_ticket_file = new File(newDirectory);
-			
-			try {
-				FileWriter write_ticket = new FileWriter((newDirectory + ShowTicketFile), true);
-				
-				if(create_ticket_file.exists()) {
+
+			for(Ticket ticket : tickets){
+				try {
+					// get filepath name for the ticket
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
+					String fileDir = currentDirectory+DBFolder+separator+ticket.getTicketID()+DBfile;
+					File ticket_file = new File(fileDir);
+					ticket_file.createNewFile();
+					FileWriter write_ticket = new FileWriter(ticket_file, false);
 					BufferedWriter buffer = new BufferedWriter(write_ticket);
-					
-					String newticket = ticketid + "|" + dayofweek + "|" + timeofday + "|" + exactdatetime + "|" + agegroup + "|" + seat;
-					
+						
+					String newticket = ticket.getTicketID() + "|" + 
+														ticket.getDayOfWeek() + "|" + 
+														ticket.getTimeOfDay() + "|" + 
+														ticket.getAgeGroup() + "|" + 
+														ticket.getTypeOfDay() + "|" + 
+														ticket.getExactDateTime().format(formatter) + "|" +
+														ticket.getSeat();
 					buffer.write(newticket);
-					buffer.newLine();
+					buffer.close();
+				} catch(Exception e) {
+					System.out.println("Error when writing tickets :"+ e.getMessage());
 				}
-				
-			} catch(Exception e) {
-				
 			}
-			
 		}
-    }
+
+		// public static void main(String[] args) {
+		// 	// DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
+		// 	LocalDateTime exactDateTime = LocalDateTime.of(1986, 4, 8, 10 , 10);
+		// 	System.out.println(exactDateTime);
+		// 	// String datestring = exactDateTime.format(formatter);
+		// 	// System.out.println(datestring);
+
+		// 	// LocalDateTime test = LocalDateTime.parse(datestring, formatter);
+		// 	// System.out.println(test);
+
+		// 	// System.out.println(exactDateTime);
+		// 	Ticket tic = new Ticket(15, DayOfWeek.FRI, TimeOfDay.AFTER_6, AgeGroup.ADULT, TypeOfDay.PUBLIC_HOLIDAY, exactDateTime ,"A1");
+		// 	Ticket tic1 = new Ticket(10, DayOfWeek.FRI, TimeOfDay.AFTER_6, AgeGroup.ADULT, TypeOfDay.PUBLIC_HOLIDAY, exactDateTime , "A5");
+		// 	ArrayList<Ticket> tics = new ArrayList<Ticket>();
+		// 	tics.add(tic);
+		// 	tics.add(tic1);
+
+		// 	TicketInitializer.write(tics);
+
+		// 	System.out.println(TicketInitializer.read("10").getExactDateTime());
+		// 	System.out.println(TicketInitializer.read("15"));
+		// }
 }
