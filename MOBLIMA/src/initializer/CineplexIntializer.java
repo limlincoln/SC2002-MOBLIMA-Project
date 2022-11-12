@@ -14,30 +14,6 @@ public class CineplexIntializer extends GetDatabaseDirectory {
 
 	public static final String DBfile = "Cineplex.txt";
 
-	// public static void CreateCineplexFile() {
-	// String currentDirectory;
-	// String newDirectory;
-	// boolean checkfileexists = false;
-
-	// CineplexIntializer cineplex_init = new CineplexIntializer();
-	// currentDirectory = cineplex_init.getCurrentDirectory();
-
-	// newDirectory = currentDirectory;
-
-	// File create_cineplex_file = new File(newDirectory);
-
-	// try {
-	// if(!create_cineplex_file.exists()) {
-	// create_cineplex_file.mkdirs();
-	// }
-	// create_cineplex_file = new File(newDirectory + DBfile);
-	// checkfileexists = create_cineplex_file.createNewFile();
-	// } catch(Exception e) {
-	// System.out.println(e);
-	// }
-	// System.out.println(create_cineplex_file.getPath());
-
-	// }
 	public static void writeCineplexListToFile(ArrayList<Cineplex> cineplexlist) throws Exception {
 
 		String currentDirectory;

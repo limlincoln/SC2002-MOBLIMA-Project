@@ -15,39 +15,13 @@ public class CinemaInitializer extends GetDatabaseDirectory {
 	
 	public static String setCinemaFileName(int cinemaid) {
 
-		String seatingsfolder = "/Cinema/";
+		String seatingsfolder = "Cinema" + separator;
 
 		final String DBfile = "Cinema.txt";
 
 		return(seatingsfolder+cinemaid+DBfile);
 	}
-	
-	// public static void CreateCinemaFile(int cinemaid) {
-
-	// 	String currentDirectory;
-	// 	String newDirectory;
-	// 	boolean checkfileexists = false;
-
-	// 	ShowTime_Initializer showtime_init = new ShowTime_Initializer();
-	// 	currentDirectory = showtime_init.getCurrentDirectory();
-
-	// 	newDirectory = currentDirectory;
-	// 	String SeatingsFile = setCinemaFileName(cinemaid);
-
-	// 	File create_cinema_file = new File(newDirectory);
-
-	// 	try {
-	// 		if(!create_cinema_file.exists()) {
-	// 			create_cinema_file.mkdirs();
-	// 		}
-	// 		create_cinema_file = new File(newDirectory + SeatingsFile);
-	// 		checkfileexists = create_cinema_file.createNewFile();
-	// 	} catch(Exception e) {
-	// 		System.out.println(e);
-	// 	}
-	// 	System.out.println(create_cinema_file.getPath());
-	// }
-	
+		
 	public static Cinema readCinemaFromFile(int cid) {
 		String currentDirectory;
 		String newDirectory;

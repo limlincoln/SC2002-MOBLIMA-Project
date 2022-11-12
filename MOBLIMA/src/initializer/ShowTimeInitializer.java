@@ -14,7 +14,7 @@ public class ShowTimeInitializer extends GetDatabaseDirectory {
 
 	public static String setShowTimeFileName(int seatid) {
 
-		String seatingsfolder = "/ShowTime/";
+		String seatingsfolder = "ShowTime"+separator;
 
 		final String DBfile = "ShowTime.txt";
 

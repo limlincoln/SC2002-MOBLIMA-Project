@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 import utils.CheckOSHelper;
 
 public class GetDatabaseDirectory{
-	
+	public static final String separator = File.separator;
 	public static final String DBfolder = "Database";
 	
 	public static String getCurrentDirectory() {
@@ -16,9 +16,8 @@ public class GetDatabaseDirectory{
 		}else{
 			executionPath = Paths.get(System.getProperty("user.dir")).toString();
 		}
-		String separator = File.separator;
 
-		String finalPath = executionPath + separator + DBfolder +separator;
+		String finalPath = executionPath + separator + DBfolder + separator;
 
 		return finalPath;
 	}
