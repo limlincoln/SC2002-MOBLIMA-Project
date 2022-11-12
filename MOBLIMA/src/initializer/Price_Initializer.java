@@ -3,6 +3,7 @@ import java.io.File;
 
 
 import enums.AgeGroup;
+import enums.CinemaClass;
 import enums.CinemaType;
 import enums.PriceType;
 import enums.TimeOfDay;
@@ -36,6 +37,7 @@ public class Price_Initializer extends GetDatabaseDirectory {
 			String priceString = "";
 			String timeString ="";
 			String typeString ="";
+			String classString ="";
 
 			for(Map.Entry<Object, Double> set:priceMatrix.entrySet()) {
 				switch(set.getKey().getClass().getSimpleName().toString().toLowerCase()){
@@ -54,6 +56,9 @@ public class Price_Initializer extends GetDatabaseDirectory {
 					case "typeofday":
 						typeString += "[" + set.getKey() + "," + set.getValue() + "]|";
 						break;
+					case "classString":
+						classString += "[" + set.getKey() + "," + set.getValue() + "]|";
+						break;
 					default:
 						break;
 				}
@@ -68,6 +73,7 @@ public class Price_Initializer extends GetDatabaseDirectory {
 			buffer.newLine();
 			buffer.write(typeString);
 			buffer.newLine();
+			buffer.write(classString);
 
 			buffer.close();
 		}catch (IOException e){
@@ -85,7 +91,7 @@ public class Price_Initializer extends GetDatabaseDirectory {
 			BufferedReader br = new BufferedReader(new FileReader(fileDir));
 
 
-			for(int whichEnum=0; whichEnum<5; whichEnum++) {
+			for(int whichEnum=0; whichEnum<6; whichEnum++) {
 				final String line = br.readLine();
 
 				if(line.isBlank()) {
@@ -118,6 +124,9 @@ public class Price_Initializer extends GetDatabaseDirectory {
 								break;
 							case 4:
 								temp = TypeOfDay.valueOf(val);
+								break;
+							case 5:
+								temp = CinemaClass.valueOf(val);
 								break;
 						}
 						priceMatrix.put(temp, Double.parseDouble(data.get(i)[1]));

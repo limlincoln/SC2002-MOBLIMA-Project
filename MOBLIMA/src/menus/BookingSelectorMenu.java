@@ -22,6 +22,10 @@ public class BookingSelectorMenu implements ISelectorMenu<Booking> {
      * Select Booking to rate
      */
     public Booking startSelector(ArrayList<Booking> bookings, String heading) {
+        if(bookings.size() ==0){
+            System.out.println("NO "+heading);
+            return null;
+        }
         Scanner sc = new Scanner(System.in);
         System.out.println(	"================ " +heading+ " =================");
         for(int i = 0;  i < bookings.size(); i++) {
@@ -40,7 +44,7 @@ public class BookingSelectorMenu implements ISelectorMenu<Booking> {
             }
             selectedInd = sc.nextInt()-1;
             
-            }while(selectedInd  < 0 || selectedInd >= bookings.size());
+            }while(selectedInd  < -1 || selectedInd >= bookings.size());
 
             if(selectedInd == -1) return null;
             

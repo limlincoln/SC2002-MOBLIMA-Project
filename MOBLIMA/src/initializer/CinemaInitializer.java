@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import entities.Cinema;
 import entities.ShowTime;
+import enums.CinemaClass;
 import enums.CinemaType;
 
 public class CinemaInitializer extends GetDatabaseDirectory {
@@ -27,6 +28,7 @@ public class CinemaInitializer extends GetDatabaseDirectory {
 		
 		String stime;
 		CinemaType cType = null;
+		CinemaClass cc = null;
 		
 		currentDirectory = CinemaInitializer.getCurrentDirectory();
 		
@@ -53,14 +55,18 @@ public class CinemaInitializer extends GetDatabaseDirectory {
 				String[] arr=stime.replaceAll("\\[|\\]| ", "").split(",");
 		        for(int i=0;i<arr.length;i++){
 		        	showtimelist.add(ShowTimeInitializer.readShowTimeFromFile(Integer.parseInt(arr[i])));
-		        }							
+		        }
+						
+				String c = data[3];
+				cc = CinemaClass.valueOf(c);
+
 			}
 			
 		} catch (Exception e) {
 			
 		}
 
-		return new Cinema(cid, cType, showtimelist);
+		return new Cinema(cid, cType, showtimelist,cc);
 	}
 		
 	public static void writeCinemaToFile(Cinema cinema) {
@@ -83,7 +89,7 @@ public class CinemaInitializer extends GetDatabaseDirectory {
 				ShowTimeInitializer.writeShowTimeToFile(showtime);
 				showTimeIDs += showtime.getShowTimeID() + ",";
 			}
-			String newcinema = cinema.getCinemaID() + "|" + cinema.getCinemaType() + "|" + "[" + showTimeIDs + "]";
+			String newcinema = cinema.getCinemaID() + "|" + cinema.getCinemaType() + "|" + "[" + showTimeIDs + "]" + "|" + cinema.getCinemaClass();
 			
 			buffer.write(newcinema);
 			buffer.close();

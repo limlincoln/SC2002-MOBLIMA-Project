@@ -69,7 +69,6 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 				}
 				buffer.close();
 			}
-			buffer.close();
 		}catch (Exception e){
 			
 		}

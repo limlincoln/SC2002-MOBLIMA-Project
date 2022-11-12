@@ -45,7 +45,7 @@ public class PricingManager {
      */
     public static void showPriceMatrix() {
         System.out.println("========== Pricing ==========");
-        int[] moreTab = {1,3,4,8,9};
+        int[] moreTab = {1,2,4,6,10,11,12,14};
         int i=0;
         int j=0;
         for(Object o: priceMatrix.keySet()) {

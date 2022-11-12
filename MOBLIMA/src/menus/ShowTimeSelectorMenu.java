@@ -1,9 +1,12 @@
 package menus;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import managers.HolidayManager;
 
 public class ShowTimeSelectorMenu implements ISelectorMenu<LocalDateTime> {
 
@@ -26,9 +29,11 @@ public class ShowTimeSelectorMenu implements ISelectorMenu<LocalDateTime> {
         System.out.println(	"================ " +heading+ " =================");
         for(int i = 0; i < showtimes.size(); i++) {
 			LocalDateTime currentShowTime = showtimes.get(i);
+            String isHoliday = HolidayManager.isHoliday(LocalDate.from(currentShowTime)) ? " | PUBLIC HOLIDAY (EXTRA CHARGES)" : "";
 			System.out.println(
-				"("+(i+1)+")"+
-				currentShowTime.getDayOfWeek()+"\n"+
+				"("+(i+1)+") "+
+				currentShowTime.getDayOfWeek() +
+                isHoliday + "\n"+
 				currentShowTime.getDayOfMonth()+" "+
 				currentShowTime.getMonth()+"\n"+
 				"Showtime: " + DateTimeFormatter.ofPattern("HH:mm").format(currentShowTime)
