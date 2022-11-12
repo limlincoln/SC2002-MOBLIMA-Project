@@ -4,6 +4,10 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import enums.DayOfWeek;
@@ -66,15 +70,20 @@ public class Holiday_Initializer extends GetDatabaseDirectory {
 				if(line == null) {
 					break;
 				}
+				
+				
 
 				String []data = line.split("\\|");
 
-				event = data[0];
+				int id = Integer.parseInt(data[0]);
+				
+				event = data[1];
 
-				date = data[1];
-				int dates = Integer.parseInt(date);
+				//date = data[2];
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+				LocalDate exactDateTime = LocalDate.parse(data[2], formatter);
 
-				switch(data[2]) {
+				switch(data[3]) {
 				case "SUN":
 					dayofweek = DayOfWeek.SUN;
 					break;
@@ -104,7 +113,7 @@ public class Holiday_Initializer extends GetDatabaseDirectory {
 					break;	
 				}
 
-				//holidaylist.add(new Holiday(event, dates, dayofweek));
+				holidaylist.add(new Holiday(7, event, exactDateTime, dayofweek));
 				//holidaylist.add(new Holiday(event, dates, 1));
 			}
 		} catch (Exception e) {
@@ -142,7 +151,10 @@ public class Holiday_Initializer extends GetDatabaseDirectory {
 
 
 				for(Holiday holidays: holidaylist) {
-					new_holiday = holidays.getName() + "|" + holidays.getDate() + "|" + holidays.getDayOfWeek();
+					DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyyMMdd");
+					String holidaydate = holidays.getDate().format(dateFormat);
+					
+					new_holiday = holidays.getName() + "|" + holidaydate + "|" + holidays.getDayOfWeek();
 					buffer.write(new_holiday);
 					buffer.newLine();
 				}
@@ -160,7 +172,7 @@ public class Holiday_Initializer extends GetDatabaseDirectory {
 
 		Holiday_Initializer holiday_init = new Holiday_Initializer();
 
-		//holiday_init.CreateHolidayFile();
+		holiday_init.CreateHolidayFile();
 		
 		ArrayList<Holiday> holidaylist = holiday_init.GetHolidayListing();
 		
