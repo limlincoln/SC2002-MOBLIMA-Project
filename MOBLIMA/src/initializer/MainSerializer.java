@@ -1,7 +1,6 @@
 package initializer;
 import managers.BookingManager;
 import managers.CineplexManager;
-import managers.MovieManager;
 import managers.PricingManager;
 import managers.SettingsManager;
 

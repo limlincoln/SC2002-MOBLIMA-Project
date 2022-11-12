@@ -2,7 +2,6 @@ package initializer;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -26,11 +25,10 @@ public class CinemaInitializer extends GetDatabaseDirectory {
 		String currentDirectory;
 		String newDirectory;
 		
-		String cinemaid, stime;
+		String stime;
 		CinemaType cType = null;
 		
-		CinemaInitializer cinema_init = new CinemaInitializer();
-		currentDirectory = cinema_init.getCurrentDirectory();
+		currentDirectory = CinemaInitializer.getCurrentDirectory();
 		
 		newDirectory = currentDirectory;
 		
@@ -48,10 +46,7 @@ public class CinemaInitializer extends GetDatabaseDirectory {
 				}
 				
 				String []data = line.split("\\|");
-				
-				cinemaid = data[0];
-				Integer CinemaID = Integer.parseInt(cinemaid);
-				
+								
 				cType = CinemaType.valueOf(data[1]);
 				
 				stime = data[2];
@@ -72,11 +67,9 @@ public class CinemaInitializer extends GetDatabaseDirectory {
 		String currentDirectory;
 		String newDirectory;
 		
-		CinemaInitializer showtime_init = new CinemaInitializer();
-		currentDirectory = showtime_init.getCurrentDirectory();
+		currentDirectory = CinemaInitializer.getCurrentDirectory();
 		
 		newDirectory = currentDirectory;
-		File cinemalisting_file = new File(newDirectory);
 		
 		String ShowCinemaFile = setCinemaFileName(cinema.getCinemaID());
 		
