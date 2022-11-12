@@ -22,8 +22,8 @@ public class Settings_Initializer extends GetDatabaseDirectory {
 	public Settings_Initializer(){}
 	
 	public void write(SettingsManager settings) {	
-		Price_Initializer price_init = new Price_Initializer();
-		String currentDirectory = price_init.getCurrentDirectory();
+		Settings_Initializer settings_init = new Settings_Initializer();
+		String currentDirectory = settings_init.getCurrentDirectory();
 		
 		String fileDir = currentDirectory + DBfile;
 
