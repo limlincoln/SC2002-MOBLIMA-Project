@@ -2,7 +2,7 @@ package enums;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Enum Status.
+ * The status of the movies.
  */
 public enum Status {
   

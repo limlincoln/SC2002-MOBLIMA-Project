@@ -2,7 +2,7 @@ package enums;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Enum DayOfWeek.
+ * The day of the week.
  */
 public enum DayOfWeek {
   

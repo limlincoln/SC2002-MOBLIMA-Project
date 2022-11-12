@@ -2,7 +2,7 @@ package enums;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Enum TimeOfDay.
+ * Used to decide whether is it before or after 6pm.
  */
 public enum TimeOfDay {
   

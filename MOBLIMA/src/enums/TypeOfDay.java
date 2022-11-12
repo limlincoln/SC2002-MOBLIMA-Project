@@ -2,7 +2,7 @@ package enums;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Enum TypeOfDay.
+ * To determine the type of day.
  */
 public enum TypeOfDay {
     

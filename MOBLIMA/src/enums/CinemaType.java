@@ -2,7 +2,7 @@ package enums;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Enum CinemaType.
+ * The type of cinemas.
  */
 public enum CinemaType{
   

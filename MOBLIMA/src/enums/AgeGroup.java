@@ -2,7 +2,7 @@ package enums;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Enum AgeGroup.
+ * The Enum AgeGroup to decide the age group customer belongs to.
  */
 public enum AgeGroup {
     

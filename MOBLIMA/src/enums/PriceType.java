@@ -2,7 +2,7 @@ package enums;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Enum PriceType.
+ * The base price for a ticket.
  */
 public enum PriceType {
     
