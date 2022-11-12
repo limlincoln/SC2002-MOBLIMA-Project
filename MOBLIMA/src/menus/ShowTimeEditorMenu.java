@@ -27,7 +27,6 @@ public class ShowTimeEditorMenu {
 
         ShowTimeManager.getInstance().editShowTime(cineplex, cinema, DayOfWeek.values()[choice-1]);
 
-        sc.close();
     }
     
 }

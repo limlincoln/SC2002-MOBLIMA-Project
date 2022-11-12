@@ -118,11 +118,19 @@ public class ShowTimeManager {
 				
 			} while (choice  < -1 || choice >= listofshowtime.length);
 			
+			System.out.println("Enter the Movie ID:");
+			int newmovieid = sc.nextInt();
+			//System.out.println("This is new one" + newmovieid);
+			sc.nextLine();
+			
 			System.out.println("Is this the one you want to change? (Y to confirm):" +timings[choice] + "  " + MovieManager.getInstance().getMovieByID(listofshowtime[choice]));
 			String confirmation = sc.nextLine();
 			
+			
+			
 			if(confirmation.equals("Y"))
 			{
+				listofshowtime[choice] = newmovieid;
 				cinema.getShowtimes().get(dayofweek).setShowTime(listofshowtime);
 				System.out.println("SUCCESSFULLY CHANGED");
 			}
@@ -130,6 +138,7 @@ public class ShowTimeManager {
 			{
 				System.out.println("UNSUCCESSFULLY CHANGED");
 			}
+			
 		}
 		else
 		{
