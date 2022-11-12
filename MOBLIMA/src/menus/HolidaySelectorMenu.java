@@ -5,7 +5,7 @@ import java.util.Scanner;
 import entities.Holiday;
 import managers.HolidayManager;
 
-public class HolidaySelectorMenu {
+public class HolidaySelectorMenu implements ISelectorMenu<Holiday>{
 
     // TODO: Holiday ID
     public static HolidaySelectorMenu single_instance = null;
@@ -39,18 +39,23 @@ public class HolidaySelectorMenu {
             
             }while(selectedInd  < 0 || selectedInd >= Holiday.size());
 
-            if(selectedInd == 0) return null;
+            if(selectedInd == 0){
+                sc.close();
+                return null;
+            } 
             
             Holiday selected = Holiday.get(selectedInd);
-            HolidayManager.getHolidays().get(selectedInd).getName(); 
-            // MovieManager.getInstance().getMovieByID(selected.getMovieID()).showDetails();
 
-            System.out.println("Do you want to edit? (y/n)");
+            //print the details of the holiday
+            System.out.println("Do you want to edit this Holiday (y/n): " + HolidayManager.getHolidays().get(selectedInd).getName()); 
+
             boolean want = sc.nextLine().toLowerCase().charAt(0) == 'y';
 
             if(want) {
+                sc.close();
                 return selected;
-            }  
-            return null;
+            } 
+        sc.close(); 
+        return null;
     }
 }
