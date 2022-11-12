@@ -96,7 +96,7 @@ public class ShowTimeInitializer extends GetDatabaseDirectory {
 		String newDirectory;
 		String new_movie;
 		
-		String showid, showtime, seatid;
+		String showTimeIDStr, showTimeStr, seatIDStr;
 		
 		ShowTimeInitializer showtime_init = new ShowTimeInitializer();
 		currentDirectory = showtime_init.getCurrentDirectory();
@@ -105,12 +105,14 @@ public class ShowTimeInitializer extends GetDatabaseDirectory {
 		File movielisting_file = new File(newDirectory);
 		
 		String ShowTimeFile = setShowTimeFileName(showTimeID);
+
+		ArrayList<Integer> intlist = new ArrayList<Integer>();
+		ArrayList<Integer> seatlist = new ArrayList<Integer>();
+		ArrayList<Seats> seats = new ArrayList<Seats>();
 		
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(newDirectory + ShowTimeFile));
 			
-			
-			ArrayList<ShowTime> showtimelist = new ArrayList<ShowTime>();
 			while(true) {
 				final String line = br.readLine();
 
@@ -120,30 +122,44 @@ public class ShowTimeInitializer extends GetDatabaseDirectory {
 
 				String []data = line.split("\\|");
 				
-				showid = data[0];
-				Integer ShowTimeID = Integer.parseInt(showid);
+				showTimeIDStr = data[0];
+				Integer ShowTimeID = Integer.parseInt(showTimeIDStr);
 				
-				showtime = data[1];
-				ArrayList<Integer> intlist = new ArrayList<Integer>();
-				String[] arr=showtime.replaceAll("\\[|\\]| ", "").split(",");
+				showTimeStr = data[1];
+				String[] arr=showTimeStr.replaceAll("\\[|\\]| ", "").split(",");
 				for(int i=0;i<arr.length;i++){
 
 					intlist.add(Integer.parseInt(arr[i]));
 		        }
 				
-				seatid = data[2];
-				ArrayList<Integer> seatlist = new ArrayList<Integer>();
-				String[] arrseat=showtime.replaceAll("\\[|\\]| ", "").split(",");
+				seatIDStr = data[2];
+				String[] arrseat=showTimeStr.replaceAll("\\[|\\]| ", "").split(",");
 				for(int i=0;i<arrseat.length;i++){
 
 					seatlist.add(Integer.parseInt(arr[i]));
 		        }
-				
-				//Initialize showtime here
-				//showtime.add(new ShowTime(ShowTimeID, intlist, seatlist));
+
+
+				for(Integer seatID: seatlist) {
+					seats.add(SeatsInitializer.readSeatsFromFile(seatID));
+				}
 			} 
 		} catch(Exception e) {
 			
 		}
+
+		// convert ArrayList to array
+		int[] showTimeArray = new int[intlist.size()];
+		for(int i = 0; i < showTimeArray.length; i++) {
+			showTimeArray[i] = intlist.get(i);
+		}
+
+		Seats[] showTimeSeatsArray = new Seats[seats.size()];
+		for(int i = 0; i < showTimeSeatsArray.length; i++) {
+			showTimeSeatsArray[i] = seats.get(i);
+		}
+
+		ShowTime newShowtime = new ShowTime(showTimeID, showTimeArray, showTimeSeatsArray);
+		return newShowtime;
 	}
 }

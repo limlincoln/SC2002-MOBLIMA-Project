@@ -23,9 +23,10 @@ public class ShowTime {
     /**
      * The Constructor of the ShowTime Class
      */
-    public ShowTime(){
-        this.showtime = new int[8];
-        this.seats = new Seats[8];
+    public ShowTime(int showTimeID, int[] showTime, Seats[] seats){
+        this.showTimeID = showTimeID;
+        this.showtime = showTime;
+        this.seats = seats;
     }
 
     /**

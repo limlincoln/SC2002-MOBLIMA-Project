@@ -138,7 +138,6 @@ public class SeatsInitializer extends GetDatabaseDirectory{
 			
 		}
 
-		// convert arraylist to array of seats
 		ISeat[][] seatsArray = new ISeat[seats.size()][seats.get(0).size()];
 
 		for(int i = 0; i < seatsArray.length; i++) {
@@ -147,7 +146,6 @@ public class SeatsInitializer extends GetDatabaseDirectory{
 			}
 		}
 
-		// ISSUE: I NEED ISEATLAYOUT TO CREATE A SEAT CLASS
 		Seats seat = new Seats(seatsID, seatsArray);
 
 		return seat;
