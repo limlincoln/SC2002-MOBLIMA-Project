@@ -149,7 +149,7 @@ public class SettingsManager {
 			System.out.println("Price of MON updated to " + PricingManager.getPrice(DayOfWeek.MON));
 			return true;
 		}
-		else if (dow == "TUES"){
+		else if (dow == "TUE"){
 			PricingManager.updatePrice(DayOfWeek.TUE, newPrice);
 			System.out.println("Price of TUE updated to " + PricingManager.getPrice(DayOfWeek.TUE));
 			return true;
@@ -159,7 +159,7 @@ public class SettingsManager {
 			System.out.println("Price of WED updated to " + PricingManager.getPrice(DayOfWeek.WED));
 			return true;
 		}
-		else if (dow  =="THURS"){
+		else if (dow  =="THU"){
 			PricingManager.updatePrice(DayOfWeek.THU, newPrice);
 			System.out.println("Price of THU updated to " + PricingManager.getPrice(DayOfWeek.THU));
 			return true;
@@ -207,8 +207,6 @@ public class SettingsManager {
 	public void setCustomerTop5MenuClass(ITop5Menu customerTop5MenuClass) {
 		this.customerTop5MenuClass = customerTop5MenuClass;
 	}
-	
-
 	
 
 	// To do
@@ -497,7 +495,8 @@ public class SettingsManager {
 		// ASK FOR VALUE
 		// CALL MOVIEMANAGER(MOVIE, ATTRIBUTE, VALUE), VALIDATE IN MOVIEMANAGER
 		// CHECK RESPONSE FROM MOVIEMANGER, REPEAT IF NEEDED
-                	
+        String heading;
+        Movie selectedMovie;
 		System.out.println(	"================ SELECT A MOVIE =================");
 		int editchoice = -1;
 		ArrayList<Movie> movies = MovieConsolidator.getInstance().getAll();
@@ -647,6 +646,8 @@ public class SettingsManager {
 		} while (subchoice != 0);
 	}
 
+	}
+
 	public void addMovieSettings(){
 		// ADD MOVIE
 		// ASK FOR ALL NECESSARY ATTRIBUTE
@@ -752,7 +753,7 @@ public class SettingsManager {
 		System.out.println("Enter Y to confirm delete : ");
 		String confirmation = sc.nextLine();
 		
-		if(confirmation.equals("Y"))
+		if(confirmation.toUpperCase().equals("Y"))
 		{
 			MovieManager.getInstance().removeMovieByID(movies.get(deletechoice-1).getMovieID());
 			System.out.println("SUCCESSFULLY DELETED");
@@ -763,5 +764,3 @@ public class SettingsManager {
 		}
 	}
 }
-
-
