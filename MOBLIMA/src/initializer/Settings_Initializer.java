@@ -15,7 +15,6 @@ public class Settings_Initializer extends GetDatabaseDirectory {
 	
 	public static final String DBfile = "settings.txt";
 	
-	
 	public Settings_Initializer(){}
 	
 	public static void write(SettingsManager settings) {	
