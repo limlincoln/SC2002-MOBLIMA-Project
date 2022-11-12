@@ -10,6 +10,7 @@ import consolidators.MovieConsolidator;
 import java.util.ArrayList;
 import entities.Movie;
 import menus.ITop5Menu;
+import utils.IDGenerator;
 import menus.MovieSelectorMenu;
 
 public class SettingsManager {
@@ -673,7 +674,7 @@ public class SettingsManager {
 			System.out.println("Invalid input type!!. Please follow the status format");
 		}
 		
-		System.out.println("Status (ComingSoon/Showing): ");
+		System.out.println("Status (ComingSoon/Showing/EndOfShowing): ");
 		while (!sc.hasNext()) {
 			System.out.println("Invalid input type. Please try again!");
 			sc.next(); 
@@ -716,10 +717,9 @@ public class SettingsManager {
 		
 		ArrayList<Integer> ratings = new ArrayList<>();
 		float avg = 0.000f;
-		Movie newmovie = new Movie(0,title,genre,status,cast,director,sypnopsis,ratings,0.0,avg); //movieID should be size()+1?
+		Movie newmovie = new Movie(IDGenerator.get(),title,genre,status,cast,director,sypnopsis,ratings,0.0,avg); //movieID should be size()+1?
 		
 		MovieManager.getInstance().addMovie(newmovie);                    
-
 	}
 
 	public void deleteMovieSetting(){
@@ -750,12 +750,13 @@ public class SettingsManager {
 		
 		if(confirmation.toUpperCase().equals("Y"))
 		{
+			MovieManager.getInstance().removeMovieByID(movies.get(deletechoice-1).getMovieID());
 			System.out.println("SUCCESSFULLY DELETED");
 			selectedMovie.setStatus(Status.EndOfShowing);
 		}
 		else
 		{
-			System.out.println("DELETE UNSUCCESSFULLY");
+			System.out.println("NOT DELETED");
 		}
 	}
 }

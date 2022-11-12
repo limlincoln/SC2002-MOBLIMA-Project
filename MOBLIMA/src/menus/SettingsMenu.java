@@ -110,8 +110,7 @@ public class SettingsMenu {
             System.out.println(" 2. Age Group Prices");
             System.out.println(" 3. Cinema Type Prices");
             System.out.println(" 4. Day of Week Prices");
-            System.out.println(" 5. Time of Day Prices");
-            System.out.println(" 6. Type of Day Prices");
+            System.out.println(" 5. Type of Day Prices");
             System.out.println(" 0. Back to Settings Menu");
             System.out.println("===========================================================");
 
@@ -173,33 +172,6 @@ public class SettingsMenu {
 					break;
 				case 4:
 					do {
-						System.out.println(" 1. Monday Prices");
-						System.out.println(" 2. Tuesday Prices");
-						System.out.println(" 3. Wednesday Prices");
-						System.out.println(" 4. Thursday Prices");
-						System.out.println(" 5. Friday Prices");
-						System.out.println(" 6. Saturday Prices");
-						System.out.println(" 7. Sunday Prices");
-						System.out.println(" 0. Back to Settings Menu");
-						System.out.println("Enter choice: ");
-						thischoice = sc.nextInt();
-						if(thischoice!=0)
-						{
-							System.out.println("Enter new Price: ");
-							newPrice = sc.nextDouble();
-							if (thischoice == 1){SettingsManager.getInstance().editPrices(DayOfWeek.MON,newPrice);}
-							else if (thischoice == 2){SettingsManager.getInstance().editPrices(DayOfWeek.TUE,newPrice);}						
-							else if (thischoice == 3){SettingsManager.getInstance().editPrices(DayOfWeek.WED,newPrice);}
-							else if (thischoice == 4){SettingsManager.getInstance().editPrices(DayOfWeek.THU,newPrice);}						
-							else if (thischoice == 5){SettingsManager.getInstance().editPrices(DayOfWeek.FRI,newPrice);}						
-							else if (thischoice == 6){SettingsManager.getInstance().editPrices(DayOfWeek.SAT,newPrice);}						
-							else if (thischoice == 7){SettingsManager.getInstance().editPrices(DayOfWeek.SUN,newPrice);}						
-							}
-												
-					} while (thischoice != 0);					
-					break;
-				case 5:
-					do {
 						System.out.println(" 1. Before 6 Prices");
 						System.out.println(" 2. After 6 Prices");
 						System.out.println("Enter choice: ");
@@ -214,7 +186,7 @@ public class SettingsMenu {
 					
 					} while (thischoice != 0);					
 					break;
-				case 6:
+				case 5:
 					do {
 						System.out.println(" 1. Weekday Prices");
 						System.out.println(" 2. Weekend Prices");
@@ -246,16 +218,15 @@ public class SettingsMenu {
      */
 	private void viewPriceSettings() {
 		int choice;
+		System.out.println(	"=================== View Price Settings ==================");
+		System.out.println(" 1. Base Prices");
+		System.out.println(" 2. Age Group Prices");
+		System.out.println(" 3. Cinema Type Prices");
+		System.out.println(" 4. Time of Day Prices");
+		System.out.println(" 5. Type of Day Prices");
+		System.out.println(" 0. Back to Settings Menu");
+		System.out.println("===========================================================");
 		do {
-	        System.out.println(	"=================== View Price Settings ==================");
-            System.out.println(" 1. Base Prices");
-            System.out.println(" 2. Age Group Prices");
-            System.out.println(" 3. Cinema Type Prices");
-            System.out.println(" 4. Day of Week Prices");
-            System.out.println(" 5. Time of Day Prices");
-            System.out.println(" 6. Type of Day Prices");
-            System.out.println(" 0. Back to Settings Menu");
-            System.out.println("===========================================================");
 			System.out.println("Enter choice: ");
 			while(!sc.hasNextInt()) {
 				System.out.println("Please enter a number!");
@@ -266,7 +237,7 @@ public class SettingsMenu {
 				
 			switch (choice) {
 				case 1:
-                    
+					System.out.println("Base Price: $" + PricingManager.getPrice(PriceType.BASE_PRICE));
                     break;
 				case 2:
 					System.out.println("Adult Price: $" + PricingManager.getPrice(AgeGroup.ADULT));
@@ -279,19 +250,10 @@ public class SettingsMenu {
                     System.out.println("Normal Price: $" + PricingManager.getPrice(CinemaType.NORMAL));
 					break;
 				case 4:
-                    System.out.println("Monday Price: $" + PricingManager.getPrice(DayOfWeek.MON));
-                    System.out.println("Tuesday Price: $" + PricingManager.getPrice(DayOfWeek.TUE));
-                    System.out.println("Wednesday Price: $" + PricingManager.getPrice(DayOfWeek.WED));
-                    System.out.println("Thursday Price: $" + PricingManager.getPrice(DayOfWeek.THU));
-                    System.out.println("Friday Price: $" + PricingManager.getPrice(DayOfWeek.FRI));
-                    System.out.println("Saturday Price: $" + PricingManager.getPrice(DayOfWeek.SAT));
-                    System.out.println("Sunday Price: $" + PricingManager.getPrice(DayOfWeek.SUN));
-					break;
-				case 5:
                     System.out.println("Before 6PM Price: $" + PricingManager.getPrice(TimeOfDay.BEFORE_6));
                     System.out.println("After 6PM Price: $" + PricingManager.getPrice(TimeOfDay.AFTER_6));
 					break;			
-				case 6:
+				case 5:
                     System.out.println("Weekend Price: $" + PricingManager.getPrice(TypeOfDay.WEEKEND));
                     System.out.println("Weekday Price: $" + PricingManager.getPrice(TypeOfDay.WEEKDAY));
                     System.out.println("Public Holiday Price: $" + PricingManager.getPrice(TypeOfDay.PUBLIC_HOLIDAY));
