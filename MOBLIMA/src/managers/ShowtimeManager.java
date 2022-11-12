@@ -12,6 +12,9 @@ import entities.Seats;
 //import managers.MovieManager;
 import entities.ShowTime;
 import enums.DayOfWeek;
+import menus.CustomerApp;
+import menus.LoginMenu;
+import menus.StaffApp;
 
 //need to filter by movie or cinplex??
 
@@ -73,67 +76,70 @@ public class ShowTimeManager {
 
     }
     
-    public void editShowTime(Cineplex cineplex, Cinema cinema, DayOfWeek day) {
-    {//cineplex cinema[7 showtimes for each day], which day, showtimeslot(8),
-    	
-    	//ArrayList<ShowTime> showtimes = cinema.getShowtimes();
-    	//cineplex.getCinemas().get(cinema.getCinemaID());
-    	//cinema.getCinemaType()
+    public void editShowTime(Cineplex cineplex, Cinema cinema, DayOfWeek day) 
+    {
     	
     	
     	int dayofweek = day.ordinal();
-        // TODO: ITERATE THORUGH CINEMAS AND COMPARE
-    	ShowTime target = cineplex.getCinemas()..getShowtimes().get(dayofweek);
-    	//ShowTime target = cinema.getShowtimes().get(dayofweek);
-    	int listofshowtime[] = target.getShowTime();
     	
-    	String[] timings = {"0000-0300","0300-0600","0600-0900"
-    			,"0900-1200",
-                "1200-1500",
-                "1500-1800",
-                "1800-2100",
-                "2100-0000"};
-    	for(int i=0; i < listofshowtime.length; i++)
-    	{
-    		System.out.println("TIMING : " + timings[i] + "  " + MovieManager.getInstance().getMovieByID(listofshowtime[i]));
+        // TODO: ITERATE THORUGH CINEMAS AND COMPARE
+    	
+    	boolean check=false;
+		for(Cinema cine: cineplex.getCinemas()) {
+    		if(cine == cinema) {
+    			check = true;
+    		}
     	}
-//        System.out.println("=================== Choose what showtime to edit ==================\n" +
-//                " 1. 0000-0300      	                                \n" +
-//                " 2. 0300-0600                      	        	\n" +
-//                " 3. 0600-0900	                                    \n" +
-//                " 4. 0900-1200                                        \n" +
-//                " 5. 1200-1500                                     \n" +
-//                " 6. 1500-1800                                     \n" +
-//                " 7. 1800-2100                               \n"+
-//                " 8. 2100-0000                                \n"+
-//                "=========================================================");
-    	int subChoice;
-        do {
-        	
-        	System.out.println("Choose a movie at the allocated timing or enter 0 to exit : ");
-                
-            while (!sc.hasNextInt()) {
-        		System.out.printf("Invalid input type.");
-        		sc.next(); 
-        	}
-            subChoice = sc.nextInt()-1;
-            
-            }while(subChoice  < 0 || subChoice >= listofshowtime.length);
-        
-        
-        System.out.print("Replace with (Enter a new movie ID):");
-        sc.next();
-        while (!sc.hasNextInt()) {
-        	System.out.println("Invalid input type. Please try again!");
-    		sc.next(); 
-        }
-        int newmovieid = sc.nextInt();
-        
-        listofshowtime[subChoice] = newmovieid;
+		
+		if(check)
+		{
+			String[] timings = {"0000-0300","0300-0600","0600-0900","0900-1200","1200-1500","1500-1800","1800-2100","2100-0000"};
+			int[] listofshowtime  = cinema.getShowtimes().get(dayofweek).getShowTime();
+	    	for(int i=0; i < listofshowtime.length; i++)
+	    	{
+	    		System.out.println(i+1+".TIMING: " + timings[i] + "  " + MovieManager.getInstance().getMovieByID(listofshowtime[i]));
+	    	}
+	    	int choice; 
+			do {
+		        System.out.println("Enter the index to change or zero to exit: ");
+		    	for(int i=0; i < listofshowtime.length; i++)
+		    	{
+		    		System.out.println(i+1+".TIMING: " + timings[i] + "  " + MovieManager.getInstance().getMovieByID(listofshowtime[i]));
+		    	}
+		    	
+	      
+		        while (!sc.hasNextInt()) {
+	            	System.out.println("Invalid input type. Please enter an integer value.");
+	        		sc.next(); 
+	            }
+
+				choice = sc.nextInt()-1;
+		        sc.nextLine();
+				
+			} while (choice  < -1 || choice >= listofshowtime.length);
+			
+			System.out.println("Is this the one you want to change? (Y to confirm):" +timings[choice] + "  " + MovieManager.getInstance().getMovieByID(listofshowtime[choice]));
+			String confirmation = sc.nextLine();
+			
+			if(confirmation.equals("Y"))
+			{
+				cinema.getShowtimes().get(dayofweek).setShowTime(listofshowtime);
+				System.out.println("SUCCESSFULLY CHANGED");
+			}
+			else
+			{
+				System.out.println("UNSUCCESSFULLY CHANGED");
+			}
+		}
+		else
+		{
+			System.out.print("Cineplex does not have selected cinema!!!!");
+		}
+		
+
         // TODO: Write back
-        
+    
     }
     
     
-}
 }
