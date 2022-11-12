@@ -1,14 +1,24 @@
 package initializer;
 
-public class GetDatabaseDirectory implements IGetCurrentDirectory{
+import java.io.File;
+import java.nio.file.Paths;
 
-	public static final String DBfolder = "\\Database\\";
+import utils.CheckOSHelper;
+
+public class GetDatabaseDirectory{
+	public static final String separator = File.separator;
+	public static final String DBfolder = "Database";
 	
-	@Override
-	public String getCurrentDirectory() {
-		String executionPath = System.getProperty("user.dir");
+	public static String getCurrentDirectory() {
+		String executionPath = "";
+		if(CheckOSHelper.IS_MAC){
+			executionPath = Paths.get(System.getProperty("user.dir")).getParent().getParent().toString();
+		}else{
+			executionPath = Paths.get(System.getProperty("user.dir")).toString();
+		}
 
-		return (executionPath + DBfolder);
+		String finalPath = executionPath + separator + DBfolder + separator;
+
+		return finalPath;
 	}
-
 }

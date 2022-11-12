@@ -45,7 +45,10 @@ public class CineplexManager {
     } 
 
     // Methods
-    // add new Cineplex
+    /**
+     * Add new cineplex
+     * @param cine
+     */
     public void addCineplex(Cineplex cine){
         for(int x = 0; x < cineplex.size(); x++){
             Cineplex current = cineplex.get(x);
@@ -59,7 +62,10 @@ public class CineplexManager {
         System.out.println("Cineplex successfully added!");
     }
 
-    // remove cineplex by ID
+    /**
+     * Search Cineplex by ID and remove
+     * @param cineID
+     */
     public void removeCineplexByID(int cineID){
         for(int x = 0; x < cineplex.size(); x++){
             if(cineplex.get(x).getCineplexID() == cineID){

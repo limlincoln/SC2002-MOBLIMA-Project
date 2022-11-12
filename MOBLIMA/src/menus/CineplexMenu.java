@@ -22,7 +22,10 @@ public class CineplexMenu {
         return single_instance;
     }
 
-
+    /**
+     * Display Cineplex Menu
+     * @param movie
+     */
 	public void displayCineplexMenu(Movie movie) { 
         ArrayList<Cineplex> cineplexes = CineplexManager.getInstance().getCineplexByMovie(movie.getMovieID());
         Cineplex selectedCinplex = CineplexSelectorMenu.getInstance().startSelector(cineplexes, "SELECT A CINEPLEX");

@@ -12,7 +12,7 @@ public class MovieManager {
     private MovieManager(ArrayList<Movie> movies){
         this.movies = movies;
     }
-    public static void instantiateMovies(ArrayList<Movie> movies){
+    public static void initialize(ArrayList<Movie> movies){
         single_instance = new MovieManager(movies);
     }
 
@@ -29,6 +29,11 @@ public class MovieManager {
         this.movies = movies;
     }
 
+    /**
+     * Get the movie based on the movie ID being inputted
+     * @param movieId
+     * @return
+     */
     public Movie getMovieByID(int movieId){
         for(int i=0; i<movies.size(); i++){
             if(movies.get(i).getMovieID() == movieId){
@@ -38,6 +43,11 @@ public class MovieManager {
         return null;
     }
     
+    /**
+     * Get the movie based on the movie name bring inputted
+     * @param movieName
+     * @return
+     */
     public Movie getMovieByName(String movieName){
         for(int i=0; i<movies.size(); i++){
             if(movies.get(i).getMovieName() == movieName){
@@ -47,6 +57,10 @@ public class MovieManager {
         return null;
     }
 
+    /**
+     * Add new movie to existing list
+     * @param movie
+     */
     public void addMovie(Movie movie){
         for(int i=0; i<movies.size(); i++){
             Movie cur = movies.get(i);
@@ -59,6 +73,9 @@ public class MovieManager {
         System.out.println("Movie successfully added!");
     }
 
+    /**
+     * Remove movie based on the inputted ID
+     */
     public void removeMovieByID(int movieId){
         for(int i=0; i<movies.size(); i++){
             if(movies.get(i).getMovieID() == movieId){
@@ -70,6 +87,10 @@ public class MovieManager {
         System.out.println("Movie with ID: "+ movieId + " does not exist!");
     }
     
+    /**
+     * * Remove movie based on the inputted name
+     * @param movieName
+     */
     public void removeMovieByName(String movieName){
         for(int i=0; i<movies.size(); i++){
             if(movies.get(i).getMovieName() == movieName){

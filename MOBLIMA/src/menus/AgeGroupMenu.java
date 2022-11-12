@@ -1,9 +1,9 @@
 package menus;
 
 import java.util.Scanner;
-import enums.AgeGroup;
+import enums.AgeGroup;;
 
-public class AgeGroupMenu{
+public class AgeGroupMenu {
   private static AgeGroupMenu single_instance = null;
   private AgeGroupMenu(){}
 
@@ -15,13 +15,16 @@ public class AgeGroupMenu{
     return single_instance;
   }
 
-  //override or return
+  /**
+   * Allow users to display different age groups
+   * @return
+   */
   public AgeGroup display() { 
     Scanner sc = new Scanner(System.in);
     int choice;	
   do {
     System.out.println(	"=========== SELECT AGE GROUP =========\n" +
-                        " 1. AdDULT  					   \n" +
+                        " 1. ADULT  					   \n" +
                         " 2. SENIOR              \n" +
                         " 3. STUDENT              \n" +
                         "======================================");

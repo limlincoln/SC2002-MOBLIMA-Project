@@ -22,6 +22,9 @@ public class MovieMenu {
         return single_instance;
     }
     
+    /**
+     * Customer Movie App
+     */
 	public void displayCustomerMovieMenu() {
 		int choice;
 		

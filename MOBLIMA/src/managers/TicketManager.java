@@ -10,6 +10,12 @@ import enums.AgeGroup;
 
 public class TicketManager {
     // CHANGE TO HASHMAP
+    /**
+     * Generate list of tickets available
+     * @param exactDateTime
+     * @param seats
+     * @return
+     */
     public static ArrayList<Ticket> generateTickets(LocalDateTime exactDateTime, HashMap<String, AgeGroup> seats) {
         ArrayList<Ticket> tickets = new ArrayList<Ticket>();
 
@@ -17,6 +23,7 @@ public class TicketManager {
 
         for(Entry<String, AgeGroup> entry: seats.entrySet()) {
             Ticket newTicket = new Ticket(
+                generateTicketID(),
                 dateManager.getDayOfWeek(),
                 dateManager.getTimeOfDay(),
                 dateManager.getTypeOfDay(),
@@ -29,5 +36,9 @@ public class TicketManager {
         }
 
         return tickets;
+    }
+
+    private static int generateTicketID() {
+        return DateManager.getCurrentDateTimeFormatted("yyyyMMddhhmm");
     }
 }

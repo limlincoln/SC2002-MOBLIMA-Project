@@ -26,6 +26,12 @@ public class ShowTimeMenu {
         return single_instance;
     }
 
+    /**
+     * Display showtime menu
+     * @param movie
+     * @param cineplex
+     * @param cinema
+     */
 	public void displayShowTimeMenu(Movie movie, Cineplex cineplex,Cinema cinema) { 
 		System.out.println("MOVIE: "+movie.getMovieName());
 		ArrayList<LocalDateTime> showtimes = ShowTimeManager.getInstance().getShowTimeByMovie(cinema, movie);
