@@ -80,7 +80,7 @@ public class CinemaInitializer extends GetDatabaseDirectory {
 				
 				cType = CinemaType.valueOf(data[1]);
 				
-				stime = data[8];
+				stime = data[2];
 				String[] arr=stime.replaceAll("\\[|\\]| ", "").split(",");
 		        for(int i=0;i<arr.length;i++){
 		        	showtimelist.add(ShowTimeInitializer.readShowTimeFromFile(Integer.parseInt(arr[i])));

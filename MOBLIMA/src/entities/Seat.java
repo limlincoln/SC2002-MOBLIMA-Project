@@ -37,6 +37,18 @@ public class Seat implements ISeat, ISelectableSeat {
         }
     }
 
+    public int getStateInt() {
+        if(this.isOccupied()){
+            return 0;
+        }else{
+            if(this.isTempSelected()){
+                return -1;
+            }else{
+                return 1;
+            }
+        } 
+    }
+
     /**
      * Change the status of the seat to occupied
      * if unoccupied else set to it occupied

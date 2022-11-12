@@ -125,12 +125,10 @@ public class ShowTimeInitializer extends GetDatabaseDirectory {
 		        }
 				
 				seatIDStr = data[2];
-				String[] arrseat=showTimeStr.replaceAll("\\[|\\]| ", "").split(",");
+				String[] arrseat=seatIDStr.replaceAll("\\[|\\]| ", "").split(",");
 				for(int i=0;i<arrseat.length;i++){
-
-					seatlist.add(Integer.parseInt(arr[i]));
+					seatlist.add(Integer.parseInt(arrseat[i]));
 		        }
-
 
 				for(Integer seatID: seatlist) {
 					seats.add(SeatsInitializer.readSeatsFromFile(seatID));

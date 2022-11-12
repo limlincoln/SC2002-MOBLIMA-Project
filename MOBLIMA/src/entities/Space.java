@@ -14,4 +14,8 @@ public class Space implements ISeat{
     public String getState(){
         return " ";
     }
+
+    public int getStateInt() {
+        return 2;
+    }
 }

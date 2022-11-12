@@ -75,7 +75,7 @@ public class CineplexIntializer extends GetDatabaseDirectory {
 
 	}
 
-	public ArrayList<Cineplex> readCineplexListFromFile() {
+	public static ArrayList<Cineplex> readCineplexListFromFile() {
 
 		ArrayList<Cineplex> cineplexlist = new ArrayList<Cineplex>();
 
