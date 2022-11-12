@@ -97,15 +97,20 @@ public class ShowTimeManager {
 			int[] listofshowtime  = cinema.getShowtimes().get(dayofweek).getShowTime();
 	    	for(int i=0; i < listofshowtime.length; i++)
 	    	{
-	    		System.out.println(i+1+".TIMING: " + timings[i] + "  " + MovieManager.getInstance().getMovieByID(listofshowtime[i]));
+	    		Movie test = MovieManager.getInstance().getMovieByID(listofshowtime[i]);
+	    		if(test != null)
+	    		{
+	    			System.out.println(i+1+".TIMING: " + timings[i] + " " + test.getMovieName());
+	    		}
+	    		else
+	    		{
+	    			System.out.println(i+1+".TIMING: " + timings[i] + " Empty");
+	    		}
+	    		
 	    	}
 	    	int choice; 
 			do {
 		        System.out.println("Enter the index to change or zero to exit: ");
-		    	for(int i=0; i < listofshowtime.length; i++)
-		    	{
-		    		System.out.println(i+1+".TIMING: " + timings[i] + "  " + MovieManager.getInstance().getMovieByID(listofshowtime[i]));
-		    	}
 		    	
 	      
 		        while (!sc.hasNextInt()) {
@@ -123,7 +128,7 @@ public class ShowTimeManager {
 			//System.out.println("This is new one" + newmovieid);
 			sc.nextLine();
 			
-			System.out.println("Is this the one you want to change? (Y to confirm):" +timings[choice] + "  " + MovieManager.getInstance().getMovieByID(listofshowtime[choice]));
+			System.out.println("Is this the timing you want to change? (Y to confirm):" +timings[choice]);
 			String confirmation = sc.nextLine();
 			
 			
