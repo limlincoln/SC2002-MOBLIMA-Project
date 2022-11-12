@@ -83,7 +83,7 @@ public class ShowTimeManager {
     	
     	int dayofweek = day.ordinal();
         // TODO: ITERATE THORUGH CINEMAS AND COMPARE
-    	ShowTime target = cineplex.getCinemas()..getShowtimes().get(dayofweek);
+    	ShowTime target = cineplex.getCinemas().get(0).getShowtimes().get(0);
     	//ShowTime target = cinema.getShowtimes().get(dayofweek);
     	int listofshowtime[] = target.getShowTime();
     	

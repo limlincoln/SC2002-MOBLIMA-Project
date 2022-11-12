@@ -7,6 +7,7 @@ package menus;
 import java.util.Scanner;
 
 import initializer.MainInitializer;
+import managers.DateManager;
 
 /**
  * Main app to run to choose Customer or Staff app
@@ -14,7 +15,6 @@ import initializer.MainInitializer;
 public class MOBLIMA_APP {
 	public static void main(String[] args) {
 		MainInitializer.startInitializers();
-
 		int choice;
 		Scanner sc = new Scanner(System.in); 
 		
