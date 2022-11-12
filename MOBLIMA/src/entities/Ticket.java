@@ -23,9 +23,9 @@ public class Ticket implements IPrice {
         int ticketID,
         DayOfWeek dayOfWeek, 
         TimeOfDay timeOfDay, 
+        AgeGroup ageGroup, 
         TypeOfDay typeOfDay, 
         LocalDateTime exactDateTime, 
-        AgeGroup ageGroup, 
         String seat
     ) {
         this.ticketID = ticketID;
@@ -49,7 +49,7 @@ public class Ticket implements IPrice {
         return ticketID;
     }
 
-    public void setTicketID() {
+    public void setTicketID(int ticketID) {
         this.ticketID = ticketID;
     }
 

@@ -1,5 +1,6 @@
 package initializer;
 
+import managers.BookingManager;
 import managers.CineplexManager;
 import managers.MovieManager;
 import managers.PricingManager;
@@ -10,9 +11,7 @@ public class MainInitializer {
         MovieManager.initialize(Movie_Initializer.GetMovieListing());
         PricingManager.setPriceMatrix(Price_Initializer.read());
         Settings_Initializer.read();
-
-        // TODO: 
-        // BOOKING INITIALIZER
+        BookingManager.initialize(Booking_Initializer.read());
     }
     
 }

@@ -120,24 +120,92 @@ public class SettingsMenu {
 			choice = sc.nextInt();
 			sc.nextLine();
 				
+			double newPrice;
+			int thischoice;
 			switch (choice) {
 				case 1: 
-                    SettingsManager.editBasePrice();
+					do {
+						System.out.println("Enter the new base price:");
+						System.out.println(" 0. Back to Settings Menu");
+						newPrice = sc.nextDouble();
+						SettingsManager.getInstance().editPrices(PriceType.BASE_PRICE,newPrice);
+					} while (newPrice != 0);
 					break;
 				case 2:
-                    SettingsManager.editAgeGroupPrice();
+					do {
+						System.out.println(" 1. Adult Prices");
+						System.out.println(" 2. Student Prices");
+						System.out.println(" 3. Senior Prices");
+						System.out.println("Enter choice: ");
+						thischoice = sc.nextInt();
+						System.out.println("Enter new Price: ");
+						newPrice = sc.nextDouble();
+						if (thischoice == 1){SettingsManager.getInstance().editPrices(AgeGroup.ADULT,newPrice);}
+						else if (thischoice == 2){SettingsManager.getInstance().editPrices(AgeGroup.STUDENT,newPrice);}						
+						else if (thischoice == 3){SettingsManager.getInstance().editPrices(AgeGroup.SENIOR,newPrice);}						
+					} while (thischoice != 0);					
 					break;
 				case 3:
-                    SettingsManager.editCinemaTypePrice();
-                    break;
+					do {
+						System.out.println(" 1. IMAX Prices");
+						System.out.println(" 2. 3D Prices");
+						System.out.println(" 3. Normal Prices");
+						System.out.println("Enter choice: ");
+						thischoice = sc.nextInt();
+						System.out.println("Enter new Price: ");
+						newPrice = sc.nextDouble();
+						if (thischoice == 1){SettingsManager.getInstance().editPrices(CinemaType.IMAX,newPrice);}
+						else if (thischoice == 2){SettingsManager.getInstance().editPrices(CinemaType._3D,newPrice);}						
+						else if (thischoice == 3){SettingsManager.getInstance().editPrices(CinemaType.NORMAL,newPrice);}						
+					} while (thischoice != 0);					
+					break;
 				case 4:
-                    SettingsManager.editDayOfWeekPrice();
+					do {
+						System.out.println(" 1. Monday Prices");
+						System.out.println(" 2. Tuesday Prices");
+						System.out.println(" 3. Wednesday Prices");
+						System.out.println(" 4. Thursday Prices");
+						System.out.println(" 5. Friday Prices");
+						System.out.println(" 6. Saturday Prices");
+						System.out.println(" 7. Sunday Prices");
+						System.out.println("Enter choice: ");
+						thischoice = sc.nextInt();
+						System.out.println("Enter new Price: ");
+						newPrice = sc.nextDouble();
+						if (thischoice == 1){SettingsManager.getInstance().editPrices(DayOfWeek.MON,newPrice);}
+						else if (thischoice == 2){SettingsManager.getInstance().editPrices(DayOfWeek.TUE,newPrice);}						
+						else if (thischoice == 3){SettingsManager.getInstance().editPrices(DayOfWeek.WED,newPrice);}
+						else if (thischoice == 4){SettingsManager.getInstance().editPrices(DayOfWeek.THU,newPrice);}						
+						else if (thischoice == 5){SettingsManager.getInstance().editPrices(DayOfWeek.FRI,newPrice);}						
+						else if (thischoice == 6){SettingsManager.getInstance().editPrices(DayOfWeek.SAT,newPrice);}						
+						else if (thischoice == 7){SettingsManager.getInstance().editPrices(DayOfWeek.SUN,newPrice);}												
+					} while (thischoice != 0);					
 					break;
 				case 5:
-                    SettingsManager.editTimeOfDayPrice();
-                    break;
+					do {
+						System.out.println(" 1. Before 6 Prices");
+						System.out.println(" 2. After 6 Prices");
+						System.out.println("Enter choice: ");
+						thischoice = sc.nextInt();
+						System.out.println("Enter new Price: ");
+						newPrice = sc.nextDouble();
+						if (thischoice == 1){SettingsManager.getInstance().editPrices(TimeOfDay.BEFORE_6,newPrice);}
+						else if (thischoice == 2){SettingsManager.getInstance().editPrices(TimeOfDay.AFTER_6,newPrice);}						
+					} while (thischoice != 0);					
+					break;
 				case 6:
-                    SettingsManager.editTypeOfDayPrice():
+					do {
+						System.out.println(" 1. Weekday Prices");
+						System.out.println(" 2. Weekend Prices");
+						System.out.println(" 3. Public Holiday Prices");
+						System.out.println("Enter choice: ");
+						thischoice = sc.nextInt();
+						System.out.println("Enter new Price: ");
+						newPrice = sc.nextDouble();
+						if (thischoice == 1){SettingsManager.getInstance().editPrices(TypeOfDay.WEEKDAY,newPrice);}
+						else if (thischoice == 2){SettingsManager.getInstance().editPrices(TypeOfDay.WEEKEND,newPrice);}						
+						else if (thischoice == 3){SettingsManager.getInstance().editPrices(TypeOfDay.PUBLIC_HOLIDAY,newPrice);}						
+					} while (thischoice != 0);					
 					break;
 				case 0:
 					System.out.println("Back to Settings Menu......");
@@ -246,19 +314,19 @@ public class SettingsMenu {
                     // ASK FOR VALUE
                     // CALL MOVIEMANAGER(MOVIE, ATTRIBUTE, VALUE), VALIDATE IN MOVIEMANAGER
                     // CHECK RESPONSE FROM MOVIEMANGER, REPEAT IF NEEDED
-                	SettingsManager.editMovieSettings():
+                	SettingsManager.getInstance().editMovieSettings();
                     break;
                 case 2:
                 	// ADD MOVIE
 					// ASK FOR ALL NECESSARY ATTRIBUTE
 					// MOVIEMANAGER.ADDMOVIE(...) - RMB TO VALIDATE
-                    SettingsManager.addMovieSettings();
+                    SettingsManager.getInstance().addMovieSettings();
                     break;
                 case 3:
                 	// DELETE MOVIE
 					// ASK WHAT MOVIE (LIST ALL MOVIES)
 					// CONFIMATION PAGE
-                	SettingsManager.deleteMovieSetting();
+                	SettingsManager.getInstance().deleteMovieSetting();
                     break;
                 case 0:
                 	System.out.println("Back to MOBLIMA APP......");
@@ -280,7 +348,7 @@ public class SettingsMenu {
 	        System.out.println(	"=================== Holiday Settings ===================");
             System.out.println(" 1. View all Holidays");
             System.out.println(" 2. Add New Holiday");
-            System.out.println(" 3. Remove Exisiting Holiday")
+            System.out.println(" 3. Remove Exisiting Holiday");
             System.out.println(" 0. Back to Settings Menu");
             System.out.println("===========================================================");
 
@@ -296,15 +364,15 @@ public class SettingsMenu {
 				case 1: 
                     // display list of all movies with directors
                     // search fucntion for movie??
-					SettingsManager.listHolidays();
+					SettingsManager.getInstance().listHolidays();
 					break;
 				case 2:
                     // Add new movie
-					SettingsManager.addNewHoliday();
+					SettingsManager.getInstance().addNewHoliday();
 					break;
                 case 3:
                     // Remove Holiday
-					SettingsManager.removeExistingHoliday();
+					SettingsManager.getInstance().removeExistingHoliday();
 					break;
 				case 0:
 					System.out.println("Back to Settings Menu......");

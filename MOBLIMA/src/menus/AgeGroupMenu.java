@@ -1,9 +1,9 @@
 package menus;
 
 import java.util.Scanner;
-import enums.AgeGroup;
+import enums.AgeGroup;;
 
-public class AgeGroupMenu{
+public class AgeGroupMenu {
   private static AgeGroupMenu single_instance = null;
   private AgeGroupMenu(){}
 

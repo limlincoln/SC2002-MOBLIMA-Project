@@ -9,6 +9,7 @@ import entities.Movie;
 import menus.ITop5Menu;
 
 public class SettingsManager {
+	Scanner sc = new Scanner(System.in);
 	private static SettingsManager single_instance = null;
 	private ITop5Menu customerTop5MenuClass;
 	private SettingsManager(ITop5Menu customerTop5MenuClass){
@@ -26,6 +27,15 @@ public class SettingsManager {
 		single_instance = new SettingsManager(customerTop5Value);
 	}
 
+	public boolean editPrices(PriceType base, double newPrice){
+		String ba = base.name();
+		if (ba == "BASE_PRICE"){
+			PricingManager.updatePrice(PriceType.BASE_PRICE,newPrice);
+			System.out.println("Base Price updated to " + PricingManager.getPrice(PriceType.BASE_PRICE));
+			return true;
+		}
+		return false;
+	}
 	
 	// TODO Implement
 	/**
@@ -34,7 +44,25 @@ public class SettingsManager {
 	 * @param newPrice
 	 * @return
 	 */
-	public boolean editPrices(AgeGroup ageGroup, int newPrice){
+	public boolean editPrices(AgeGroup ageGroup, double newPrice){
+		String age;
+		age = ageGroup.name();
+		if (age == "ADULT"){
+			PricingManager.updatePrice(AgeGroup.ADULT, newPrice);
+			System.out.println("Price of ADULT updated to " + PricingManager.getPrice(AgeGroup.ADULT));
+			return true;
+		}
+		else if (age == "STUDENT"){
+			PricingManager.updatePrice(AgeGroup.STUDENT, newPrice);
+			System.out.println("Price of STUDENT updated to " + PricingManager.getPrice(AgeGroup.STUDENT));
+			return true;
+		}
+		else if (age == "SENIOR"){
+			PricingManager.updatePrice(AgeGroup.SENIOR, newPrice);
+			System.out.println("Price of SENIOR updated to " + PricingManager.getPrice(AgeGroup.SENIOR));
+			return true;
+		}
+            
 		return false;		
 	}
 	/**
@@ -43,7 +71,23 @@ public class SettingsManager {
 	 * @param newPrice
 	 * @return
 	 */
-	public boolean editPrices(TypeOfDay typeOfDay, int newPrice){
+	public boolean editPrices(TypeOfDay typeOfDay, double newPrice){
+		String tod = typeOfDay.name();
+		if (tod == "WEEKEND"){
+			PricingManager.updatePrice(TypeOfDay.WEEKEND, newPrice);
+                    System.out.println("Price of WEEKEND updated to " + PricingManager.getPrice(TypeOfDay.WEEKEND));
+                    return true;
+		}
+		else if (tod == "WEEKDAY"){
+			PricingManager.updatePrice(TypeOfDay.WEEKDAY, newPrice);
+                    System.out.println("Price of WEEKEND updated to " + PricingManager.getPrice(TypeOfDay.WEEKDAY));
+                    return true;
+		}
+		else if (tod == "PUBLIC_HOLIDAY"){
+			PricingManager.updatePrice(TypeOfDay.PUBLIC_HOLIDAY, newPrice);
+			System.out.println("Price of PUBLIC HOLIDAY updated to " + PricingManager.getPrice(TypeOfDay.PUBLIC_HOLIDAY));
+			return true;
+		}
 		return false;
 	}
 	/**
@@ -52,7 +96,19 @@ public class SettingsManager {
 	 * @param newPrice
 	 * @return
 	 */
-	public boolean editPrices(TimeOfDay timeOfDay, int newPrice){
+	public boolean editPrices(TimeOfDay timeOfDay, double newPrice){
+		String tod = timeOfDay.name();
+		if (tod == "BEFORE_6"){
+			PricingManager.updatePrice(TimeOfDay.BEFORE_6, newPrice);
+			System.out.println("Price Before 6PM updated to " + PricingManager.getPrice(TimeOfDay.BEFORE_6));
+			return true;
+		}
+		else if (tod == "AFTER_6"){
+			PricingManager.updatePrice(TimeOfDay.AFTER_6, newPrice);
+			System.out.println("Price After 6PM updated to " + PricingManager.getPrice(TimeOfDay.AFTER_6));
+			return true;
+		}
+                    
 		return false;
 	}
 
@@ -62,9 +118,68 @@ public class SettingsManager {
 	 * @param newPrice
 	 * @return
 	 */
-	public boolean editPrices(CinemaType cinemaType, int newPrice){
+	public boolean editPrices(CinemaType cinemaType, double newPrice){
+		String cType = cinemaType.name();
+		if (cType == "IMAX"){
+			PricingManager.updatePrice(CinemaType.IMAX, newPrice);
+			System.out.println("Price of IMAX updated to " + PricingManager.getPrice(CinemaType.IMAX));
+			return true;
+		}
+		else if (cType == "_3D"){
+			PricingManager.updatePrice(CinemaType._3D, newPrice);
+			System.out.println("Price of SENIOR updated to " + PricingManager.getPrice(CinemaType._3D));
+			return true;
+		}
+		else if (cType == "NORMAL"){
+			PricingManager.updatePrice(CinemaType.NORMAL, newPrice);
+			System.out.println("Price of STUDENT updated to " + PricingManager.getPrice(CinemaType.NORMAL));
+			return true;
+		}
 		return false;
 	}
+
+	public boolean editPrices(DayOfWeek dayOfWeek, double newPrice){
+		String dow = dayOfWeek.name();
+		if (dow == "MON"){
+			PricingManager.updatePrice(DayOfWeek.MON, newPrice);
+			System.out.println("Price of MON updated to " + PricingManager.getPrice(DayOfWeek.MON));
+			return true;
+		}
+		else if (dow == "TUES"){
+			PricingManager.updatePrice(DayOfWeek.TUE, newPrice);
+			System.out.println("Price of TUE updated to " + PricingManager.getPrice(DayOfWeek.TUE));
+			return true;
+		}
+		else if (dow == "WED"){
+			PricingManager.updatePrice(DayOfWeek.WED, newPrice);
+			System.out.println("Price of WED updated to " + PricingManager.getPrice(DayOfWeek.WED));
+			return true;
+		}
+		else if (dow  =="THURS"){
+			PricingManager.updatePrice(DayOfWeek.THU, newPrice);
+			System.out.println("Price of THU updated to " + PricingManager.getPrice(DayOfWeek.THU));
+			return true;
+		}
+		else if ( dow == "FRI"){
+			PricingManager.updatePrice(DayOfWeek.FRI, newPrice);
+			System.out.println("Price of FRI updated to " + PricingManager.getPrice(DayOfWeek.FRI));
+			return true;
+		}
+		else if (dow == "SAT"){
+			PricingManager.updatePrice(DayOfWeek.SAT, newPrice);
+			System.out.println("Price of SAT updated to " + PricingManager.getPrice(DayOfWeek.SAT));
+			return true;
+		}
+		else if (dow == "SUN"){
+			PricingManager.updatePrice(DayOfWeek.SUN, newPrice);
+			System.out.println("Price of SUN updated to " + PricingManager.getPrice(DayOfWeek.SUN));
+			return true;
+		}
+		return false;
+		
+	}
+
+
 	/**
 	 * Removes or edits dates of holidays stored in Holiday Manager 
 	 * @param nameOfHoliday
@@ -102,7 +217,6 @@ public class SettingsManager {
 	 * Edits the base price of movies
 	 */
 	public void editBasePrice(){
-		Scanner sc = new Scanner(System.in);
 		double newbase;
         System.out.println("Current Base Price: " + PricingManager.getPrice(PriceType.BASE_PRICE));
         System.out.println("Enter New Base Price: ");
@@ -347,7 +461,7 @@ public class SettingsManager {
 		dayOfWeeks = sc.nextInt();
 		DayOfWeek day = DayOfWeek.values()[dayOfWeeks-1];
 
-		Holiday newhol = new Holiday(name, date, day);
+		Holiday newhol = new Holiday(dayOfWeeks, name, date, day);
 		
 		HolidayManager.addHoliday(newhol);
 	}

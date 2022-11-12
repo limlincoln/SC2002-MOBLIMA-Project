@@ -8,7 +8,10 @@ import java.util.ArrayList;
 
 public class BookingManager {
     private static ArrayList<Booking> bookingHistory = new ArrayList<Booking>();
-
+    
+    public static void initialize(ArrayList<Booking> bookingHistory){
+        BookingManager.bookingHistory = bookingHistory;
+    }
     /**
      * Generates the ID
      * @param cinemaID
@@ -31,12 +34,13 @@ public class BookingManager {
      * @param customer
      * @param tickets
      * @param totalCost
+     * @param rating
      * @return
      */
-    public static boolean createBooking(int cinemaID, int movieID, Customer customer, ArrayList<Ticket> tickets, double totalCost) {
+    public static boolean createBooking(int cinemaID, int movieID, Customer customer, ArrayList<Ticket> tickets, double totalCost, int rating ) {
         int tid = generateTID(cinemaID, DateManager.getCurrentDateTimeFormatted("yyyyMMddHHmm"));
 
-        Booking booking = new Booking(tid, movieID, customer, tickets, totalCost);
+        Booking booking = new Booking(tid, movieID, customer, tickets, totalCost, rating);
         bookingHistory.add(booking);
         return true;
     }  
@@ -95,4 +99,6 @@ public class BookingManager {
 
         return ratedBookings;
     }
+
+    
 }
