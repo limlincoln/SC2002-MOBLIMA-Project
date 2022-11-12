@@ -69,7 +69,6 @@ public class Price_Initializer extends GetDatabaseDirectory {
 			buffer.write(typeString);
 			buffer.newLine();
 
-			System.out.println("Price Matrix Write Successful!");
 			buffer.close();
 		}catch (IOException e){
 			System.out.println("Error writing price matrix!");;
@@ -92,8 +91,6 @@ public class Price_Initializer extends GetDatabaseDirectory {
 				if(line.isBlank()) {
 					continue;
 				}
-				System.out.println("Which enum: " + whichEnum);
-				System.out.println("Line: " + line);
 
 				String[] dataFirstSplit = line.split("\\|");
 				ArrayList<String[]> data = new ArrayList<String[]>();

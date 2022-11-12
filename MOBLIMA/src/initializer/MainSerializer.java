@@ -15,7 +15,7 @@ public class MainSerializer {
             Booking_Initializer.write(BookingManager.getAllBookingHistory());
         }
         catch(Exception e) {
-
+            System.out.println("Error in main serializer: "+e.getMessage());
         }
     }
     

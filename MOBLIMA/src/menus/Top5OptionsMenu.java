@@ -30,24 +30,34 @@ public class Top5OptionsMenu implements ITop5Menu {
     @Override
     public void displayMenu() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("(1) By Sales");
-        System.out.println("(2) By Rating");
-        System.out.println("(0) By Rating");
-
         int ratingChoice;
-        do {
-            ratingChoice = sc.nextInt();
-        } while(ratingChoice < 0 || ratingChoice > 2);
+        do{
+            System.out.println(	"================ TOP 5 MOVIES MENU OPTIONS =================");
+            System.out.println("(1) By Sales");
+            System.out.println("(2) By Rating");
+            System.out.println("(0) Back");
 
-        switch(ratingChoice){
-            case 1:
-                Top5BySalesMenu.getInstance().displayMenu();
-                break;
-            case 2:
-                Top5ByRatingMenu.getInstance().displayMenu();
-            default:
-                break;
-        }
+            
+            
+            while (!sc.hasNextInt()) {
+            	System.out.println("Please enter an integer value");
+        		sc.next(); 
+            }
+            ratingChoice = sc.nextInt();
+
+            switch(ratingChoice){
+                case 1:
+                    Top5BySalesMenu.getInstance().displayMenu();
+                    break;
+                case 2:
+                    Top5ByRatingMenu.getInstance().displayMenu();
+                case 0:
+                    break;
+                default:
+                    System.out.println("Please enter a correct value.");
+                    break;
+            }
+        }while(ratingChoice!=0);
     }
     
 }

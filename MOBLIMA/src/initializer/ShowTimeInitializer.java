@@ -129,7 +129,7 @@ public class ShowTimeInitializer extends GetDatabaseDirectory {
 				}
 			} 
 		} catch(Exception e) {
-			
+			System.out.println("Showtime initializer error: "+e.getMessage());
 		}
 
 		// convert ArrayList to array

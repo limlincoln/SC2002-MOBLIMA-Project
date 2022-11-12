@@ -30,8 +30,9 @@ public class MovieMenu {
 		
 		do {
             System.out.println(	"============== MOBLIMA CUSTOMER MOVIE APP =========\n" +
-			                    " 1. List all movies     					        \n" +
-			                    " 2. List top 5 movie                               \n" +
+                                " 1. Search movie        					        \n" +
+			                    " 2. List all movies     					        \n" +
+			                    " 3. List top 5 movie                               \n" +
 			                    " 0. Back to MOBLIMA APP                           \n"+
 							    "====================================================");
 	    	
@@ -43,14 +44,29 @@ public class MovieMenu {
             }
             
             choice = sc.nextInt();
+            sc.nextLine();
 
             String heading;
             Movie selectedMovie;
+            ArrayList<Movie> movies;
             switch(choice){
                 case 1:
+                    System.out.println("(1) Enter Movie Name: ");
+                    String movieName = sc.nextLine();
+                    movies = new ArrayList<Movie>();
+                    selectedMovie = MovieConsolidator.getInstance().getMovieByName(movieName);
+                    movies.add(selectedMovie);
+                    heading = "SEARCH RESULTS";
+                    selectedMovie = MovieSelectorMenu.getInstance().startSelector(movies, heading);
+
+                    if(selectedMovie != null) {
+                        CineplexMenu.getInstance().displayCineplexMenu(selectedMovie);
+                    }
+                    break;
+                case 2:
                 	// should show only now showing movie list?
-                	ArrayList<Movie> movies = new ArrayList<Movie>();
-                    movies = MovieConsolidator.getInstance().getShowing();
+                	movies = new ArrayList<Movie>();
+                    movies = MovieConsolidator.getInstance().getAvaliable();
                     
                     heading = "MOVIES";
                     selectedMovie = MovieSelectorMenu.getInstance().startSelector(movies, heading);
@@ -58,48 +74,11 @@ public class MovieMenu {
                     if(selectedMovie != null) {
                         CineplexMenu.getInstance().displayCineplexMenu(selectedMovie);
                     }
-
                     break;
                     
-                case 2:
-                	// List top 5 movies
-                	ArrayList<Movie> topmovies = new ArrayList<Movie>();
+                case 3:
                 	ITop5Menu top5Menu = SettingsManager.getInstance().getCustomerTop5MenuClass();
                     top5Menu.displayMenu();
-                    // switch(options) {
-                    //     case 0:
-                    //         heading = "TOP 5 MOVIES BY SALES";
-                    //         topmovies = MovieConsolidator.getInstance().getTop5BySales();
-
-                    //         selectedMovie = MovieSelectorMenu.getInstance().startSelector(topmovies, heading);
-                            
-                    //         if (selectedMovie != null) {
-                    //             CineplexMenu.getInstance().displayCineplexMenu(selectedMovie); 
-                    //         }
-                    //         break;
-
-                    //     case 1:
-                    //         heading = "TOP 5 MOVIES BY RATING";
-                    //         topmovies = MovieConsolidator.getInstance().getTop5ByRating();
-
-                    //         selectedMovie = MovieSelectorMenu.getInstance().startSelector(topmovies, heading);
-                            
-                    //         if (selectedMovie != null) {
-                    //             CineplexMenu.getInstance().displayCineplexMenu(selectedMovie); 
-                    //         }
-                    //         break; 
-
-                    //     case 2:
-                    //         System.out.println("(1) By Sales");
-                    //         System.out.println("(2) By Rating");
-
-                    //         int ratingChoice;
-                    //         do {
-                    //             ratingChoice = sc.nextInt();
-                    //         } while(ratingChoice < 1 || ratingChoice > 2);
-                            
-                    //         // DO THIS LATER
-                    // }
                     break;
                 case 0:
                 	System.out.println("Back to MOBLIMA APP");

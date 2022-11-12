@@ -9,6 +9,7 @@ import entities.Cineplex;
 import entities.Movie;
 import entities.Seats;
 import managers.ShowTimeManager;
+import utils.SeatPrinter;
 
 public class ShowTimeMenu {
 	
@@ -39,6 +40,7 @@ public class ShowTimeMenu {
 		LocalDateTime selectedShowTime = ShowTimeSelectorMenu.getInstance().startSelector(showtimes, "SELECT SHOWTIME");	
 
 		Seats selectedSeats = ShowTimeManager.getInstance().getSeatsByLocalDateTime(cinema, selectedShowTime);
+        System.out.println(selectedSeats.toString());
 
 		BookingMenu.getInstance().displayBookingMenu(movie, cinema, selectedSeats, selectedShowTime);
 	}

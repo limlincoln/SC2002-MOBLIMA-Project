@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import enums.Status;
 import entities.Movie;
 import enums.CinemaType;
+import enums.MovieGenre;
 
 public class Movie_Initializer extends GetDatabaseDirectory {
 	
@@ -54,15 +55,19 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 				
 				
 				for(Movie movies: movielist) {
-					new_movie = movies.getMovieID() + "|" + movies.getMovieName() + "|" + movies.getMovieType() + "|" + movies.getStatus() + "|" + movies.getDirector() + "|" + movies.getSypnopsis() + "|" + movies.getCasts() + "|" + movies.getTotalSales() + "|" + movies.getRatings();
+					new_movie = movies.getMovieID() + "|" 
+										+ movies.getMovieName() + "|"
+										+ movies.getCinemaTypes() + "|" 
+										+ movies.getStatus() + "|" 
+										+ movies.getDirector() + "|"
+										+ movies.getSypnopsis() + "|" 
+										+ movies.getCasts() + "|" 
+										+ movies.getTotalSales() + "|" 
+										+ movies.getRatings() + "|" 
+										+ movies.getMovieType();
 					buffer.write(new_movie);
 					buffer.newLine();
 				}
-				
-				
-				//buffer.append(System.lineSeparator());
-				
-				
 				buffer.close();
 			}
 		}catch (Exception e){
@@ -78,12 +83,13 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 		String currentDirectory;
 		String newDirectory;
 		
-		String movid, movietitle, type, status;
+		String movid, movietitle, types, status;
 		String director, synposis, cast1;
 		String totalsales, NoOfRating, AvgRating;
 		
-		CinemaType genre = null;
+		MovieGenre genre = null;
 		Status moviestatus = null;
+		
 		
 		currentDirectory = Movie_Initializer.getCurrentDirectory();
 		
@@ -106,21 +112,24 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 				
 				movietitle = data[1];
 				
-				type = data[2];
-				switch(type) {
-				
-				case "IMAX":
-					genre = CinemaType.IMAX;
-					break;
-					
-				case "_3D":
-					genre = CinemaType._3D;
-					break;
-					
-				case "NORMAL":
-					genre = CinemaType.NORMAL;
-					break;
-				}
+				types = data[2];
+				String[] typesArr=types.replaceAll("\\[|\\]|", "").split(",");
+				ArrayList<CinemaType> cinemaTypes = new ArrayList<CinemaType>();
+				for(String type :typesArr){	
+					CinemaType temp = null;
+					switch(type) {
+						case "IMAX":
+							temp = CinemaType.IMAX;
+							break;
+						case "_3D":
+							temp = CinemaType._3D;
+							break;
+						case "NORMAL":
+							temp = CinemaType.NORMAL;
+							break;
+						}
+						cinemaTypes.add(temp);
+					}
 				
 				status = data[3];
 				switch(status) {
@@ -128,9 +137,14 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 				case "Showing":
 					moviestatus = Status.Showing;
 					break;
-					
 				case "ComingSoon":
 					moviestatus = Status.ComingSoon;
+					break;
+				case "EndOfShowing":
+					moviestatus = Status.EndOfShowing;
+					break;
+				case "Preview":
+					moviestatus = Status.Preview;
 					break;
 				}
 				
@@ -146,7 +160,7 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 				
 				ArrayList<Integer> ratinglist = new ArrayList<Integer>();
 				NoOfRating = data[8];
-				String[] arr=NoOfRating.replaceAll("\\[|\\]| ", "").split(",");
+				String[] arr=NoOfRating.replaceAll("\\[|\\]|", "").split(",");
 		        for(int i=0;i<arr.length;i++){
 
 		        	ratinglist.add(Integer.parseInt(arr[i]));
@@ -155,14 +169,22 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 		        AvgRating = data[9];
 		        Float avgrating = Float.parseFloat(AvgRating);
 								
-				movielist.add(new Movie(movieid, movietitle, genre, moviestatus, castlist, director, synposis, ratinglist, newsales, avgrating));
+				String movieType = data[10];
+					switch(movieType) {
+						case "ACTION":
+							genre = MovieGenre.ACTION;
+							break;
+							
+						case "COMEDY":
+							genre = MovieGenre.COMEDY;
+							break;
+					}
+				movielist.add(new Movie(movieid, movietitle, genre, moviestatus, castlist, director, synposis, ratinglist, newsales, avgrating, cinemaTypes));
 			}	
 			
 		} catch (Exception e) {
-			System.out.print(e);
+			System.out.print("Read movie error: "+ e.getMessage());
 		}
-		
 		return movielist;
-		
 	}
 }

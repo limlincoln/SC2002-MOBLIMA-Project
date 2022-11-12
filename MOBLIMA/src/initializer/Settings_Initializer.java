@@ -42,7 +42,6 @@ public class Settings_Initializer extends GetDatabaseDirectory {
 					break;
 			}
 			buffer.write(result);
-			System.out.println("Settings Write Successful!");
 			buffer.close();
 		}catch (IOException e){
 			System.out.println("Error writing settings! : " + e.getMessage());;
@@ -74,7 +73,6 @@ public class Settings_Initializer extends GetDatabaseDirectory {
 			}
 
 			SettingsManager.initialize(menu);
-			System.out.println("Settings Manager Initialized successfully");
  
 			br.close();
 		}catch (Exception e) {

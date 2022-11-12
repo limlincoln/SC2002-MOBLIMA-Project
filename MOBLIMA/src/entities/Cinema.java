@@ -40,7 +40,7 @@ public class Cinema implements IPrice {
     }
 
     public boolean containsMovie(int movieID) {
-        return ShowTimeManager.getInstance().getShowTimeByMovie(this, MovieManager.getInstance().getMovieByID(movieID)).size() == 0;
+        return ShowTimeManager.getInstance().getShowTimeByMovie(this, MovieManager.getInstance().getMovieByID(movieID)).size() != 0;
     }
 
     public int getCinemaID() {

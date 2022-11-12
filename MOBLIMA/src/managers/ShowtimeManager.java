@@ -45,12 +45,14 @@ public class ShowTimeManager {
     public ArrayList<LocalDateTime> getShowTimeByMovie(Cinema cinema, Movie movie){
         ArrayList<LocalDateTime> showDateTimes = new ArrayList<LocalDateTime>();
         int movieID = movie.getMovieID();
-        ArrayList<ShowTime> showtimes = cinema.getShowtimes();
-        int numOfTimeSlots = showtimes.get(0).getShowTime().length;
 
+        ArrayList<ShowTime> showtimes = cinema.getShowtimes();
+
+        int numOfTimeSlots = showtimes.get(0).getShowTime().length;
         for(int i=0; i<showtimes.size(); i++){
             int[] curShowTimeSlots = showtimes.get(i).getShowTime();
             for(int j=0; j<numOfTimeSlots; j++){
+
                 if(curShowTimeSlots[j] == movieID){
                     showDateTimes.add(DateManager.getInstance().getExactShowTime(DayOfWeek.values()[i],j));
                 }

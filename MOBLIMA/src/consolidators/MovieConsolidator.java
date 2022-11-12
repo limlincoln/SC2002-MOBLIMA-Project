@@ -25,11 +25,10 @@ public class MovieConsolidator implements IConsolidator<Movie> {
         MovieManager movieManager = MovieManager.getInstance();
         return movieManager.getMovies();
     }
-    public ArrayList<Movie> getShowing(){
-        Status showing = Status.Showing;// settings.getShowingValue()
-        ArrayList<Movie> result = this.getAll();
+    public ArrayList<Movie> getAvaliable(){
+        ArrayList<Movie> result = new ArrayList<>(this.getAll());
         for(int i=0; i<result.size(); i++){
-            if(result.get(i).getStatus() != showing){
+            if(result.get(i).getStatus() == Status.EndOfShowing){
                 result.remove(i);
             }
         }
@@ -37,22 +36,26 @@ public class MovieConsolidator implements IConsolidator<Movie> {
     }
 
     public ArrayList<Movie> getTop5ByRating(){
-        ArrayList<Movie> result = this.getAll();
-        result.sort((m1, m2) -> {
+        ArrayList<Movie> movies = this.getAll();
+        ArrayList<Movie> result = new ArrayList<Movie>();
+
+        movies.sort((m1, m2) -> {
             if(m1.getAvgRating() > m2.getAvgRating())
                 return -1;
             if(m1.getAvgRating() < m2.getAvgRating())
                 return 1;
             return 0;
         });
-        for(int i=5; i<result.size(); i++){
-            result.remove(i);
+        for(int i=0; i<5; i++){
+            System.out.println(movies.get(i).getMovieID());
+            result.add(movies.get(i));
         }
         return result;
     }
 
     public ArrayList<Movie> getTop5BySales(){
-        ArrayList<Movie> result = this.getAll();
+        ArrayList<Movie> movies = this.getAll();
+        ArrayList<Movie> result = new ArrayList<Movie>();
         result.sort((m1, m2) -> {
             if(m1.getTotalSales() > m2.getTotalSales())
                 return -1;
@@ -60,9 +63,21 @@ public class MovieConsolidator implements IConsolidator<Movie> {
                 return 1;
             return 0;
         });
-        for(int i=5; i<result.size(); i++){
-            result.remove(i);
+       
+        for(int i=0; i<5; i++){
+            result.add(movies.get(i));
         }
         return result;
+    }
+
+    public Movie getMovieByName(String name){
+        ArrayList<Movie> movies = this.getAll();
+        String cleaned = name.trim().toLowerCase();
+        for(Movie movie : movies){
+            if(movie.getMovieName().trim().toLowerCase().equals(cleaned) && movie.getStatus() != Status.EndOfShowing){
+                return movie;
+            }
+        }
+        return null;
     }
 }

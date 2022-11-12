@@ -1,8 +1,10 @@
 package entities;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import enums.CinemaType;
+import enums.MovieGenre;
 import enums.Status;
 
 public class Movie {
@@ -19,7 +21,7 @@ public class Movie {
     /**
      * The genre for this Movie
      */
-    private CinemaType genre;
+    private MovieGenre genre;
 
     /**
      * The status of this Movie:
@@ -58,6 +60,11 @@ public class Movie {
     private Float avgRating;
 
     /**
+     * The List of cinema types which shows this movie
+     */
+    private ArrayList<CinemaType> cinemaTypes;
+
+    /**
      * The Constructor for the Movie Class
      * @param movieID The ID of this Movie
      * @param movieName The name of this Movie
@@ -69,32 +76,36 @@ public class Movie {
      * @param ratings The list of ratings given to this Movie 
      * @param totalSales The total sales made by this Movie so far
      * @param avgRating The average rating given to this Movie
+     * @param cinemaTypes The List of cinema types which shows this movie 
      */
-    public Movie(int movieID, String movieName, CinemaType genre, Status status, ArrayList<String> casts, String director, String sypnopsis, ArrayList<Integer> ratings, double totalSales, Float avgRating) {
+    public Movie(int movieID, String movieName, MovieGenre genre, Status status, ArrayList<String> casts, String director, String sypnopsis, ArrayList<Integer> ratings, double totalSales, Float avgRating, ArrayList<CinemaType> cinemaTypes) {
         this.movieID = movieID;
         this.movieName = movieName;
-        this.genre = genre;
-        this.status = status;
-        this.casts = casts;
         this.director = director;
         this.sypnopsis = sypnopsis;
-        this.ratings = ratings;
+        this.casts = casts;
+        this.status = status;
         this.totalSales = totalSales;
+        this.ratings = ratings;
         this.avgRating = avgRating;
+        this.genre = genre;
+        this.cinemaTypes = cinemaTypes;
     }
 
     /**
      * Prints the details of this Movie on to the screen
      */
     public void showDetails(){
+        DecimalFormat df = new DecimalFormat(".##");
         System.out.println(
             "MovieName: " + getMovieName() + "\n" +
-            "MovieType: " + getMovieType() + "\n" +
+            "Genre: " + getMovieType() + "\n" +
             "status: " + getStatus() + "\n" +
             "casts: " + getCasts() + "\n" +
             "director: " + getDirector() + "\n" +
             "sypnopsis: " + getSypnopsis() + "\n" +
-            "Average Rating: " + getAvgRating() + "\n"
+            "Average Rating: " + df.format(getAvgRating()) + "\n" +
+            "Cinema Types: " + getCinemaTypes() + "\n"
         ); 
     }
 
@@ -115,11 +126,11 @@ public class Movie {
         this.movieName = movieName;
     }
 
-    public CinemaType getMovieType() {
+    public MovieGenre getMovieType() {
         return this.genre;
     }
 
-    public void setMovieType(CinemaType genre) {
+    public void setMovieType(MovieGenre genre) {
         this.genre = genre;
     }
 
@@ -179,4 +190,11 @@ public class Movie {
         this.avgRating = avgRating;
     }
     
+    public ArrayList<CinemaType> getCinemaTypes(){
+        return this.cinemaTypes;
+    }
+
+    public void setCinemaTypes(ArrayList<CinemaType> cinemaTypes){
+        this.cinemaTypes = cinemaTypes;
+    }
 }

@@ -15,7 +15,7 @@ public class SeatsInitializer extends GetDatabaseDirectory {
 
 	public static String setSeatingsFileName(int seatid) {
 
-		String seatingsfolder = "Seatings"+separator;
+		String seatingsfolder = "Seatings"+ separator;
 
 		String DBfile = "Seatings.txt";
 
@@ -41,7 +41,7 @@ public class SeatsInitializer extends GetDatabaseDirectory {
 					if (j < seatsArray[0].length - 1)
 						builder.append(",");
 				}
-				builder.append("\n");
+				builder.append("-");
 			}
 
 			String SeatingsFile = setSeatingsFileName(seats.getSeatsID());

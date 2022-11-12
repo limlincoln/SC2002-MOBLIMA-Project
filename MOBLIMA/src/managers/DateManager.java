@@ -106,12 +106,11 @@ public class DateManager {
      * @return
      */
     public LocalDateTime getExactShowTime(DayOfWeek day, int timeSlotIndex) {
-        exactDateTime = LocalDateTime.of(LocalDate.now(), LocalTime.of(timeSlotIndex, 0));
+        exactDateTime = LocalDateTime.of(LocalDate.now(), LocalTime.of(timeSlotIndex*3, 0));
         
         DayOfWeek today = getDayOfWeek();
 
         int difference = day.compareTo(today);
-
         if(difference > 0) {
             return exactDateTime.plusDays(difference);
         } 

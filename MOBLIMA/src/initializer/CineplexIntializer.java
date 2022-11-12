@@ -68,8 +68,8 @@ public class CineplexIntializer extends GetDatabaseDirectory {
 
 			while (true) {
 				final String line = br.readLine();
-
-				if (line == null) {
+				
+				if (line == null || line.isBlank()) {
 					break;
 				}
 
@@ -81,8 +81,7 @@ public class CineplexIntializer extends GetDatabaseDirectory {
 				cineplexname = data[1];
 
 				String arrayOfCinemaIDs = data[2];
-				String[] arr = arrayOfCinemaIDs.replaceAll("\\[|\\]| ", "").split(",");
-
+				String[] arr = arrayOfCinemaIDs.replaceAll("\\[|\\]|", "").split(",");
 				ArrayList<Cinema> cinemalist = new ArrayList<Cinema>();
 				for (int i = 0; i < arr.length; i++) {
 					cinemalist.add(CinemaInitializer.readCinemaFromFile(Integer.parseInt(arr[i])));
@@ -91,7 +90,8 @@ public class CineplexIntializer extends GetDatabaseDirectory {
 			}
 
 		} catch (Exception e) {
-			System.out.print(e);
+			System.out.println("Read Cineplex Error: " + e);
+			e.printStackTrace();
 		}
 
 		return cineplexlist;

@@ -499,7 +499,7 @@ public class SettingsManager {
         Movie selectedMovie;
 		System.out.println(	"================ SELECT A MOVIE =================");
     	ArrayList<Movie> movies = new ArrayList<Movie>();
-        movies = MovieConsolidator.getInstance().getShowing();
+        movies = MovieConsolidator.getInstance().getAvaliable();
         heading = "MOVIES";
         selectedMovie = MovieSelectorMenu.getInstance().staffSelector(movies, heading);
 		//ArrayList<Movie> editmovie = new ArrayList<Movie>();
@@ -742,7 +742,7 @@ public class SettingsManager {
         Movie selectedMovie;
 		System.out.println(	"================ SELECT A MOVIE =================");
     	ArrayList<Movie> movies = new ArrayList<Movie>();
-        movies = MovieConsolidator.getInstance().getShowing();
+        movies = MovieConsolidator.getInstance().getAvaliable();
         heading = "MOVIES";
         selectedMovie = MovieSelectorMenu.getInstance().staffSelector(movies, heading); 
 		System.out.println("Enter Y to confirm delete : ");

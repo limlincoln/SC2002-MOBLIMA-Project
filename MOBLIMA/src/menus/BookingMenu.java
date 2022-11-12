@@ -43,6 +43,9 @@ public class BookingMenu {
 
         SeatSelector seatSelector = new SeatSelector();
         HashMap<String, AgeGroup> selectedSeats = seatSelector.StartSeatSelectionInstance(seats);
+        if(selectedSeats == null || selectedSeats.size() ==0){
+            return;
+        }
 
         ArrayList<Ticket> tickets = TicketManager.generateTickets(showTime, selectedSeats);
         int noOfSeats = tickets.size();
@@ -61,16 +64,5 @@ public class BookingMenu {
         BookingManager.createBooking(cinema.getCinemaID(), movie.getMovieID(), newCustomer, tickets, totalPrice, -1);
 
         System.out.println("Booking Complete!");
-
-        // SEATSELECTOR.STARTINSTANCE(SEATS): ARRAY OF SELECTED SEAT INFO
-        // CALL TICKETMANAGER: ARRAY OF TICKETS + LOCALDATETIME
-        // CREATE AN ARRAYLIST OF IPRICE INCLUDING TICKETS + CINEMA 
-        // CALL PRICE.GETTOTALPRICE(): ARRALIST<IPRICE>, TICKETSARRAY.SIZE()
-        // ASK CUSTOMER DETAILS (username, phone, email)
-        // CREATE CUSTOMER CLASS
-        // CALL BOOKING MANAGER: 
-        // CREATEBOOKING: cinemaID, movieID, CUSTOMER CLASS, TICKETS ARRAYLIST, TOTALCOST
-
-        // THANK YOU :)
     }
 }

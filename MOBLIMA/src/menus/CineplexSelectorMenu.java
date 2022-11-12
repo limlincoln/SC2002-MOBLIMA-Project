@@ -28,6 +28,11 @@ public class CineplexSelectorMenu implements ISelectorMenu<Cineplex> {
                         System.out.println("("+(i+1)+")"+cineplex.get(i).getCineplexName());
         }
 
+        if(cineplex.size() == 0){
+            System.out.println("NO CINEPLEX");
+            System.out.println("");
+            return null;
+        }
         int selectedInd;
         do {
             System.out.println("Choose a cineplex or enter 0 to exit : ");
@@ -38,7 +43,7 @@ public class CineplexSelectorMenu implements ISelectorMenu<Cineplex> {
             }
             selectedInd = sc.nextInt()-1;
             
-            }while(selectedInd  < 0 || selectedInd >= cineplex.size());
+            }while(selectedInd  < -1 || selectedInd >= cineplex.size());
 
             if(selectedInd == -1) return null;
             
