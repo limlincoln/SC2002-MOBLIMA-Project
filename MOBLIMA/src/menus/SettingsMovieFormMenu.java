@@ -1,5 +1,4 @@
 package menus;
-import entities.Movie;
 import enums.CinemaType;
 import enums.Status;
 import java.util.ArrayList;
@@ -62,9 +61,14 @@ public class SettingsMovieFormMenu {
     }
 
     public static ArrayList<String> startCastForm(){
-        ArrayList<String> cast;
+        ArrayList<String> cast = new ArrayList<String>();
         Scanner sc = new Scanner(System.in);
-
+        String choice = "";
+        do {
+            System.out.println("Please enter the new cast name: ");
+            choice = sc.nextLine();
+            cast.add(choice);
+        }while (choice != "0");
         sc.close();
         return cast;
     }

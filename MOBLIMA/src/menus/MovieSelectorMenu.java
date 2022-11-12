@@ -39,7 +39,10 @@ public class MovieSelectorMenu implements ISelectorMenu<Movie> {
             
             }while(selectedMovieInd  < 0 || selectedMovieInd >= movies.size());
 
-            if(selectedMovieInd == -1) return null;
+            if(selectedMovieInd == 0){
+                sc.close();
+                return null;
+            } 
             
             Movie selectedMovie = movies.get(selectedMovieInd); 
             selectedMovie.showDetails();
@@ -49,8 +52,10 @@ public class MovieSelectorMenu implements ISelectorMenu<Movie> {
             boolean wantBook = sc.nextLine().toLowerCase().charAt(0) == 'y';
 
             if(wantBook) {
+                sc.close();
                 return selectedMovie;
-            }  
+            }
+            sc.close();  
             return null;
     } 
 }
