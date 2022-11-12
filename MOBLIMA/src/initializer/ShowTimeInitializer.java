@@ -50,42 +50,35 @@ public class ShowTimeInitializer extends GetDatabaseDirectory {
 	public static void writeShowTimeToFile(ShowTime showTime) {
 		String currentDirectory;
 		String newDirectory;
-		String new_movie;
 		
 		ShowTimeInitializer showtime_init = new ShowTimeInitializer();
 		currentDirectory = showtime_init.getCurrentDirectory();
 		
 		newDirectory = currentDirectory;
-		File movielisting_file = new File(newDirectory);
-		
 		String ShowTimeFile = setShowTimeFileName(showTime.getShowTimeID());
-
 		
 		try {
 			FileWriter write_showtime = new FileWriter((newDirectory + ShowTimeFile), true);
 			
 			ArrayList<Integer> intlist = new ArrayList<Integer>();
-			
-			if(movielisting_file.exists()) {
-				BufferedWriter buffer = new BufferedWriter(write_showtime);
-				
-				
-				for(int i = 0; i < showTime.getShowTime().length; i++) {
-					intlist.add(showTime.getShowTime()[i]);
-				}
-				
-				String seatIDs = "";
-				for(Seats seats: showTime.getSeats()) {
-					SeatsInitializer.writeSeatsToFile(seats);
-					seatIDs += seats.getSeatsID() + ",";
-				}
 
-				String newshowtime = showTime.getShowTimeID() + "|" + intlist + "|" + seatIDs;
-				
-				buffer.write(newshowtime);
+			BufferedWriter buffer = new BufferedWriter(write_showtime);
 			
-				buffer.close();
+			for(int i = 0; i < showTime.getShowTime().length; i++) {
+				intlist.add(showTime.getShowTime()[i]);
 			}
+			
+			String seatIDs = "";
+			for(Seats seats: showTime.getSeats()) {
+				SeatsInitializer.writeSeatsToFile(seats);
+				seatIDs += seats.getSeatsID() + ",";
+			}
+
+			String newshowtime = showTime.getShowTimeID() + "|" + intlist + "|" + "[" + seatIDs + "]";
+			
+			buffer.write(newshowtime);
+		
+			buffer.close();
 		}catch (Exception e){
 			
 		}
@@ -94,7 +87,6 @@ public class ShowTimeInitializer extends GetDatabaseDirectory {
 	public static ShowTime readShowTimeFromFile(int showTimeID) {
 		String currentDirectory;
 		String newDirectory;
-		String new_movie;
 		
 		String showTimeIDStr, showTimeStr, seatIDStr;
 		
@@ -102,7 +94,7 @@ public class ShowTimeInitializer extends GetDatabaseDirectory {
 		currentDirectory = showtime_init.getCurrentDirectory();
 		
 		newDirectory = currentDirectory;
-		File movielisting_file = new File(newDirectory);
+		File showtimFile = new File(newDirectory);
 		
 		String ShowTimeFile = setShowTimeFileName(showTimeID);
 

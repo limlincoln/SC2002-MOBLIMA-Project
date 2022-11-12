@@ -77,8 +77,8 @@ public class SeatsInitializer extends GetDatabaseDirectory{
 			
 			String SeatingsFile = setSeatingsFileName(seats.getSeatsID());
 			
-			FileWriter write_movielisting = new FileWriter((newDirectory + SeatingsFile));
-			BufferedWriter buffer = new BufferedWriter(write_movielisting);
+			FileWriter writeSeats = new FileWriter((newDirectory + SeatingsFile));
+			BufferedWriter buffer = new BufferedWriter(writeSeats);
 			
 			buffer.write(builder.toString());//save the string representation of the board
 			buffer.close();
