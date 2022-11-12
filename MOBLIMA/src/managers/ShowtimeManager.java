@@ -16,7 +16,7 @@ import enums.DayOfWeek;
 //need to filter by movie or cinplex??
 
 
-public class ShowTimeManager{
+public class ShowTimeManager {
     private static ShowTimeManager single_instance = null;
 
     private Scanner sc = new Scanner(System.in);
@@ -82,9 +82,10 @@ public class ShowTimeManager{
     	
     	
     	int dayofweek = day.ordinal();
-    	ShowTime target = cineplex.getCinemas().get(cinema.getCinemaID()).getShowtimes().get(dayofweek);
+        // TODO: ITERATE THORUGH CINEMAS AND COMPARE
+    	ShowTime target = cineplex.getCinemas()..getShowtimes().get(dayofweek);
     	//ShowTime target = cinema.getShowtimes().get(dayofweek);
-    	int listofshowtime[] = target.getShowtime();
+    	int listofshowtime[] = target.getShowTime();
     	
     	String[] timings = {"0000-0300","0300-0600","0600-0900"
     			,"0900-1200",
@@ -92,10 +93,9 @@ public class ShowTimeManager{
                 "1500-1800",
                 "1800-2100",
                 "2100-0000"};
-    	for(int i=0; i <= listofshowtime.length; i++)
+    	for(int i=0; i < listofshowtime.length; i++)
     	{
-    		System.out.println("TIMING : " + timings[i]);
-    		MovieManager.getInstance().getMovieByID(listofshowtime[i]);
+    		System.out.println("TIMING : " + timings[i] + "  " + MovieManager.getInstance().getMovieByID(listofshowtime[i]));
     	}
 //        System.out.println("=================== Choose what showtime to edit ==================\n" +
 //                " 1. 0000-0300      	                                \n" +
@@ -121,8 +121,8 @@ public class ShowTimeManager{
             }while(subChoice  < 0 || subChoice >= listofshowtime.length);
         
         
-        sc.next();
         System.out.print("Replace with (Enter a new movie ID):");
+        sc.next();
         while (!sc.hasNextInt()) {
         	System.out.println("Invalid input type. Please try again!");
     		sc.next(); 
@@ -130,7 +130,10 @@ public class ShowTimeManager{
         int newmovieid = sc.nextInt();
         
         listofshowtime[subChoice] = newmovieid;
+        // TODO: Write back
+        
     }
     
     
+}
 }

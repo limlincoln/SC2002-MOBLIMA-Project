@@ -24,7 +24,7 @@ public class MovieSelectorMenu implements ISelectorMenu<Movie> {
         Scanner sc = new Scanner(System.in);
         System.out.println(	"================ " +heading+ " =================");
                     for(int i = 0;  i < movies.size(); i++) {
-                        System.out.println("("+i+1+")"+movies.get(i).getMovieName());
+                        System.out.println("("+(i+1)+")"+movies.get(i).getMovieName());
         }
 
         int selectedMovieInd;
@@ -39,12 +39,13 @@ public class MovieSelectorMenu implements ISelectorMenu<Movie> {
             
             }while(selectedMovieInd  < 0 || selectedMovieInd >= movies.size());
 
-            if(selectedMovieInd == 0) return null;
+            if(selectedMovieInd == -1) return null;
             
             Movie selectedMovie = movies.get(selectedMovieInd); 
             selectedMovie.showDetails();
 
             System.out.println("Do you want to book? (y/n)");
+            sc.nextLine();
             boolean wantBook = sc.nextLine().toLowerCase().charAt(0) == 'y';
 
             if(wantBook) {

@@ -14,7 +14,7 @@ import initializer.MainInitializer;
 public class MOBLIMA_APP {
 	public static void main(String[] args) {
 		MainInitializer.startInitializers();
-		
+
 		int choice;
 		Scanner sc = new Scanner(System.in); 
 		

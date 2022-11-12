@@ -25,7 +25,7 @@ public class CinemaSelectorMenu implements ISelectorMenu<Cinema> {
         Scanner sc = new Scanner(System.in);
         System.out.println(	"================ " +heading+ " =================");
                     for(int i = 0;  i < cinema.size(); i++) {
-                        System.out.println("("+i+1+")"+cinema.get(i).getCinemaType());
+                        System.out.println("("+(i+1)+")"+cinema.get(i).getCinemaType());
         }
 
         int selectedInd;
@@ -40,7 +40,7 @@ public class CinemaSelectorMenu implements ISelectorMenu<Cinema> {
             
             }while(selectedInd  < 0 || selectedInd >= cinema.size());
 
-            if(selectedInd == 0) return null;
+            if(selectedInd == -1) return null;
             
             Cinema selected = cinema.get(selectedInd); 
 

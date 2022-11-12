@@ -64,7 +64,7 @@ public class MovieMenu {
                 case 2:
                 	// List top 5 movies
                 	ArrayList<Movie> topmovies = new ArrayList<Movie>();
-                	ITop5Menu top5Menu = SettingsManager.getInstance().getTop5Menu();
+                	ITop5Menu top5Menu = SettingsManager.getInstance().getCustomerTop5MenuClass();
                     top5Menu.displayMenu();
                     // switch(options) {
                     //     case 0:

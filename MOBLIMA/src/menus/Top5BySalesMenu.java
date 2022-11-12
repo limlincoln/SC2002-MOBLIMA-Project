@@ -35,7 +35,7 @@ public class Top5BySalesMenu implements ITop5Menu {
     public void displayMenu() {
         ArrayList<Movie> topmovies = MovieConsolidator.getInstance().getTop5BySales();
 
-        Movie selectedMovie = MovieSelectorMenu.getInstance().startSelector(topmovies, "TOP 5 MOVIES BY RATING");
+        Movie selectedMovie = MovieSelectorMenu.getInstance().startSelector(topmovies, "TOP 5 MOVIES BY SALES");
         
         if (selectedMovie != null) {
             CineplexMenu.getInstance().displayCineplexMenu(selectedMovie); 

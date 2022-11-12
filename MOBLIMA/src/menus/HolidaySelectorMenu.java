@@ -23,7 +23,7 @@ public class HolidaySelectorMenu {
         Scanner sc = new Scanner(System.in);
         System.out.println(	"================ " + heading + " =================");
         for (int x = 0; x < Holiday.size(); x++){
-            System.out.println("("+x+1+")"+
+            System.out.println("("+(x+1)+")"+
             HolidayManager.getHolidays().get(x).getName());
         }
 
