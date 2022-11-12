@@ -25,7 +25,7 @@ public class CineplexIntializer extends GetDatabaseDirectory {
 		newDirectory = currentDirectory;
 		File cineplexlisting_file = new File(newDirectory);
 
-		FileWriter write_cineplexlisting = new FileWriter((newDirectory + DBfile), true);
+		FileWriter write_cineplexlisting = new FileWriter((newDirectory + DBfile));
 
 		try {
 			if (cineplexlisting_file.exists()) {

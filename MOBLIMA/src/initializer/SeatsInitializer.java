@@ -41,7 +41,7 @@ public class SeatsInitializer extends GetDatabaseDirectory {
 					if (j < seatsArray[0].length - 1)
 						builder.append(",");
 				}
-				builder.append("\n");
+				builder.append("-");
 			}
 
 			String SeatingsFile = setSeatingsFileName(seats.getSeatsID());

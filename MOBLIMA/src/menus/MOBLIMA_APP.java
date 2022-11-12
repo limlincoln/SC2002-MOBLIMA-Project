@@ -1,9 +1,5 @@
 package menus;
 
-
-
-//import Try.StaffApp;
-//import Try.CustomerApp;
 import java.util.Scanner;
 
 import initializer.MainInitializer;
