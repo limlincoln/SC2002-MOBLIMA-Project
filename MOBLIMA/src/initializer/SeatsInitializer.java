@@ -5,7 +5,6 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import entities.ISeat;
 import entities.Seat;
@@ -16,40 +15,12 @@ public class SeatsInitializer extends GetDatabaseDirectory {
 
 	public static String setSeatingsFileName(int seatid) {
 
-		String seatingsfolder = "/Seatings/";
+		String seatingsfolder = "Seatings"+separator;
 
 		String DBfile = "Seatings.txt";
 
 		return (seatingsfolder + seatid + DBfile);
 	}
-
-	// public static void CreateCineplexFile(int seatid) {
-
-	// String currentDirectory;
-	// String newDirectory;
-	// boolean checkfileexists = false;
-
-	// Seats_Initializer cineplexseats_init = new Seats_Initializer();
-	// currentDirectory = cineplexseats_init.getCurrentDirectory();
-
-	// newDirectory = currentDirectory;
-
-	// String SeatingsFile = setSeatingsFileName(seatid);
-
-	// File create_cineplexseats_file = new File(newDirectory);
-
-	// try {
-	// if(!create_cineplexseats_file.exists()) {
-	// create_cineplexseats_file.mkdirs();
-	// }
-	// create_cineplexseats_file = new File(newDirectory + SeatingsFile);
-	// checkfileexists = create_cineplexseats_file.createNewFile();
-	// } catch(Exception e) {
-	// System.out.println(e);
-	// }
-	// System.out.println(create_cineplexseats_file.getPath());
-
-	// }
 
 	public static void writeSeatsToFile(Seats seats) {
 
@@ -83,7 +54,7 @@ public class SeatsInitializer extends GetDatabaseDirectory {
 			buffer.close();
 
 		} catch (IOException e) {
-
+			System.out.println("Error in seatsinitializer : " + e.getMessage());
 		}
 
 	}
@@ -105,16 +76,10 @@ public class SeatsInitializer extends GetDatabaseDirectory {
 			String line = "";
 			while ((line = br.readLine()) != null) {
 				String[] rows = line.split("-");
-				System.out.println("Row lengh: "+rows.length);
 				String[] oneCol = rows[0].split(",");
-				
-				System.out.println("Row lengh: "+oneCol.length);
-
 				// initialise seats
 				seatsArray = new ISeat[rows.length][oneCol.length];
 				for(int i = 0; i < rows.length; i++) {
-					System.out.println("Seat ID: "+seatsID);
-					System.out.println("Rows: "+rows[i]);
 					String[] cols = rows[i].split(",");
 					for(int j = 0; j < cols.length; j++) {
 						switch(cols[j]) {
@@ -135,18 +100,9 @@ public class SeatsInitializer extends GetDatabaseDirectory {
 			br.close();
 
 		} catch (Exception e) {
-
+			System.out.println("Error in seatsinitializer : " + e.getMessage());
 		}
-
 		Seats seat = new Seats(seatsID, seatsArray);
-		// System.out.println("From witihin:");
-		// for (int i = 0; i < seatsArray.length; i++) {
-		// 	for (int j = 0; j < seatsArray[0].length; j++) {
-		// 		System.out.print(seatsArray[i][j]);
-		// 	}
-		// 	System.out.print("\n");
-		// }
-
 		return seat;
 	}
 }

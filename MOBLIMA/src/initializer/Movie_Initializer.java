@@ -20,7 +20,6 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 		
 		String currentDirectory;
 		String newDirectory;
-		boolean checkfileexists = false;
 		
 		Movie_Initializer movie_init = new Movie_Initializer();
 		currentDirectory = movie_init.getCurrentDirectory();
@@ -34,12 +33,9 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 				create_movielisting_file.mkdirs();
 			}
 			create_movielisting_file = new File(newDirectory + DBfile);
-			checkfileexists = create_movielisting_file.createNewFile();
 		} catch(Exception e) {
 			System.out.println(e);
-		}
-		System.out.println(create_movielisting_file.getPath());
-		
+		}		
 	}
 	
 	public static void WriteMovieListingFile(ArrayList<Movie> movielist) throws Exception {
@@ -177,23 +173,5 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 		
 		return movielist;
 		
-	}
-	
-	public static void main(String[] args) throws Exception {
-		
-		int NoOfMovie = 0;
-		
-		//System.out.println(getCurrentDirectory());
-		
-		CreateMovieListingFile();
-		//WriteMovieListingFile(1, "Buzz Light Year", "NORMAL", "Showing", "DIRECTOR", "SYPNOSIS", "CAST1", "CAST2", 986.3, 102, 4.98);
-		//WriteMovieListingFile(2, "Whzz Light Year", "TYPE", "STATUS", "DIRECTOR", "SYPNOSIS", "CAST1", "CAST2", 986.3, 102, 4.98);
-		//WriteMovieListingFile(3, "Nazz Light Year", "TYPE", "STATUS", "DIRECTOR", "SYPNOSIS", "CAST1", "CAST2", 986.3, 102, 4.98);
-		
-		Movie_Initializer movie_init = new Movie_Initializer();
-		ArrayList <Movie> capmovie = movie_init.GetMovieListing();
-		
-		movie_init.WriteMovieListingFile(capmovie);
-	
 	}
 }

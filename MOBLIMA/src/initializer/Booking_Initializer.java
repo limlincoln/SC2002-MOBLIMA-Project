@@ -17,7 +17,6 @@ public class Booking_Initializer extends GetDatabaseDirectory {
 	public static void CreateBookingHistoryFile() {
 		String currentDirectory;
 		String newDirectory;
-		boolean checkfileexists = false;
 		
 		Booking_Initializer booking_init = new Booking_Initializer();
 		currentDirectory = booking_init.getCurrentDirectory();
@@ -31,12 +30,9 @@ public class Booking_Initializer extends GetDatabaseDirectory {
 				create_bookinghistory_file.mkdirs();
 			}
 			create_bookinghistory_file = new File(newDirectory + DBfile);
-			checkfileexists = create_bookinghistory_file.createNewFile();
 		} catch(Exception e) {
 			System.out.println(e);
 		}
-		System.out.println(create_bookinghistory_file.getPath());
-
 	}
 
 	public static ArrayList<Booking> GetBooking(ArrayList<Ticket> tickets) {
@@ -110,10 +106,7 @@ public class Booking_Initializer extends GetDatabaseDirectory {
 			
 			System.out.println(data[0] + ": " + data[5]);
 		}
-
-			
 			System.out.println("No of movies: " + CountNoOfBooking);
-
 		} catch (Exception e) {
 
 		}
