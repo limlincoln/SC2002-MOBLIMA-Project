@@ -1,7 +1,6 @@
 package menus;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import entities.Cineplex;
 import entities.Movie;

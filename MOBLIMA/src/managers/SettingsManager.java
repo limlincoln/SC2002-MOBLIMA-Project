@@ -45,7 +45,6 @@ public class SettingsManager {
 		return false;
 	}
 	
-	// TODO Implement
 	/**
 	 * Function to edit price matrix
 	 * @param ageGroup
@@ -441,9 +440,6 @@ public class SettingsManager {
 	 * List all available holidays
 	 */
 
-	    // TODO: Holiday ID
-
-
 	public void listHolidays() {
 		ArrayList<Holiday> holiday = new ArrayList<Holiday>();
 		holiday = HolidayManager.getHolidays();
@@ -514,15 +510,6 @@ public class SettingsManager {
 	// MOVIE FUNCTIONS
 
 	public void editMovieSettings(){
-	// EDIT MOVIE
-		// MOVIE EDITOR MENU
-		// ASK WHAT MOVIE (LIST ALL MOVIES)
-		// ASK WHICH ATTRIBUTE TO CHANGE
-		// ASK FOR VALUE
-		// CALL MOVIEMANAGER(MOVIE, ATTRIBUTE, VALUE), VALIDATE IN MOVIEMANAGER
-		// CHECK RESPONSE FROM MOVIEMANGER, REPEAT IF NEEDED
-        String heading;
-        Movie selectedMovie;
 		System.out.println(	"================ SELECT A MOVIE =================");
 		int editchoice = -1;
 		ArrayList<Movie> movies = MovieConsolidator.getInstance().getAll();

@@ -8,7 +8,6 @@ import enums.CinemaType;
 import enums.PriceType;
 import enums.TimeOfDay;
 import enums.TypeOfDay;
-import managers.PricingManager;
 
 import java.util.*;
 import java.io.*;

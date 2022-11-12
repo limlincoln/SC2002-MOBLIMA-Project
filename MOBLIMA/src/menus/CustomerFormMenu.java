@@ -1,8 +1,6 @@
 package menus;
 
-import java.util.Random;
 import java.util.Scanner;
-
 import entities.Customer;
 import utils.IDGenerator;
 
@@ -28,7 +26,6 @@ public class CustomerFormMenu {
         System.out.println("Email Address: ");
         email = sc.nextLine();
 
-        Random rand = new Random();
         Customer newCustomer = new Customer(IDGenerator.get(), userName, email, phoneNumber);
 
         return newCustomer;

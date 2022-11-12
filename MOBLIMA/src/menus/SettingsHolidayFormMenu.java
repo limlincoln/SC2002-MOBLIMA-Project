@@ -5,18 +5,6 @@ import java.util.Scanner;
 
 public class SettingsHolidayFormMenu {
 
-    // TODO: Holiday ID
-    /*
-    public static Holiday startFullForm(){
-        String name;
-        LocalDate date;
-        DayOfWeek dayOfWeek;
-        
-        //return detail u want to change
-        return holiday;
-    }*/
-    
-
     public static String startNameForm(){
         String holname;
         Scanner sc = new Scanner(System.in);
