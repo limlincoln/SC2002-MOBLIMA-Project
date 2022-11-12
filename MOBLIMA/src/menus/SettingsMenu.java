@@ -53,7 +53,7 @@ public class SettingsMenu {
 					System.out.println("Moving back to Staff App");
 					break;
 				default:
-					System.out.println("Invalid option. Please choose an option between 0-4.");
+					System.out.println("Invalid option.");
 					break;
 			}
 		} while (choice!=0);
@@ -90,7 +90,7 @@ public class SettingsMenu {
 					System.out.println("Back to SystemSettings Menu......");
 					break;
 				default:
-					System.out.println("Invalid choice. Please choose between 0-8.");
+					System.out.println("Invalid choice.");
 					break;
 			}
 		} while (choice!=0);
@@ -188,7 +188,7 @@ public class SettingsMenu {
 					System.out.println("Back to Settings Menu......");
 					break;
 				default:
-					System.out.println("Invalid choice. Please choose between 0-8.");
+					System.out.println("Invalid choice.");
 					break;
 			}
 		} while (choice!=0);
@@ -242,7 +242,7 @@ public class SettingsMenu {
 				case 0: 
 					break;
 				default:
-					System.out.println("Invalid choice. Please choose between 0-7.");
+					System.out.println("Invalid choice.");
 					break;
 			}
 		} while (choice!=0);
@@ -345,7 +345,7 @@ public class SettingsMenu {
 					System.out.println("Back to Settings Menu......");
 					break;
 				default:
-					System.out.println("Invalid choice. Please choose between 0-8.");
+					System.out.println("Invalid choice.");
 					break;
 			}
 		} while (choice!=0);
