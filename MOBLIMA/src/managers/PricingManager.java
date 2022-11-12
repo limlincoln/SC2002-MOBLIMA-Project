@@ -45,10 +45,19 @@ public class PricingManager {
      */
     public static void showPriceMatrix() {
         System.out.println("========== Pricing ==========");
-        
+        int[] moreTab = {1,3,4,8,9};
+        int i=0;
+        int j=0;
         for(Object o: priceMatrix.keySet()) {
-            System.out.println(o+":\t\t"+priceMatrix.get(o));
+            String tabs = "\t\t";
+            if(j<5 && i==moreTab[j]){
+                tabs+="\t";
+                j++;
+            }
+            i++;
+            System.out.println(o+":"+tabs+priceMatrix.get(o));
         }
+        System.out.println("");
     }
 
     /**

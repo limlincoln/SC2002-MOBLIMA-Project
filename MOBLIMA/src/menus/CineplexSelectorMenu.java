@@ -22,16 +22,15 @@ public class CineplexSelectorMenu implements ISelectorMenu<Cineplex> {
      * Select cineplex
      */
     public Cineplex startSelector(ArrayList<Cineplex> cineplex, String heading) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println(	"================ " +heading+ " =================");
-                    for(int i = 0;  i < cineplex.size(); i++) {
-                        System.out.println("("+(i+1)+")"+cineplex.get(i).getCineplexName());
-        }
-
         if(cineplex.size() == 0){
             System.out.println("NO CINEPLEX");
             System.out.println("");
             return null;
+        }
+        Scanner sc = new Scanner(System.in);
+        System.out.println(	"================ " +heading+ " =================");
+                    for(int i = 0;  i < cineplex.size(); i++) {
+                        System.out.println("("+(i+1)+")"+cineplex.get(i).getCineplexName());
         }
         int selectedInd;
         do {

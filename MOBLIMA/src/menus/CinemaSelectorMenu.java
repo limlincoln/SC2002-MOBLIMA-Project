@@ -22,6 +22,11 @@ public class CinemaSelectorMenu implements ISelectorMenu<Cinema> {
      * Select cinema 
      */
     public Cinema startSelector(ArrayList<Cinema> cinema, String heading) {
+        if(cinema.size() == 0){
+            System.out.println("NO CINEPLEX");
+            System.out.println("");
+            return null;
+        }
         Scanner sc = new Scanner(System.in);
         System.out.println(	"================ " +heading+ " =================");
                     for(int i = 0;  i < cinema.size(); i++) {

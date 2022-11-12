@@ -23,6 +23,11 @@ public class MovieSelectorMenu implements ISelectorMenu<Movie> {
      * Select movie
      */
     public Movie startSelector(ArrayList<Movie> movies, String heading) {
+        if(movies.size() == 0){
+            System.out.println("NO "+ heading);
+            System.out.println("");
+            return null;
+        }
         Scanner sc = new Scanner(System.in);
         DecimalFormat df = new DecimalFormat(".##");
         System.out.println(	"================ " +heading+ " =================");
@@ -32,11 +37,6 @@ public class MovieSelectorMenu implements ISelectorMenu<Movie> {
                             continue;
                         }
                         System.out.println("("+(i+1)+")"+cur.getMovieName()+ " | Status: " + cur.getStatus() + " | Sales: " + df.format(cur.getTotalSales()) + " | Average Rating: " + df.format(cur.getAvgRating()));
-        }
-        if(movies.size() == 0){
-            System.out.println("NO "+ heading);
-            System.out.println("");
-            return null;
         }
 
         int selectedMovieInd;

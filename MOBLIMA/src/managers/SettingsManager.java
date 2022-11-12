@@ -551,12 +551,13 @@ public class SettingsManager {
 		int subchoice;
 		System.out.println("=================== Choose what to edit ==================\n" +
 							" 1. Edit Movie Title      	                                \n" +
-							" 2. Edit Movie Genres                      	        	\n" +
+							" 2. Edit Movie Genres                      	        			\n" +
 							" 3. Edit Movie Status	                                    \n" +
 							" 4. Edit Movie Cast                                        \n" +
-							" 5. Edit Movie Director                                     \n" +
-							" 6. Edit Movie Synopsis                                     \n" +
-							" 0. Finish Editing Movie                                \n"+
+							" 5. Edit Movie Director                                    \n" +
+							" 6. Edit Movie Synopsis                                    \n" +
+							" 7. Edit Movie CinemaType                                  \n" +
+							" 0. Finish Editing Movie                                		\n"+
 							"=========================================================");
 		do {
 			System.out.println("Enter choice: ");
@@ -583,17 +584,17 @@ public class SettingsManager {
 					break;
 				case 2:
 					System.out.println("The current genre is: "+movieToEdit.getMovieType());
-					System.out.println("Enter the Movie Genre (IMAX/_3D/NORMAL): ");
+					System.out.println("Enter the Movie Genre (ACTION/COMEDY): ");
 					while (!sc.hasNext()) {
 						System.out.println("Invalid input type. Please try again!");
 						sc.next(); 
 					}
 					
 					String askgenre = sc.nextLine();
-					CinemaType genre = null;
+					MovieGenre genre = null;
 					try 
 					{
-						genre = CinemaType.valueOf(askgenre);
+						genre = MovieGenre.valueOf(askgenre);
 					}
 					catch(IllegalArgumentException e)
 					{
@@ -665,6 +666,24 @@ public class SettingsManager {
 					System.out.println("The new Movie sypnopsis is "+ movieToEdit.getSypnopsis()); 
 					
 					break;
+				case 7:
+					ArrayList<CinemaType> cineTypes = movieToEdit.getCinemaTypes();
+					System.out.println("The current Movie CinemaType is: "+cineTypes);
+					System.out.println("Enter CinemaType to add or remove: ");
+					while (!sc.hasNext()) {
+						System.out.println("Invalid input type. Please try again!");
+						sc.next(); 
+					}
+					String cinemaTypeString = sc.nextLine();
+					CinemaType cineType = CinemaType.valueOf(cinemaTypeString);
+					
+					if(cineTypes.contains(cineType)){
+						cineTypes.remove(cineType);
+					}
+					
+					System.out.println("The new Movie CinemaType is "+ cineTypes); 
+					
+					break;
 				case 0:
 					System.out.println("============= Exiting Edit =============");
 					break;
@@ -682,17 +701,17 @@ public class SettingsManager {
 		}
 		String title = sc.nextLine();
 		
-		System.out.println("Movie Genre (IMAX/_3D/NORMAL): ");
+		System.out.println("Movie Genre (HORROR/ACTION): ");
 		while (!sc.hasNext()) {
 			System.out.println("Invalid input type. Please try again!");
 			sc.next(); 
 		}
 		
 		String askgenre = sc.nextLine();
-		CinemaType genre = null;
+		MovieGenre genre = null;
 		try 
 		{
-			genre = CinemaType.valueOf(askgenre);
+			genre = MovieGenre.valueOf(askgenre);
 		}
 		catch(IllegalArgumentException e)
 		{
@@ -740,9 +759,39 @@ public class SettingsManager {
 		}
 		String sypnopsis = sc.nextLine();
 		
+		ArrayList<CinemaType> cineTypes = new ArrayList<CinemaType>(); 
+
+		System.out.println("Number of cinemas supported (IMAX/_3D/NORMAL)");
+		while (!sc.hasNextInt()) {
+			System.out.println("Invalid input type. Please try again!");
+			sc.next(); 
+		}
+		int num = sc.nextInt();
+		for(int i=0;i<num;i++){
+			System.out.println("Cinema Types (IMAX/_3D/NORMAL): ");
+			while (!sc.hasNext()) {
+				System.out.println("Invalid input type. Please try again!");
+				sc.next(); 
+			}
+			
+			String askCinetype = sc.nextLine();
+			CinemaType cinetype = null;
+			try 
+			{
+				cinetype = CinemaType.valueOf(askCinetype);
+				cineTypes.add(cinetype);
+			}
+			catch(IllegalArgumentException e)
+			{
+				System.out.println("Invalid input type!!. Please follow the status format");
+			}
+		}
+
+
+
 		ArrayList<Integer> ratings = new ArrayList<>();
 		float avg = 0.000f;
-		Movie newmovie = new Movie(IDGenerator.get(),title,genre,status,cast,director,sypnopsis,ratings,0.0,avg); //movieID should be size()+1?
+		Movie newmovie = new Movie(IDGenerator.get(),title,genre,status,cast,director,sypnopsis,ratings,0.0,avg,cineTypes); //movieID should be size()+1?
 		
 		MovieManager.getInstance().addMovie(newmovie);                    
 	}
