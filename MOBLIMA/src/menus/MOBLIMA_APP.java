@@ -6,11 +6,15 @@ package menus;
 //import Try.CustomerApp;
 import java.util.Scanner;
 
+import initializer.MainInitializer;
+
 /**
  * Main app to run to choose Customer or Staff app
  */
 public class MOBLIMA_APP {
 	public static void main(String[] args) {
+		MainInitializer.startInitializers();
+		
 		int choice;
 		Scanner sc = new Scanner(System.in); 
 		

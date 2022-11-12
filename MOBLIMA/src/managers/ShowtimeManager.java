@@ -73,7 +73,7 @@ public class ShowTimeManager{
 
     }
     
-    public void editShowTime(Cineplex cineplex, Cinema cinema,DayOfWeek day)
+    public void editShowTime(Cineplex cineplex, Cinema cinema, DayOfWeek day) {
     {//cineplex cinema[7 showtimes for each day], which day, showtimeslot(8),
     	
     	//ArrayList<ShowTime> showtimes = cinema.getShowtimes();

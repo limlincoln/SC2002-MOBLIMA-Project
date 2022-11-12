@@ -7,7 +7,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class LoginAuthenticator {
+import initializer.GetDatabaseDirectory;
+
+public class LoginAuthenticator extends GetDatabaseDirectory{
 
     private static LoginAuthenticator single_instance = null;
 
@@ -34,20 +36,10 @@ public class LoginAuthenticator {
 	 */
     public boolean login(String username, String password) {
         try {
-			String rootFolderName = "SC2002Assignment";	
-			String projectRootPath;
-			File file = new File(".");
-			
-			if (file.getCanonicalFile().getName().equals(rootFolderName) == true) {
-				projectRootPath =  file.getCanonicalPath();
-			} else {
-				while (file.getName().equals(rootFolderName) != true) {
-					file = file.getCanonicalFile().getParentFile();
-				}
-				
-				projectRootPath = file.getCanonicalPath();
-			}
-	    	String filepath =  projectRootPath+"/staff_table.txt";
+
+			String root = LoginAuthenticator.getCurrentDirectory();
+
+	    	String filepath =  root+"staff_table.txt";
 	        BufferedReader br = new BufferedReader(new FileReader(filepath));
 	        
 
@@ -56,7 +48,7 @@ public class LoginAuthenticator {
 	            String[] values = line.split("\\|");
 	            
 	            if (values[0].equals(username) && values[1].equals(password)) {
-	            	   System.out.println("Access Granted " + values[0]+ values[1]);
+	            	   System.out.println("Access Granted!");
 	                	br.close();
 	                    return true;
 	            }

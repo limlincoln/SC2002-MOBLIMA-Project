@@ -1,7 +1,12 @@
 package menus;
 
 import java.util.Scanner;
+
+import entities.Cinema;
+import entities.Cineplex;
+import managers.CineplexManager;
 import managers.LoginAuthenticator;
+import managers.ShowTimeManager;
 
 
 public class StaffApp {
@@ -83,9 +88,8 @@ public class StaffApp {
 		
 		do {
             System.out.println(	"============== MOBLIMA STAFF APP ================\n" +
-			                    " 1. Edit Movie Listing(Showtime,Cineplex,Cinema)   \n" +
-			                    " 2. Edit Movie                                    \n" +
-			                    " 3. System Settings                               \n" +
+			                    " 1. Edit ShowTime                                 \n" +
+			                    " 2. System Settings (Edit Movies, Holidays, etc.) \n" +
 			                    " 0. Back to MOBLIMA APP                           \n"+
 							    "====================================================");
             System.out.println("Enter choice: ");
@@ -99,15 +103,10 @@ public class StaffApp {
 			
 			switch (choice) {
 			case 1: 
-                CinemaMenu.getInstance().movielisting();
+				ShowTimeEditorMenu.startShowTimeEditor();
 				break;
 			case 2:
-				MovieMenu.getInstance().displayStaffMovieMenu();
-				break;
-			case 3:
-				//System settings?
-					// CALL SYSTEM MENU -> CALL SETTINGS MANAGER
-					SystemSettingsMenu.getInstance().displaySystemSettingsMenu();
+				SettingsMenu.getInstance().displayMenu();
 				break;
 			case 0:
 				System.out.println("Logging out from StaffApp......");

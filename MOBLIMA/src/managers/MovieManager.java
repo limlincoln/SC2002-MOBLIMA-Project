@@ -12,7 +12,7 @@ public class MovieManager {
     private MovieManager(ArrayList<Movie> movies){
         this.movies = movies;
     }
-    public static void instantiateMovies(ArrayList<Movie> movies){
+    public static void initialize(ArrayList<Movie> movies){
         single_instance = new MovieManager(movies);
     }
 
