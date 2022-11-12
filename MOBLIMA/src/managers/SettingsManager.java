@@ -18,15 +18,11 @@ public class SettingsManager {
 		return single_instance;
 	}
 
-	public static void initialize(ITop5Menu top5Menu){
-		single_instance = new SettingsManager(top5Menu);
-	}
-
 	/**
 	 * Initialises a single instance of settings manager
 	 * @param customerTop5Value
 	 */
-	public static void initialiser(ITop5Menu customerTop5Value){
+	public static void initialize(ITop5Menu customerTop5Value){
 		single_instance = new SettingsManager(customerTop5Value);
 	}
 
