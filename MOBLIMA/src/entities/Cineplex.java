@@ -23,9 +23,10 @@ public class Cineplex {
      * @param cName The name given to this Cineplex
      * @param cType The list of Cinemas that are in this Cineplex
      */
-    public Cineplex(int cID, String cName, Cinema[] cType){
+    public Cineplex(int cID, String cName, ArrayList<Cinema> cinemas){
         this.CineplexID = cID;
         this.CineplexName = cName;
+        this.cinemas = cinemas;
     }
 
     /**
