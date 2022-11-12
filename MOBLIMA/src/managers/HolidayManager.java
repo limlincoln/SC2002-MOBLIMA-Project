@@ -39,6 +39,20 @@ public class HolidayManager {
     }
 
     /**
+     * Check if a holiday with this name exists
+     * @param nameOfHoliday name of the holiday to check for
+     * @return true if exists false otherwise
+     */
+    public static boolean isHoliday(String nameOfHoliday) {
+        for(int i = 0; i < holidays.size(); i++) {
+            if(holidays.get(i).getName().toLowerCase().equals(nameOfHoliday.toLowerCase())) {
+                return true;
+            }
+        }
+        return false; 
+    }
+
+    /**
      * Get list of all existing Holidays
      */
     public static ArrayList<Holiday> getHolidays() {

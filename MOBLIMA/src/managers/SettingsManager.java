@@ -448,7 +448,7 @@ public class SettingsManager {
 		ArrayList<Holiday> holiday = new ArrayList<Holiday>();
 		holiday = HolidayManager.getHolidays();
 		for (int x = 0; x < holiday.size(); x++){
-			System.out.println(x+1 + ". " + holiday.get(x).getName());
+			System.out.println(x+1 + ". " + holiday.get(x).getName() + " " + holiday.get(x).getDate());
 		}
 	}
 
@@ -458,14 +458,27 @@ public class SettingsManager {
 	public void addNewHoliday(){
 		String name;
 		LocalDate date = null;
-		System.out.println("What is the holiday name: ");
-		name = sc.next();
 		boolean reAsk;
+
+		System.out.println("What is the holiday name: ");
+		do {
+			reAsk = false;
+			name = sc.next();
+			reAsk = HolidayManager.isHoliday(name);
+
+			if(reAsk) {
+				System.out.println("This holiday already exists!");
+			}
+		} while(reAsk);
 		do {
 			reAsk = false;
 			System.out.println("What is the holiday date? (yyyy-MM-dd): ");
 			try{
 				date = LocalDate.parse(sc.next());
+				if(HolidayManager.isHoliday(date)) {
+					System.out.println("This Holiday already exists!");
+					reAsk = true;
+				}
 			} catch (DateTimeParseException e) {
 				System.out.println("Please make sure date is correct!");
 				reAsk = true;

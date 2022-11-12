@@ -28,6 +28,7 @@ public class SettingsMenu {
             System.out.println("1. Price Settings");
             System.out.println("2. Movie Settings");
             System.out.println("3. Holiday Settings");
+			System.out.println("4. Top 5 Movies Settings");
             System.out.println("==========================================================");
             System.out.println("Select Option: ");
             while(!sc.hasNextInt()) {
@@ -47,6 +48,8 @@ public class SettingsMenu {
                 case 3:
                     holidaySettings();
 					break;
+				case 4:
+					top5MoviesSettings();
 				case 0:
 					System.out.println("Moving back to Staff App");
 					break;
@@ -55,6 +58,41 @@ public class SettingsMenu {
 					break;
 			}
 		} while (choice!=0);
+	}
+
+	public void top5MoviesSettings() {
+		int choice;
+		do {
+			System.out.println(	"=================== Top 5 Movies Settings ===================");
+            System.out.println(" 1. View Top 5 by Sales");
+            System.out.println(" 2. View Top 5 Rating");
+			System.out.println(" 3. Set Top 5 View for Movie-goer");
+            System.out.println(" 0. Back to Settings Menu");
+            System.out.println("===========================================================");	
+
+			System.out.println("Enter choice:");
+			while(!sc.hasNextInt()) {
+				System.out.println("Please enter a number!");
+				sc.next();
+			}
+			choice = sc.nextInt();
+			sc.nextLine();
+
+			switch(choice) {
+				case 1:
+					Top5BySalesMenu.getInstance().displayMenu();
+					break;
+				case 2:
+					Top5ByRatingMenu.getInstance().displayMenu();
+					break;
+				case 3:
+					Top5SelectorMenu.displaySelector();
+				default:
+					System.out.println("Invalid choice.");
+					break;
+			}
+
+		} while(choice != 0);
 	}
 
     /**

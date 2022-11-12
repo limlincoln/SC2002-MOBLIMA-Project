@@ -2,13 +2,6 @@ package menus;
 
 import java.util.Scanner;
 
-import entities.Cinema;
-import entities.Cineplex;
-import managers.CineplexManager;
-import managers.LoginAuthenticator;
-import managers.ShowTimeManager;
-
-
 public class StaffApp {
 
 
