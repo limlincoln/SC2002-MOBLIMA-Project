@@ -4,8 +4,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -39,7 +37,7 @@ public class Holiday_Initializer extends GetDatabaseDirectory {
 		System.out.println(create_holiday_file.getPath());
 	}
 
-	public ArrayList<Holiday> GetHolidayListing() {
+	public static ArrayList<Holiday> GetHolidayListing() {
 
 		ArrayList<Holiday> holidaylist = new ArrayList<Holiday>();
 
@@ -70,6 +68,8 @@ public class Holiday_Initializer extends GetDatabaseDirectory {
 				String []data = line.split("\\|");
 
 				int id = Integer.parseInt(data[0]);
+				String event;
+				DayOfWeek dayofweek = null;
 				
 				event = data[1];
 
@@ -107,8 +107,7 @@ public class Holiday_Initializer extends GetDatabaseDirectory {
 					break;	
 				}
 
-				holidaylist.add(new Holiday(7, event, exactDateTime, dayofweek));
-				//holidaylist.add(new Holiday(event, dates, 1));
+				holidaylist.add(new Holiday(id, event, exactDateTime, dayofweek));
 			}
 		} catch (Exception e) {
 
@@ -118,7 +117,7 @@ public class Holiday_Initializer extends GetDatabaseDirectory {
 	}
 
 
-	public void NewHolidayListing(ArrayList<Holiday> holidaylist) {
+	public static void NewHolidayListing(ArrayList<Holiday> holidaylist) {
 
 		String currentDirectory;
 		String newDirectory;
@@ -161,16 +160,4 @@ public class Holiday_Initializer extends GetDatabaseDirectory {
 
 		}
 	}
-
-	public static void main(String[] args) {
-
-		Holiday_Initializer holiday_init = new Holiday_Initializer();
-
-		holiday_init.CreateHolidayFile();
-		
-		ArrayList<Holiday> holidaylist = holiday_init.GetHolidayListing();
-		
-		holiday_init.NewHolidayListing(holidaylist);
-	}
-
 }

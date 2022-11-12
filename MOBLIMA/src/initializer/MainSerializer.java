@@ -1,6 +1,7 @@
 package initializer;
 import managers.BookingManager;
 import managers.CineplexManager;
+import managers.HolidayManager;
 import managers.PricingManager;
 import managers.SettingsManager;
 
@@ -13,6 +14,7 @@ public class MainSerializer {
             Price_Initializer.write(PricingManager.getPriceMatrix());
             Settings_Initializer.write(SettingsManager.getInstance());
             Booking_Initializer.write(BookingManager.getAllBookingHistory());
+            Holiday_Initializer.NewHolidayListing(HolidayManager.getHolidays());
         }
         catch(Exception e) {
 

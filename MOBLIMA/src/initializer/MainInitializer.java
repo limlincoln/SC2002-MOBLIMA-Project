@@ -2,6 +2,7 @@ package initializer;
 
 import managers.BookingManager;
 import managers.CineplexManager;
+import managers.HolidayManager;
 import managers.MovieManager;
 import managers.PricingManager;
 
@@ -12,6 +13,7 @@ public class MainInitializer {
         PricingManager.setPriceMatrix(Price_Initializer.read());
         Settings_Initializer.read();
         BookingManager.initialize(Booking_Initializer.read());
+        HolidayManager.setHolidays(Holiday_Initializer.GetHolidayListing());
     }
     
 }

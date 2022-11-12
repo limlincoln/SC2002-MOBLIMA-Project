@@ -286,9 +286,6 @@ public class SettingsMenu {
             choice = sc.nextInt();
             sc.nextLine();
             
-            String heading;
-            Movie selectedMovie;
-            
             switch(choice){
                 case 1:
 
