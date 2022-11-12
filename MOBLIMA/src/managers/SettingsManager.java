@@ -83,7 +83,7 @@ public class SettingsManager {
 	}
 
 	/**
-	 * Overload editPrice for cinemaType.
+	 * Overload edit prices for cinemaType.
 	 *
 	 * @param cinemaType the cinema type
 	 * @param newPrice   the new price

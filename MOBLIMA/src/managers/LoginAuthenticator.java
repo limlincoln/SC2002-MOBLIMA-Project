@@ -44,6 +44,9 @@ public class LoginAuthenticator {
 	 *
 	 * @param username the username
 	 * @param password the password
+	 * 
+	 * check if user is authorised for entry
+	 * 
 	 * @return true, if successful
 	 */
     public boolean login(String username, String password) {
@@ -90,7 +93,7 @@ public class LoginAuthenticator {
     }
     
     /**
-	 * Logout.
+	 * Logout from MOBLIMA
 	 *
 	 * @return true, if successful
 	 */

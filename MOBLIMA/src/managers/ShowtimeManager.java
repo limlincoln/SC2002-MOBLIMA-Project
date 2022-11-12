@@ -25,7 +25,7 @@ public class ShowTimeManager{
     /** The single instance. */
     private static ShowTimeManager single_instance = null;
 
-    /** The sc. */
+    /** The scanner - for user input. */
     private Scanner sc = new Scanner(System.in);
     // FUNCTIONALITY
     // SHOW ShowTime FOR A PARTICULAR MOVIE & DAY & CINEPLEX & CINEMA

@@ -11,7 +11,7 @@ public class CinemaManager {
     /** The single instance. */
     private static CinemaManager single_instance = null;
     
-    /** The cinemas. */
+    /** The ArrayList of cinemas. */
     private ArrayList<Cinema> cinemas;
     // 1 week worth of showtimes
     // array list of showimes
@@ -45,10 +45,11 @@ public class CinemaManager {
     }
 
     /**
-	 * Gets the cinema by ID.
+	 * Gets the cinema by cinemaID.
 	 *
-	 * @param cineID the cine ID
-	 * @return the cinema by ID
+	 * @param cineID - the ID of cinema
+	 * @return the cinema if found
+	 * else return null
 	 */
     public Cinema getCinemaByID(int cineID){
         for(int x = 0; x < cinemas.size(); x++){

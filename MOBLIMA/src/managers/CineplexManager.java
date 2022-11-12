@@ -35,7 +35,7 @@ public class CineplexManager {
     /**
 	 * Sets the cineplex.
 	 *
-	 * @param cine the new cineplex
+	 * @param cine - ArrayList of Cineplex
 	 */
     // Setters
     public void setCineplex(ArrayList<Cineplex> cine){
@@ -55,8 +55,9 @@ public class CineplexManager {
     /**
 	 * Gets the cineplex by ID.
 	 *
-	 * @param cineID the cine ID
-	 * @return the cineplex by ID
+	 * @param cineID - the cineplex ID
+	 * @return the cineplex if successful
+	 * else return null
 	 */
     public Cineplex getCineplexByID(int cineID){
         for (int x = 0; x <cineplex.size(); x++){
@@ -70,8 +71,9 @@ public class CineplexManager {
     /**
 	 * Gets the cineplex by name.
 	 *
-	 * @param cineName the cine name
-	 * @return the cineplex by name
+	 * @param cineName - the cineplex name
+	 * @return the cineplex  if successful
+	 * else return null
 	 */
     public Cineplex getCineplexByName(String cineName){
         for(int x = 0; x< cineplex.size(); x++){
@@ -86,7 +88,10 @@ public class CineplexManager {
     /**
 	 * Add new cineplex.
 	 *
-	 * @param cine the cine
+	 * @param cine - Cineplex object
+	 * Check if the new object matches with any current cineplex:
+	 * if yes, return
+	 * else, add cineplex
 	 */
     public void addCineplex(Cineplex cine){
         for(int x = 0; x < cineplex.size(); x++){
@@ -104,7 +109,9 @@ public class CineplexManager {
     /**
 	 * Search Cineplex by ID and remove.
 	 *
-	 * @param cineID the cine ID
+	 * @param cineID - the cineplex id
+	 * Search for cineplex -> if id matches -> cineplex is removed
+	 * else cineplex does not exist
 	 */
     public void removeCineplexByID(int cineID){
         for(int x = 0; x < cineplex.size(); x++){
@@ -120,7 +127,9 @@ public class CineplexManager {
     /**
 	 * Removes the cineplex by name.
 	 *
-	 * @param cineName the cine name
+	 * @param cineName - the cineplex name
+	 * Search for cineplex -> if name matches -> cineplex is removed
+	 * else cineplex does not exist
 	 */
     // remove Cineplex by name
     public void removeCineplexByName(String cineName){
@@ -137,7 +146,7 @@ public class CineplexManager {
     /**
 	 * Gets the cineplex by movie.
 	 *
-	 * @param movieID the movie ID
+	 * @param movieID - the movie ID
 	 * @return the cineplex by movie
 	 */
     // search cineplexs for movieID

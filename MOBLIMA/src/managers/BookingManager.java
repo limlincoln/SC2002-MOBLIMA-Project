@@ -20,7 +20,7 @@ public class BookingManager {
 	 *
 	 * @param cinemaID the cinema ID
 	 * @param dateTime the date time
-	 * @return the int
+	 * @return a generated TID
 	 */
     private static int generateTID(int cinemaID, int dateTime) {
         String strCinemaID = Integer.toString(cinemaID);
@@ -88,10 +88,10 @@ public class BookingManager {
     }
 
     /**
-	 * Get Rate Bookings by Username.
+	 * Get Rated Bookings by Username.
 	 *
 	 * @param usename the usename
-	 * @return the rated bookings by username
+	 * @return the bookings rated by username
 	 */
     public static ArrayList<Booking> getRatedBookingsByUsername(String usename) {
         ArrayList<Booking> ratedBookings = new ArrayList<Booking>();

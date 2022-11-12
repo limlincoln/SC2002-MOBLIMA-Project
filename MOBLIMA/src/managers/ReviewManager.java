@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class ReviewManager {
     
     /**
-	 * User give review to movie.
+	 * User provides review to movie.
 	 *
 	 * @param movie     the movie
 	 * @param newRating the new rating
@@ -28,7 +28,7 @@ public class ReviewManager {
     }
 
     /**
-	 * Return average rating of the selected movie.
+	 * Return the average rating of the selected movie.
 	 *
 	 * @param movie the movie
 	 * @return the avg rating
