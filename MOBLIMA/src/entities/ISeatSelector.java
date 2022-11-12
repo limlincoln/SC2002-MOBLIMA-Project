@@ -9,8 +9,8 @@ interface ISeatSelector {
     /**
 	 * Start seat selection instance.
 	 *
-	 * @param seats the seats
-	 * @return the int
+	 * @param interface of seats classs
+	 * @return the int of seats
 	 */
     public int StartSeatSelectionInstance(ISeats seats);
 }

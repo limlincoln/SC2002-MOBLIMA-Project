@@ -8,7 +8,7 @@ import java.util.Optional;
  */
 abstract class ISeatLayout {
     
-    /** The layout. */
+    /** The seats layout. */
     ISeat[][] layout;
     
     /**
@@ -20,7 +20,7 @@ abstract class ISeatLayout {
     public abstract <T> Optional<T> createLayout();
     
     /**
-	 * Gets the layout.
+	 * Gets the seat layout.
 	 *
 	 * @return the layout
 	 */

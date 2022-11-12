@@ -7,12 +7,12 @@ package entities;
 interface ISelectableSeat {
     
     /**
-	 * Toggle temp selected.
+	 * Toggle to temporarily selected
 	 */
     public void toggleTempSelected();
     
     /**
-	 * Toggle occupied.
+	 * Toggle to occupied
 	 */
     public void toggleOccupied();
 }
