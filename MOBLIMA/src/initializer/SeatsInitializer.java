@@ -105,7 +105,12 @@ public class SeatsInitializer extends GetDatabaseDirectory {
 			while ((line = br.readLine()) != null) {
 				String[] rows = line.split("-");
 				System.out.println("Row lengh: "+rows.length);
-				seatsArray = new ISeat[rows.length][rows[0].length()];
+				String[] oneCol = rows[0].split(",");
+				
+				System.out.println("Row lengh: "+oneCol.length);
+
+				// initialise seats
+				seatsArray = new ISeat[rows.length][oneCol.length];
 				for(int i = 0; i < rows.length; i++) {
 					System.out.println("Seat ID: "+seatsID);
 					System.out.println("Rows: "+rows[i]);
