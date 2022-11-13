@@ -7,6 +7,12 @@ import managers.MovieManager;
 import managers.PricingManager;
 
 public class MainInitializer {
+
+    /** 
+	 * Start the require Initializers that will create the respective objects
+     * 
+     * Required by MOBLIMA to work
+	 */
     public static void startInitializers() {
         try{
             CineplexManager.getInstance().setCineplex(CineplexIntializer.readCineplexListFromFile());

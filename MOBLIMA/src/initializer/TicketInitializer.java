@@ -18,6 +18,11 @@ public class TicketInitializer extends GetDatabaseDirectory {
 	public static final String DBFolder = "Tickets";
 	public static final String DBfile = "Tickets.txt";
 
+	
+	/** 
+	 * @param ticketid
+	 * @return Ticket
+	 */
 	public static Ticket read(String ticketid) {
 		String currentDirectory;
 		String fileDir;
@@ -135,6 +140,10 @@ public class TicketInitializer extends GetDatabaseDirectory {
 	}
 			
 	
+		
+		/** 
+		 * @param tickets
+		 */
 		public static void write(ArrayList<Ticket> tickets) {
 			String currentDirectory = TicketInitializer.getCurrentDirectory();
 			

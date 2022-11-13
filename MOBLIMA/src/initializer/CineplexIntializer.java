@@ -14,6 +14,11 @@ public class CineplexIntializer extends GetDatabaseDirectory {
 
 	public static final String DBfile = "Cineplex.txt";
 
+	/** 
+	 * @param cineplexlist - ArrayList of Cineplex
+	 * 
+	 * Saves this arraylist of cineplex into text file
+	 */
 	public static void writeCineplexListToFile(ArrayList<Cineplex> cineplexlist) throws Exception {
 
 		String currentDirectory;
@@ -50,6 +55,13 @@ public class CineplexIntializer extends GetDatabaseDirectory {
 
 	}
 
+	
+	/** 
+	 * 
+	 * Read all cineplex from text file 
+	 * Initialize cineplex object and add them into an arraylist
+	 * @return cineplexlist - arraylist is returned to the caller
+	 */
 	public static ArrayList<Cineplex> readCineplexListFromFile() {
 
 		ArrayList<Cineplex> cineplexlist = new ArrayList<Cineplex>();

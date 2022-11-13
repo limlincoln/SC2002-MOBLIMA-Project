@@ -9,6 +9,11 @@ public class GetDatabaseDirectory{
 	public static final String separator = File.separator;
 	public static final String DBfolder = "Database";
 	
+	/** 
+	 * @return finalpath - return a directory
+	 * 
+	 * current directory has a path appended to it
+	 */
 	public static String getCurrentDirectory() {
 		String executionPath = "";
 		if(CheckOSHelper.IS_MAC){

@@ -15,6 +15,9 @@ public class Holiday_Initializer extends GetDatabaseDirectory {
 
 	public static final String DBfile = "Holidays.txt";
 
+	/** 
+	 * Creates Holidays.txt
+	 */
 	public static void CreateHolidayFile() {
 
 		String currentDirectory;
@@ -37,6 +40,13 @@ public class Holiday_Initializer extends GetDatabaseDirectory {
 		System.out.println(create_holiday_file.getPath());
 	}
 
+	/** 
+	 * Read from Holiday.txt
+	 * Initialize Holiday objects and add it into an ArrayList
+	 * ArrayList is then returned
+	 * 
+	 * @return holidaylist - ArrayList of Holiday
+	 */
 	public static ArrayList<Holiday> GetHolidayListing() {
 
 		ArrayList<Holiday> holidaylist = new ArrayList<Holiday>();
@@ -113,6 +123,11 @@ public class Holiday_Initializer extends GetDatabaseDirectory {
 	}
 
 
+	/** 
+	 * @param holidaylist - ArrayList of Holiday
+	 * 
+	 * Saves this arraylist of holiday into text file
+	 */
 	public static void NewHolidayListing(ArrayList<Holiday> holidaylist) {
 
 		String currentDirectory;

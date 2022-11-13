@@ -16,6 +16,11 @@ public class Settings_Initializer extends GetDatabaseDirectory {
 	
 	public Settings_Initializer(){}
 	
+	/** 
+	 * @param settings - SettingsManager object
+	 * 
+	 * Saves settings 
+	 */
 	public static void write(SettingsManager settings) {	
 		String currentDirectory = Settings_Initializer.getCurrentDirectory();
 		String fileDir = currentDirectory + DBfile;
@@ -49,6 +54,10 @@ public class Settings_Initializer extends GetDatabaseDirectory {
 		
 	}
 	
+	/** 
+	 * 
+	 * Read the settings saved
+	 */
 	public static void read() {		
 		String currentDirectory = Settings_Initializer.getCurrentDirectory();
 		String fileDir = currentDirectory + DBfile;

@@ -13,7 +13,13 @@ import entities.Ticket;
 public class Booking_Initializer extends GetDatabaseDirectory {
 	
 	public static final String DBfile = "Booking_History.txt";
-
+	
+	/** 
+	 * Read from Booking_History file
+	 * Retrieve user booking and initialize customer and booking class
+	 * 
+	 * @return ArrayList<Booking>
+	 */
 	public static ArrayList<Booking> read() {
 
 		ArrayList<Booking> bookinglist = new ArrayList<Booking>();
@@ -91,6 +97,12 @@ public class Booking_Initializer extends GetDatabaseDirectory {
 		return bookinglist;
 	}
 	
+
+/**
+ * Save a booking made by customer into Booking_History.txt
+ * 
+ * @param bookinglist
+ */
 public static void write(ArrayList<Booking> bookinglist) {
 		
 		String currentDirectory;

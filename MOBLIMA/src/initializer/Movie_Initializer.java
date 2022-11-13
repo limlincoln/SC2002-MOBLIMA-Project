@@ -15,6 +15,10 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 	
 	public static final String DBfile = "Movie_Listing.txt";
 	
+	/** 
+	 * Responsible for checking if file exist
+	 * Create Movie_Listing.txt if file does not exist
+	 */
 	public static void CreateMovieListingFile() {
 		
 		String currentDirectory;
@@ -36,6 +40,11 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 		}		
 	}
 	
+	/** 
+	 * @param movielist - ArrayList of Movie
+	 * 
+	 * Saves this arraylist of Movie into text file
+	 */
 	public static void WriteMovieListingFile(ArrayList<Movie> movielist) throws Exception {		
 		String currentDirectory;
 		String newDirectory;
@@ -76,6 +85,11 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 		
 	}
 	
+	/** 
+	 * Responsible for reading Movie_Listing.txt
+	 * Initalize Movie Objects and append them into an ArrayList
+	 * ArrayList is then returned to the caller
+	 */
 	public static ArrayList<Movie> GetMovieListing() {
 		
 		ArrayList<Movie> movielist = new ArrayList<Movie>();

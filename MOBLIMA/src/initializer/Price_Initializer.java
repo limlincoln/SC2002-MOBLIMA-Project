@@ -22,6 +22,11 @@ public class Price_Initializer extends GetDatabaseDirectory {
 	
 	public Price_Initializer(){}
 	
+	/** 
+	 * @param priceMatrix - HashMap that stores different prices
+	 * 
+	 * Saves this HashMap into text file
+	 */
 	public static void  write(HashMap<IPriceable, Double> priceMatrix) {	
 		String currentDirectory = Price_Initializer.getCurrentDirectory();
 		
@@ -82,6 +87,11 @@ public class Price_Initializer extends GetDatabaseDirectory {
 		
 	}
 	
+	/** 
+	 * Responsible for reading the HashMap from the respective text file
+	 * 
+	 * Returns the HashMap to the caller function
+	 */
 	public static HashMap<IPriceable,Double> read() {		
 		String currentDirectory = Price_Initializer.getCurrentDirectory() ;
 		String fileDir = currentDirectory + DBfile;

@@ -11,6 +11,11 @@ import entities.ShowTime;
 
 public class ShowTimeInitializer extends GetDatabaseDirectory {
 
+	/** 
+	 * @param seatid - unique id for seat
+	 * 
+	 * @return String - unique showtime file name is returned 
+	 */
 	public static String setShowTimeFileName(int seatid) {
 
 		String seatingsfolder = "ShowTime"+separator;
@@ -46,6 +51,11 @@ public class ShowTimeInitializer extends GetDatabaseDirectory {
 	// 	System.out.println(create_showtime_file.getPath());
 	// }
 	
+	/** 
+	 * @param showTime - ShowTime object
+	 * 
+	 * Responsible for writing ShowTime object to text file
+	 */
 	public static void writeShowTimeToFile(ShowTime showTime) {
 		String currentDirectory;
 		String newDirectory;
@@ -82,6 +92,14 @@ public class ShowTimeInitializer extends GetDatabaseDirectory {
 		}
 	}
 	
+	/** 
+	 * @param showTimeID - unique id for showtime
+	 * 
+	 * Responsible for reading the respective showtime files based on showTimeID
+	 * Initialize the appropriate ShowTime objects
+	 * 
+	 * @return ShowTime - ShowTime object is returned
+	 */
 	public static ShowTime readShowTimeFromFile(int showTimeID) {
 		String currentDirectory;
 		String newDirectory;

@@ -13,6 +13,11 @@ import entities.Space;
 
 public class SeatsInitializer extends GetDatabaseDirectory {
 
+	/** 
+	 * @param seatid - unique id to recognize the text file
+	 * 
+	 * @return String - return name of the text file
+	 */
 	public static String setSeatingsFileName(int seatid) {
 
 		String seatingsfolder = "Seatings"+ separator;
@@ -22,6 +27,11 @@ public class SeatsInitializer extends GetDatabaseDirectory {
 		return (seatingsfolder + seatid + DBfile);
 	}
 
+	/** 
+	 * @param seats - seats of Seats
+	 * 
+	 * Saves this Seats object into text file
+	 */
 	public static void writeSeatsToFile(Seats seats) {
 
 		String currentDirectory;
@@ -58,6 +68,13 @@ public class SeatsInitializer extends GetDatabaseDirectory {
 
 	}
 
+	/** 
+	 * @param seatsID - unique id used to recognize the seats file
+	 * 
+	 * Resposible for reading the respective seats file
+	 * 
+	 * @return Seats - back to the caller function
+	 */
 	public static Seats readSeatsFromFile(int seatsID) {
 		String currentDirectory;
 		String newDirectory;

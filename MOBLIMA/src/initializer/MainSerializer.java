@@ -8,6 +8,11 @@ import managers.SettingsManager;
 
 public class MainSerializer {
 
+    /** 
+	 * Responsible for saving data into their respective users are done with the program
+     * 
+     * Runs when MOBLIMA closes to save data to their respective text files
+	 */
     public static void startSerializer() {
         try{
 

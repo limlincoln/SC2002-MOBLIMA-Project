@@ -13,6 +13,12 @@ import enums.CinemaType;
 
 public class CinemaInitializer extends GetDatabaseDirectory {
 	
+	
+	/** 
+	 * @param cinemaid - unique id for each cinema
+	 * used to append to the front of the file name to recognize each cinema
+	 * @return String - the name of the text file
+	 */
 	public static String setCinemaFileName(int cinemaid) {
 
 		String seatingsfolder = "Cinema" + separator;
@@ -22,6 +28,12 @@ public class CinemaInitializer extends GetDatabaseDirectory {
 		return(seatingsfolder+cinemaid+DBfile);
 	}
 		
+	
+	/** 
+	 * @param cid - unique id of the cinema
+	 * Using the unique id, it is used to identify the appropriate file to read from
+	 * @return Cinema
+	 */
 	public static Cinema readCinemaFromFile(int cid) {
 		String currentDirectory;
 		String newDirectory;
@@ -69,6 +81,12 @@ public class CinemaInitializer extends GetDatabaseDirectory {
 		return new Cinema(cid, cType, showtimelist,cc);
 	}
 		
+	
+	/** 
+	 * @param cinema
+	 * 
+	 * Taking in a Cinema object, it is then saved into it's text file
+	 */
 	public static void writeCinemaToFile(Cinema cinema) {
 		String currentDirectory;
 		String newDirectory;
