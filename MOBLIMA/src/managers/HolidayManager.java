@@ -4,12 +4,18 @@ import java.util.ArrayList;
 
 import entities.Holiday;
 
+/**
+ * Class that manages things related to Holidays and contains a list of holidays based on the Database
+ */
 public class HolidayManager {
+    /**
+     * a list of existing holidays from the database
+     */
     private static ArrayList<Holiday> holidays = new ArrayList<Holiday>();
 
     /**
      * Add new Holiday
-     * @param holiday
+     * @param holiday the holiday to add
      */
     public static void addHoliday(Holiday holiday) {
         holidays.add(holiday);
@@ -17,8 +23,8 @@ public class HolidayManager {
 
     /**
      * Remove existing holiday
-     * @param holiday
-     * @return
+     * @param holiday the holiday to remove
+     * @return true if successful false otherwise
      */
     public static boolean removeHoliday(Holiday holiday) {
         return holidays.remove(holiday);
@@ -26,8 +32,8 @@ public class HolidayManager {
 
     /**
      * Check if specific date is a holiday
-     * @param date
-     * @return
+     * @param date date to check
+     * @return true if holiday else false
      */
     public static boolean isHoliday(LocalDate date) {
         for(int i = 0; i < holidays.size(); i++) {

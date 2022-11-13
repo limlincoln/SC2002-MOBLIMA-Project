@@ -9,13 +9,15 @@ import entities.Ticket;
 import enums.AgeGroup;
 import utils.IDGenerator;
 
+/**
+ * The class to manage tickets
+ */
 public class TicketManager {
-    // CHANGE TO HASHMAP
     /**
-     * Generate list of tickets available
-     * @param exactDateTime
-     * @param seats
-     * @return
+     * Generate list of tickets 
+     * @param exactDateTime the exact date and time of the showtime of the movie
+     * @param seats the seats (including seat no. and agegroup) for the movie booking
+     * @return an array list of generated seats
      */
     public static ArrayList<Ticket> generateTickets(LocalDateTime exactDateTime, HashMap<String, AgeGroup> seats) {
         ArrayList<Ticket> tickets = new ArrayList<Ticket>();
@@ -39,6 +41,10 @@ public class TicketManager {
         return tickets;
     }
 
+    /**
+     * generate a ticket ID for the ticket
+     * @return ticket ID
+     */
     private static int generateTicketID() {
         return IDGenerator.get();
     }

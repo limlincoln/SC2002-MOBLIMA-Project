@@ -12,7 +12,15 @@ import entities.ISeats;
 import entities.Seat;
 import entities.Space;
 
+/**
+ * A Class that helps select seats
+ */
 public class SeatSelector implements ISeatSelector{
+    /**
+     * start the seat selector
+     * @param seats the seats to use for the selection process
+     * @return a hashmap of the seat number and the age group associated with that seat
+     */
     @Override
     public HashMap<String, AgeGroup> StartSeatSelectionInstance(ISeats seats) {
         Scanner sc = new Scanner(System.in);

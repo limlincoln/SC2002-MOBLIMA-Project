@@ -8,6 +8,9 @@ import enums.MovieGenre;
 import enums.Status;
 import utils.ConvertDouble;
 
+/**
+ * Class that contains information about a Movie
+ */
 public class Movie {
     /**
      * The ID of this Movie

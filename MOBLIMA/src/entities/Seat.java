@@ -1,5 +1,8 @@
 package entities;
 
+/**
+ * Class that contains information about a Seat
+ */
 public class Seat implements ISeat, ISelectableSeat {
     /**
      * Whether the seat has been occupied or not
@@ -37,6 +40,13 @@ public class Seat implements ISeat, ISelectableSeat {
         }
     }
 
+    /**
+     * Get the current status of the seat
+     * @return whethere it is:
+     * occupied 0
+     * is temporarily selected -1
+     * is available to be selected 1
+     */
     public int getStateInt() {
         if(this.isOccupied()){
             return 0;
@@ -75,14 +85,6 @@ public class Seat implements ISeat, ISelectableSeat {
         return this.occupied;
     }
 
-    public boolean getOccupied() {
-        return this.occupied;
-    }
-
-    public void setOccupied(boolean occupied) {
-        this.occupied = occupied;
-    }
-
     /**
      * Check if seat is selected temporarily
      * @return true if selected temporarily false if not
@@ -91,6 +93,15 @@ public class Seat implements ISeat, ISelectableSeat {
         return this.tempSelected;
     }
 
+    // GETTERS AND SETTERS
+    public boolean getOccupied() {
+        return this.occupied;
+    }
+
+    public void setOccupied(boolean occupied) {
+        this.occupied = occupied;
+    }
+    
     public boolean getTempSelected() {
         return this.tempSelected;
     }

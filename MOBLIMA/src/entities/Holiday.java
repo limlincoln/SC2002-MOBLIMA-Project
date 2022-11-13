@@ -5,6 +5,9 @@ import java.time.LocalDate;
 import enums.DayOfWeek;
 import utils.IDGenerator;
 
+/**
+ * Class that contains information about a single holiday
+ */
 public class Holiday {
     /**
      * The unique ID for this Holiday

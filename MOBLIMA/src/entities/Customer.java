@@ -1,5 +1,8 @@
 package entities;
 
+/**
+ * Class that contains information about a Customer (Movie-goer)
+ */
 public class Customer{
 
 	/**

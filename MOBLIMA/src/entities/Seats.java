@@ -1,5 +1,8 @@
 package entities;
 
+/**
+ * Class that contains information about a set of Seats
+ */
 public class Seats extends ISeats{
     private int ID;
 
@@ -21,6 +24,7 @@ public class Seats extends ISeats{
         this.setSeats(seatLayout);
     }
 
+    // GETTERS and SETTERS
     public int getSeatsID() {
         return ID;
     }

@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import managers.MovieManager;
 
+/**
+ * Class that contains information about a Booking made by the user
+ */
 public class Booking {
     /**
      * The transaction ID in the format XXXYYYYMMDDhh

@@ -8,6 +8,9 @@ import managers.MovieManager;
 import managers.PricingManager;
 import managers.ShowTimeManager;
 
+/**
+ * Class that contains information about a Cinema
+ */
 public class Cinema implements IPrice {
     /**
      * The ID of the Cinema
@@ -42,6 +45,7 @@ public class Cinema implements IPrice {
         this.CinemaClass = CinemaClass;
     }
 
+    // GETTERS and SETTERS
     public double getPrice() {
         return PricingManager.getPrice(CinemaType) + PricingManager.getPrice(CinemaClass);
     }

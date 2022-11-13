@@ -2,13 +2,29 @@ package managers;
 import java.util.ArrayList;
 import entities.Cineplex;
 
+/**
+ * Class that manages all Cineplex related things and contains a list of Cinplexes in the Database
+ */
 public class CineplexManager {
+    /**
+     * a single instance for this class
+     */
     private static CineplexManager single_instance = null;
+
+    /**
+     * a list of cineplexes that are existent in the Database
+     */
     private ArrayList<Cineplex> cineplex;
 
-    // Initialiser
+    /**
+     * Constructor for the CineplexManager Class
+     */
     private CineplexManager(){}
 
+    /**
+     * get a single instance of this class
+     * @return a CinplexManager object
+     */
     public static CineplexManager getInstance()
     {
         if (single_instance == null)
@@ -44,10 +60,9 @@ public class CineplexManager {
         return null;
     } 
 
-    // Methods
     /**
      * Add new cineplex
-     * @param cine
+     * @param cine the cineplex to add
      */
     public void addCineplex(Cineplex cine){
         for(int x = 0; x < cineplex.size(); x++){
@@ -64,7 +79,7 @@ public class CineplexManager {
 
     /**
      * Search Cineplex by ID and remove
-     * @param cineID
+     * @param cineID the ID of the cineplex to remove
      */
     public void removeCineplexByID(int cineID){
         for(int x = 0; x < cineplex.size(); x++){
@@ -77,7 +92,10 @@ public class CineplexManager {
         System.out.println("Cineplex with ID: "+ cineID + " does not exist!");
     }
     
-    // remove Cineplex by name
+    /**
+     * Search Cineplex by name and remove
+     * @param cineName the name of the cineplex to remove
+     */
     public void removeCineplexByName(String cineName){
         for(int x = 0; x < cineplex.size(); x++){
             if(cineplex.get(x).getCineplexName() == cineName){
@@ -88,8 +106,11 @@ public class CineplexManager {
         System.out.println(cineName + " does not exist!");
     }
 
-    // consolidate which cineplex have particular, take in movie ID and see which cineplex have that ID
-    // search cineplexs for movieID
+    /**
+     * get a list of cinplexes where a movie is listed
+     * @param movieID the ID of the movie 
+     * @return a list of cinplexes where this movie is showing
+     */
     public ArrayList<Cineplex> getCineplexByMovie(int movieID) {
         ArrayList<Cineplex> containsMovies = new ArrayList<Cineplex>();
 
@@ -101,6 +122,4 @@ public class CineplexManager {
 
         return containsMovies;
     }
-
-    // consolidate which cinema in that cineplex have movieID
 }

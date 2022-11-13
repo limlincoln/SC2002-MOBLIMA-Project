@@ -9,20 +9,29 @@ import entities.Seats;
 import entities.ShowTime;
 import enums.DayOfWeek;
 
-
+/**
+ * A class that helps manage showtimes
+ */
 public class ShowTimeManager {
+    /**
+     * a single instance of this class
+     */
     private static ShowTimeManager single_instance = null;
 
+    /**
+     * scanner
+     */
     private Scanner sc = new Scanner(System.in);
-    // FUNCTIONALITY
-    // SHOW ShowTime FOR A PARTICULAR MOVIE & DAY & CINEPLEX & CINEMA
-    // RETURN ARRAY OF ShowTime
 
-    // FINDSEATS:
-    // FIND THE SEATS FROM CINEMA CLASS USING ShowTime SLOT INDEX
-
-    // Initialisers
+    /**
+     * The Constructor for this class
+     */
     private ShowTimeManager(){}
+
+    /**
+     * get a single instance for this class
+     * @return a ShowTimeManager object
+     */
     public static ShowTimeManager getInstance()
     {
         if (single_instance == null)
@@ -32,11 +41,10 @@ public class ShowTimeManager {
 
     /**
      * Get all date and time where a particular movie in a cinema is showing
-     * @param cinema
+     * @param cinema 
      * @param movie
      * @return An arraylist of localdate time where the movie is showing
      */
-
     public ArrayList<LocalDateTime> getShowTimeByMovie(Cinema cinema, Movie movie){
         ArrayList<LocalDateTime> showDateTimes = new ArrayList<LocalDateTime>();
         int movieID = movie.getMovieID();
@@ -58,7 +66,7 @@ public class ShowTimeManager {
      * Get the seats based on the selected date and time
      * @param cinema
      * @param localDateTime
-     * @return
+     * @return the seats
      */
     public Seats getSeatsByLocalDateTime(Cinema cinema, LocalDateTime localDateTime){
         int dayOfWeekInInt = localDateTime.getDayOfWeek().getValue();
