@@ -1,11 +1,11 @@
 package menus;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import entities.Movie;
 import enums.Status;
+import utils.ConvertDouble;
 
 public class MovieSelectorMenu implements ISelectorMenu<Movie> {
     public static MovieSelectorMenu single_instance = null;
@@ -29,14 +29,14 @@ public class MovieSelectorMenu implements ISelectorMenu<Movie> {
             return null;
         }
         Scanner sc = new Scanner(System.in);
-        DecimalFormat df = new DecimalFormat(".##");
+        
         System.out.println(	"================ " +heading+ " =================");
                     for(int i = 0;  i < movies.size(); i++) {
                         Movie cur = movies.get(i);
                         if(cur.getStatus() == Status.EndOfShowing){
                             continue;
                         }
-                        System.out.println("("+(i+1)+")"+cur.getMovieName()+ " | Status: " + cur.getStatus() + " | Sales: " + df.format(cur.getTotalSales()) + " | Average Rating: " + df.format(cur.getAvgRating()));
+                        System.out.println("("+(i+1)+")"+cur.getMovieName()+ " | Status: " + cur.getStatus() + " | Sales: " + ConvertDouble.convert(cur.getTotalSales()) + " | Average Rating: " + ConvertDouble.convert(cur.getAvgRating()));
         }
 
         int selectedMovieInd;

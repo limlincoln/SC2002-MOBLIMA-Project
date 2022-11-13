@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-import entities.IPrice;
 import enums.IPriceable;
 
 public class PricingManager {
@@ -51,12 +50,12 @@ public class PricingManager {
      */
     public static void showPriceMatrix() {
         System.out.println("========== Pricing ==========");
-        int[] moreTab = {1,2,4,6,10,11,12,14};
+        int[] moreTab = {1,2,5,6,7,11,13};
         int i=0;
         int j=0;
         for(IPriceable o: priceMatrix.keySet()) {
             String tabs = "\t\t";
-            if(j<5 && i==moreTab[j]){
+            if(j<7 && i==moreTab[j]){
                 tabs+="\t";
                 j++;
             }

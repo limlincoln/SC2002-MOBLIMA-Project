@@ -52,7 +52,9 @@ public class BookingMenu {
 
         ArrayList<IPrice> prices = new ArrayList<IPrice>();
         prices.addAll(tickets);
-        prices.add(cinema);
+        for(int i=0; i<noOfSeats; i++){
+            prices.add(cinema);
+        }
 
         double totalPrice = PriceCalculator.getTotalPrice(prices, noOfSeats);
         PricingManager.showPriceMatrix();
