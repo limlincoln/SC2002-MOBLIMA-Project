@@ -2,11 +2,19 @@ package utils;
 
 import entities.ISeat;
 import entities.ISeats;
-
+/**
+ * Display seats for movie
+ */
 public class SeatPrinter implements IPrinter<ISeat[][]>{
+    /**
+     * Single instance of SeatPrinter
+     */
     private static SeatPrinter single_instance = null;
     private SeatPrinter(){};
-
+    /**
+    * Creates or gets a single instance of SeatPrinter class
+    * @return SeatPrinter Class
+    */
     public static SeatPrinter getInstance(){
         if(single_instance == null){
             single_instance = new SeatPrinter();
@@ -47,6 +55,10 @@ public class SeatPrinter implements IPrinter<ISeat[][]>{
     }
     
     // overload
+    
+    /**
+     * Seat printer
+     */
     public void print(ISeats seats){
        this.print(seats.getSeats());
     }

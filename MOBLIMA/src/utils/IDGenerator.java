@@ -3,6 +3,10 @@ package utils;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * Generate ID 
+ *
+ */
 public class IDGenerator {
     public static int get(){
         AtomicInteger idCounter =  new AtomicInteger(100);

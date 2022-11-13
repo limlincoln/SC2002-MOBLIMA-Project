@@ -6,12 +6,20 @@ import java.util.Scanner;
 import entities.Cineplex;
 import entities.Movie;
 import managers.CineplexManager;
-
+/**
+ * Menu to display cineplex
+ */
 public class CineplexMenu {
+    /** 
+     * Single instance of CineplexMenu 
+     */
     private static CineplexMenu single_instance = null;
     
     private CineplexMenu(){}
-
+    /**
+     * Get or creates the single instance of CineplexMenu class
+     * @return CineplexMenu Class
+     */
 
     public static CineplexMenu getInstance()
     {

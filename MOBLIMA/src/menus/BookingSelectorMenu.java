@@ -5,12 +5,20 @@ import java.util.Scanner;
 
 import entities.Booking;
 import managers.MovieManager;
-
+/**
+ * Menu to display Booking selector
+ */
 public class BookingSelectorMenu implements ISelectorMenu<Booking> {
+    /** 
+     * Single instance of BookingSelectorMenu 
+     */
     public static BookingSelectorMenu single_instance = null;
 
     private BookingSelectorMenu() {}
-
+    /**
+     * Get or creates the single instance of BookingSelectorMenu class
+     * @return BookingSelectorMenu Class
+     */
     public static BookingSelectorMenu getInstance() {
         if(single_instance == null) {
             single_instance = new BookingSelectorMenu();
@@ -20,6 +28,9 @@ public class BookingSelectorMenu implements ISelectorMenu<Booking> {
 
     /**
      * Select Booking to rate
+     *  @param bookings
+     *   @param heading
+     *   @return Selected booking
      */
     public Booking startSelector(ArrayList<Booking> bookings, String heading) {
         if(bookings.size() ==0){

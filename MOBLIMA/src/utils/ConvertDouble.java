@@ -2,6 +2,10 @@ package utils;
 
 import java.text.DecimalFormat;
 
+/**
+ * Convert double to string
+ *
+ */
 public class ConvertDouble {
     public static String convert(Double val) {
       DecimalFormat df = new DecimalFormat(".##");

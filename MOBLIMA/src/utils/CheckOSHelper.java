@@ -1,5 +1,9 @@
 package utils;
 
+/**
+ * Check OS type for different file separator
+ *
+ */
 public class CheckOSHelper {
 
   private static String OS = System.getProperty("os.name").toLowerCase();

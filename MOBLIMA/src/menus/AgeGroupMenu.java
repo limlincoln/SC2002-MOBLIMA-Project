@@ -2,12 +2,20 @@ package menus;
 
 import java.util.Scanner;
 import enums.AgeGroup;;
-
+/**
+ * Menu to display Age group
+ */
 public class AgeGroupMenu {
+    /** 
+     * Single instance of AgeGroupMenu 
+     */
   private static AgeGroupMenu single_instance = null;
   private AgeGroupMenu(){}
 
-
+  /**
+   * Get or creates the single instance of AgeGroupMenu class
+   * @return AgeGroupMenu Class
+   */
   public static AgeGroupMenu getInstance()
   {
     if (single_instance == null)

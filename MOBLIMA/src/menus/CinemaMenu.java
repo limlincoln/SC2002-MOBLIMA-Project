@@ -5,14 +5,22 @@ import java.util.ArrayList;
 import entities.Movie;
 import entities.Cinema;
 import entities.Cineplex;
-
+/**
+ * Menu to display cinema
+ */
 public class CinemaMenu {
+    /** 
+     * Single instance of CinemaMenu 
+     */
     private static CinemaMenu single_instance = null;
     
     private Scanner sc = new Scanner(System.in);
 
     private CinemaMenu(){}
-
+    /**
+     * Get or creates the single instance of CinemaMenu class
+     * @return CinemaMenu Class
+     */
 
     public static CinemaMenu getInstance()
     {

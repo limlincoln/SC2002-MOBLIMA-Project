@@ -6,12 +6,20 @@ import java.util.Scanner;
 import entities.Movie;
 import enums.Status;
 import utils.ConvertDouble;
-
+/**
+ * Menu to display movie selector
+ */
 public class MovieSelectorMenu implements ISelectorMenu<Movie> {
+    /** 
+     * Single instance of MovieSelectorMenu 
+     */
     public static MovieSelectorMenu single_instance = null;
 
     private MovieSelectorMenu() {}
-
+    /**
+     * Get or creates the single instance of MovieSelectorMenu class
+     * @return MovieSelectorMenu Class
+     */
     public static MovieSelectorMenu getInstance() {
         if(single_instance == null) {
             single_instance = new MovieSelectorMenu();
@@ -21,6 +29,8 @@ public class MovieSelectorMenu implements ISelectorMenu<Movie> {
 
     /**
      * Select movie
+     * @param ArrayList<Movie> movie
+     * @param heading
      */
     public Movie startSelector(ArrayList<Movie> movies, String heading) {
         if(movies.size() == 0){
@@ -72,6 +82,11 @@ public class MovieSelectorMenu implements ISelectorMenu<Movie> {
         return null;
     } 
     
+    /**
+     * Select movie for staff
+     * @param ArrayList<Movie> movie
+     * @param heading
+     */
     public Movie staffSelector(ArrayList<Movie> movies, String heading) {
         Scanner sc = new Scanner(System.in);
         System.out.println(	"================ " +heading+ " =================");

@@ -16,13 +16,21 @@ import managers.TicketManager;
 import entities.Seats;
 import entities.Ticket;
 import enums.AgeGroup;
-
+/**
+ * Menu to display booking
+ */
 public class BookingMenu {
+    /** 
+     * Single instance of BookingMenu 
+     */
     private static BookingMenu single_instance = null;
     
     private BookingMenu(){}
 
-
+    /**
+     * Get or creates the single instance of BookingMenu class
+     * @return BookingMenu Class
+     */
     public static BookingMenu getInstance()
     {
         if (single_instance == null)

@@ -7,14 +7,22 @@ import entities.Booking;
 import managers.BookingManager;
 import managers.MovieManager;
 
+/**
+ * Menu to display movie rating
+ */
 public class RatingMenu {
+    /** 
+     * Single instance of RatingMenu 
+     */
     private static RatingMenu single_instance = null;
     
     private Scanner sc = new Scanner(System.in);
 
     private RatingMenu(){}
-
-
+    /**
+     * Get or creates the single instance of Top5BySalesMenu class
+     * @return Top5BySalesMenu Class
+     */
     public static RatingMenu getInstance()
     {
         if (single_instance == null)
@@ -60,7 +68,10 @@ public class RatingMenu {
 	            }
 	        } while (choice != 0);
     }
-
+	/**
+	 * Displays pass rating
+	 *
+	 */
     public void displayPastRatings() {
         String username = CustomerFormMenu.startUserNameForm();
         ArrayList<Booking> bookings = BookingManager.getRatedBookingsByUsername(username);

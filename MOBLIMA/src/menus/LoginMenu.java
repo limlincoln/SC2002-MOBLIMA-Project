@@ -3,15 +3,23 @@ package menus;
 import java.util.Scanner;
 
 import managers.LoginAuthenticator;
-
+/**
+ *  Login Menu  for staff
+ */
 public class LoginMenu {
+    /** 
+     * Single instance of LoginMenu 
+     */
     private static LoginMenu single_instance = null;
     
     private Scanner sc = new Scanner(System.in);
 
     private LoginMenu(){}
 
-
+    /**
+     * Get or creates the single instance of LoginMenu class
+     * @return LoginMenu Class
+     */
     public static LoginMenu getInstance()
     {
         if (single_instance == null)

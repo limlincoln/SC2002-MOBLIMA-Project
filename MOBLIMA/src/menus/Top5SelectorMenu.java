@@ -5,6 +5,9 @@ import java.util.Scanner;
 import managers.SettingsManager;
 
 public class Top5SelectorMenu {
+    /**
+     * Display a menu for staff to choose to list top 5 movies by sales or rating or both
+     */
     public static void displaySelector() {
         Scanner sc = new Scanner(System.in);
 

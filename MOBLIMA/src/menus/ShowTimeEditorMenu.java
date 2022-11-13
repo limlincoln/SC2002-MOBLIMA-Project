@@ -10,8 +10,15 @@ import entities.ShowTime;
 import enums.DayOfWeek;
 import managers.CineplexManager;
 import managers.MovieManager;
+/**
+ * Menu to edit showtime
+ */
 
 public class ShowTimeEditorMenu {
+	/**
+	 * Show time editor
+	 *
+	 */
     public static void startShowTimeEditor() {
         Cineplex cineplex = CineplexSelectorMenu.getInstance().startSelector(CineplexManager.getInstance().getCineplexs(), "Select a Cinplex");
         Cinema cinema = CinemaSelectorMenu.getInstance().startSelector(cineplex.getCinemas(), "Select a Cinema");

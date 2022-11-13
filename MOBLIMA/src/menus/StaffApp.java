@@ -1,17 +1,23 @@
 package menus;
 
 import java.util.Scanner;
-
+/**
+ * Menu for staff
+ */
 public class StaffApp {
-
-
+    /** 
+     * Single instance of Top5BySalesMenu 
+     */
     private static StaffApp single_instance = null;
     
     private Scanner sc = new Scanner(System.in);
 
     private StaffApp(){}
 
-
+    /**
+     * Get or creates the single instance of StaffApp class
+     * @return StaffApp Class
+     */
     public static StaffApp getInstance()
     {
         if (single_instance == null)
@@ -20,7 +26,7 @@ public class StaffApp {
     }
 
     /**
-	 * Logged in meny for staff app
+	 * Logged in menu for staff app
 	 */
     public void displayLoggedInMenu() { //TDOO: CREATE NEW MENU FOR THIS
 		int choice;

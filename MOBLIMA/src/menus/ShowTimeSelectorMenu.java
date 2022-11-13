@@ -7,13 +7,20 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import managers.HolidayManager;
-
+/**
+ * Menu to display ShowTime selector
+ */
 public class ShowTimeSelectorMenu implements ISelectorMenu<LocalDateTime> {
-
+    /** 
+     * Single instance of ShowTimeSelectorMenu 
+     */
     public static ShowTimeSelectorMenu single_instance = null;
 
     private ShowTimeSelectorMenu() {}
-
+    /**
+     * Get or creates the single instance of ShowTimeSelectorMenu class
+     * @return ShowTimeSelectorMenu Class
+     */
     public static ShowTimeSelectorMenu getInstance() {
         if(single_instance == null) {
             single_instance = new ShowTimeSelectorMenu();
@@ -23,6 +30,8 @@ public class ShowTimeSelectorMenu implements ISelectorMenu<LocalDateTime> {
 
     /**
      * Select showtime
+     * @param ArrayList<LocalDateTime> showtimes
+     * @param heading
      */
     public LocalDateTime startSelector(ArrayList<LocalDateTime> showtimes, String heading) {
         Scanner sc = new Scanner(System.in);

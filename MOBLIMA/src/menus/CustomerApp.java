@@ -1,15 +1,21 @@
 package menus;
 import java.util.Scanner;
-
-
+/**
+ * Menu to display customer app  
+ */
 public class CustomerApp {
-	
+    /** 
+     * Single instance of CustomerApp 
+     */
     private static CustomerApp single_instance = null;
     
     private Scanner sc = new Scanner(System.in);
 
     private CustomerApp(){}
-
+    /**
+     * Get or creates the single instance of CustomerApp class
+     * @return CustomerApp Class
+     */
 
     public static CustomerApp getInstance()
     {

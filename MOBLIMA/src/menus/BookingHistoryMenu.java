@@ -5,15 +5,22 @@ import entities.Booking;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/**
+ * Menu to display BookingHistoryMenu
+ */
 public class BookingHistoryMenu {
+    /** 
+     * Single instance of BookingHistoryMenu 
+     */
     private static BookingHistoryMenu single_instance = null;
     
     private Scanner sc = new Scanner(System.in);
 
     private BookingHistoryMenu(){}
-
-
+    /**
+     * Get or creates the single instance of BookingHistoryMenu class
+     * @return BookingHistoryMenu Class
+     */
     public static BookingHistoryMenu getInstance()
     {
         if (single_instance == null)

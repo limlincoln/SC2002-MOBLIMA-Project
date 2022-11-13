@@ -6,15 +6,22 @@ import java.util.Scanner;
 import consolidators.MovieConsolidator;
 import managers.SettingsManager;
 import entities.Movie;
-
+/**
+ * Menu to display movie 
+ */
 public class MovieMenu {
+    /** 
+     * Single instance of MovieMenu 
+     */
     private static MovieMenu single_instance = null;
     
     private Scanner sc = new Scanner(System.in);
 
     private MovieMenu(){}
-
-
+    /**
+     * Get or creates the single instance of MovieMenu class
+     * @return MovieMenu Class
+     */
     public static MovieMenu getInstance()
     {
         if (single_instance == null)

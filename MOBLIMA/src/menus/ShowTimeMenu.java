@@ -10,16 +10,23 @@ import entities.Movie;
 import entities.Seats;
 import managers.ShowTimeManager;
 import utils.SeatPrinter;
-
+/**
+ * Menu to display ShowTime
+ */
 public class ShowTimeMenu {
-	
+    /** 
+     * Single instance of ShowTimeMenu 
+     */
     private static ShowTimeMenu single_instance = null;
     
     private Scanner sc = new Scanner(System.in);
 
     private ShowTimeMenu(){}
 
-
+    /**
+     * Get or creates the single instance of ShowTimeMenu class
+     * @return ShowTimeMenu Class
+     */
     public static ShowTimeMenu getInstance()
     {
         if (single_instance == null)

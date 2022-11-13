@@ -6,13 +6,21 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import enums.*;
-
+/**
+ * Menu to display settings
+ */
 public class SettingsMenu {
+    /** 
+     * Single instance of SettingsMenu 
+     */
     private static SettingsMenu single_instance = null;
 	Scanner sc = new Scanner(System.in);
 
 	private SettingsMenu(){};
-    
+    /**
+     * Get or creates the single instance of SettingsMenu class
+     * @return SettingsMenu Class
+     */
     public static SettingsMenu getInstance()
     {
         if (single_instance == null)
@@ -61,7 +69,9 @@ public class SettingsMenu {
 			}
 		} while (choice!=0);
 	}
-
+    /**
+     * Displays the top 5 settings menu
+    */
 	public void top5MoviesSettings() {
 		int choice;
 		do {
@@ -98,7 +108,7 @@ public class SettingsMenu {
 	}
 
     /**
-     * Price Settings Menu
+     * Display Price Settings Menu
      */
     private void priceSettings(){
         int choice;

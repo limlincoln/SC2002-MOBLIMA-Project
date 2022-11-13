@@ -5,12 +5,14 @@ import java.util.Scanner;
 
 import entities.Customer;
 import utils.IDGenerator;
-
+/**
+ * Menu to display Customer Form Menu
+ */
 public class CustomerFormMenu {
 
     /**
      * Customer details form
-     * @return
+     * @return Customer's information 
      */
     public static Customer startFullForm() {
         String userName;
@@ -36,7 +38,7 @@ public class CustomerFormMenu {
 
     /**
      * Customer username form
-     * @return
+     * @return Customer's username
      */
     public static String startUserNameForm() {
         String userName;

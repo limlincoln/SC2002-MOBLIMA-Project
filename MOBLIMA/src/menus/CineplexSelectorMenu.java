@@ -4,13 +4,20 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import entities.Cineplex;
-
+/**
+ * Menu to display cineplex selector
+ */
 public class CineplexSelectorMenu implements ISelectorMenu<Cineplex> {
-
+    /** 
+     * Single instance of CineplexSelectorMenu 
+     */
     public static CineplexSelectorMenu single_instance = null;
 
     private CineplexSelectorMenu() {}
-
+    /**
+     * Get or creates the single instance of CineplexSelectorMenu class
+     * @return CineplexSelectorMenu Class
+     */
     public static CineplexSelectorMenu getInstance() {
         if(single_instance == null) {
             single_instance = new CineplexSelectorMenu();
@@ -20,6 +27,9 @@ public class CineplexSelectorMenu implements ISelectorMenu<Cineplex> {
 
     /**
      * Select cineplex
+     *  @param cineplex
+     *   @param heading
+     *   @return selected cineplex
      */
     public Cineplex startSelector(ArrayList<Cineplex> cineplex, String heading) {
         if(cineplex.size() == 0){

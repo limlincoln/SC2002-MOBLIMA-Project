@@ -6,7 +6,7 @@ import initializer.MainInitializer;
 import initializer.MainSerializer;
 
 /**
- * Main MOBILMA App Menu
+ * Main app to run to choose Customer or Staff app
  */
 public class MOBLIMA_APP {
 	public static void main(String[] args) {

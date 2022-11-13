@@ -5,20 +5,32 @@ import java.util.Scanner;
 import entities.Holiday;
 import managers.HolidayManager;
 
+/**
+ * Menu to display holday selector
+ */
 public class HolidaySelectorMenu implements ISelectorMenu<Holiday>{
-
-    // TODO: Holiday ID
+    /** 
+     * Single instance of HolidaySelectorMenu 
+     */
     public static HolidaySelectorMenu single_instance = null;
 
     private HolidaySelectorMenu(){}
-
+    /**
+     * Get or creates the single instance of HolidaySelectorMenu class
+     * @return HolidaySelectorMenu Class
+     */
     public static HolidaySelectorMenu getInstance(){
         if (single_instance == null){
             single_instance = new HolidaySelectorMenu();
         }
         return single_instance;
     }
-
+    /**
+     * Select holiday
+     *  @param Holiday
+     *   @param heading
+     *   return holiday 
+     */
     public Holiday startSelector(ArrayList<Holiday> Holiday, String heading){
         Scanner sc = new Scanner(System.in);
         System.out.println(	"================ " + heading + " =================");
