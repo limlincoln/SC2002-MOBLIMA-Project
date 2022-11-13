@@ -1,6 +1,8 @@
 package menus;
 import managers.PricingManager;
 import managers.SettingsManager;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import enums.*;
@@ -137,14 +139,15 @@ public class SettingsMenu {
      */
 	private void editPriceSettings() {
 		int choice;
+		boolean reAsk = false;
+		ArrayList<Class<? extends IPriceable>> priceAbleObjs = PricingManager.getPriceAbleObjects();
+
 		do {
+			reAsk = false;
 	        System.out.println("=================== Edit Price Settings ===================");
-            System.out.println(" 1. Base Prices");
-            System.out.println(" 2. Age Group Prices");
-            System.out.println(" 3. Cinema Type Prices");
-			System.out.println(" 4. Cinema Class Prices");
-            System.out.println(" 5. Time of Day Prices");
-            System.out.println(" 6. Type of Day Prices");
+			for(int i = 0; i < priceAbleObjs.size(); i++) {
+				System.out.println((i+1)+". "+priceAbleObjs.get(i).getSimpleName() + " Prices");
+			}
             System.out.println(" 0. Back to Settings Menu");
             System.out.println("===========================================================");
 
@@ -155,111 +158,42 @@ public class SettingsMenu {
 			}
 			choice = sc.nextInt();
 			sc.nextLine();
-				
-			double newPrice = 0;
-			int thischoice;
-			switch (choice) {
-				case 1: 
-					System.out.println("Enter the new base price:");
-					newPrice = sc.nextDouble();
-					SettingsManager.getInstance().editPrices(PriceType.BASE_PRICE, newPrice);
-					break;
-				case 2:
-					do {
-						System.out.println(" 1. Adult Prices");
-						System.out.println(" 2. Student Prices");
-						System.out.println(" 3. Senior Prices");
-						System.out.println(" 0. Back to Settings Menu");
-						System.out.println("Enter choice: ");
-						thischoice = sc.nextInt();
-						if(thischoice!=0)
-						{
-							System.out.println("Enter new Price: ");
-							newPrice = sc.nextDouble();
-							if (thischoice == 1){PricingManager.updatePrice(AgeGroup.ADULT,newPrice);}
-							else if (thischoice == 2){PricingManager.updatePrice(AgeGroup.STUDENT,newPrice);}						
-							else if (thischoice == 3){PricingManager.updatePrice(AgeGroup.SENIOR,newPrice);}	
-						}
-					
-					} while (thischoice != 0);					
-					break;
-				case 3:
-					do {
-						System.out.println(" 1. IMAX Prices");
-						System.out.println(" 2. 3D Prices");
-						System.out.println(" 3. Normal Prices");
-						System.out.println("Enter choice: ");
-						thischoice = sc.nextInt();
-						if(thischoice !=0)
-						{
-							System.out.println("Enter new Price: ");
-							newPrice = sc.nextDouble();
-							if (thischoice == 1){PricingManager.updatePrice(CinemaType.IMAX,newPrice);}
-							else if (thischoice == 2){PricingManager.updatePrice(CinemaType._3D,newPrice);}						
-							else if (thischoice == 3){PricingManager.updatePrice(CinemaType.NORMAL,newPrice);}	
-						}
-					
-					} while (thischoice != 0);					
-					break;
-				case 4:
-					do {
-						System.out.println(" 1. Platinum Prices");
-						System.out.println(" 2. Gold Prices");
-						System.out.println(" 3. Normal Prices");
-						System.out.println("Enter choice: ");
-						thischoice = sc.nextInt();
-						if(thischoice !=0)
-						{
-							System.out.println("Enter new Price: ");
-							newPrice = sc.nextDouble();
-							if (thischoice == 1){PricingManager.updatePrice(CinemaClass.PLATINUM,newPrice);}
-							else if (thischoice == 2){PricingManager.updatePrice(CinemaClass.GOLD,newPrice);}						
-							else if (thischoice == 3){PricingManager.updatePrice(CinemaClass.NORMAL,newPrice);}	
-						}
-					
-					} while (thischoice != 0);					
-					break;
-				case 5:
-					do {
-						System.out.println(" 1. Before 6 Prices");
-						System.out.println(" 2. After 6 Prices");
-						System.out.println("Enter choice: ");
-						thischoice = sc.nextInt();
-						if(thischoice!=0)
-						{
-							System.out.println("Enter new Price: ");
-							newPrice = sc.nextDouble();
-							if (thischoice == 1){PricingManager.updatePrice(TimeOfDay.BEFORE_6,newPrice);}
-							else if (thischoice == 2){PricingManager.updatePrice(TimeOfDay.AFTER_6,newPrice);}		
-						}
-					
-					} while (thischoice != 0);					
-					break;
-				case 6:
-					do {
-						System.out.println(" 1. Weekday Prices");
-						System.out.println(" 2. Weekend Prices");
-						System.out.println(" 3. Public Holiday Prices");
-						System.out.println("Enter choice: ");
-						thischoice = sc.nextInt();
-						if(thischoice!=0)
-						{
-							System.out.println("Enter new Price: ");
-							newPrice = sc.nextDouble();
-							if (thischoice == 1){PricingManager.updatePrice(TypeOfDay.WEEKDAY,newPrice);}
-							else if (thischoice == 2){PricingManager.updatePrice(TypeOfDay.WEEKEND,newPrice);}						
-							else if (thischoice == 3){PricingManager.updatePrice(TypeOfDay.PUBLIC_HOLIDAY,newPrice);}	
-						}
-					} while (thischoice != 0);					
-					break;
-				case 0:
-					System.out.println("Back to Settings Menu......");
-					break;
-				default:
-					System.out.println("Invalid choice.");
-					break;
+
+			if(choice < 0 || choice > priceAbleObjs.size()) {
+				System.out.println("Please enter a valid number!");
+				reAsk = true;
 			}
-		} while (choice!=0);
+
+		} while(reAsk);
+
+		if(choice == 0) return;
+		Class <? extends IPriceable> selectedType  = priceAbleObjs.get(choice-1);
+
+		double newPrice = 0;
+		int thischoice;
+
+		do {
+			reAsk = false;
+			for(int i = 0; i < selectedType.getEnumConstants().length; i++) {
+				System.out.println((i+1)+". "+selectedType.getEnumConstants()[i]);
+			}
+			System.out.println(" 0. Back to Settings Menu");
+			System.out.println("Enter choice: ");
+			thischoice = sc.nextInt();
+
+			if(thischoice < 0 || thischoice > selectedType.getEnumConstants().length) {
+				System.out.println("Please enter a valid option!");
+				reAsk = true;
+			}
+			else if(thischoice!=0)
+			{
+				System.out.println("Enter new Price: ");
+				newPrice = sc.nextDouble();
+
+				PricingManager.updatePrice(selectedType.getEnumConstants()[thischoice-1], newPrice);	
+			}
+		
+		} while (reAsk);					
 	}
 
     /**
@@ -267,55 +201,55 @@ public class SettingsMenu {
      */
 	private void viewPriceSettings() {
 		int choice;
-		System.out.println(	"=================== View Price Settings ==================");
-		System.out.println(" 1. Base Prices");
-		System.out.println(" 2. Age Group Prices");
-		System.out.println(" 3. Cinema Type Prices");
-		System.out.println(" 4. Time of Day Prices");
-		System.out.println(" 5. Type of Day Prices");
-		System.out.println(" 0. Back to Settings Menu");
-		System.out.println("===========================================================");
+		boolean reAsk = false;
+		ArrayList<Class<? extends IPriceable>> priceAbleObjs = PricingManager.getPriceAbleObjects();
+
 		do {
-			System.out.println("Enter choice: ");
+			reAsk = false;
+	        System.out.println("=================== View Price Settings ===================");
+			for(int i = 0; i < priceAbleObjs.size(); i++) {
+				System.out.println((i+1)+". "+priceAbleObjs.get(i).getSimpleName() + " Prices");
+			}
+            System.out.println(" 0. Back to Settings Menu");
+            System.out.println("===========================================================");
+
+			System.out.println("Enter choice:");
 			while(!sc.hasNextInt()) {
 				System.out.println("Please enter a number!");
 				sc.next();
 			}
 			choice = sc.nextInt();
 			sc.nextLine();
-				
-			switch (choice) {
-				case 1:
-					System.out.println("Base Price: $" + PricingManager.getPrice(PriceType.BASE_PRICE));
-                    break;
-				case 2:
-					System.out.println("Adult Price: $" + PricingManager.getPrice(AgeGroup.ADULT));
-                    System.out.println("Senior Price: $" + PricingManager.getPrice(AgeGroup.SENIOR));
-                    System.out.println("Student Price: $" + PricingManager.getPrice(AgeGroup.STUDENT));
-					break;
-				case 3: 
-                    System.out.println("IMAX Price: $" + PricingManager.getPrice(CinemaType.IMAX));
-                    System.out.println("3D Price: $" + PricingManager.getPrice(CinemaType._3D));
-                    System.out.println("Normal Price: $" + PricingManager.getPrice(CinemaType.NORMAL));
-					break;
-				case 4:
-                    System.out.println("Before 6PM Price: $" + PricingManager.getPrice(TimeOfDay.BEFORE_6));
-                    System.out.println("After 6PM Price: $" + PricingManager.getPrice(TimeOfDay.AFTER_6));
-					break;			
-				case 5:
-                    System.out.println("Weekend Price: $" + PricingManager.getPrice(TypeOfDay.WEEKEND));
-                    System.out.println("Weekday Price: $" + PricingManager.getPrice(TypeOfDay.WEEKDAY));
-                    System.out.println("Public Holiday Price: $" + PricingManager.getPrice(TypeOfDay.PUBLIC_HOLIDAY));
-					break;
-				case 0: 
-					break;
-				default:
-					System.out.println("Invalid choice.");
-					break;
+
+			if(choice < 0 || choice > priceAbleObjs.size()) {
+				System.out.println("Please enter a valid number!");
+				reAsk = true;
 			}
-		} while (choice!=0);
+
+		} while(reAsk);
+
+		if(choice == 0) return;
+		Class <? extends IPriceable> selectedType  = priceAbleObjs.get(choice-1);
+
+		int thischoice;
+
+		do {
+			reAsk = false;
+			for(int i = 0; i < selectedType.getEnumConstants().length; i++) {
+				System.out.println((i+1)+". "+selectedType.getEnumConstants()[i]);
+			}
+			System.out.println(" 0. Back to Settings Menu");
+			System.out.println("Enter choice: ");
+			thischoice = sc.nextInt();
+
+			if(thischoice < 0 || thischoice > selectedType.getEnumConstants().length) {
+				System.out.println("Please enter a valid option!");
+				reAsk = true;
+			}
+
+			System.out.println("Price is: $"+PricingManager.getPrice(selectedType.getEnumConstants()[thischoice-1]));	
 		
-		System.out.println("Back to Price Settings......");
+		} while (reAsk);				
 	}
 
     /**

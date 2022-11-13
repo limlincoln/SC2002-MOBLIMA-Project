@@ -1,6 +1,10 @@
 package managers;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
+import entities.IPrice;
 import enums.IPriceable;
 
 public class PricingManager {
@@ -60,6 +64,24 @@ public class PricingManager {
             System.out.println(o+":"+tabs+priceMatrix.get(o));
         }
         System.out.println("");
+    }
+
+    /**
+     * Get the objects which can have a price
+     * @return a string set with the name of the IPricable classes
+     */
+    public static ArrayList<Class<? extends IPriceable>> getPriceAbleObjects() {
+        ArrayList<Class<? extends IPriceable>> priceableObjsStr = new ArrayList<Class<? extends IPriceable>>();
+        
+        for(IPriceable priceableObj: priceMatrix.keySet()) {
+            priceableObjsStr.add(priceableObj.getClass());
+        }
+        
+        Set<Class<? extends IPriceable>> temp = new HashSet<>(priceableObjsStr);
+        priceableObjsStr.clear();
+        priceableObjsStr.addAll(temp);
+
+        return priceableObjsStr;
     }
 
     /**
