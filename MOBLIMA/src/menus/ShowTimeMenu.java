@@ -40,7 +40,6 @@ public class ShowTimeMenu {
 		LocalDateTime selectedShowTime = ShowTimeSelectorMenu.getInstance().startSelector(showtimes, "SELECT SHOWTIME");	
 
 		Seats selectedSeats = ShowTimeManager.getInstance().getSeatsByLocalDateTime(cinema, selectedShowTime);
-        System.out.println(selectedSeats.toString());
 
 		BookingMenu.getInstance().displayBookingMenu(movie, cinema, selectedSeats, selectedShowTime);
 	}

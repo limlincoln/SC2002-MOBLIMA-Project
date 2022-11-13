@@ -26,13 +26,18 @@ public class SeatPrinter implements IPrinter<ISeat[][]>{
         }
         System.out.println("\n");
         for(int i=0; i<row; i++){
-            if(!(1<col && seatlayout[i][0].getState() == " ")){
-                System.out.print(i+"  |");
+            System.out.print(i);
+            if(!(0<col && seatlayout[i][0].getState().equals(" "))){
+                System.out.print("  |");
             }
             for(int j=0; j<col; j++){
-                if(j>0 && seatlayout[i][j-1].getState() == " "){
+                if(j==0 && j+1<col && seatlayout[i][j+1].getState().equals(" ")){
                     continue;
-                }else if(j+1<col && seatlayout[i][j+1].getState() == " "){
+                }
+                if(j==col-1 && j>0 && seatlayout[i][j-1].getState().equals(" ")){
+                    continue;
+                }
+                if(j>0 && j+1<col && seatlayout[i][j-1].getState().equals(" ") && seatlayout[i][j+1].getState().equals(" ")){
                     continue;
                 }
                 System.out.print(seatlayout[i][j].getState() + "|");

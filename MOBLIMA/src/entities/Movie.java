@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import enums.CinemaType;
 import enums.MovieGenre;
 import enums.Status;
+import utils.ConvertDouble;
 
 public class Movie {
     /**
@@ -96,7 +97,6 @@ public class Movie {
      * Prints the details of this Movie on to the screen
      */
     public void showDetails(){
-        DecimalFormat df = new DecimalFormat(".##");
         System.out.println(
             "MovieName: " + getMovieName() + "\n" +
             "Genre: " + getMovieType() + "\n" +
@@ -104,7 +104,7 @@ public class Movie {
             "casts: " + getCasts() + "\n" +
             "director: " + getDirector() + "\n" +
             "sypnopsis: " + getSypnopsis() + "\n" +
-            "Average Rating: " + df.format(getAvgRating()) + "\n" +
+            "Average Rating: " + ConvertDouble.convert(getAvgRating()) + "\n" +
             "Cinema Types: " + getCinemaTypes() + "\n"
         ); 
     }
