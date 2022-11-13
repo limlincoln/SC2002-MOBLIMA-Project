@@ -65,7 +65,8 @@ public class ShowTimeEditorMenu {
             
             }while(subChoice  < 0 || subChoice > listofshowtime.length);
         
-        
+        if(subChoice == 0) return;
+
         int newmovieid;
         boolean reAsk = false;
         do {
