@@ -63,6 +63,7 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 										+ movies.getCasts() + "|" 
 										+ movies.getTotalSales() + "|" 
 										+ movies.getRatings() + "|" 
+										+ movies.getAvgRating() + "|"
 										+ movies.getMovieType();
 					buffer.write(new_movie);
 					buffer.newLine();
@@ -83,7 +84,7 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 		String newDirectory;
 		
 		String movid, movietitle, types, status;
-		String director, synposis, cast1;
+		String director, synposis, casts;
 		String totalsales, NoOfRating, AvgRating;
 		
 		MovieGenre genre = null;
@@ -116,7 +117,7 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 				ArrayList<CinemaType> cinemaTypes = new ArrayList<CinemaType>();
 				for(String type :typesArr){	
 					CinemaType temp = null;
-					switch(type) {
+					switch(type.trim()) {
 						case "IMAX":
 							temp = CinemaType.IMAX;
 							break;
@@ -151,8 +152,11 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 				synposis = data[5];
 				
 				ArrayList<String> castlist = new ArrayList<String>();
-				cast1 = data[6];
-				castlist.add(cast1);
+				casts = data[6];
+				String[] castsArr = casts.replaceAll("\\[|\\]|", "").split(",");
+				for(String cast: castsArr) {
+					castlist.add(cast.trim());
+				}
 				
 				totalsales = data[7];
 				double newsales = Float.parseFloat(totalsales);
@@ -161,8 +165,7 @@ public class Movie_Initializer extends GetDatabaseDirectory {
 				NoOfRating = data[8];
 				String[] arr=NoOfRating.replaceAll("\\[|\\]|", "").split(",");
 		        for(int i=0;i<arr.length;i++){
-
-		        	ratinglist.add(Integer.parseInt(arr[i]));
+		        	ratinglist.add(Integer.parseInt(arr[i].trim()));
 		        }
 		        
 		        AvgRating = data[9];

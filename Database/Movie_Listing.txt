@@ -1,9 +1,9 @@
-1|Spider-Man: No Way Home|[NORMAL,IMAX]|Showing|Jon Watts|After Quentin Beck frames Peter Parker for his murder and reveals Parker's identity as Spider-Man, Parker, his girlfriend Michelle "MJ" Jones-Watson, best friend Ned Leeds, and aunt May are interrogated by the Department of Damage Control.|[Tom Holland,Zendaya,Benedict Cumberbatch]|986.3|[4,5]|4.5|ACTION
-2|MOVIE2|[IMAX]|ComingSoon|DIRECTOR|SYPNOSIS|[CAST2]|300|[1,2]|1.5|ACTION
-3|MOVIE3|[NORMAL]|Showing|DIRECTOR|SYPNOSIS|[CAST3]|400|[1,1]|1|ACTION
-4|MOVIE4|[NORMAL]|Preview|DIRECTOR|SYPNOSIS|[CAST4]|200|[3,4]|3.5|COMEDY
-5|MOVIE5|[IMAX]|Preview|DIRECTOR|SYPNOSIS|[CAST5]|600|[2,3]|2.5|ACTION
-6|MOVIE6|[IMAX]|Showing|DIRECTOR|SYPNOSIS|[CAST5]|700|[5,5]|5|ACTION
-7|MOVIE7|[IMAX]|Showing|DIRECTOR|SYPNOSIS|[CAST5]|150|[2,2]|2|ACTION
-8|MOVIE8|[IMAX]|ComingSoon|DIRECTOR|SYPNOSIS|[CAST5]|300|[3,3]|3|ACTION
-9|MOVIE9|[IMAX]|EndOfShowing|DIRECTOR|SYPNOSIS|[CAST5]|700|[3,3]|3|COMEDY
+1|Spider-Man: No Way Home|[NORMAL, IMAX]|Showing|Jon Watts|After Quentin Beck frames Peter Parker for his murder and reveals Parker's identity as Spider-Man, Parker, his girlfriend Michelle "MJ" Jones-Watson, best friend Ned Leeds, and aunt May are interrogated by the Department of Damage Control.|[Tom Holland, Zendaya, Benedict Cumberbatch]|986.2999877929688|[4, 5]|4.5|ACTION
+2|MOVIE2|[IMAX]|ComingSoon|DIRECTOR|SYPNOSIS|[CAST2]|300.0|[1, 2]|1.5|ACTION
+3|MOVIE3|[NORMAL]|Showing|DIRECTOR|SYPNOSIS|[CAST3]|400.0|[1, 1]|1.0|ACTION
+4|MOVIE4|[NORMAL]|Preview|DIRECTOR|SYPNOSIS|[CAST4]|200.0|[3, 4]|3.5|COMEDY
+5|MOVIE5|[IMAX]|Preview|DIRECTOR|SYPNOSIS|[CAST5]|600.0|[2, 3]|2.5|ACTION
+6|MOVIE6|[IMAX]|Showing|DIRECTOR|SYPNOSIS|[CAST5]|700.0|[5, 5]|5.0|ACTION
+7|MOVIE7|[IMAX]|Showing|DIRECTOR|SYPNOSIS|[CAST5]|150.0|[2, 2]|2.0|ACTION
+8|MOVIE8|[IMAX]|ComingSoon|DIRECTOR|SYPNOSIS|[CAST5]|300.0|[3, 3]|3.0|ACTION
+9|MOVIE9|[IMAX]|EndOfShowing|DIRECTOR|SYPNOSIS|[CAST5]|700.0|[3, 3]|3.0|COMEDY
