@@ -7,6 +7,7 @@ import managers.HolidayManager;
 
 public class HolidaySelectorMenu implements ISelectorMenu<Holiday>{
 
+    // TODO: Holiday ID
     public static HolidaySelectorMenu single_instance = null;
 
     private HolidaySelectorMenu(){}

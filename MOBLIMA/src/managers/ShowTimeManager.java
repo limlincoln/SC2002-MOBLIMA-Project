@@ -1,6 +1,7 @@
 package managers;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import entities.Cinema;
 import entities.Movie;
@@ -12,6 +13,15 @@ import enums.DayOfWeek;
 public class ShowTimeManager {
     private static ShowTimeManager single_instance = null;
 
+    private Scanner sc = new Scanner(System.in);
+    // FUNCTIONALITY
+    // SHOW ShowTime FOR A PARTICULAR MOVIE & DAY & CINEPLEX & CINEMA
+    // RETURN ARRAY OF ShowTime
+
+    // FINDSEATS:
+    // FIND THE SEATS FROM CINEMA CLASS USING ShowTime SLOT INDEX
+
+    // Initialisers
     private ShowTimeManager(){}
     public static ShowTimeManager getInstance()
     {

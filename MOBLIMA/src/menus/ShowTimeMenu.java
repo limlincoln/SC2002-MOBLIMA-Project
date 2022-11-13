@@ -2,17 +2,23 @@ package menus;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import entities.Cinema;
 import entities.Cineplex;
 import entities.Movie;
 import entities.Seats;
 import managers.ShowTimeManager;
+import utils.SeatPrinter;
 
 public class ShowTimeMenu {
 	
     private static ShowTimeMenu single_instance = null;
+    
+    private Scanner sc = new Scanner(System.in);
+
     private ShowTimeMenu(){}
+
 
     public static ShowTimeMenu getInstance()
     {

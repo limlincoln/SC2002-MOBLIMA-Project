@@ -9,7 +9,10 @@ import entities.Cineplex;
 public class CinemaMenu {
     private static CinemaMenu single_instance = null;
     
+    private Scanner sc = new Scanner(System.in);
+
     private CinemaMenu(){}
+
 
     public static CinemaMenu getInstance()
     {

@@ -7,7 +7,7 @@ import managers.MovieManager;
 public class Booking {
     /**
      * The transaction ID in the format XXXYYYYMMDDhh
-     * XXX = cinema code
+     * (XXX = cinema code)
      */
     private String TID;
 

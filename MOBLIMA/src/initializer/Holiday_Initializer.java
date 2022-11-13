@@ -44,7 +44,8 @@ public class Holiday_Initializer extends GetDatabaseDirectory {
 		String currentDirectory;
 		String newDirectory;
 
-		currentDirectory = Holiday_Initializer.getCurrentDirectory();
+		Holiday_Initializer holiday_init = new Holiday_Initializer();
+		currentDirectory = holiday_init.getCurrentDirectory();
 
 		newDirectory = currentDirectory;
 
@@ -118,9 +119,13 @@ public class Holiday_Initializer extends GetDatabaseDirectory {
 		String newDirectory;
 
 		String new_holiday;
+		String date;
+		DayOfWeek dayofweek = null;
 
+		int CountNoOfHolidays = 0;
 
-		currentDirectory = Holiday_Initializer.getCurrentDirectory();
+		Holiday_Initializer holiday_init = new Holiday_Initializer();
+		currentDirectory = holiday_init.getCurrentDirectory();
 
 		newDirectory = currentDirectory;
 
