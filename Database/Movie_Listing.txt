@@ -1,4 +1,4 @@
-1|Spider-Man: No Way Home|[NORMAL, IMAX]|Showing|Jon Watts|After Quentin Beck frames Peter Parker for his murder and reveals Parker's identity as Spider-Man, Parker, his girlfriend Michelle "MJ" Jones-Watson, best friend Ned Leeds, and aunt May are interrogated by the Department of Damage Control.|[Tom Holland, Zendaya, Benedict Cumberbatch]|986.2999877929688|[4, 5]|4.5|ACTION
+1|Spider-Man: No Way Home|[NORMAL, IMAX]|Showing|Jon Watts|After Quentin Beck frames Peter Parker for his murder and reveals Parker's identity as Spider-Man, Parker, his girlfriend Michelle "MJ" Jones-Watson, best friend Ned Leeds, and aunt May are interrogated by the Department of Damage Control.|[Tom Holland, Zendaya, Benedict Cumberbatch]|986.2999877929688|[4, 5, 4]|4.0|ACTION
 2|MOVIE2|[IMAX]|ComingSoon|DIRECTOR|SYPNOSIS|[CAST2]|300.0|[1, 2]|1.5|ACTION
 3|MOVIE3|[NORMAL]|Showing|DIRECTOR|SYPNOSIS|[CAST3]|400.0|[1, 1]|1.0|ACTION
 4|MOVIE4|[NORMAL]|Preview|DIRECTOR|SYPNOSIS|[CAST4]|200.0|[3, 4]|3.5|COMEDY

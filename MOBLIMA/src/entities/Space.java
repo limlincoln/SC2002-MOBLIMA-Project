@@ -1,5 +1,8 @@
 package entities;
 
+/**
+ * Class that contains information about a Space
+ */
 public class Space implements ISeat{
     /**
      * The Constructor for the Space Class
@@ -15,6 +18,10 @@ public class Space implements ISeat{
         return " ";
     }
 
+    /**
+     * get the state of this space
+     * @return always a 2
+     */
     public int getStateInt() {
         return 2;
     }

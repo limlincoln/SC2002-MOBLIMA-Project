@@ -2,14 +2,30 @@ package managers;
 import java.util.ArrayList;
 import entities.Cinema;
 
+/**
+ * Manages Cinemas and contains a list of all Cinemas
+ */
 public class CinemaManager {
-    private static CinemaManager single_instance = null;
-    private ArrayList<Cinema> cinemas;
-    // 1 week worth of showtimes
-    // array list of showimes
 
-    // Initialisers
+    /**
+     * a single instance for this class
+     */
+    private static CinemaManager single_instance = null;
+
+    /**
+     * The list of cinemas existent in the datebase
+     */
+    private ArrayList<Cinema> cinemas;
+
+    /**
+     * Constructor for the CinemaManager Class
+     */
     private CinemaManager(){}
+
+    /**
+     * Get a single instance of this manager
+     * @return a CinemaManager object
+     */
     public static CinemaManager getInstance()
     {
         if (single_instance == null)
@@ -35,11 +51,10 @@ public class CinemaManager {
     public void setCinema(ArrayList<Cinema> cine) {
         this.cinemas = cine;
     }
-
-    // Methods 
+ 
     /**
-     * Add new cinema to existing cinema
-     * @param cine
+     * Add new cinema to existing cinema list
+     * @param cine the cinema to add to the list
      */
     public void addCinema(Cinema cine){
         for(int x = 0; x < cinemas.size(); x++){
@@ -54,8 +69,8 @@ public class CinemaManager {
     }
 
     /**
-     * Search for cinema and remove from existing
-     * @param cineID
+     * Search for cinema and remove from existing list of cinemas
+     * @param cineID the ID of the cinema to remove
      */
     public void removeCinemaByID(int cineID){
         for(int x = 0; x < cinemas.size(); x++){

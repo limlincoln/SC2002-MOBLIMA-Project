@@ -1,6 +1,9 @@
 package entities;
 import java.util.ArrayList;
 
+/**
+ * Class that stores information about a Cineplex
+ */
 public class Cineplex {
     /**
      * The ID of this Cineplex

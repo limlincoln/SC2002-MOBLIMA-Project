@@ -7,6 +7,9 @@ import enums.CinemaType;
 import enums.MovieGenre;
 import enums.Status;
 
+/**
+ * Class that contains information about a Movie
+ */
 public class Movie {
     /**
      * The ID of this Movie

@@ -9,11 +9,19 @@ import java.io.IOException;
 
 import initializer.GetDatabaseDirectory;
 
+/**
+ * Class that manages authentication of logins
+ */
 public class LoginAuthenticator extends GetDatabaseDirectory{
-
+	/**
+	 * single instance of this class
+	 */
     private static LoginAuthenticator single_instance = null;
 
-
+	/**
+	 * get the single instance of this class
+	 * @return LoginAuthenticator object
+	 */
     public static LoginAuthenticator getInstance()
     {
         if (single_instance == null)
@@ -22,7 +30,9 @@ public class LoginAuthenticator extends GetDatabaseDirectory{
     }	
 	
     
-
+	/**
+	 * Constructor for this class
+	 */
     private LoginAuthenticator() {
     	
     }
@@ -30,9 +40,9 @@ public class LoginAuthenticator extends GetDatabaseDirectory{
     
     /**
 	 * Login authenticator to test for correct login credentials
-	 * @param username
+	 * @param username 
 	 * @param password
-	 * @return
+	 * @return true if successful login else false
 	 */
     public boolean login(String username, String password) {
         try {

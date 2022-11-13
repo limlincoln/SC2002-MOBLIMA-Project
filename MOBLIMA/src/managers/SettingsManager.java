@@ -16,51 +16,47 @@ import entities.Movie;
 import menus.ITop5Menu;
 import utils.IDGenerator;
 
+/**
+ * A class that manages all the settings
+ */
 public class SettingsManager {
 	Scanner sc = new Scanner(System.in);
+	/**
+	 * a single instance for this class
+	 */
 	private static SettingsManager single_instance = null;
+
+	/**
+	 * the top5menu class to show to customer
+	 */
 	private ITop5Menu customerTop5MenuClass;
+
+	/**
+	 * Constructor for this class
+	 * @param customerTop5MenuClass the top5menu class to show to customer
+	 */
 	private SettingsManager(ITop5Menu customerTop5MenuClass){
 		this.customerTop5MenuClass = customerTop5MenuClass;
 	}
+
+	/**
+	 * get an instance of this class
+	 * @return a SettingsManager object
+	 */
 	public static SettingsManager getInstance(){
 		return single_instance;
 	}
 
 	/**
 	 * Initialises a single instance of settings manager
-	 * @param customerTop5Value
+	 * @param customerTop5Value the top5menuclass to show to customer
 	 */
 	public static void initialize(ITop5Menu customerTop5Value){
 		single_instance = new SettingsManager(customerTop5Value);
 	}
 
-	public boolean editPrices(PriceType base, double newPrice){
-		String ba = base.name();
-		if (ba == "BASE_PRICE"){
-			PricingManager.updatePrice(PriceType.BASE_PRICE,newPrice);
-			System.out.println("Base Price updated to " + PricingManager.getPrice(PriceType.BASE_PRICE));
-			return true;
-		}
-		return false;
-	}
 
-	/**
-	 * Removes or edits dates of holidays stored in Holiday Manager 
-	 * @param nameOfHoliday
-	 * @param StartDateString
-	 * @param EndDateString
-	 * @return success or not
-	 */
-	public boolean editHoliday(String nameOfHoliday, String StartDateString, String EndDateString){
-		return false;
-	}
-
-
-	/**
-	 * Getter and Setters
-	 */
-
+	// GETTERS and SETTERS
 	public ITop5Menu getCustomerTop5MenuClass() {
 		return this.customerTop5MenuClass;
 	}
@@ -141,16 +137,10 @@ public class SettingsManager {
 		holi.remove(choice - 1);
 	}
 
-	// MOVIE FUNCTIONS
-
+	/**
+	 * edit the settings of a movie
+	 */
 	public void editMovieSettings(){
-	// EDIT MOVIE
-		// MOVIE EDITOR MENU
-		// ASK WHAT MOVIE (LIST ALL MOVIES)
-		// ASK WHICH ATTRIBUTE TO CHANGE
-		// ASK FOR VALUE
-		// CALL MOVIEMANAGER(MOVIE, ATTRIBUTE, VALUE), VALIDATE IN MOVIEMANAGER
-		// CHECK RESPONSE FROM MOVIEMANGER, REPEAT IF NEEDED
         String heading;
         Movie selectedMovie;
 		System.out.println(	"================ SELECT A MOVIE =================");
@@ -426,6 +416,9 @@ public class SettingsManager {
 		MovieManager.getInstance().addMovie(newmovie);                    
 	}
 
+	/**
+	 * delete a movie
+	 */
 	public void deleteMovieSetting(){
 		System.out.println(	"================ SELECT A MOVIE =================");
 		//ArrayList<Movie> delete = new ArrayList<Movie>();

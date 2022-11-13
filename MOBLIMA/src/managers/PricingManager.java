@@ -4,9 +4,11 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-import entities.IPrice;
 import enums.IPriceable;
 
+/**
+ * A class that manages everything related to prices and contains a priceMatrix based on the Database
+ */
 public class PricingManager {
     /*
      * Price Matrix (HashMap of adders and subtractors)
@@ -16,14 +18,19 @@ public class PricingManager {
     */
     private static HashMap<IPriceable, Double> priceMatrix = new HashMap<IPriceable, Double>();
 
-    public static double getPrice(Object o) {
+    /**
+     * Get the price of a type
+     * @param o the type for which to return the price
+     * @return the price based on the priceMatrix
+     */
+    public static double getPrice(IPriceable o) {
         return priceMatrix.get(o);
     }
 
     /**
      * Add new price into the price matrix
-     * @param priceFor
-     * @param price
+     * @param priceFor the type for which the price will be added
+     * @param price the actual price to set for this
      */
     public static void addPrice(IPriceable priceFor, Double price) {
         priceMatrix.put(priceFor, price);
@@ -31,8 +38,8 @@ public class PricingManager {
 
     /**
      * Update Price for each individual pricings
-     * @param priceFor
-     * @param newPrice
+     * @param priceFor the type for which the price will be updated
+     * @param newPrice the new price to set
      */
     public static void updatePrice(IPriceable priceFor, Double newPrice) {
         priceMatrix.put(priceFor, newPrice);
@@ -40,14 +47,14 @@ public class PricingManager {
 
     /**
      * Get the entire price matrix
-     * @return
+     * @return 
      */
     public static HashMap<IPriceable, Double> getPriceMatrix() {
         return priceMatrix;
     }
 
     /**
-     * Display the price matrix
+     * Display the price matrix on to the screen
      */
     public static void showPriceMatrix() {
         System.out.println("========== Pricing ==========");
@@ -68,7 +75,7 @@ public class PricingManager {
 
     /**
      * Get the objects which can have a price
-     * @return a string set with the name of the IPricable classes
+     * @return a list of IPriceable objects
      */
     public static ArrayList<Class<? extends IPriceable>> getPriceAbleObjects() {
         ArrayList<Class<? extends IPriceable>> priceableObjsStr = new ArrayList<Class<? extends IPriceable>>();

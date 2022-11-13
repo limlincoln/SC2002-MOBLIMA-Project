@@ -6,6 +6,9 @@ import java.util.Scanner;
 import utils.IDGenerator;
 import utils.SeatPrinter;
 
+/**
+ * Class that contains information about a SeatLayout
+ */
 public class SeatLayout extends ISeatLayout{
     private Integer ID;
 
@@ -102,6 +105,8 @@ public class SeatLayout extends ISeatLayout{
     }while(choice == 1);
     return Optional.empty();
     }
+    
+    // GETTERS AND SETTERS
     public Integer getID() {
         return this.ID;
     }
@@ -109,5 +114,4 @@ public class SeatLayout extends ISeatLayout{
     public void setID(Integer ID) {
         this.ID = ID;
     }
-    
 }

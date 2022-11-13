@@ -4,11 +4,14 @@ import entities.Movie;
 import entities.Booking;
 import java.util.ArrayList;
 
+/**
+ * A Class which manages all the reviews
+ */
 public class ReviewManager {
     /**
      * User give review to movie
-     * @param movie
-     * @param newRating
+     * @param movie the movie to review
+     * @param newRating the rating to give
      */
     public static void review(Movie movie, int newRating){
         if(newRating > 5 || newRating < 0){
@@ -23,7 +26,7 @@ public class ReviewManager {
 
     /**
      * Return average rating of the selected movie
-     * @param movie
+     * @param movie 
      * @return
      */
     public static float getAvgRating(Movie movie){
@@ -37,8 +40,8 @@ public class ReviewManager {
 
     /**
      * Make a review on the booking
-     * @param book
-     * @param rating
+     * @param book the booking to review
+     * @param rating the rating to give
      */
     public static void reviewBooking(Booking book, int rating) {
     	book.setRating(rating);
