@@ -1,6 +1,11 @@
 package menus;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import entities.Booking;
+import managers.BookingManager;
+import managers.MovieManager;
 
 public class RatingMenu {
     private static RatingMenu single_instance = null;
@@ -41,12 +46,10 @@ public class RatingMenu {
             
             switch(choice){
                 case 1:
-                	//Rate movie based on booking history?
-                    // TODO: CALL BOOKINGMANAGER.GETUNRATEDBOOKINGS;
-                    // TODO: CALL REVIEWMANGER WITH SELECTED BOOKING
+                	BookingHistoryMenu.getInstance().displayBookingHistoryMenu();
                     break;
                 case 2:
-                	//View past rating history?
+                	displayPastRatings();
                     break;
                 case 0:
                 	System.out.println("Back to MOBLIMA APP......");
@@ -56,5 +59,18 @@ public class RatingMenu {
                 	break;
 	            }
 	        } while (choice != 0);
-		}
+    }
+
+    public void displayPastRatings() {
+        String username = CustomerFormMenu.startUserNameForm();
+        ArrayList<Booking> bookings = BookingManager.getRatedBookingsByUsername(username);
+        if(bookings.size() == 0) {
+            System.out.println("No Past Ratings!");
+            return;
+        }
+        System.out.println("======== PAST RATINGS =========");
+        for(Booking booking: bookings) {
+            System.out.println(MovieManager.getInstance().getMovieByID(booking.getMovieID()).getMovieName() + ": Rating Given - " + booking.getRating() + "/5");
+        }
+    }
 }
