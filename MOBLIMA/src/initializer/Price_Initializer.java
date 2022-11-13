@@ -56,7 +56,7 @@ public class Price_Initializer extends GetDatabaseDirectory {
 					case "typeofday":
 						typeString += "[" + set.getKey() + "," + set.getValue() + "]|";
 						break;
-					case "classString":
+					case "cinemaclass":
 						classString += "[" + set.getKey() + "," + set.getValue() + "]|";
 						break;
 					default:
