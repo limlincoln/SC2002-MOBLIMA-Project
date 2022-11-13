@@ -142,8 +142,9 @@ public class SettingsMenu {
             System.out.println(" 1. Base Prices");
             System.out.println(" 2. Age Group Prices");
             System.out.println(" 3. Cinema Type Prices");
-            System.out.println(" 4. Time of Day Prices");
-            System.out.println(" 5. Type of Day Prices");
+			System.out.println(" 4. Cinema Class Prices");
+            System.out.println(" 5. Time of Day Prices");
+            System.out.println(" 6. Type of Day Prices");
             System.out.println(" 0. Back to Settings Menu");
             System.out.println("===========================================================");
 
@@ -175,9 +176,9 @@ public class SettingsMenu {
 						{
 							System.out.println("Enter new Price: ");
 							newPrice = sc.nextDouble();
-							if (thischoice == 1){SettingsManager.getInstance().editPrices(AgeGroup.ADULT,newPrice);}
-							else if (thischoice == 2){SettingsManager.getInstance().editPrices(AgeGroup.STUDENT,newPrice);}						
-							else if (thischoice == 3){SettingsManager.getInstance().editPrices(AgeGroup.SENIOR,newPrice);}	
+							if (thischoice == 1){PricingManager.updatePrice(AgeGroup.ADULT,newPrice);}
+							else if (thischoice == 2){PricingManager.updatePrice(AgeGroup.STUDENT,newPrice);}						
+							else if (thischoice == 3){PricingManager.updatePrice(AgeGroup.SENIOR,newPrice);}	
 						}
 					
 					} while (thischoice != 0);					
@@ -193,14 +194,32 @@ public class SettingsMenu {
 						{
 							System.out.println("Enter new Price: ");
 							newPrice = sc.nextDouble();
-							if (thischoice == 1){SettingsManager.getInstance().editPrices(CinemaType.IMAX,newPrice);}
-							else if (thischoice == 2){SettingsManager.getInstance().editPrices(CinemaType._3D,newPrice);}						
-							else if (thischoice == 3){SettingsManager.getInstance().editPrices(CinemaType.NORMAL,newPrice);}	
+							if (thischoice == 1){PricingManager.updatePrice(CinemaType.IMAX,newPrice);}
+							else if (thischoice == 2){PricingManager.updatePrice(CinemaType._3D,newPrice);}						
+							else if (thischoice == 3){PricingManager.updatePrice(CinemaType.NORMAL,newPrice);}	
 						}
 					
 					} while (thischoice != 0);					
 					break;
 				case 4:
+					do {
+						System.out.println(" 1. Platinum Prices");
+						System.out.println(" 2. Gold Prices");
+						System.out.println(" 3. Normal Prices");
+						System.out.println("Enter choice: ");
+						thischoice = sc.nextInt();
+						if(thischoice !=0)
+						{
+							System.out.println("Enter new Price: ");
+							newPrice = sc.nextDouble();
+							if (thischoice == 1){PricingManager.updatePrice(CinemaClass.PLATINUM,newPrice);}
+							else if (thischoice == 2){PricingManager.updatePrice(CinemaClass.GOLD,newPrice);}						
+							else if (thischoice == 3){PricingManager.updatePrice(CinemaClass.NORMAL,newPrice);}	
+						}
+					
+					} while (thischoice != 0);					
+					break;
+				case 5:
 					do {
 						System.out.println(" 1. Before 6 Prices");
 						System.out.println(" 2. After 6 Prices");
@@ -210,13 +229,13 @@ public class SettingsMenu {
 						{
 							System.out.println("Enter new Price: ");
 							newPrice = sc.nextDouble();
-							if (thischoice == 1){SettingsManager.getInstance().editPrices(TimeOfDay.BEFORE_6,newPrice);}
-							else if (thischoice == 2){SettingsManager.getInstance().editPrices(TimeOfDay.AFTER_6,newPrice);}		
+							if (thischoice == 1){PricingManager.updatePrice(TimeOfDay.BEFORE_6,newPrice);}
+							else if (thischoice == 2){PricingManager.updatePrice(TimeOfDay.AFTER_6,newPrice);}		
 						}
 					
 					} while (thischoice != 0);					
 					break;
-				case 5:
+				case 6:
 					do {
 						System.out.println(" 1. Weekday Prices");
 						System.out.println(" 2. Weekend Prices");
@@ -227,9 +246,9 @@ public class SettingsMenu {
 						{
 							System.out.println("Enter new Price: ");
 							newPrice = sc.nextDouble();
-							if (thischoice == 1){SettingsManager.getInstance().editPrices(TypeOfDay.WEEKDAY,newPrice);}
-							else if (thischoice == 2){SettingsManager.getInstance().editPrices(TypeOfDay.WEEKEND,newPrice);}						
-							else if (thischoice == 3){SettingsManager.getInstance().editPrices(TypeOfDay.PUBLIC_HOLIDAY,newPrice);}	
+							if (thischoice == 1){PricingManager.updatePrice(TypeOfDay.WEEKDAY,newPrice);}
+							else if (thischoice == 2){PricingManager.updatePrice(TypeOfDay.WEEKEND,newPrice);}						
+							else if (thischoice == 3){PricingManager.updatePrice(TypeOfDay.PUBLIC_HOLIDAY,newPrice);}	
 						}
 					} while (thischoice != 0);					
 					break;

@@ -5,10 +5,10 @@ import java.io.File;
 import enums.AgeGroup;
 import enums.CinemaClass;
 import enums.CinemaType;
+import enums.IPriceable;
 import enums.PriceType;
 import enums.TimeOfDay;
 import enums.TypeOfDay;
-import managers.PricingManager;
 
 import java.util.*;
 import java.io.*;
@@ -22,7 +22,7 @@ public class Price_Initializer extends GetDatabaseDirectory {
 	
 	public Price_Initializer(){}
 	
-	public static void  write(HashMap<Object, Double> priceMatrix) {	
+	public static void  write(HashMap<IPriceable, Double> priceMatrix) {	
 		String currentDirectory = Price_Initializer.getCurrentDirectory();
 		
 		String fileDir = currentDirectory + DBfile;
@@ -39,7 +39,7 @@ public class Price_Initializer extends GetDatabaseDirectory {
 			String typeString ="";
 			String classString ="";
 
-			for(Map.Entry<Object, Double> set:priceMatrix.entrySet()) {
+			for(Map.Entry<IPriceable, Double> set:priceMatrix.entrySet()) {
 				switch(set.getKey().getClass().getSimpleName().toString().toLowerCase()){
 					case "agegroup":
 						ageGroupString += "[" + set.getKey() + "," + set.getValue() + "]|";
@@ -82,10 +82,10 @@ public class Price_Initializer extends GetDatabaseDirectory {
 		
 	}
 	
-	public static HashMap<Object,Double> read() {		
+	public static HashMap<IPriceable,Double> read() {		
 		String currentDirectory = Price_Initializer.getCurrentDirectory() ;
 		String fileDir = currentDirectory + DBfile;
-		HashMap<Object,Double> priceMatrix = new HashMap<Object,Double>();
+		HashMap<IPriceable,Double> priceMatrix = new HashMap<IPriceable,Double>();
 
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(fileDir));
@@ -107,7 +107,7 @@ public class Price_Initializer extends GetDatabaseDirectory {
 				// Read into correct price matrix format
 				
 				for(int i=0; i<data.size(); i++){
-						Object temp = null;
+						IPriceable temp = null;
 						String val = data.get(i)[0];
 						switch(whichEnum){
 							case 0:
