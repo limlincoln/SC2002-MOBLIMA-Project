@@ -89,7 +89,7 @@ public class SettingsManager {
 		System.out.println("What is the holiday name: ");
 		do {
 			reAsk = false;
-			name = sc.next();
+			name = sc.nextLine();
 			reAsk = HolidayManager.isHoliday(name);
 
 			if(reAsk) {
@@ -100,7 +100,7 @@ public class SettingsManager {
 			reAsk = false;
 			System.out.println("What is the holiday date? (yyyy-MM-dd): ");
 			try{
-				date = LocalDate.parse(sc.next());
+				date = LocalDate.parse(sc.nextLine());
 				if(HolidayManager.isHoliday(date)) {
 					System.out.println("This Holiday already exists!");
 					reAsk = true;
@@ -321,7 +321,7 @@ public class SettingsManager {
 		}
 		String title = sc.nextLine();
 		
-		System.out.println("Movie Genre (HORROR/ACTION): ");
+		System.out.println("Movie Genre (COMEDY/ACTION): ");
 		while (!sc.hasNext()) {
 			System.out.println("Invalid input type. Please try again!");
 			sc.next(); 
@@ -387,12 +387,13 @@ public class SettingsManager {
 			sc.next(); 
 		}
 		int num = sc.nextInt();
+		sc.nextLine();
 		for(int i=0;i<num;i++){
 			System.out.println("Cinema Types (IMAX/_3D/NORMAL): ");
-			while (!sc.hasNext()) {
-				System.out.println("Invalid input type. Please try again!");
-				sc.next(); 
-			}
+				while (!sc.hasNext()) {
+					System.out.println("Invalid input type. Please try again!");
+					sc.next(); 
+				}
 			
 			String askCinetype = sc.nextLine();
 			CinemaType cinetype = null;

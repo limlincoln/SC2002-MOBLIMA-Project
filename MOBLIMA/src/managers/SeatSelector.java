@@ -51,7 +51,7 @@ public class SeatSelector implements ISeatSelector{
                     }
                     Integer colSelected = ((int)input.charAt(0)) - 65;
                     Integer rowSelected = Integer.parseInt(input.substring(1));
-                    if(rowSelected >= curSeats.length || colSelected >= curSeats.length || curSeats[rowSelected][colSelected] instanceof Space || (curSeats[rowSelected][colSelected] instanceof Space && ((Seat)curSeats[rowSelected][colSelected]).isOccupied())){
+                    if(rowSelected >= curSeats.length || colSelected >= curSeats.length || curSeats[rowSelected][colSelected] instanceof Space || (curSeats[rowSelected][colSelected] instanceof Seat && ((Seat)curSeats[rowSelected][colSelected]).isOccupied())){
                         System.out.println("Invalid Seat Selected");
                         continue;
                     }else{
